@@ -1,0 +1,17 @@
+@startuml arquitectura
+package mastermind #DDDDDD { }
+mastermind .down.> mastermind.views
+mastermind .down.> mastermind.models
+
+package mastermind.models #DDDDDD { }
+package java.util{ }
+mastermind.models .down.> java.util
+
+package mastermind.utils #DDDDDD { }
+package java.io{ }
+mastermind.utils .down.> java.io
+
+package mastermind.views #DDDDDD { }
+mastermind.views .down.> mastermind.models
+mastermind.views .down.> mastermind.utils
+@enduml

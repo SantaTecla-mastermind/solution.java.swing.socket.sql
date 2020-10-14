@@ -6,6 +6,8 @@ import usantatecla.utils.WithConsoleView;
 class ColorView extends WithConsoleView{
 	
 	private static final char[] INITIALS = {'r', 'b', 'y', 'g', 'o', 'p'};
+	private static final String[] COLORS = {"\u001B[31m", "\u001B[34m", "\u001B[33m", "\u001B[32m", "\u001B[37m", "\u001B[35m"};
+	private static final String RESET_COLOR = "\u001B[0m";
 
 	private Color color;
 
@@ -15,8 +17,9 @@ class ColorView extends WithConsoleView{
 
 	static String allInitials() {
 		String result = "";
-		for(char character: ColorView.INITIALS) {
-			result += character;
+		char[] initials = ColorView.INITIALS;
+		for (int i = 0; i < initials.length; i++) {
+			result += ColorView.COLORS[i] + ColorView.INITIALS[i] + ColorView.RESET_COLOR;
 		}
 		return result;
 	}
@@ -31,7 +34,7 @@ class ColorView extends WithConsoleView{
 	}
 	
 	void write() {
-		this.console.write(ColorView.INITIALS[this.color.ordinal()]);
+		this.console.write(ColorView.COLORS[this.color.ordinal()] + ColorView.INITIALS[this.color.ordinal()] + RESET_COLOR);
 	}
 
 }

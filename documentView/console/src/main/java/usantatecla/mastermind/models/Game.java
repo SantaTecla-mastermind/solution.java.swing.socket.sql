@@ -21,8 +21,8 @@ public class Game {
 
 	public void clear() {
 		this.secretCombination = new SecretCombination();
-		this.proposedCombinations = new ArrayList<ProposedCombination>();
-		this.results = new ArrayList<Result>();
+		this.proposedCombinations = new ArrayList<>();
+		this.results = new ArrayList<>();
 		this.attempts = 0;
 	}
 
