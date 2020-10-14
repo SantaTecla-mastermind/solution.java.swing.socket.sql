@@ -1,0 +1,36 @@
+@startuml desarrollo_implementacion
+package "  "  as mastermind {
+}
+package "  "  as mastermind.models {
+}
+package "  "  as mastermind.views {
+}
+package "  "  as mastermind.utils {
+}
+package "  "  as java.io {
+}
+package "  "  as java.util {
+}
+
+[mastermind.jar] as jar
+
+jar *--> mastermind
+jar *--> mastermind.models
+jar *--> mastermind.views
+jar *--> mastermind.utils
+jar *--> java.io
+jar *--> java.util
+@enduml
+
+@startuml despliegue_fisica
+node node #DDDDDD [
+<b>Personal Computer</b>
+----
+memory : xxx Mb
+cpu : xxx GHz
+]
+
+[ masterming.jar ] as component
+
+node *--> component
+@enduml
