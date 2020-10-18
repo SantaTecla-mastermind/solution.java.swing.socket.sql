@@ -15,7 +15,7 @@ public class SecretCombination extends Combination {
 		}
 		Collections.shuffle(this.colors);
 	}
-
+	// Bucle unico
 	Result getResult(ProposedCombination proposedCombination) {
 		int blacks = 0;
 		for (int i = 0; i < this.colors.size(); i++) {
