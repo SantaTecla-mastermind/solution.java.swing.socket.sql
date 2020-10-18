@@ -16,7 +16,7 @@ class ProposedCombination extends Combination {
 		Error error;
 		do {
 			Message.PROPOSED_COMBINATION.write();
-			error = this.checkError(Console.instance().readString());
+			error = this.checkError(Console.getInstance().readString());
 			error.writeln();
 			if (!error.isNull()) {
 				this.colors = new ArrayList<Color>();
@@ -29,7 +29,7 @@ class ProposedCombination extends Combination {
 			return Error.WRONG_LENGTH;
 		}
 		for (int i = 0; i < characters.length(); i++) {
-				Color color = Color.getInstance(characters.charAt(i));
+				Color color = Color.getInstance(characters);
 				if (color.isNull()) {
 					return Error.WRONG_CHARACTERS;
 				}
@@ -48,12 +48,7 @@ class ProposedCombination extends Combination {
 	}
 
 	boolean contains(Color color) {
-		for (int i = 0; i < this.colors.size(); i++) {
-			if (this.colors.get(i) == color) {
-				return true;
-			}
-		}
-		return false;
+		return this.colors.contains(color);
 	}
 
 }

@@ -19,19 +19,19 @@ enum MessageView {
 	}
 
 	void write() {
-		Console.instance().write(this.message);
+		Console.getInstance().write(this.message);
 	}
 
 	void writeln() {
-		Console.instance().writeln(this.message);
+		Console.getInstance().writeln(this.message);
 	}
 
 	void writeln(int attempts) {
-		Console.instance().writeln(this.message.replaceFirst("#attempts", "" + attempts));
+		Console.getInstance().writeln(this.message.replaceFirst("#attempts", "" + attempts));
 	}
 
 	void writeln(int blacks, int whites) {
-		Console.instance().writeln(this.message.replaceFirst("#blacks", "" + blacks).replaceFirst("#whites", "" + whites));
+		Console.getInstance().writeln(this.message.replaceFirst("#blacks", "" + blacks).replaceFirst("#whites", "" + whites));
 	}
 
 }

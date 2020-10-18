@@ -22,14 +22,12 @@ class SecretCombination extends Combination {
 
 	Result getResult(ProposedCombination proposedCombination) {
 		int blacks = 0;
+		int whites = 0;
 		for (int i = 0; i < this.colors.size(); i++) {
 			if (proposedCombination.contains(this.colors.get(i), i)) {
 				blacks++;
 			}
-		}
-		int whites = 0;
-		for (Color color : this.colors) {
-			if (proposedCombination.contains(color)) {
+			if (proposedCombination.contains(this.colors.get(i))) {
 				whites++;
 			}
 		}
@@ -37,11 +35,8 @@ class SecretCombination extends Combination {
 	}
 
 	void writeln() {
-		Console.instance().write("**** - ");
-		for (Color color : this.colors) {
-			color.write();
-		}
-		Console.instance().writeln();
+		Message.SECRET_COMBINATION.write();
+		Console.getInstance().writeln();
 	}
 
 }

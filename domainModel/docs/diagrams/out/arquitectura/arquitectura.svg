@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="291px" preserveAspectRatio="none" style="width:315px;height:291px;" version="1.1" viewBox="0 0 315 291" width="315px" zoomAndPan="magnify"><defs><filter height="300%" id="f167ec0rtwrfyp" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><polygon fill="#DDDDDD" filter="url(#f167ec0rtwrfyp)" points="28,6,235,6,242,28.2969,249,28.2969,249,58.5938,28,58.5938,28,6" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="28" x2="242" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="201" x="32" y="20.9951">usantatecla.mastermind</text><polygon fill="#FFFFFF" filter="url(#f167ec0rtwrfyp)" points="16,119,89,119,96,141.2969,103,141.2969,103,171.5938,16,171.5938,16,119" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="16" x2="96" y1="141.2969" y2="141.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="67" x="20" y="133.9951">java.util</text><polygon fill="#DDDDDD" filter="url(#f167ec0rtwrfyp)" points="138.5,119,284.5,119,291.5,141.2969,298.5,141.2969,298.5,171.5938,138.5,171.5938,138.5,119" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="138.5" x2="291.5" y1="141.2969" y2="141.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="140" x="142.5" y="133.9951">usantatecla.utils</text><polygon fill="#FFFFFF" filter="url(#f167ec0rtwrfyp)" points="181.5,232,241.5,232,248.5,254.2969,255.5,254.2969,255.5,284.5938,181.5,284.5938,181.5,232" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="181.5" x2="248.5" y1="254.2969" y2="254.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="54" x="185.5" y="246.9951">java.io</text><!--MD5=[15909ed11179945912bb05b2ce93095a]
+link usantatecla.mastermind to java.util--><path d="M120.177,59.245 C108.4117,75.776 93.0872,97.308 80.7826,114.597 " fill="none" id="usantatecla.mastermind-to-java.util" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#A80036" points="77.7234,118.895,86.2004,113.881,80.6222,114.8211,79.6821,109.2429,77.7234,118.895" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[70e72fe7092cec4e62db6623b4ce3bb6]
+link usantatecla.mastermind to usantatecla.utils--><path d="M157.055,59.245 C168.969,75.776 184.488,97.308 196.948,114.597 " fill="none" id="usantatecla.mastermind-to-usantatecla.utils" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#A80036" points="200.046,118.895,198.0269,109.2553,197.1217,114.8393,191.5378,113.9342,200.046,118.895" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[f7f372d3543268b8cc298f05137e5dac]
+link usantatecla.utils to java.io--><path d="M218.5,172.245 C218.5,188.4958 218.5,209.5795 218.5,226.7139 " fill="none" id="usantatecla.utils-to-java.io" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#A80036" points="218.5,231.895,222.5,222.895,218.5,226.895,214.5,222.895,218.5,231.895" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[3060a4841a34b5cd0a6e20a7e8d9ead7]
+@startuml
+package usantatecla.mastermind #DDDDDD { }
+package java.util{ }
+package usantatecla.utils #DDDDDD { }
+package java.io{ }
+
+usantatecla.mastermind .down.> java.util
+usantatecla.mastermind .down.> usantatecla.utils
+usantatecla.utils .down.> java.io
+@enduml
+
+PlantUML version 1.2020.20beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

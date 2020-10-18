@@ -18,7 +18,7 @@ public class Board {
   }
 
   public void writeln() {
-    Console.instance().writeln();
+    Console.getInstance().writeln();
     Message.ATTEMPTS.writeln(this.attempts);
     this.secretCombination.writeln();
     for (int i = 0; i < this.attempts; i++) {
