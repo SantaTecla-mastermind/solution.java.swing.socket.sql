@@ -11,7 +11,7 @@ public class YesNoDialog  extends WithConsoleView {
 	private static final String MESSAGE = "The value must be '" + YesNoDialog.AFIRMATIVE + "' or '"
 			+ YesNoDialog.NEGATIVE + "'";
 
-	public boolean read(String title) {
+	boolean read(String title) {
 		assert title != null;
 		char answer;
 		boolean ok;

@@ -4,7 +4,7 @@ import usantatecla.utils.Console;
 
 enum MessageView {
 	ATTEMPTS("#attempts attempt(s): "),
-	SECRET("*"),
+	SECRET_COMBINATION("****"),
 	RESUME("Do you want to continue"),
 	RESULT(" --> #blacks blacks and #whites whites"),
 	PROPOSED_COMBINATION("Propose a combination: "),

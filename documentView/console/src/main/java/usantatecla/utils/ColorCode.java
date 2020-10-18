@@ -1,0 +1,17 @@
+package usantatecla.utils;
+
+public enum ColorCode {
+    RED("\u001B[31m"),
+    BLUE("\u001B[34m"),
+    YELLOW("\u001B[33m"),
+    GREEN("\u001B[32m"),
+    ORANGE("\u001B[37m"),
+    PURPLE("\u001B[35m"),
+    RESET_COLOR("\u001B[0m");
+
+    public String color;
+
+    private ColorCode(String color){
+        this.color = color;
+    }
+}
