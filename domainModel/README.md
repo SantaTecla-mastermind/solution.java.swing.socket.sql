@@ -1,7 +1,7 @@
 # Master Mind. Solución 1.1. *domainModel*
 Universo Santa Tecla 
 
-[USantaTecla@gmail.com](USantaTecla@gmail.com)
+[USantaTecla@gmail.com](mailto:USantaTecla@gmail.com)
 
 version 0.0.1
 
@@ -9,9 +9,10 @@ version 0.0.1
 1. [Requisitos 1. Básica](#id1)
 2. [Vista de Lógica/Diseño](#id2)  
     2.1. [Arquitectura](#id2.1)     
-    2.2. [Paquete tictactoe](#id2.2)  
+    2.2. [Paquete mastermind](#id2.2)  
 3. [Calidad del Software](#id3)  
-    3.1. [Rediseño](#id3.1)  
+    3.1. [Diseño](#id3.1)  
+    3.2. [Rediseño](#id3.2) 
 4. [Vista de Desarrollo/Implementación](#id4)
 5. [Vista de Despliegue/Física](#id5)
 6. [Vista de Procesos](#id6)
@@ -20,7 +21,7 @@ version 0.0.1
 
 |  |  |
 | :------- | :------: | 
-| -link: https://en.wikipedia.org/wiki/Tic-tac-toe[*Wiki*]  <br/>* _Funcionalidad: **Básica**_<br/>  * _Interfaz: **Texto**_<br/>  * _Distribución: **Stand Alone**_<br/>  * _Persistencia: **No**_<br/> | ![Texto alternativo](./docs/images/Dibujo.jpg) | 
+| [Wiki](https://en.wikipedia.org/wiki/Mastermind_(board_game)) - [Youtube](https://www.youtube.com/watch?v=2-hTeg2M6GQ)  <br/>* _Funcionalidad: **Básica**_<br/>  * _Interfaz: **Texto**_<br/>  * _Distribución: **Stand Alone**_<br/>  * _Persistencia: **No**_<br/> | ![Texto alternativo](./docs/images/Dibujo.jpg) | 
 |  |  |
 
 ## Vista de Lógica/Diseño<a name="id2"></a>
@@ -28,13 +29,15 @@ version 0.0.1
 - Aplicación del *Modelo del Dominio* mediante Estrategias de *Análisis Formal*, *Análisis Clásico*, *Experto del Dominio*, *Reparto de Responsabilidades*, ...
 
 ### Arquitectura<a name="id2.1"></a>
-![Texto alternativo](../docs/diagrams/out/__WorkspaceFolder__/domainModel/docs/diagrams/src/arquitectura/arquitectura.svg)
+![Texto alternativo](./docs/diagrams/out/arquitectura/arquitectura.svg)
 
-### Paquete _tictactoe_<a name="id2.2"></a>
-![Texto alternativo](../docs/diagrams/out/__WorkspaceFolder__/domainModel/docs/diagrams/src/paquetes/tictactoe.svg)
+### Paquete _mastermind_<a name="id2.2"></a>
+![Texto alternativo](./docs/diagrams/out/paquetes/mastermind.svg)
 
 ## Calidad del Software<a name="id3"></a>
-### Rediseño<a name="id3.1"></a>
+### Diseño<a name="id3.1"></a>
+- **Método largo**: Método *play* de Mastermind,...
+### Rediseño<a name="id3.2"></a>
 
 - _Nueva interfaz: Gráfica_
     * **Clases Grandes**: los Modelos asumen la responsabilidad y crecen en líneas, métodos, atributos, ... con cada nueva tecnología_#
@@ -47,10 +50,10 @@ version 0.0.1
     * **Open/Close**: hay que modificar los modelos que estaban funcionando previamente para incorporar nuevas funcionalidades_#
 
 ## Vista de Desarrollo/Implementación<a name="id4"></a>
-![Texto alternativo](../docs/diagrams/out/__WorkspaceFolder__/domainModel/docs/diagrams/src/vistas/desarrollo_implementacion.svg)
+![Texto alternativo](./docs/diagrams/out/vistas/desarrollo_implementacion.svg)
 
 ## Vista de Despliegue/Física<a name="id5"></a>
-![Texto alternativo](../docs/diagrams/out/__WorkspaceFolder__/domainModel/docs/diagrams/src/vistas/despliegue_fisica.svg)
+![Texto alternativo](./docs/diagrams/out/vistas/despliegue_fisica.svg)
 
 ## Vista de Procesos<a name="id6"></a>
 
