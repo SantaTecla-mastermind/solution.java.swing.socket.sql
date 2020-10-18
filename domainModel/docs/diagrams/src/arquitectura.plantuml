@@ -1,0 +1,10 @@
+@startuml arquitectura
+package usantatecla.mastermind #DDDDDD { }
+package java.util{ }
+package usantatecla.utils #DDDDDD { }
+package java.io{ }
+
+usantatecla.mastermind .down.> java.util
+usantatecla.mastermind .down.> usantatecla.utils
+usantatecla.utils .down.> java.io
+@enduml
