@@ -11,100 +11,99 @@ mastermind.Mastermind *-down-> mastermind.models.Game
 @enduml
 
 @startuml mastermind.views
-class  mastermind.views.Color{
-+ {static} RED: Color
-+ {static} BLUE: Color
-+ {static} YELLOW: Color
-+ {static} GREEN: Color
-+ {static} ORANGE: Color
-+ {static} PURPLE: Color
-- initial: char
-- Color(char)
-+ {static} valueOf(String): Color
-~ {static} getInstance(char): Color
-~ {static} getInstance(int): Color
+class  mastermind.views.ColorView{
+- {static} INITIALS: char []
+- color: Color
+~ ColorView(Color)
 ~ {static} allInitials(): String
-~ getInitial(): char
+~ {static} getInstance(char): Color
+~ write()
 }
+mastermind.utils.ColorCode <..down- mastermind.views.ColorView
 
-class  mastermind.views.Error{
-+ {static} DUPLICATED: Error
-+ {static} WRONG_CHARACTERS: Error
-+ {static} WRONG_LENGTH: Error
-- message: String
-- Error(String)
-+ {static} valueOf(String): Error
-~ getMessage(): String
+class  mastermind.views.ErrorView{
+- {static} MESSAGES: String []
+- error: Error
+~ ErrorView(Error error)
+~ writeln()
 }
-mastermind.views.Error ..> mastermind.views.Color
+mastermind.models.Error <..down- mastermind.views.ErrorView
+mastermind.views.ErrorView ..> mastermind.views.ColorView
 
-class  mastermind.views.Message{
-+ {static} TURN: Message
-+ {static} SECRET: Message
-+ {static} RESUME: Message
-+ {static} RESULT: Message
-+ {static} PROPOSED_COMBINATION: Message
-+ {static} TITLE: Message
-+ {static} WINNER: Message
-+ {static} LOOSER: Message
+enum  mastermind.views.MessageView{
++ {static} ATTEMPTS: MessageView
++ {static} SECRET_COMBINATION: MessageView
++ {static} RESUME: MessageView
++ {static} RESULT: MessageView
++ {static} PROPOSED_COMBINATION: MessageView
++ {static} TITLE: MessageView
++ {static} WINNER: MessageView
++ {static} LOOSER: MessageView
 - message: String
-- Message(String)
-+ {static} valueOf(String): Message
-~ getMessage(): String
+~ MessageView(String)
+~ write()
+~ writeln()
+~ writeln(int)
+~ writeln(int, int)
 }
 
 class  mastermind.views.ProposalView{
-~ ProposalView()
-- proposeCombination(int[], Game): int
-~ interact(Game): boolean
+- game: Game
+- secretCombinationView: SecretCombinationView
+~ ProposalView(Game)
+~ interact(): boolean
 }
+mastermind.models.ProposedCombination <..down- mastermind.views.ProposalView
 mastermind.utils.WithConsoleView <|-down- mastermind.views.ProposalView
 mastermind.views.ProposalView ..> mastermind.models.Game
-mastermind.views.ProposalView ..> mastermind.views.Message
-mastermind.views.ProposalView ..> mastermind.views.Error
+mastermind.views.ProposalView ..> mastermind.views.MessageView
 mastermind.views.ProposalView ..> mastermind.views.SecretCombinationView
 mastermind.views.ProposalView ..> mastermind.views.ProposedCombinationView
 mastermind.views.ProposalView ..> mastermind.views.ResultView
 
 class  mastermind.views.ProposedCombinationView{
-- {static} ERROR_CODE: int
-~ ProposedCombinationView()
-~ write(int[]): void
-~ read(): int[]
+- proposedCombination: ProposedCombination
+~ ProposedCombinationView(ProposedCombination)
+~ write()
+~ read()
 }
 mastermind.utils.WithConsoleView <|-down- mastermind.views.ProposedCombinationView
-mastermind.views.ProposedCombinationView..> mastermind.views.Message
-mastermind.views.ProposedCombinationView..> mastermind.views.Color
+mastermind.views.ProposedCombinationView..> mastermind.views.MessageView
+mastermind.views.ProposedCombinationView..> mastermind.views.ColorView
 
 
 class  mastermind.views.ResultView{
+- result: Result
 ~ ResultView()
-~ writeln(int[]): void
+~ writeln()
 }
 mastermind.utils.WithConsoleView <|-down- mastermind.views.ResultView
-mastermind.views.ResultView..> mastermind.views.Message
+mastermind.models.Result <..down- mastermind.views.ResultView
+mastermind.views.ResultView..> mastermind.views.MessageView
 
 class  mastermind.views.ResumeView{
+- game: Game
 ~ ResumeView()
-~ interact(Game): boolean
+~ interact(): boolean
 }
 mastermind.views.ResumeView ..> mastermind.models.Game
-mastermind.views.ResumeView..> mastermind.views.Message
+mastermind.utils.YesNoDialog <..down- mastermind.views.ResumeView
+mastermind.views.ResumeView..> mastermind.views.MessageView
 
 class  mastermind.views.SecretCombinationView{
 ~ SecretCombinationView()
-~ writeln(int): void
+~ writeln()
 }
 mastermind.utils.WithConsoleView <|-down- mastermind.views.SecretCombinationView
-mastermind.views.SecretCombinationView..> mastermind.views.Message
+mastermind.views.SecretCombinationView..> mastermind.views.MessageView
 
 class  mastermind.views.StartView{
-~ StartView()
-~ interact(Game): void
+~ interact()
 }
 mastermind.utils.WithConsoleView <|-down- mastermind.views.StartView
 mastermind.views.StartView ..> mastermind.models.Game
-mastermind.views.StartView..> mastermind.views.Message
+mastermind.views.StartView..> mastermind.views.MessageView
+mastermind.views.StartView..> mastermind.views.SecretCombinationView
 
 class  mastermind.views.View{
 # game: Game

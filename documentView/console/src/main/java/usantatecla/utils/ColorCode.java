@@ -9,9 +9,17 @@ public enum ColorCode {
     PURPLE("\u001B[35m"),
     RESET_COLOR("\u001B[0m");
 
-    public String color;
+    private String color;
 
     private ColorCode(String color){
         this.color = color;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public static String getColorByIndex(int index){
+        return ColorCode.values()[index].getColor();
     }
 }

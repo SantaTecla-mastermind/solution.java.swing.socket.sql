@@ -16,7 +16,7 @@ class ColorView extends WithConsoleView{
 	static String allInitials() {
 		String result = "";
 		for (int i = 0; i < ColorView.INITIALS.length; i++) {
-			result += ColorCode.values()[i].color + ColorView.INITIALS[i] + ColorCode.RESET_COLOR;
+			result += ColorCode.values()[i].getColor() + ColorView.INITIALS[i] + ColorCode.RESET_COLOR;
 		}
 		return result;
 	}
@@ -32,9 +32,9 @@ class ColorView extends WithConsoleView{
 	
 	void write() {
 		this.console
-				.write(ColorCode.values()[this.color.ordinal()].color
+				.write(ColorCode.getColorByIndex(this.color.ordinal())
 				+ ColorView.INITIALS[this.color.ordinal()]
-				+ ColorCode.RESET_COLOR.color);
+				+ ColorCode.RESET_COLOR.getColor());
 	}
 
 }
