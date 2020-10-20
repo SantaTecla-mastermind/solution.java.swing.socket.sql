@@ -19,7 +19,7 @@ reverse link mastermind.models.Combination to mastermind.models.ProposedCombinat
 link mastermind.models.ProposedCombination to mastermind.models.Error--><path codeLine="61" d="M330,689.231 C330,706.799 330,725.912 330,743.411 " fill="none" id="mastermind.models.ProposedCombination-to-mastermind.models.Error" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#A80036" points="330,748.786,334,739.786,330,743.786,326,739.786,330,748.786" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[8b7fe5937727b3f2af2b7e0c077d6894]
 reverse link mastermind.models.Combination to mastermind.models.SecretCombination--><path codeLine="75" d="M437.52,219.788 C424.532,235.963 410.154,252.984 396,268 C358.1,308.208 310.841,350.028 276.983,378.734 " fill="none" id="mastermind.models.Combination-backto-mastermind.models.SecretCombination" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="432.097,215.36,449.985,204.001,443.085,224.036,432.097,215.36" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[608050f9e03cd77b6b0a92b040850965]
 link mastermind.models.SecretCombination to mastermind.models.Result--><path codeLine="76" d="M209.833,453.318 C190.023,484.374 161.125,529.676 137.943,566.018 " fill="none" id="mastermind.models.SecretCombination-to-mastermind.models.Result" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#A80036" points="135.145,570.404,143.3569,564.9666,137.8335,566.1883,136.6118,560.665,135.145,570.404" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[54781d8fdb284276f9889310d1de69a6]
-link mastermind.models.SecretCombination to mastermind.models.ProposedCombination--><path codeLine="77" d="M249.896,453.318 C263.454,482.461 282.849,524.15 299.158,559.206 " fill="none" id="mastermind.models.SecretCombination-to-mastermind.models.ProposedCombination" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#A80036" points="301.336,563.886,301.1668,554.0386,299.2271,559.3525,293.9132,557.4128,301.336,563.886" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[65a24122ebd46985ff7854d70b2fe099]
+link mastermind.models.SecretCombination to mastermind.models.ProposedCombination--><path codeLine="77" d="M249.896,453.318 C263.454,482.461 282.849,524.15 299.158,559.206 " fill="none" id="mastermind.models.SecretCombination-to-mastermind.models.ProposedCombination" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#A80036" points="301.336,563.886,301.1668,554.0386,299.2271,559.3525,293.9132,557.4128,301.336,563.886" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[14a2e0962b354db1db1fbda204a5b05e]
 @startuml
 class  mastermind.models.Color{
 + {static} RED: Color
@@ -100,7 +100,7 @@ mastermind.models.SecretCombination ..> mastermind.models.Result
 mastermind.models.SecretCombination ..> mastermind.models.ProposedCombination
 @enduml
 
-PlantUML version 1.2020.20beta2(Unknown compile time)
+PlantUML version 1.2020.20beta4(Unknown compile time)
 (GPL source distribution)
 Java Runtime: Java(TM) SE Runtime Environment
 JVM: Java HotSpot(TM) 64-Bit Server VM
