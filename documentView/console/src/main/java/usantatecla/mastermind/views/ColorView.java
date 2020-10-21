@@ -16,7 +16,7 @@ class ColorView extends WithConsoleView{
 	static String allInitials() {
 		String result = "";
 		for (int i = 0; i < ColorView.INITIALS.length; i++) {
-			result += ColorCode.values()[i].getColor() + ColorView.INITIALS[i] + ColorCode.RESET_COLOR;
+			result += ColorCode.values()[i].getColor() + ColorView.INITIALS[i] + ColorCode.RESET_COLOR.getColor();
 		}
 		return result;
 	}

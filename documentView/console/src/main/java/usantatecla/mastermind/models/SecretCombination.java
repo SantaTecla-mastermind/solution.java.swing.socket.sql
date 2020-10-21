@@ -15,21 +15,18 @@ public class SecretCombination extends Combination {
 		}
 		Collections.shuffle(this.colors);
 	}
-	// Bucle unico
+
 	Result getResult(ProposedCombination proposedCombination) {
 		int blacks = 0;
+		int whites = 0;
 		for (int i = 0; i < this.colors.size(); i++) {
 			if (proposedCombination.contains(this.colors.get(i), i)) {
 				blacks++;
-			}
-		}
-		int whites = 0;
-		for (Color color : this.colors) {
-			if (proposedCombination.contains(color)) {
+			} else if(proposedCombination.contains(this.colors.get(i))){
 				whites++;
 			}
 		}
-		return new Result(blacks, whites - blacks);
+		return new Result(blacks, whites);
 	}
 
 }
