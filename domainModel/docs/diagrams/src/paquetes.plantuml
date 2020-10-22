@@ -5,7 +5,7 @@ class Mastermind {
 	+ void play()
 	- void playGame()
 	- boolean isResumedGame()
-	+ {static} void main(String[] args)
+	+ {static} void main(String[])
 }
 
 
@@ -124,33 +124,10 @@ package usantatecla.utils {
 
 class Console {
 
-	- {static} Console console
-	+ {static} Console getInstance()
-	- BufferedReader bufferedReader
-	+ String readString(String)
-	+ String readString()
-	+ int readInt(String)
-	+ char readChar(String)
-	+ void writeln()
-	+ void write(String)
-	+ void write(int)
-	+ void writeln(String)
-	+ void writeln(int)
-	+ void write(char)
-	+ void writeError(String)
+
 }
 
 class YesNoDialog {
-
-	- {static} final char AFFIRMATIVE
-	- {static} final char NEGATIVE
-	- {static} final String SUFFIX
-	- {static} final String MESSAGE
-	- char answer;
-	+ boolean read(String)
-	- boolean isAfirmative()
-	- char getAnswer()
-	- boolean isNegative()
 
 }
 
@@ -159,6 +136,7 @@ class YesNoDialog {
 YesNoDialog .down.> Console
 Board .down.> Console
 Color .down.> Console
+Color .down.> usantatecla.utils.ColorCode
 Error .down.> Console
 Message .down.> Console
 ProposedCombination .down.> Console
@@ -166,15 +144,15 @@ SecretCombination .down.> Console
 Mastermind .down.> YesNoDialog
 @enduml
 
-@startuml mastermind.utils
-class  mastermind.utils.ClosedInterval{
+@startuml usantatecla.utils
+class  usantatecla.utils.ClosedInterval{
 - min: int
 - max: int
 + ClosedInterval(int, int)
 + includes(int): boolean
 }
 
-class  mastermind.utils.Console{
+class  usantatecla.utils.Console{
 - bufferedReader: BufferedReader
 + Console()
 + write(char): void
@@ -187,15 +165,15 @@ class  mastermind.utils.Console{
 + writeln(): void
 + readString(String): String
 }
-mastermind.utils.Console *-down-> java.io.BufferedReader
+usantatecla.utils.Console *-down-> java.io.BufferedReader
 
-class  mastermind.utils.WithConsoleView{
+class  usantatecla.utils.WithConsoleView{
 # console: Console
 # WithConsoleView()
 }
-mastermind.utils.WithConsoleView *-down-> mastermind.utils.Console
+usantatecla.utils.WithConsoleView *-down-> usantatecla.utils.Console
 
-class  mastermind.utils.YesNoDialog{
+class  usantatecla.utils.YesNoDialog{
 - {static} AFIRMATIVE: char
 - {static} NEGATIVE: char
 - {static} QUESTION: String
@@ -205,5 +183,20 @@ class  mastermind.utils.YesNoDialog{
 - {static} isAfirmative(char): boolean
 - {static} isNegative(char): boolean
 }
-mastermind.utils.WithConsoleView <|-down- mastermind.utils.YesNoDialog
+
+class  usantatecla.utils.ColorCode{
+	+ RED
+    + BLUE
+    + YELLOW
+    + GREEN
+    + ORANGE
+    + PURPLE
+    + RESET_COLOR
+    - color: String
+    ColorCode(String)
+    + getColor(): String 
+    + {static} getColorByIndex(int): String 
+}
+
+usantatecla.utils.WithConsoleView <|-down- usantatecla.utils.YesNoDialog
 @enduml

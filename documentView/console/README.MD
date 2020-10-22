@@ -29,19 +29,19 @@ version 0.0.1
 
 ![Arquitectura](./docs/diagrams/out/arquitectura/arquitectura.svg)
 
-## Paquete *mastermind*
+### Paquete *mastermind*
 
 ![Paquete_Mastermind](./docs/diagrams/out/paquetes/mastermind.svg)
 
-## Paquete *mastermind.views*
+### Paquete *mastermind.views*
 
 ![Paquete_Mastermind.views](./docs/diagrams/out/paquetes/mastermind.views.svg)
 
-## Paquete *mastermind.models*
+### Paquete *mastermind.models*
 
 ![Paquete_Mastermind.models](./docs/diagrams/out/paquetes/mastermind.models.svg)
 
-## Paquete *mastermind.utils*
+### Paquete *mastermind.utils*
 
 ![Paquete_Mastermind.utils](./docs/diagrams/out/paquetes/mastermind.utils.svg)
 

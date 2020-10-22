@@ -1,7 +1,7 @@
 @startuml desarrollo_implementacion
 package "  "  as mastermind {
 }
-package "  "  as mastermind.utils {
+package "  "  as utils {
 }
 package "  "  as java.io {
 }
@@ -11,7 +11,7 @@ package "  "  as java.util {
 [mastermind.jar] as jar
 
 jar *--> mastermind
-jar *--> mastermind.utils
+jar *--> utils
 jar *--> java.io
 jar *--> java.util
 @enduml
@@ -20,8 +20,7 @@ jar *--> java.util
 node node #DDDDDD [
 <b>Personal Computer</b>
 ----
-memory : xxx Mb
-cpu : xxx GHz
+
 ]
 
 [ mastermind.jar ] as component

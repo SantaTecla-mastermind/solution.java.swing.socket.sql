@@ -5,8 +5,9 @@ version 0.0.1
 **Índice**
 1. [Requisitos 1. Básica](#requisitos-1-básica)
 2. [Vista de Lógica/Diseño](#vista-de-lógicadiseño)  
-    2.1. [Arquitectura](#arquitectura)     
+    2.1. [Arquitectura](#arquitectura)      
     2.2. [Paquete mastermind](#paquete-mastermind)  
+    2.3. [Paquete utils](#paquete-utils)  
 3. [Calidad del Software](#calidad-del-software)  
     3.1. [Diseño](#diseño)  
     3.2. [Rediseño](#rediseño) 
@@ -26,13 +27,11 @@ version 0.0.1
 ### Arquitectura<a name="arquitectura"></a>
 ![Texto alternativo](./docs/diagrams/out/arquitectura/arquitectura.svg)
 
-##Paquetes
-
 ### Paquete *mastermind*<a name="paquete-mastermind"></a>
 ![Texto alternativo](./docs/diagrams/out/paquetes/mastermind.svg)
 
-### Paquete *mastermind.utils*
-
+### Paquete *utils*<a name="paquete-utils"></a>
+![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.utils.svg)
 
 ## Calidad del Software<a name="calidad-del-software"></a>
 ### Diseño<a name="diseño"></a>
