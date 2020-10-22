@@ -28,7 +28,7 @@ node node #DDDDDD [
 ----
 ]
 
-[ masterming.jar ] as component
+[ mastermind.jar ] as component
 
 node *--> component
 @enduml
