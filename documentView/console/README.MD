@@ -1,8 +1,8 @@
 ## Master Mind. Solucion 2.1. documentView
 Santa Tecla  
-parqueNaturalSantaTecla@gmail.com  
+[parqueNaturalSantaTecla@gmail.com ](mailto:parqueNaturalSantaTecla@gmail.com )
 version 0.0.1  
-Índice  
+**Índice** 
 1. [Requisitos 1. Básica](#requisitos-1-básica)  
 2. [Vista de Lógica/Diseño](#vista-de-lógicadiseño)  
 2.1. [Arquitectura](#arquitectura)  
@@ -19,7 +19,7 @@ version 0.0.1
 
 # Requisitos 1. Básica
 
-| [Wiki](https://en.wikipedia.org/wiki/Mastermind_(board_game)) - [Youtube](https://www.youtube.com/watch?v=2-hTeg2M6GQ) <br/> * _Funcionalidad: **Básica**_ <br/> * _Interfaz: **Texto**_ <br/> * _Distribución: **Standalone**_ <br/> * _Persistencia: **No**_  | ![Mastermind](docs/images/mastermind.jpg) |  
+| [Youtube](https://www.youtube.com/watch?v=2-hTeg2M6GQ) <br/> * _Funcionalidad: **Básica**_ <br/> * _Interfaz: **Texto**_ <br/> * _Distribución: **Standalone**_ <br/> * _Persistencia: **No**_  | ![Mastermind](docs/images/mastermind.jpg) |  
 | :------- | :------: |
 
 # Vista de Lógica/Diseño
