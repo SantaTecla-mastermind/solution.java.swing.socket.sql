@@ -213,7 +213,7 @@ class  mastermind.utils.ColorCode{
 + {static} PURPLE: ColorCode
 + {static} RESET_COLOR: ColorCode
 - color: String
-- ColorCode(String)
+~ ColorCode(String)
 + getColor(): String
 + {static} getColorByIndex(int): String
 }
