@@ -1,8 +1,8 @@
 ## Master Mind. Solucion 2.1. documentView
 Santa Tecla  
-parqueNaturalSantaTecla@gmail.com  
+[parqueNaturalSantaTecla@gmail.com ](mailto:parqueNaturalSantaTecla@gmail.com )
 version 0.0.1  
-Índice  
+**Índice** 
 1. [Requisitos 1. Básica](#requisitos-1-básica)  
 2. [Vista de Lógica/Diseño](#vista-de-lógicadiseño)  
 2.1. [Arquitectura](#arquitectura)  
@@ -19,7 +19,7 @@ version 0.0.1
 
 # Requisitos 1. Básica
 
-| [Wiki](https://en.wikipedia.org/wiki/Mastermind_(board_game)) - [Youtube](https://www.youtube.com/watch?v=2-hTeg2M6GQ) <br/> * _Funcionalidad: **Básica**_ <br/> * _Interfaz: **Texto**_ <br/> * _Distribución: **Standalone**_ <br/> * _Persistencia: **No**_  | ![Mastermind](docs/images/mastermind.jpg) |  
+| [Youtube](https://www.youtube.com/watch?v=2-hTeg2M6GQ) <br/> * _Funcionalidad: **Básica**_ <br/> * _Interfaz: **Texto**_ <br/> * _Distribución: **Standalone**_ <br/> * _Persistencia: **No**_  | ![Mastermind](docs/images/mastermind.jpg) |  
 | :------- | :------: |
 
 # Vista de Lógica/Diseño
@@ -29,19 +29,19 @@ version 0.0.1
 
 ![Arquitectura](./docs/diagrams/out/arquitectura/arquitectura.svg)
 
-## Paquete *mastermind*
+### Paquete *mastermind*
 
 ![Paquete_Mastermind](./docs/diagrams/out/paquetes/mastermind.svg)
 
-## Paquete *mastermind.views*
+### Paquete *mastermind.views*
 
 ![Paquete_Mastermind.views](./docs/diagrams/out/paquetes/mastermind.views.svg)
 
-## Paquete *mastermind.models*
+### Paquete *mastermind.models*
 
 ![Paquete_Mastermind.models](./docs/diagrams/out/paquetes/mastermind.models.svg)
 
-## Paquete *mastermind.utils*
+### Paquete *mastermind.utils*
 
 ![Paquete_Mastermind.utils](./docs/diagrams/out/paquetes/mastermind.utils.svg)
 

@@ -1,35 +1,35 @@
 package usantatecla.mastermind;
 
+import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
 
 enum Color {
-	RED("\u001B[31mr"),
-	BLUE("\u001B[34mb"),
-	YELLOW("\u001B[33my"),
-	GREEN("\u001B[32mg"),
-	ORANGE("\u001B[37mo"),
-	PURPLE("\u001B[35mp"),
+	RED('r'),
+	BLUE('b'),
+	YELLOW('y'),
+	GREEN('g'),
+	ORANGE('o'),
+	PURPLE('p'),
 	NULL_COLOR;
 
-	private String initial;
-	private static final String RESET_COLOR = "\u001B[0m";
+	private char initial;
 
 	private Color() {
 	}
 
-	private Color(String initial) {
+	private Color(char initial) {
 		this.initial = initial;
 	}
 
 	static String getInitials() {
 		String result = "";
 		for(int i=0; i<Color.length(); i++) {
-			result += Color.get(i).initial;
+			result += ColorCode.values()[i].getColor() + Color.get(i).initial + ColorCode.RESET_COLOR.getColor();
 		}
 		return result;
 	}
 
-	static Color getInstance(String character) {
+	static Color getInstance(char character) {
 		for(int i=0; i<Color.length(); i++) {
 			if (Color.get(i).initial == character) {
 				return Color.get(i);
@@ -48,7 +48,10 @@ enum Color {
 
 	void write() {
 		assert this != Color.NULL_COLOR;
-		new Console().write(this.initial+Color.RESET_COLOR);
+		Console.getInstance()
+				.write(ColorCode.getColorByIndex(getInstance(initial).ordinal())
+						+ initial
+						+ ColorCode.RESET_COLOR.getColor());
 	}
 
 	boolean isNull(){

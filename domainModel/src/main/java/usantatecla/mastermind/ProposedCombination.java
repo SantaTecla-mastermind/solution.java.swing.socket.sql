@@ -29,7 +29,7 @@ class ProposedCombination extends Combination {
 			return Error.WRONG_LENGTH;
 		}
 		for (int i = 0; i < characters.length(); i++) {
-				Color color = Color.getInstance(characters);
+				Color color = Color.getInstance(characters.charAt(i));
 				if (color.isNull()) {
 					return Error.WRONG_CHARACTERS;
 				}
