@@ -1,7 +1,7 @@
 @startuml mastermind
 package usantatecla.mastermind {
 class Mastermind {
-	- Board board
+	- board: Board 
 	+ play()
 	- playGame()
 	- isResumedGame(): boolean 
@@ -10,11 +10,11 @@ class Mastermind {
 
 
 class Board {
-  - {static} int MAX_ATTEMPS
-  - SecretCombination secretCombination
-  - ProposedCombination[] proposedCombinations
-  - Result[] results 
-  - int attempts
+  - MAX_ATTEMPS: {static} int 
+  - secretCombination: SecretCombination 
+  - proposedCombinations: ProposedCombination[] 
+  - results: Result[] 
+  - attempts: int 
   ~ Board()
   + writeln()
   + add(ProposedCombination)
@@ -24,7 +24,7 @@ class Board {
 }
 
 abstract class Combination {
-	~ List<Color> colors
+	~ colors: List<Color> 
 	~ Combination ()
 }
 
@@ -43,9 +43,9 @@ class ProposedCombination {
 }
 
 class Result{
-	+ {static} int WIDTH
-	- int blacks
-	- int whites
+	+ WIDTH: {static} int 
+	- blacks: int 
+	- whites: int 
 	~ Result(int, int)
 	~ isWinner(): boolean 
 	~ writeln()
@@ -59,11 +59,12 @@ enum Color {
 	+ ORANGE
 	+ PURPLE
 	+ NULL_COLOR
-	- String initial
-	- {static} String RESET_COLOR
+	- initial: String 
+	- RESET_COLOR: {static} String 
 	- Color()
-	- Color(String)
+	- Color(char)
 	~ {static} getInitials(): String 
+	~ {static} getInstance(char): Color
 	~ {static} length(): int 
 	~ {static} get(int): Color 
 	~ write()
@@ -75,7 +76,7 @@ enum Error {
 	+ WRONG_CHARACTERS
 	+ WRONG_LENGTH
 	+ NULL_ERROR
-	- String message
+	- message: String
 	- Error()
 	- Error(String)
 	~ writeln()
@@ -91,7 +92,7 @@ enum Message {
 	+ TITLE
 	+ WINNER
 	+ LOOSER
-	- String message
+	- message: String 
 	- Message(String)
 	~ write()
 	~ writeln()
@@ -145,14 +146,14 @@ Mastermind .down.> YesNoDialog
 @enduml
 
 @startuml usantatecla.utils
-class  mastermind.utils.ClosedInterval{
+class  usantatecla.utils.ClosedInterval{
 - min: int
 - max: int
 + ClosedInterval(int, int)
 + includes(int): boolean
 }
 
-class  mastermind.utils.ColorCode{
+class  usantatecla.utils.ColorCode{
 + {static} RED: ColorCode
 + {static} BLUE: ColorCode
 + {static} YELLOW: ColorCode
@@ -166,7 +167,7 @@ class  mastermind.utils.ColorCode{
 + {static} getColorByIndex(int): String
 }
 
-class  mastermind.utils.Console{
+class  usantatecla.utils.Console{
 + {static} console: Console
 - bufferedReader: BufferedReader
 + {static} getInstance(): Console
@@ -180,15 +181,15 @@ class  mastermind.utils.Console{
 + write(char)
 - writeError(String)
 }
-mastermind.utils.Console *-down-> java.io.BufferedReader
+usantatecla.utils.Console *-down-> java.io.BufferedReader
 
-class  mastermind.utils.WithConsoleView{
+class  usantatecla.utils.WithConsoleView{
 # console: Console
 # WithConsoleView()
 }
-mastermind.utils.WithConsoleView *-down-> mastermind.utils.Console
+usantatecla.utils.WithConsoleView *-down-> usantatecla.utils.Console
 
-class  mastermind.utils.YesNoDialog{
+class  usantatecla.utils.YesNoDialog{
 - {static} AFIRMATIVE: char
 - {static} NEGATIVE: char
 - {static} QUESTION: String
@@ -199,5 +200,5 @@ class  mastermind.utils.YesNoDialog{
 - {static} isAfirmative(char): boolean
 - {static} isNegative(char): boolean
 }
-mastermind.utils.WithConsoleView <|-down- mastermind.utils.YesNoDialog
+usantatecla.utils.WithConsoleView <|-down- usantatecla.utils.YesNoDialog
 @enduml
