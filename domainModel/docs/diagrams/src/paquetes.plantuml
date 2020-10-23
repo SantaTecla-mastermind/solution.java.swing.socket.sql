@@ -4,8 +4,8 @@ class Mastermind {
 	- Board board
 	+ play()
 	- playGame()
-	- boolean isResumedGame()
-	+ {static} void main(String[])
+	- isResumedGame(): boolean 
+	+ {static} main(String[])
 }
 
 
@@ -18,9 +18,9 @@ class Board {
   ~ Board()
   + writeln()
   + add(ProposedCombination)
-  + boolean isFinished()
-  + boolean isWinner()
-  - boolean isLooser()
+  + isFinished(): boolean 
+  + isWinner(): boolean 
+  - isLooser(): boolean 
 }
 
 abstract class Combination {
@@ -30,16 +30,16 @@ abstract class Combination {
 
 class SecretCombination {
 	~ SecretCombination()
-	~ Result getResult(ProposedCombination)
+	~ getResult(ProposedCombination): Result 
 	~ writeln()
 }
 
 class ProposedCombination {
 	~write()
 	~read()
-	- Error checkError(String)
-	~ boolean contains(Color, int)
-	~ boolean contains(Color)
+	- checkError(String): Error 
+	~ contains(Color, int): boolean 
+	~ contains(Color): boolean 
 }
 
 class Result{
@@ -47,7 +47,7 @@ class Result{
 	- int blacks
 	- int whites
 	~ Result(int, int)
-	~ boolean isWinner()
+	~ isWinner(): boolean 
 	~ writeln()
 }
 
@@ -63,11 +63,11 @@ enum Color {
 	- {static} String RESET_COLOR
 	- Color()
 	- Color(String)
-	{static} String getInitials()
-	{static} int length()
-	{static} Color get(int)
-	write()
-	boolean isNull()
+	~ {static} getInitials(): String 
+	~ {static} length(): int 
+	~ {static} get(int): Color 
+	~ write()
+	~ isNull(): boolean 
 }
 
 enum Error {
@@ -78,8 +78,8 @@ enum Error {
 	- String message
 	- Error()
 	- Error(String)
-	writeln()
-	+ boolean isNull()
+	~ writeln()
+	+ isNull(): boolean 
 }
 
 enum Message {
@@ -91,12 +91,12 @@ enum Message {
 	+ TITLE
 	+ WINNER
 	+ LOOSER
-	- String message;
+	- String message
 	- Message(String)
-	write()
-	writeln()
-	writeln(int)
-	writeln(int, int)
+	~ write()
+	~ writeln()
+	~ writeln(int)
+	~ writeln(int, int)
 }
 
 
@@ -145,58 +145,59 @@ Mastermind .down.> YesNoDialog
 @enduml
 
 @startuml usantatecla.utils
-class  usantatecla.utils.ClosedInterval{
+class  mastermind.utils.ClosedInterval{
 - min: int
 - max: int
 + ClosedInterval(int, int)
 + includes(int): boolean
 }
 
-class  usantatecla.utils.Console{
+class  mastermind.utils.ColorCode{
++ {static} RED: ColorCode
++ {static} BLUE: ColorCode
++ {static} YELLOW: ColorCode
++ {static} GREEN: ColorCode
++ {static} ORANGE: ColorCode
++ {static} PURPLE: ColorCode
++ {static} RESET_COLOR: ColorCode
+- color: String
+~ ColorCode(String)
++ getColor(): String
++ {static} getColorByIndex(int): String
+}
+
+class  mastermind.utils.Console{
++ {static} console: Console
 - bufferedReader: BufferedReader
-+ Console()
-+ write(char): void
-+ write(String): void
++ {static} getInstance(): Console
++ readString(String): String
++ readString(): String
 + readInt(String): int
 + readChar(String): char
-- writeError(String): void
-+ writeln(String): void
-+ writeln(int): void
-+ writeln(): void
-+ readString(String): String
++ writeln()
++ write(String)
++ writeln(String)
++ write(char)
+- writeError(String)
 }
-usantatecla.utils.Console *-down-> java.io.BufferedReader
+mastermind.utils.Console *-down-> java.io.BufferedReader
 
-class  usantatecla.utils.WithConsoleView{
+class  mastermind.utils.WithConsoleView{
 # console: Console
 # WithConsoleView()
 }
-usantatecla.utils.WithConsoleView *-down-> usantatecla.utils.Console
+mastermind.utils.WithConsoleView *-down-> mastermind.utils.Console
 
-class  usantatecla.utils.YesNoDialog{
+class  mastermind.utils.YesNoDialog{
 - {static} AFIRMATIVE: char
 - {static} NEGATIVE: char
 - {static} QUESTION: String
 - {static} MESSAGE: String
 + YesNoDialog()
 + read(String): boolean
++ read(): boolean
 - {static} isAfirmative(char): boolean
 - {static} isNegative(char): boolean
 }
-
-class  usantatecla.utils.ColorCode{
-	+ RED
-    + BLUE
-    + YELLOW
-    + GREEN
-    + ORANGE
-    + PURPLE
-    + RESET_COLOR
-    - color: String
-    ColorCode(String)
-    + getColor(): String 
-    + {static} getColorByIndex(int): String 
-}
-
-usantatecla.utils.WithConsoleView <|-down- usantatecla.utils.YesNoDialog
+mastermind.utils.WithConsoleView <|-down- mastermind.utils.YesNoDialog
 @enduml
