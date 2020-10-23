@@ -1,7 +1,8 @@
 # Master Mind. Solución 1.1. *domainModel*
 Santa Tecla  
-[parqueNaturalSantaTecla@gmail.com ](mailto:parqueNaturalSantaTecla@gmail.com )
-version 0.0.1
+[parqueNaturalSantaTecla@gmail.com ](mailto:parqueNaturalSantaTecla@gmail.com )  
+version 0.0.1  
+
 **Índice**
 1. [Requisitos 1. Básica](#requisitos-1-básica)
 2. [Vista de Lógica/Diseño](#vista-de-lógicadiseño)  
