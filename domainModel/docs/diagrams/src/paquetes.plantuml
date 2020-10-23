@@ -2,23 +2,23 @@
 package usantatecla.mastermind {
 class Mastermind {
 	- Board board
-	+ void play()
-	- void playGame()
+	+ play()
+	- playGame()
 	- boolean isResumedGame()
 	+ {static} void main(String[])
 }
 
 
 class Board {
-  - {static} {final} int MAX_ATTEMPS
+  - {static} int MAX_ATTEMPS
   - SecretCombination secretCombination
   - ProposedCombination[] proposedCombinations
   - Result[] results 
   - int attempts
-  Board()
-  + void writeln()
-  + void add(ProposedCombination)
-  +  boolean isFinished()
+  ~ Board()
+  + writeln()
+  + add(ProposedCombination)
+  + boolean isFinished()
   + boolean isWinner()
   - boolean isLooser()
 }
@@ -29,74 +29,74 @@ abstract class Combination {
 }
 
 class SecretCombination {
-	SecretCombination()
-	Result getResult(ProposedCombination)
-	void writeln()
+	~ SecretCombination()
+	~ Result getResult(ProposedCombination)
+	~ writeln()
 }
 
 class ProposedCombination {
-	void write()
-	void read()
+	~write()
+	~read()
 	- Error checkError(String)
-	boolean contains(Color, int)
-	boolean contains(Color)
+	~ boolean contains(Color, int)
+	~ boolean contains(Color)
 }
 
 class Result{
-	+ {static} {final} int WIDTH
+	+ {static} int WIDTH
 	- int blacks
 	- int whites
-	Result(int, int)
-	boolean isWinner()
-	void writeln()
+	~ Result(int, int)
+	~ boolean isWinner()
+	~ writeln()
 }
 
 enum Color {
-	RED
-	BLUE
-	YELLOW
-	GREEN
-	ORANGE
-	PURPLE
-	NULL_COLOR
+	+ RED
+	+ BLUE
+	+ YELLOW
+	+ GREEN
+	+ ORANGE
+	+ PURPLE
+	+ NULL_COLOR
 	- String initial
-	- {static} {final} String RESET_COLOR
+	- {static} String RESET_COLOR
 	- Color()
 	- Color(String)
 	{static} String getInitials()
 	{static} int length()
 	{static} Color get(int)
-	void write()
+	write()
 	boolean isNull()
 }
 
 enum Error {
-	DUPLICATED
-	WRONG_CHARACTERS
-	WRONG_LENGTH
-	NULL_ERROR
-	- String message;
+	+ DUPLICATED
+	+ WRONG_CHARACTERS
+	+ WRONG_LENGTH
+	+ NULL_ERROR
+	- String message
 	- Error()
 	- Error(String)
-	void writeln()
+	writeln()
 	+ boolean isNull()
 }
 
 enum Message {
-	ATTEMPTS
-	SECRET_COMBINATION
-	RESUME
-	RESULT
-	PROPOSED_COMBINATION
-	TITLE
-	WINNER
-	LOOSER
+	+ ATTEMPTS
+	+ SECRET_COMBINATION
+	+ RESUME
+	+ RESULT
+	+ PROPOSED_COMBINATION
+	+ TITLE
+	+ WINNER
+	+ LOOSER
 	- String message;
 	- Message(String)
-	void write()
-	void writeln()
-	void writeln(int)
-	void writeln(int, int)
+	write()
+	writeln()
+	writeln(int)
+	writeln(int, int)
 }
 
 
