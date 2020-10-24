@@ -13,6 +13,7 @@ public class ColorView {
 		this.color = color;
 	}
 
+	// TODO Implementar método plantilla. graphics no soporta colores
 	static String allInitials() {
 		String result = "";
 		for (int i = 0; i < ColorView.INITIALS.length; i++) {
