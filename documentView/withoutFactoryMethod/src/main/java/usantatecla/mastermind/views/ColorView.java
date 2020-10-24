@@ -1,6 +1,7 @@
 package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.models.Color;
+import usantatecla.utils.ColorCode;
 
 public class ColorView {
 	
@@ -14,8 +15,8 @@ public class ColorView {
 
 	static String allInitials() {
 		String result = "";
-		for(char character: ColorView.INITIALS) {
-			result += character;
+		for (int i = 0; i < ColorView.INITIALS.length; i++) {
+			result += ColorCode.values()[i].getColor() + ColorView.INITIALS[i] + ColorCode.RESET_COLOR.getColor();
 		}
 		return result;
 	}
