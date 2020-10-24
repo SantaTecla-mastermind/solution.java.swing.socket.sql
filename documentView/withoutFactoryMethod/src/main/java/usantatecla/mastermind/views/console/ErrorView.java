@@ -5,12 +5,18 @@ import usantatecla.utils.Console;
 
 class ErrorView extends usantatecla.mastermind.views.ErrorView {
 
+	ErrorView() { }
+
 	ErrorView(Error error) {
 		super(error);
 	}
 	
 	void writeln() {
-		Console.getInstance().writeln(ErrorView.MESSAGES[this.error.ordinal()]);
-	}	
+		Console.getInstance().writeln(new ErrorView().MESSAGES[this.error.ordinal()]);
+	}
 
+	@Override
+	protected String colorInitials() {
+		return new ColorView().allInitials();
+	}
 }
