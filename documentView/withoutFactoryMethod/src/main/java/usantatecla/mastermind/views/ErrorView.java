@@ -2,17 +2,20 @@ package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.models.Error;
 
-public class ErrorView {
+public abstract class ErrorView {
 
-	public static final String[] MESSAGES = { 
+	public final String[] MESSAGES = {
 			"Repeated colors",
-			"Wrong colors, they must be: " + ColorView.allInitials(), 
+			"Wrong colors, they must be: " + this.colorInitials(),
 			"Wrong proposed combination length" };
 
 	protected Error error;
 
+	protected ErrorView() { }
+
 	public ErrorView(Error error) {
 		this.error = error;
 	}
-	
+
+	protected abstract String colorInitials();
 }
