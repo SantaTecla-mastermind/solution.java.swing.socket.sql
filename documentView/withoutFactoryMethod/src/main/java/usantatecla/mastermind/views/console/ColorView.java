@@ -1,6 +1,7 @@
 package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.models.Color;
+import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
 
 class ColorView extends usantatecla.mastermind.views.ColorView {
@@ -10,7 +11,10 @@ class ColorView extends usantatecla.mastermind.views.ColorView {
 	}
 	
 	void write() {
-		new Console().write(ColorView.INITIALS[this.color.ordinal()]);
+		Console.getInstance()
+				.write(ColorCode.getColorByIndex(this.color.ordinal())
+						+ usantatecla.mastermind.views.ColorView.INITIALS[this.color.ordinal()]
+						+ ColorCode.RESET_COLOR.getColor());
 	}
 
 }
