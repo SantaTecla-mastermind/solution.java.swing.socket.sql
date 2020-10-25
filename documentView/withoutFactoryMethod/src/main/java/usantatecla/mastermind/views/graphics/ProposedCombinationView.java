@@ -8,7 +8,6 @@ import usantatecla.mastermind.models.Combination;
 import usantatecla.mastermind.models.Error;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.views.ColorView;
-import usantatecla.mastermind.views.ErrorView;
 
 @SuppressWarnings("serial")
 class ProposedCombinationView extends JLabel {
@@ -48,7 +47,7 @@ class ProposedCombinationView extends JLabel {
 			}
 		}
 		if (this.error != null) {
-			JOptionPane.showMessageDialog(null, ErrorView.MESSAGES[this.error.ordinal()], "ERROR",
+			JOptionPane.showMessageDialog(null, new ErrorView().MESSAGES[this.error.ordinal()], "ERROR",
 					JOptionPane.WARNING_MESSAGE);
 			this.proposedCombination.getColors().clear();
 		}
