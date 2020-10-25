@@ -4,29 +4,22 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Console {
-	public static Console console;
+
+	private static Console console = new Console();
 
 	public static Console getInstance() {
-		if (Console.console == null) {
-			Console.console = new Console();
-		}
-		return Console.console;
+		return console;
 	}
 
 	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-	
+
 	public String readString(String title) {
 		String input = null;
-		boolean ok = false;
-		do {
-			this.write(title);
-			try {
-				input = this.bufferedReader.readLine();
-				ok = true;
-			} catch (Exception ex) {
-				this.writeError("characte string");
-			}
-		} while (!ok);
+		this.write(title);
+		try {
+			input = this.bufferedReader.readLine();
+		} catch (Exception ex) {
+		}
 		return input;
 	}
 
@@ -44,6 +37,7 @@ public class Console {
 			} catch (Exception ex) {
 				this.writeError("integer");
 			}
+			assert ok;
 		} while (!ok);
 		return input;
 	}
@@ -59,6 +53,7 @@ public class Console {
 				charValue = input.charAt(0);
 				ok = true;
 			}
+			assert ok;
 		} while (!ok);
 		return charValue;
 	}
@@ -71,15 +66,24 @@ public class Console {
 		System.out.print(string);
 	}
 
+	public void write(int integer) {
+		System.out.print(integer);
+	}
+
 	public void writeln(String string) {
 		System.out.println(string);
+	}
+
+	public void writeln(int integer) {
+		System.out.println(integer);
 	}
 
 	public void write(char character) {
 		System.out.print(character);
 	}
 
-	private void writeError(String format) {
+	public void writeError(String format) {
 		System.out.println("FORMAT ERROR! " + "Enter a " + format + " formatted value.");
 	}
+
 }

@@ -1,6 +1,7 @@
 package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.models.Error;
+import usantatecla.utils.Console;
 import usantatecla.utils.WithConsoleView;
 
 class ErrorView extends WithConsoleView {
@@ -17,7 +18,7 @@ class ErrorView extends WithConsoleView {
 	}
 	
 	void writeln() {
-		this.console.writeln(ErrorView.MESSAGES[this.error.ordinal()]);
+		Console.getInstance().writeln(ErrorView.MESSAGES[this.error.ordinal()]);
 	}
 
 }

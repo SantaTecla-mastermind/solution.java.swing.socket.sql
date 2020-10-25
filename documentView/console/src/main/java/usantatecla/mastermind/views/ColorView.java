@@ -2,6 +2,7 @@ package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.models.Color;
 import usantatecla.utils.ColorCode;
+import usantatecla.utils.Console;
 import usantatecla.utils.WithConsoleView;
 
 class ColorView extends WithConsoleView{
@@ -31,7 +32,7 @@ class ColorView extends WithConsoleView{
 	}
 	
 	void write() {
-		this.console
+		Console.getInstance()
 				.write(ColorCode.getColorByIndex(this.color.ordinal())
 				+ ColorView.INITIALS[this.color.ordinal()]
 				+ ColorCode.RESET_COLOR.getColor());
