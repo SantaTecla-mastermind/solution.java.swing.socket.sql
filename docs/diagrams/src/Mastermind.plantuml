@@ -3,30 +3,99 @@
 title Secuencia versiones Mastermind
 [*] --> domainModel
 state domainModel
+note right: Clases del Modelo del Dominio pero acopladas a tecnologías de interfaz\nahora y todas con la Ley del Cambio Continuo y de granos grueso con el\nadvenimiento de nueva funcionalidad.
 state documentView
-state modelViewController
+
 state modelViewPresenter
+
+
+
+state modelViewController
+note right: Baile de la Triada.
+
+
+
+
 
 domainModel --> documentView
 
 state documentView {
   state console
-  state withFactoryMethod
+  note right: Clases Vistas de Texto separadas de los Modelos del Dominio\npero con Modelos de grano gruesocon el advenimiento de nueva funcionalidad.[[https://github.com/SantaTecla-mastermind/solution.java.swing.socket.sql/tree/master/documentView/console Git]]
   state withoutFactoryMethod
+  note right:Clase Vistas de Interfaz Gráfica de Usuario pero con DRY en Vistas de tecnologías diferentes\ny con Modelos de grano grueso con el advenimiento de nueva funcionalidad.
+  state withFactoryMethod
+  note right: Clase Vista abstracta para Open/Close de sus tecnologías pero con Modelos de grano grueso\ncon el advenimiento de nueva funcionalidad.
+  
   console --> withoutFactoryMethod
   withoutFactoryMethod --> withFactoryMethod
 }
 
-documentView --> modelViewController
-modelViewController --> modelViewPresenter
+documentView --> modelViewPresenter
 
 state modelViewPresenter{
-state presentationModel
+
+state presentationModel{
+state basic
+note right:Clases Controladoras entre Vistas y Modelos por cada Caso de Uso pero con la clase Principal\ny las Vistas acopladas a cada controlador actual y futuro
+
+state withFacade
+note right:Clase Lógica que encapsula Controladores y Modelos pero con Vistas con DRY\nen la Lógica de Control
+
+state withoutDoubleDispatching
+note right:Clase Estado para la Inversión de Control de Vistas a la Lógica pero violando\nel Principio de Sustitución de Liskov
+
+state withDoubleDispatching
+note right:Clase Vistador de Controladores para Técnica de Doble Despacho
+
+state withComposite
+note right:Clase Comando del menú y Controlador Compuesto de ciertos Estados\npara Open/Close con nuevos Casos de Uso
+
+state withoutProxy
+note right:Clase TCP/IP para tecnología de Despliegue pero con Controladores acoplados, poco cohesivos y\ngrano grueso con cada nueva tecnología
+
+state withProxy
+note right:Clases Proxy para Open/Close para nuevas tecnologías de Despliegue
+
+state withoutDAO
+note right:Clases Vistas y Controladores para la tecnología de persistencia pero con Modelos de grano grueso, baja cohesión\ny alto acoplamiento a tecnologías de persistencia de ficheros
+
+state withDAO
+note right: Patrón DAO
+
+state withoutPrototype
+note right:Nuevas Vistas y DAOS para la nueva tecnología pero con clase Principal\nacoplada a las tecnologías actuales y futuras de persistencia
+
+state withPrototype
+note right:Open/Close para arranque con configuración de persistencia
+
+[*] --> basic
+basic --> withFacade
+withFacade --> withoutDoubleDispatching
+withoutDoubleDispatching --> withDoubleDispatching
+withDoubleDispatching --> withComposite
+withComposite --> withoutProxy
+withoutProxy --> withProxy
+withProxy --> withoutDAO
+withoutDAO --> withDAO
+withDAO --> withoutPrototype
+withoutPrototype --> withPrototype
+
+
+}
+
 state passiveView
+note right: Baile de la Triada.
 state supervisorController
+note right: Baile de la Triada.
 
 presentationModel-->passiveView
 passiveView-->supervisorController
+
 }
-modelViewPresenter  --> [*]
+
+modelViewPresenter --> modelViewController
+
+}
+modelViewController-->[*]
 @enduml
