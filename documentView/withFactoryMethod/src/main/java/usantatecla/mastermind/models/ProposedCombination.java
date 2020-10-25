@@ -9,12 +9,7 @@ public class ProposedCombination extends Combination {
 	}
 
 	boolean contains(Color color) {
-		for (int i = 0; i < this.colors.size(); i++) {
-			if (this.colors.get(i) == color) {
-				return true;
-			}
-		}
-		return false;
+		return this.colors.contains(color);
 	}
 
 	public List<Color> getColors() {
