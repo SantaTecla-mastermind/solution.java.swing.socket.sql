@@ -1,6 +1,7 @@
 package usantatecla.mastermind.views;
 
 public enum MessageView {
+	// TODO Revisar diferencia de SECRET y SECRET_COMBINATION de la anterior versión (console)
 	ATTEMPTS("#attempts attempt(s): "),
 	SECRET("*"),
 	RESUME("Do you want to continue"),
@@ -11,13 +12,14 @@ public enum MessageView {
 	LOOSER("You've lost!!! :-(");
 
 	private String message;
-	
+
 	private MessageView(String message) {
 		this.message = message;
 	}
-	
+
 	public String getMessage() {
 		return this.message;
 	}
 
+	// TODO Revisar cómo hacer más consistente el diseño, antes MessageView se encargaba de pintar por consola
 }
