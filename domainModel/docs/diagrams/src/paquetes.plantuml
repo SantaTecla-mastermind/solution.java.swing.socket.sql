@@ -121,23 +121,27 @@ Result .down.> Message
 
 }
 
-package usantatecla.utils {
-
-class Console {
 
 
-}
+class Console as "usantatecla.utils.Console" {
 
-class YesNoDialog {
 
 }
 
+class YesNoDialog as "usantatecla.utils.YesNoDialog" {
+
 }
+
+class ColorCode as "usantatecla.utils.ColorCode" {
+
+}
+
+
 
 YesNoDialog .down.> Console
 Board .down.> Console
 Color .down.> Console
-Color .down.> usantatecla.utils.ColorCode
+Color .down.> ColorCode 
 Error .down.> Console
 Message .down.> Console
 ProposedCombination .down.> Console
@@ -181,7 +185,10 @@ class  usantatecla.utils.Console{
 + write(char)
 - writeError(String)
 }
-usantatecla.utils.Console *-down-> java.io.BufferedReader
+
+class BufferedReader as "java.io.BufferedReader"
+
+usantatecla.utils.Console *-down-> BufferedReader
 
 class  usantatecla.utils.WithConsoleView{
 # console: Console
