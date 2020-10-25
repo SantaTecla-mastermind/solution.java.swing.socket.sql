@@ -134,7 +134,7 @@ enum ColorCode as "usantatecla.utils.ColorCode" {
 
 
 
-YesNoDialog .down.> Console
+
 Board .down.> Console
 Color .down.> Console
 Color .down.> ColorCode 
@@ -192,5 +192,5 @@ class  usantatecla.utils.YesNoDialog{
 - {static} isAfirmative(char): boolean
 - {static} isNegative(char): boolean
 }
-
+usantatecla.utils.YesNoDialog .down.> usantatecla.utils.Console
 @enduml
