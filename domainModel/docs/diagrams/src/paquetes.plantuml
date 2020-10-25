@@ -132,7 +132,7 @@ class YesNoDialog as "usantatecla.utils.YesNoDialog" {
 
 }
 
-class ColorCode as "usantatecla.utils.ColorCode" {
+enum ColorCode as "usantatecla.utils.ColorCode" {
 
 }
 
@@ -150,14 +150,8 @@ Mastermind .down.> YesNoDialog
 @enduml
 
 @startuml usantatecla.utils
-class  usantatecla.utils.ClosedInterval{
-- min: int
-- max: int
-+ ClosedInterval(int, int)
-+ includes(int): boolean
-}
 
-class  usantatecla.utils.ColorCode{
+enum  usantatecla.utils.ColorCode{
 + {static} RED: ColorCode
 + {static} BLUE: ColorCode
 + {static} YELLOW: ColorCode
@@ -190,11 +184,7 @@ class BufferedReader as "java.io.BufferedReader"
 
 usantatecla.utils.Console *-down-> BufferedReader
 
-class  usantatecla.utils.WithConsoleView{
-# console: Console
-# WithConsoleView()
-}
-usantatecla.utils.WithConsoleView *-down-> usantatecla.utils.Console
+
 
 class  usantatecla.utils.YesNoDialog{
 - {static} AFIRMATIVE: char
@@ -207,5 +197,5 @@ class  usantatecla.utils.YesNoDialog{
 - {static} isAfirmative(char): boolean
 - {static} isNegative(char): boolean
 }
-usantatecla.utils.WithConsoleView <|-down- usantatecla.utils.YesNoDialog
+
 @enduml
