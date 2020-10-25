@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="159px" preserveAspectRatio="none" style="width:1057px;height:159px;" version="1.1" viewBox="0 0 1057 159" width="1057px" zoomAndPan="magnify"><defs><filter height="300%" id="fmicjfdjejtmt" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[57ffb8338356de9df77d7af266454cb4]
+entity mastermind--><polygon fill="#FFFFFF" filter="url(#fmicjfdjejtmt)" points="16,113,120,113,127,135.2969,144,135.2969,144,152.2969,16,152.2969,16,113" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="16" x2="127" y1="135.2969" y2="135.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="98" x="20" y="128.9951">mastermind</text><!--MD5=[3808e49a38455c25368b5f4e5a503c92]
+entity mastermind.models--><polygon fill="#FFFFFF" filter="url(#fmicjfdjejtmt)" points="179.5,113,346.5,113,353.5,135.2969,370.5,135.2969,370.5,152.2969,179.5,152.2969,179.5,113" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="179.5" x2="353.5" y1="135.2969" y2="135.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="161" x="183.5" y="128.9951">mastermind.models</text><!--MD5=[6e2ec829ccd307027eb6d5d05d3e36de]
+entity mastermind.views--><polygon fill="#FFFFFF" filter="url(#fmicjfdjejtmt)" points="406,113,560,113,567,135.2969,584,135.2969,584,152.2969,406,152.2969,406,113" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="406" x2="567" y1="135.2969" y2="135.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="148" x="410" y="128.9951">mastermind.views</text><!--MD5=[6a9e74483831f672b7ced4933d9e76ca]
+entity mastermind.utils--><polygon fill="#FFFFFF" filter="url(#fmicjfdjejtmt)" points="619,113,765,113,772,135.2969,789,135.2969,789,152.2969,619,152.2969,619,113" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="619" x2="772" y1="135.2969" y2="135.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="140" x="623" y="128.9951">mastermind.utils</text><!--MD5=[48fa9072fd51d9920e6db8484beec696]
+entity java.io--><polygon fill="#FFFFFF" filter="url(#fmicjfdjejtmt)" points="824,113,884,113,891,135.2969,908,135.2969,908,152.2969,824,152.2969,824,113" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="824" x2="891" y1="135.2969" y2="135.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="54" x="828" y="128.9951">java.io</text><!--MD5=[034f0f7ed136bf78fc117f7e41f76e93]
+entity java.util--><polygon fill="#FFFFFF" filter="url(#fmicjfdjejtmt)" points="943.5,113,1016.5,113,1023.5,135.2969,1040.5,135.2969,1040.5,152.2969,943.5,152.2969,943.5,113" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="943.5" x2="1023.5" y1="135.2969" y2="135.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="67" x="947.5" y="128.9951">java.util</text><!--MD5=[c2796faf4134bd8b5f3bc71f44d02e74]
+entity jar--><rect fill="#FEFECE" filter="url(#fmicjfdjejtmt)" height="46.2969" style="stroke: #A80036; stroke-width: 1.5;" width="150" x="524" y="7"/><rect fill="#FEFECE" height="10" style="stroke: #A80036; stroke-width: 1.5;" width="15" x="654" y="12"/><rect fill="#FEFECE" height="2" style="stroke: #A80036; stroke-width: 1.5;" width="4" x="652" y="14"/><rect fill="#FEFECE" height="2" style="stroke: #A80036; stroke-width: 1.5;" width="4" x="652" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="110" x="539" y="39.9951">mastermind.jar</text><!--MD5=[fbe73378274df7025ec7ec540169909c]
+link jar to mastermind--><path d="M512.0174,46.3595 C512.0174,46.3595 282.565,88.0968 162,113 C160.392,113.3321 158.767,113.6708 157.13,114.0147 " fill="none" id="jar-mastermind" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="144.41,116.7358,154.0477,118.7642,149.2993,115.6897,152.3739,110.9413,144.41,116.7358" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="149.2993" x2="157.122" y1="115.6897" y2="114.0163"/><polygon fill="#A80036" points="523.83,44.247,517.2195,41.3657,512.0174,46.3595,518.6279,49.2408,523.83,44.247" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[5074ba4a694366b975a5201a6215192f]
+link jar to mastermind.models--><path d="M516.4357,56.6104 C516.4357,56.6104 397.159,93.608 347.403,109.0417 " fill="none" id="jar-mastermind.models" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="334.803,112.9499,344.584,114.1039,339.5785,111.4686,342.2139,106.4631,334.803,112.9499" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="339.5785" x2="347.22" y1="111.4686" y2="109.0984"/><polygon fill="#A80036" points="527.897,53.0552,520.9813,51.0124,516.4357,56.6104,523.3514,58.6532,527.897,53.0552" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[f69683ffa0975f0f6cffc0c7de9e9342]
+link jar to mastermind.views--><path d="M567.5474,61.3936 C567.5474,61.3936 537.096,90.8207 523.846,103.6252 " fill="none" id="jar-mastermind.views" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="514.281,112.868,523.5325,109.49,517.8764,109.3934,517.9731,103.7374,514.281,112.868" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="517.8764" x2="523.629" y1="109.3934" y2="103.8343"/><polygon fill="#A80036" points="576.177,53.0552,569.0827,54.3479,567.5474,61.3936,574.6417,60.101,576.177,53.0552" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[5c9f1a9218d110a34ca822ba20fe7b3f]
+link jar to mastermind.utils--><path d="M630.7122,61.3525 C630.7122,61.3525 661.499,90.8207 674.877,103.6252 " fill="none" id="jar-mastermind.utils" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="684.534,112.868,680.7979,103.7553,680.9218,109.4108,675.2663,109.5347,684.534,112.868" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="680.9218" x2="675.142" y1="109.4108" y2="103.8791"/><polygon fill="#A80036" points="622.043,53.0552,623.6118,60.0936,630.7122,61.3525,629.1434,54.3141,622.043,53.0552" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[f17a38c250a1605cd3da9b9fac2ef94b]
+link jar to java.io--><path d="M668.8246,57.2829 C668.8246,57.2829 770.454,95.5359 811.281,110.9034 " fill="none" id="jar-java.io" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="823.697,115.5768,816.6832,108.6625,819.0176,113.8153,813.8648,116.1496,823.697,115.5768" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="819.0176" x2="811.53" y1="113.8153" y2="110.9972"/><polygon fill="#A80036" points="657.594,53.0552,661.8001,58.9126,668.8246,57.2829,664.6185,51.4255,657.594,53.0552" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[a929e6d2b54380e4c3e4c2b17ce7cd9b]
+link jar to java.util--><path d="M685.8101,52.0784 C685.8101,52.0784 845.257,91.5643 926,113 C927.585,113.4208 929.191,113.8499 930.81,114.2852 " fill="none" id="jar-java.util" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="943.383,117.7086,935.7502,111.4844,938.5587,116.3949,933.6482,119.2034,943.383,117.7086" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="938.5587" x2="930.8395" y1="116.3949" y2="114.2931"/><polygon fill="#A80036" points="674.155,49.222,679.0304,54.5352,685.8101,52.0784,680.9347,46.7652,674.155,49.222" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[a8ed4f38b0cb898839fbe4d856d7dc8a]
+@startuml
+package "  "  as mastermind {
+}
+package "  "  as mastermind.models {
+}
+package "  "  as mastermind.views {
+}
+package "  "  as mastermind.utils {
+}
+package "  "  as java.io {
+}
+package "  "  as java.util {
+}
+
+[mastermind.jar] as jar
+
+jar *- -> mastermind
+jar *- -> mastermind.models
+jar *- -> mastermind.views
+jar *- -> mastermind.utils
+jar *- -> java.io
+jar *- -> java.util
+@enduml
+
+PlantUML version 1.2020.20beta4(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
