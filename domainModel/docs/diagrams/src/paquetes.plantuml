@@ -1,7 +1,6 @@
 @startuml mastermind
 package usantatecla.mastermind {
 class Mastermind {
-	- board: Board 
 	+ play()
 	- playGame()
 	- isResumedGame(): boolean 
@@ -11,9 +10,6 @@ class Mastermind {
 
 class Board {
   - MAX_ATTEMPS: {static} int 
-  - secretCombination: SecretCombination 
-  - proposedCombinations: ProposedCombination[] 
-  - results: Result[] 
   - attempts: int 
   ~ Board()
   + writeln()
@@ -108,7 +104,7 @@ Board *-down-> SecretCombination : secretCombination
 Board o-down-> "0..10" ProposedCombination : proposedCombinations
 Board o-down-> "0..10" Result : results
 
-Combination *-down-> "4" Color : colors
+Combination *-down-> "4" Color 
 Combination <|-down- SecretCombination
 Combination <|-down- ProposedCombination
 ProposedCombination .down.> Error
@@ -138,7 +134,7 @@ enum ColorCode as "usantatecla.utils.ColorCode" {
 
 
 
-YesNoDialog .down.> Console
+
 Board .down.> Console
 Color .down.> Console
 Color .down.> ColorCode 
@@ -167,7 +163,6 @@ enum  usantatecla.utils.ColorCode{
 
 class  usantatecla.utils.Console{
 + {static} console: Console
-- bufferedReader: BufferedReader
 + {static} getInstance(): Console
 + readString(String): String
 + readString(): String
@@ -182,7 +177,7 @@ class  usantatecla.utils.Console{
 
 class BufferedReader as "java.io.BufferedReader"
 
-usantatecla.utils.Console *-down-> BufferedReader
+usantatecla.utils.Console *-down-> BufferedReader : bufferedReader
 
 
 
@@ -197,5 +192,5 @@ class  usantatecla.utils.YesNoDialog{
 - {static} isAfirmative(char): boolean
 - {static} isNegative(char): boolean
 }
-
+usantatecla.utils.YesNoDialog .down.> usantatecla.utils.Console
 @enduml
