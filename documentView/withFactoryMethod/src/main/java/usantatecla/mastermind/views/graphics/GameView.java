@@ -48,7 +48,7 @@ class GameView extends JFrame {
 		ProposedCombination proposedCombination = new ProposedCombination();
 		ProposedCombinationView proposedCombinationView = new ProposedCombinationView(proposedCombination);
 		do {
-			System.out.println("");
+			//System.out.println("");
 			if (this.proposalCombinationView.getCharacters() != null) {
 				proposedCombinationView.read(this.proposalCombinationView.getCharacters());		
 				if (!proposedCombinationView.isValid()) {
