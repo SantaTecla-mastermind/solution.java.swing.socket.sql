@@ -7,10 +7,10 @@ public abstract class Combination {
 	
 	private static final int WIDTH = 4;
 
-	protected List<Color> colors;
+	List<Color> colors;
 	
 	protected Combination (){
-		this.colors = new ArrayList<Color>();
+		this.colors = new ArrayList<>();
 	}
 	
 	public static int getWidth() {
