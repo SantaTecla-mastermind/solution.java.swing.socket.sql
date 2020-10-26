@@ -98,11 +98,11 @@ enum Message {
 
 
 
-Mastermind *-down-> Board : board
+Mastermind *-down-> Board 
 Mastermind .down.> ProposedCombination
-Board *-down-> SecretCombination : secretCombination
-Board o-down-> "0..10" ProposedCombination : proposedCombinations
-Board o-down-> "0..10" Result : results
+Board *-down-> SecretCombination 
+Board o-down-> "0..10" ProposedCombination 
+Board o-down-> "0..10" Result 
 
 Combination *-down-> "4" Color 
 Combination <|-down- SecretCombination
@@ -177,7 +177,7 @@ class  usantatecla.utils.Console{
 
 class BufferedReader as "java.io.BufferedReader"
 
-usantatecla.utils.Console *-down-> BufferedReader : bufferedReader
+usantatecla.utils.Console *-down-> BufferedReader 
 
 
 
