@@ -1,0 +1,204 @@
+@startuml mastermind
+class ConsoleMastermind as "mastermind.ConsoleMastermind"{
+- game: Game
+- consoleView: ConsoleView
+- ConsoleMastermind()
++ {static} main(String[]): void
+- play(): void
+}
+
+class GraphicsMastermind as "mastermind.GraphicsMastermind"{
+- game: Game
+- graphicsView: GraphicsView
+- GraphicsMastermind()
++ {static} main(String[]): void
+- play(): void
+}
+
+class ConsoleView as "mastermind.\nviews.console.\nConsoleView"{}
+class GraphicsView as "mastermind.\nviews.graphics.\nGraphicsView"{}
+class Game as "mastermind.\nmodels.\nGame"{}
+ConsoleMastermind *-down-> ConsoleView
+ConsoleMastermind *-down-> Game
+GraphicsMastermind *-down-> GraphicsView
+GraphicsMastermind *-down-> Game
+
+@enduml
+
+@startuml mastermind.views
+class Error as "mastermind.models.\nError"{}
+class Color as "mastermind.models.\nColor"{}
+class Game as "mastermind.models.\nGame"{}
+
+class mastermind.views.ColorView{
+    + {static} INITIALS: char []
+    # ColorView()
+    # ColorView(Color)
+    + {static} allInitials(): String
+    # {abstract} resultInitials(int): String
+    + {static} getInstance(char): Color
+}
+mastermind.views.ColorView *-down-> Color
+
+class mastermind.views.ErrorView{
+    + {static} MESSAGES: String []
+    # ErrorView()
+    + ErrorView(Error error)
+    # {abstract} colorInitials(): String
+}
+mastermind.views.ErrorView *-down-> Error
+
+enum mastermind.views.MessageView{
+    + ATTEMPTS
+    + SECRET
+    + RESUME
+    + RESULT
+    + PROPOSED_COMBINATION
+    + TITLE
+    + WINNER
+    + LOOSER
+    - message: String
+    - MessageView(String)
+    + getMessage(): String
+}
+
+class mastermind.views.View {
+    + View(Game)
+    + interact()
+    # {abstract} start(): void
+    # {abstract} propose(): boolean
+    # {abstract} isNewGame(): boolean
+}
+mastermind.views.View *-down-> Game
+@enduml
+
+@startuml mastermind.models
+enum mastermind.models.Color {
++ RED
++ BLUE
++ YELLOW
++ GREEN
++ ORANGE
++ PURPLE
+~ {static} length(): int
+}
+
+abstract class mastermind.models.Combination {
+- {static} WIDTH: int
+# Combination()
++ {static} getWidth(): int
+}
+mastermind.models.Combination *-down-> "*" mastermind.models.Color
+
+enum mastermind.models.Error {
++ DUPLICATED
++ WRONG_CHARACTERS
++ WRONG_LENGTH
+}
+
+class mastermind.models.Game {
+- {static} MAX_LONG: int
+- attempts: int
++ Game()
++ clear()
++ addProposeCombination(ProposedCombination)
++ isLooser(): boolean
++ isWinner(): boolean
++ getAttempts(): int
++ getProposedCombination(int): ProposedCombination
++ getResult(int): Result
+}
+mastermind.models.Game *-down-> mastermind.models.SecretCombination
+mastermind.models.Game *-down-> mastermind.models.Result
+mastermind.models.Game *-down-> "*" mastermind.models.ProposedCombination
+
+class mastermind.models.ProposedCombination {
++ ProposedCombination()
+~ contains(Color, int): boolean
+~ contains(Color): boolean
++ getColors(): List<Color>
+}
+mastermind.models.Combination <|-down- mastermind.models.ProposedCombination
+mastermind.models.ProposedCombination ..> mastermind.models.Error
+mastermind.models.ProposedCombination ..> mastermind.models.Color
+
+class mastermind.models.Result {
+- blacks: int
+- whites: int
+~ Result(int, int)
+~ isWinner(): boolean
++ getBlacks(): int
++ getWhites(): int
+}
+
+mastermind.models.ProposedCombination ..> mastermind.models.Combination
+
+class mastermind.models.SecretCombination {
+~ SecretCombination()
+~ getResult(ProposedCombination): Result
+}
+mastermind.models.Combination <|-down- mastermind.models.SecretCombination
+mastermind.models.SecretCombination ..> mastermind.models.Result
+mastermind.models.SecretCombination ..> mastermind.models.ProposedCombination
+mastermind.models.SecretCombination ..> mastermind.models.Color
+@enduml
+
+@startuml mastermind.utils
+class BufferedReader as "java.io.BufferedReader"{}
+
+class  mastermind.utils.ClosedInterval{
+- min: int
+- max: int
++ ClosedInterval(int, int)
++ includes(int): boolean
+}
+
+enum mastermind.utils.ColorCode{
++ RED
++ BLUE
++ YELLOW
++ GREEN
++ ORANGE
++ PURPLE
++ RESET_COLOR
+- color: String
+~ ColorCode(String)
++ getColor(): String
++ {static} getColorByIndex(int): String
+}
+
+class  mastermind.utils.Console{
++ {static} console: Console
+- bufferedReader: BufferedReader
++ {static} getInstance(): Console
++ readString(String): String
++ readString(): String
++ readInt(String): int
++ readChar(String): char
++ writeln()
++ write(String)
++ writeln(String)
++ write(char)
+- writeError(String)
+}
+mastermind.utils.Console *-down-> BufferedReader
+
+abstract class mastermind.utils.WithConsoleView{
+# console: Console
+# WithConsoleView()
+}
+mastermind.utils.WithConsoleView *-down-> mastermind.utils.Console
+
+class  mastermind.utils.YesNoDialog{
+- {static} AFIRMATIVE: char
+- {static} NEGATIVE: char
+- {static} QUESTION: String
+- {static} MESSAGE: String
++ YesNoDialog()
++ read(String): boolean
++ read(): boolean
+- {static} isAfirmative(char): boolean
+- {static} isNegative(char): boolean
+}
+mastermind.utils.WithConsoleView <|-down- mastermind.utils.YesNoDialog
+@enduml
