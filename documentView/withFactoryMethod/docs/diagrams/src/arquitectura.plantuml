@@ -1,0 +1,33 @@
+@startuml arquitectura
+package mastermind #DDDDDD { }
+mastermind .down.> mastermind.views.console
+mastermind .down.> mastermind.views.graphics
+mastermind .down.> mastermind.models
+
+package mastermind.views #DDDDDD { }
+mastermind.views .down.> mastermind.models
+
+package mastermind.models #DDDDDD { }
+package java.util{ }
+mastermind.models .down.> java.util
+
+package mastermind.utils #DDDDDD { }
+package java.io{ }
+mastermind.utils .down.> java.io
+
+package mastermind.views.console #DDDDDD { }
+mastermind.views.console .down.> mastermind.models
+mastermind.views.console .down.> mastermind.utils
+mastermind.views.console .down.> mastermind.views
+
+package mastermind.views.graphics #DDDDDD { }
+package java.awt{ }
+package java.awt.event{ }
+package javax.swing{ }
+mastermind.views.graphics .down.> mastermind.views
+mastermind.views.graphics .down.> mastermind.models
+mastermind.views.graphics .down.> java.awt
+mastermind.views.graphics .down.> java.awt.event
+mastermind.views.graphics .down.> javax.swing
+
+@enduml
