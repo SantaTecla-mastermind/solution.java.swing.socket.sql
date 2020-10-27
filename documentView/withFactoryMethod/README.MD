@@ -42,11 +42,11 @@ version 0.0.1
 
 ### Paquete *mastermind.views.console*
 
-![Paquete_Mastermind.views](./docs/diagrams/out/paquetes/mastermind.views.svg)
+![Paquete_Mastermind.views](./docs/diagrams/out/paquetes/mastermind.view.console.svg)
 
 ### Paquete *mastermind.views.graphics*
 
-![Paquete_Mastermind.views](./docs/diagrams/out/paquetes/mastermind.views.svg)
+![Paquete_Mastermind.views](./docs/diagrams/out/paquetes/mastermind.view.Graphics.svg)
 
 ### Paquete *mastermind.models*
 
@@ -54,7 +54,7 @@ version 0.0.1
 
 ### Paquete *mastermind.utils*
 
-![Paquete_Mastermind.utils](./docs/diagrams/out/paquetes/mastermind.utils.svg)
+![Paquete_Mastermind.utils](./docs/diagrams/out/paquetes/usantatecla.mastermind.utils.svg)
 
 # Calidad del Software
 
