@@ -20,8 +20,8 @@ class Board {
 }
 
 abstract class Combination {
-	~ colors: List<Color> 
-	~ Combination ()
+	# colors: List<Color> 
+	# Combination ()
 }
 
 class SecretCombination {
