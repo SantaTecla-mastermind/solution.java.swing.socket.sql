@@ -1,24 +1,22 @@
 @startuml mastermind
 class  usantatecla.mastermind.ConsoleMastermind{
-+ ConsoleMastermind()
+# createView(Game): View
 + {static} main(String[]) 
-~ createView(Game): View
 }
 usantatecla.mastermind.Mastermind <|-down- usantatecla.mastermind.ConsoleMastermind
 
 class  usantatecla.mastermind.GraphicsMastermind{
-+ GraphicsMastermind()
+# createView(Game): View
 + {static} main(String[]) 
-~ createView(Game): View
 }
 usantatecla.mastermind.Mastermind <|-down- usantatecla.mastermind.GraphicsMastermind
 
 class  usantatecla.mastermind.Mastermind{
 - game: Game
 - view: View
-~ Mastermind()
-~ {abstract} createView(Game): View
-~ play() 
+# Mastermind()
+# {abstract} createView(Game): View
+# play() 
 }
 
 class View as "usantatecla.mastermind.views.View"{
@@ -37,20 +35,20 @@ usantatecla.mastermind.Mastermind --> Game
 @startuml mastermind.views
 abstract class  usantatecla.mastermind.views.ColorView{
 +{static} INITIALS: char[]
-~color: Color
-~ ColorView()
-~ ColorView(Color)
+# color: Color
+# ColorView()
+# ColorView(Color)
 + allInitials(): String
+# {abstract} resultinitials(int): String
 + {static} getInstance(char): Color
-+ {abstract} resultinitials(int): String
 }
 
 class  usantatecla.mastermind.views.ErrorView{
 + message: String[]
-~ error: Error
-~ ErrorView()
+# error: Error
+# ErrorView()
 + ErrorView(Error)
-~ {abstract} colorInitials(): String
+# {abstract} colorInitials(): String
 }
 
 enum  usantatecla.mastermind.views.MessageView{
@@ -68,12 +66,12 @@ enum  usantatecla.mastermind.views.MessageView{
 }
 
 abstract class  usantatecla.mastermind.views.View{
-~ game: Game
+# game: Game
 + View(Game)
 + interact() 
-~ {abstract} start() 
-~ {abstract} isNewGame(): boolean
-~ {abstract} propose(): boolean
+# {abstract} start() 
+# {abstract} isNewGame(): boolean
+# {abstract} propose(): boolean
 }
 
 class Game as "usantatecla.mastermind.models.Game"{
@@ -88,9 +86,9 @@ class WithConsoleView as "usantatecla.utils.\nWithConsoleView"{
 }
 class  usantatecla.mastermind.views.console.ConsoleView{
 + ConsoleView(Game)
-~ start() 
-~ resume(): boolean
-~ propose(): boolean
+# start() 
+# resume(): boolean
+# propose(): boolean
 }
 
 class View as "usantatecla.mastermind.views.View"{
@@ -164,7 +162,7 @@ class  usantatecla.mastermind.views.console.ErrorView{
 class  usantatecla.mastermind.views.console.ColorView{
     ~ ColorView()
     ~ ColorView(Color)
-    ~ resultInitials(int): String
+    # resultInitials(int): String
     ~ write()
 }
 class Color as "usantatecla.utils.\nColorCode"{
@@ -193,7 +191,7 @@ class usantatecla.mastermind.views.graphics.AttemptsView{
 class usantatecla.mastermind.views.graphics.ColorView{
     ~ColorView()
     ~ColorView(Color)
-    ~resultInitials(int): String
+    #resultInitials(int): String
 }
 class  usantatecla.mastermind.views.graphics.Constraints{
 ~ Constraints(int, int, int, int)
@@ -223,8 +221,8 @@ class  usantatecla.mastermind.views.graphics.GraphicsView{
 - gameView: GameView
 + GraphicsView(Game)
 # start()  
-# resume(): boolean
 # propose(): boolean
+# isNewGame(): boolean
 }
 class View as "usantatecla.mastermind.views.View"{
 
@@ -304,8 +302,8 @@ enum usantatecla.mastermind.models.Color {
 
 abstract class usantatecla.mastermind.models.Combination {
 - {static} WIDTH: int
-~ colors: List<Color>
-~ Combination()
+# colors: List<Color>
+# Combination()
 + {static} getWidth(): int
 }
 usantatecla.mastermind.models.Combination *-down-> "*" usantatecla.mastermind.models.Color
@@ -367,7 +365,7 @@ usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.model
 @startuml usantatecla.mastermind.utils
 class BufferedReader as "java.io.BufferedReader"{}
 
-enum usantatecla.mastermind.utils.ColorCode{
+enum usantatecla.utils.ColorCode{
 + RED
 + BLUE
 + YELLOW
@@ -381,7 +379,7 @@ enum usantatecla.mastermind.utils.ColorCode{
 + {static} getColorByIndex(int): String
 }
 
-class  usantatecla.mastermind.utils.Console{
+class  usantatecla.utils.Console{
 + {static} console: Console
 + {static} getInstance(): Console
 + readString(String): String
@@ -394,14 +392,14 @@ class  usantatecla.mastermind.utils.Console{
 + write(char)
 - writeError(String)
 }
-usantatecla.mastermind.utils.Console *-down-> BufferedReader
+usantatecla.utils.Console *-down-> BufferedReader
 
-abstract class usantatecla.mastermind.utils.WithConsoleView{
-~ WithConsoleView()
+abstract class usantatecla.utils.WithConsoleView{
+# WithConsoleView()
 }
-usantatecla.mastermind.utils.WithConsoleView *-down-> usantatecla.mastermind.utils.Console
+usantatecla.utils.WithConsoleView *-down-> usantatecla.utils.Console
 
-class  usantatecla.mastermind.utils.YesNoDialog{
+class  usantatecla.utils.YesNoDialog{
 - {static} AFIRMATIVE: char
 - {static} NEGATIVE: char
 - {static} QUESTION: String
@@ -412,5 +410,5 @@ class  usantatecla.mastermind.utils.YesNoDialog{
 - {static} isAfirmative(char): boolean
 - {static} isNegative(char): boolean
 }
-usantatecla.mastermind.utils.WithConsoleView <|-down- usantatecla.mastermind.utils.YesNoDialog
+usantatecla.utils.WithConsoleView <|-down- usantatecla.utils.YesNoDialog
 @enduml
