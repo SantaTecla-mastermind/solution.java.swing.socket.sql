@@ -6,12 +6,12 @@ version 0.0.1
 1. [Requisitos 1. Básica](#requisitos-1-básica)  
 2. [Vista de Lógica/Diseño](#vista-de-lógicadiseño)  
 2.1. [Arquitectura](#arquitectura)  
-2.2. [Paquete mastermind](#paquete-mastermind)  
-2.3. [Paquete mastermind.views](#paquete-mastermindviews)  
-2.4. [Paquete mastermind.views.console](#paquete-mastermindviewsconsole)  
-2.5. [Paquete mastermind.views.graphics](#paquete-mastermindviewsgraphics)  
-2.6. [Paquete mastermind.models](#paquete-mastermindmodels)  
-2.7. [Paquete mastermind.utils](#paquete-mastermindutils)  
+2.2. [Paquete usantatecla.mastermind](#paquete-usantateclamastermind)  
+2.3. [Paquete usantatecla.mastermind.views](#paquete-usantateclamastermindviews)  
+2.4. [Paquete usantatecla.mastermind.views.console](#paquete-usantateclamastermindviewsconsole)  
+2.5. [Paquete usantatecla.mastermind.views.graphics](#paquete-usantateclamastermindviewsgraphics)  
+2.6. [Paquete usantatecla.mastermind.models](#paquete-usantateclamastermindmodels)  
+2.7. [Paquete usantatecla.utils](#paquete-usantateclautils)  
 3. [Calidad del Software](#calidad-del-software)  
 3.1. [Diseño](#diseño)  
 3.2. [Rediseño](#rediseño)  
@@ -31,29 +31,29 @@ version 0.0.1
 
 ![Arquitectura](./docs/diagrams/out/arquitectura/arquitectura.svg)
 
-### Paquete *mastermind*
+### Paquete *usantatecla.mastermind*
 
-![Paquete_Mastermind](./docs/diagrams/out/paquetes/mastermind.svg)
+![Paquete_usantatecla.mastermind](./docs/diagrams/out/paquetes/usantatecla.mastermind.svg)
 
-### Paquete *mastermind.views*
+### Paquete *usantatecla.mastermind.views*
 
-![Paquete_Mastermind.views](./docs/diagrams/out/paquetes/mastermind.views.svg)
+![Paquete_usantatecla.mastermind.views](./docs/diagrams/out/paquetes/usantatecla.mastermind.views.svg)
 
-### Paquete *mastermind.views.console*
+### Paquete *usantatecla.mastermind.views.console*
 
-![Paquete_Mastermind.views.console](./docs/diagrams/out/paquetes/mastermind.views.console.svg)
+![Paquete_usantatecla.mastermind.views.console](./docs/diagrams/out/paquetes/usantatecla.mastermind.views.console.svg)
 
-### Paquete *mastermind.views.graphics*
+### Paquete *usantatecla.mastermind.views.graphics*
 
-![Paquete_Mastermind.views](./docs/diagrams/out/paquetes/mastermind.views.graphics.svg)
+![Paquete_usantatecla.mastermind.views](./docs/diagrams/out/paquetes/usantatecla.mastermind.views.graphics.svg)
 
-### Paquete *mastermind.models*
+### Paquete *usantatecla.mastermind.models*
 
-![Paquete_Mastermind.models](./docs/diagrams/out/paquetes/mastermind.models.svg)
+![Paquete_usantatecla.mastermind.models](./docs/diagrams/out/paquetes/usantatecla.mastermind.models.svg)
 
-### Paquete *mastermind.utils*
+### Paquete *usantatecla.utils*
 
-![Paquete_Mastermind.utils](./docs/diagrams/out/paquetes/mastermind.utils.svg)
+![Paquete_usantatecla.utils](./docs/diagrams/out/paquetes/usantatecla.utils.svg)
 
 # Calidad del Software
 
