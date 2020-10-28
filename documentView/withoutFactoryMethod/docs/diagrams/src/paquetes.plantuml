@@ -110,7 +110,7 @@ usantatecla.mastermind.views.console.ResumeView ..> YesNoDialog
 usantatecla.mastermind.views.console.ResumeView ..> MessageView
 
 class usantatecla.mastermind.views.console.StartView {
-    
+    ~ interact()
 }
 usantatecla.mastermind.views.console.StartView -up-|> WithConsoleView
 usantatecla.mastermind.views.console.StartView ..> MessageView
