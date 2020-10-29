@@ -81,103 +81,121 @@ usantatecla.mastermind.views.View *-down-> Game
 @enduml
 
 @startuml mastermind.view.console
-class WithConsoleView as "usantatecla.utils.\nWithConsoleView"{
+class Game as "usantatecla.\nmastermind.models.\nGame"
+class Error as "usantatecla.\nmastermind.models.\nError"
+class Result as "usantatecla.\nmastermind.models.\nResult"
+enum Color as "usantatecla.\nmastermind.models.\nColor"
+abstract class Combination as "usantatecla.\nmastermind.models.\nCombination"
+class ProposedCombination as "usantatecla.\nmastermind.models.\nProposedCombination"
+class SecretCombination as "usantatecla.\nmastermind.models.\nSecretCombination"
+abstract class View as "usantatecla.\nmastermind.views.\nView"
+abstract class ColorView as "usantatecla.\nmastermind.views.\nColorView"
+abstract class ErrorView as "usantatecla.\nmastermind.views.\nErrorView"
+enum MessageView as "usantatecla.\nmastermind.views.\nMessageView"
+abstract class WithConsoleView as "usantatecla.utils.\nWithConsoleView"
+class Console as "usantatecla.utils.\nConsole"
+class YesNoDialog as "usantatecla.utils.\nYesNoDialog"
+enum ColorCode as "usantatecla.utils.\nColorCode"
 
+class usantatecla.mastermind.views.console.ConsoleView {
+    + ConsoleView(Game)
+    # start()
+    # propose() : boolean
+    # isNewGame() : boolean
 }
-class  usantatecla.mastermind.views.console.ConsoleView{
-+ ConsoleView(Game)
-# start() 
-# resume(): boolean
-# propose(): boolean
-}
-
-class View as "usantatecla.mastermind.views.View"{
-
-}
-View <|-down- usantatecla.mastermind.views.console.ConsoleView
+usantatecla.mastermind.views.console.ConsoleView -up-|> View
+usantatecla.mastermind.views.console.ConsoleView *-down-> usantatecla.mastermind.views.console.StartView
 usantatecla.mastermind.views.console.ConsoleView *-down-> usantatecla.mastermind.views.console.ProposalView
 usantatecla.mastermind.views.console.ConsoleView *-down-> usantatecla.mastermind.views.console.ResumeView
-usantatecla.mastermind.views.console.ConsoleView *-down-> usantatecla.mastermind.views.console.StartView
+usantatecla.mastermind.views.console.ConsoleView --> Game
 
-class  usantatecla.mastermind.views.console.ProposalView{
-- game: Game
-~ ProposalView(Game)
-~ interact(): boolean
+class usantatecla.mastermind.views.console.ResumeView {
+    ~ ResumeView(Game)
+    ~ interact() : boolean
 }
+usantatecla.mastermind.views.console.ResumeView *-down-> Game
+usantatecla.mastermind.views.console.ResumeView ..> YesNoDialog
+usantatecla.mastermind.views.console.ResumeView ..> MessageView
 
-class Game as "usantatecla.mastermind.models.Game"{
+class usantatecla.mastermind.views.console.StartView {
+    ~ interact()
+}
+usantatecla.mastermind.views.console.StartView -up-|> WithConsoleView
+usantatecla.mastermind.views.console.StartView ..> MessageView
+usantatecla.mastermind.views.console.StartView ..> usantatecla.mastermind.views.console.SecretCombinationView
+
+class usantatecla.mastermind.views.console.ProposalView {
+    ~ ProposalView(Game)
+    ~ interact() : boolean
 
 }
-WithConsoleView <|-down- usantatecla.mastermind.views.console.ProposalView
-usantatecla.mastermind.views.console.ProposalView ..> Game
-usantatecla.mastermind.views.console.ProposalView ..> usantatecla.mastermind.views.console.ProposedCombinationView
+usantatecla.mastermind.views.console.ProposalView -up-|> WithConsoleView
+usantatecla.mastermind.views.console.ProposalView *-down-> Game
 usantatecla.mastermind.views.console.ProposalView *-down-> usantatecla.mastermind.views.console.SecretCombinationView
+usantatecla.mastermind.views.console.ProposalView ..> ProposedCombination
+usantatecla.mastermind.views.console.ProposalView ..> usantatecla.mastermind.views.console.AttemptsView
 usantatecla.mastermind.views.console.ProposalView ..> usantatecla.mastermind.views.console.ResultView
+usantatecla.mastermind.views.console.ProposalView ..> usantatecla.mastermind.views.console.ProposedCombinationView
+usantatecla.mastermind.views.console.ProposalView ..> MessageView
 
-class  usantatecla.mastermind.views.console.ProposedCombinationView{
-- proposedCombination: ProposedCombination
-~ ProposedCombinationView(ProposedCombination)
-~ write()
-~ read()
+class usantatecla.mastermind.views.console.ProposedCombinationView {
+    ~ ProposedCombinationView(ProposedCombination)
+    ~ write()
+    ~ read()
 }
-WithConsoleView <|-down- usantatecla.mastermind.views.console.ProposedCombinationView
+usantatecla.mastermind.views.console.ProposedCombinationView -up-|> WithConsoleView
+usantatecla.mastermind.views.console.ProposedCombinationView *-down-> ProposedCombination
+usantatecla.mastermind.views.console.ProposedCombinationView ..> usantatecla.mastermind.views.console.ErrorView
+usantatecla.mastermind.views.console.ProposedCombinationView ..> usantatecla.mastermind.views.console.ColorView
+usantatecla.mastermind.views.console.ProposedCombinationView ..> Color
+usantatecla.mastermind.views.console.ProposedCombinationView ..> Error
+usantatecla.mastermind.views.console.ProposedCombinationView ..> Combination
+usantatecla.mastermind.views.console.ProposedCombinationView ..> MessageView
 
-class  usantatecla.mastermind.views.console.ResultView{
--result: Result
-~ ResultView(Result)
-~ writeln()
+class usantatecla.mastermind.views.console.SecretCombinationView {
+    ~ SecretCombinationView()
+    ~ writeln()
 }
-class  usantatecla.mastermind.views.console.AttemptsView{
-- game: Game
-~ AttemptsView(Game)
-~ writeln()
+usantatecla.mastermind.views.console.SecretCombinationView -up-|> WithConsoleView
+usantatecla.mastermind.views.console.SecretCombinationView ..> SecretCombination
+usantatecla.mastermind.views.console.SecretCombinationView ..> MessageView
+
+class usantatecla.mastermind.views.console.ResultView {
+    ~ ResultView(Result)
+    ~ writeln()
 }
-WithConsoleView <|-down- usantatecla.mastermind.views.console.ResultView
+usantatecla.mastermind.views.console.ResultView -up-|> WithConsoleView
+usantatecla.mastermind.views.console.ResultView *-down-> Result
+usantatecla.mastermind.views.console.ResultView ..> MessageView
 
-class  usantatecla.mastermind.views.console.ResumeView{
-~ ResumeView(Game)
-~ interact(): boolean
+class usantatecla.mastermind.views.console.AttemptsView {
+    ~ AttemptsView(Game)
+    ~ writeln()
 }
-usantatecla.mastermind.views.console.ResumeView ..> Game
+usantatecla.mastermind.views.console.AttemptsView -up-|> WithConsoleView
+usantatecla.mastermind.views.console.AttemptsView *-down-> Game
 
-class  usantatecla.mastermind.views.console.SecretCombinationView{
-~ SecretCombinationView()
-~ writeln() 
-}
-
-
-WithConsoleView <|-down- usantatecla.mastermind.views.console.SecretCombinationView
-
-class  usantatecla.mastermind.views.console.StartView{
-~ interact() 
-}
-
-class  usantatecla.mastermind.views.console.ErrorView{
-~ ErrorView() 
-~ ErrorView(Error) 
-~ writeln()
-~ colorInitials(): String
-}
-
-class  usantatecla.mastermind.views.console.ColorView{
+class usantatecla.mastermind.views.console.ColorView {
     ~ ColorView()
     ~ ColorView(Color)
-    # resultInitials(int): String
+    # resultInitials(int) : String
     ~ write()
 }
-class Color as "usantatecla.utils.\nColorCode"{
+usantatecla.mastermind.views.console.ColorView -up-|> ColorView
+usantatecla.mastermind.views.console.ColorView ..> ColorCode
+usantatecla.mastermind.views.console.ColorView ..> Console
+usantatecla.mastermind.views.console.ColorView ..> Color
 
+class usantatecla.mastermind.views.console.ErrorView {
+    ~ ErrorView()
+    ~ ErrorView(Error)
+    ~ writeln()
+    # colorInitials() : String
 }
-
-class Console as "usantatecla.utils.\nConsole"{
-
-}
-usantatecla.mastermind.views.console.ColorView .down-> Color
-usantatecla.mastermind.views.console.ErrorView .down-> Console
-usantatecla.mastermind.views.console.AttemptsView .down-> Game
-WithConsoleView <|-down- usantatecla.mastermind.views.console.StartView
-usantatecla.mastermind.views.console.StartView ..> Game
-usantatecla.mastermind.views.console.StartView..> usantatecla.mastermind.views.console.SecretCombinationView
+usantatecla.mastermind.views.console.ErrorView -up-|> ErrorView
+usantatecla.mastermind.views.console.ErrorView ..> Error
+usantatecla.mastermind.views.console.ErrorView ..> Console
+usantatecla.mastermind.views.console.ErrorView ..> usantatecla.mastermind.views.console.ColorView
 @enduml
 
 @startuml mastermind.view.Graphics
