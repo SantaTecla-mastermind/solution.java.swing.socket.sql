@@ -1,4 +1,4 @@
-## Master Mind. Solucion 2.1. documentView
+## Master Mind. Solucion 4.2. documentView.withFactoryMethod
 Santa Tecla  
 [parqueNaturalSantaTecla@gmail.com ](mailto:parqueNaturalSantaTecla@gmail.com )
 version 0.0.1  
