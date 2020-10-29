@@ -1,7 +1,7 @@
 package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.models.SecretCombination;
-import usantatecla.mastermind.views.MessageView;
+import usantatecla.mastermind.views.Message;
 import usantatecla.utils.WithConsoleView;
 
 class SecretCombinationView extends WithConsoleView {
@@ -12,7 +12,7 @@ class SecretCombinationView extends WithConsoleView {
 
 	void writeln() {
 		for (int i = 0; i < SecretCombination.getWidth(); i++) {
-			this.console.write(MessageView.SECRET.getMessage());
+			this.console.write(Message.SECRET.getMessage());
 		}
 		this.console.writeln();
 	}

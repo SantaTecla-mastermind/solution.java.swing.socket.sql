@@ -27,7 +27,7 @@ public class GraphicsView extends View {
 		ResumeDialog resumeDialog = new ResumeDialog();
 		boolean newGame = resumeDialog.isNewGame();
 		if (newGame) {
-			this.game.clear();
+			this.game.reset();
 			this.gameView = new GameView(this.game);
 			return true;
 		} else {

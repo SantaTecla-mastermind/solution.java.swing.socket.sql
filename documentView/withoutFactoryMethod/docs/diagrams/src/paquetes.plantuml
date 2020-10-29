@@ -1,15 +1,11 @@
 @startuml usantatecla.mastermind
 class usantatecla.mastermind.ConsoleMastermind{
-- game: Game
-- consoleView: ConsoleView
 - ConsoleMastermind()
 + {static} main(String[]): void
 - play(): void
 }
 
 class usantatecla.mastermind.GraphicsMastermind{
-- game: Game
-- graphicsView: GraphicsView
 - GraphicsMastermind()
 + {static} main(String[]): void
 - play(): void
@@ -48,7 +44,7 @@ abstract class usantatecla.mastermind.views.ErrorView{
 }
 usantatecla.mastermind.views.ErrorView *-down-> Error
 
-enum usantatecla.mastermind.views.MessageView{
+enum usantatecla.mastermind.views.Message{
     + ATTEMPTS
     + SECRET
     + RESUME

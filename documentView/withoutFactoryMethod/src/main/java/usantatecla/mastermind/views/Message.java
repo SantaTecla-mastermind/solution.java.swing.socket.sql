@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views;
 
-public enum MessageView {
+public enum Message {
 	// TODO Revisar diferencia de SECRET y SECRET_COMBINATION de la anterior versión (console)
 	ATTEMPTS("#attempts attempt(s): "),
 	SECRET("*"),
@@ -13,7 +13,7 @@ public enum MessageView {
 
 	private String message;
 	
-	private MessageView(String message) {
+	private Message(String message) {
 		this.message = message;
 	}
 	

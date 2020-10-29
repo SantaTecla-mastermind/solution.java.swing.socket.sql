@@ -4,7 +4,7 @@ import usantatecla.mastermind.models.Color;
 import usantatecla.mastermind.models.Error;
 import usantatecla.mastermind.models.Combination;
 import usantatecla.mastermind.models.ProposedCombination;
-import usantatecla.mastermind.views.MessageView;
+import usantatecla.mastermind.views.Message;
 import usantatecla.utils.WithConsoleView;
 
 class ProposedCombinationView extends WithConsoleView {
@@ -24,9 +24,12 @@ class ProposedCombinationView extends WithConsoleView {
 	void read() {
 		Error error;
 		do {
+			// TODO Implementar patrón null en Error y Color
 			error = null;
-			this.console.write(MessageView.PROPOSED_COMBINATION.getMessage());
+			this.console.write(Message.PROPOSED_COMBINATION.getMessage());
 			String characters = this.console.readString();
+
+			// TODO Comprobación de errores para las propias clases
 			if (characters.length() != Combination.getWidth()) {
 				error = Error.WRONG_LENGTH;
 			} else {

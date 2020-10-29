@@ -16,10 +16,10 @@ public class Game {
 	private int attempts;
 
 	public Game() {
-		this.clear();
+		this.reset();
 	}
 
-	public void clear() {
+	public void reset() {
 		this.secretCombination = new SecretCombination();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();

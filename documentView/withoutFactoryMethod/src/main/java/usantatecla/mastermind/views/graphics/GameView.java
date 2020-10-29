@@ -6,9 +6,7 @@ import javax.swing.JOptionPane;
 
 import usantatecla.mastermind.models.Game;
 import usantatecla.mastermind.models.ProposedCombination;
-import usantatecla.mastermind.views.MessageView;
-import usantatecla.mastermind.views.graphics.ProposedCombinationView;
-import usantatecla.mastermind.views.graphics.SecretCombinationView;
+import usantatecla.mastermind.views.Message;
 
 @SuppressWarnings("serial")
 class GameView extends JFrame {
@@ -24,7 +22,7 @@ class GameView extends JFrame {
 	private ProposalCombinationView proposalCombinationView;
 
 	GameView(Game game) {
-		super(MessageView.TITLE.getMessage());
+		super(Message.TITLE.getMessage());
 		this.game = game;
 		this.getContentPane().setLayout(new GridBagLayout());
 		this.setSize(400, 500);
@@ -67,9 +65,9 @@ class GameView extends JFrame {
 		if (this.game.isWinner() || this.game.isLooser()) {
 			String message = "";
 			if (this.game.isWinner()) {
-				message = MessageView.WINNER.getMessage();
+				message = Message.WINNER.getMessage();
 			} else {
-				message = MessageView.LOOSER.getMessage();
+				message = Message.LOOSER.getMessage();
 			}
 			JOptionPane.showMessageDialog(null, message, GameView.GAME_OVER, JOptionPane.WARNING_MESSAGE);
 			return true;
