@@ -1,12 +1,12 @@
 package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.views.Message;
-import usantatecla.utils.WithConsoleView;
+import usantatecla.utils.Console;
 
-class StartView extends WithConsoleView {
+class StartView {
 
 	void interact() {
-		this.console.writeln(Message.TITLE.getMessage());
+		Console.getInstance().writeln(Message.TITLE.getMessage());
 		new SecretCombinationView().writeln();
 	}
 

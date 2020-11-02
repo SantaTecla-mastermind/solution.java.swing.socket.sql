@@ -4,7 +4,6 @@ import usantatecla.mastermind.models.Color;
 
 public abstract class ColorView {
 
-	// TODO ¿Cambiar Color para que haga un parse de su color a su inicial?
 	public static final char[] INITIALS = {'r', 'b', 'y', 'g', 'o', 'p'};
 
 	protected Color color;
@@ -31,7 +30,7 @@ public abstract class ColorView {
 				return Color.values()[i];
 			}
 		}
-		return null;
+		return Color.NULL;
 	}
 
 }

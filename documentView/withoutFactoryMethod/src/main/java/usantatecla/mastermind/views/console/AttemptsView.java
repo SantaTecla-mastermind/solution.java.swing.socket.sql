@@ -1,10 +1,9 @@
 package usantatecla.mastermind.views.console;
 
-import usantatecla.mastermind.models.Game;
 import usantatecla.mastermind.views.Message;
-import usantatecla.utils.WithConsoleView;
+import usantatecla.utils.Console;
 
-class AttemptsView extends WithConsoleView {
+class AttemptsView {
 	
 	private int attempts;
 
@@ -13,6 +12,6 @@ class AttemptsView extends WithConsoleView {
 	}
 	
 	void writeln() {
-		this.console.writeln(Message.ATTEMPTS.getMessage().replace("#attempts", ""+this.attempts));
+		Console.getInstance().writeln(Message.ATTEMPTS.getMessage().replace("#attempts", ""+this.attempts));
 	}
 }
