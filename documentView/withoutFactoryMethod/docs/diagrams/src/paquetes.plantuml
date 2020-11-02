@@ -221,7 +221,7 @@ class usantatecla.mastermind.views.graphics.GraphicsView {
 usantatecla.mastermind.views.graphics.GraphicsView -up-|> View
 usantatecla.mastermind.views.graphics.GraphicsView *-down-> usantatecla.mastermind.views.graphics.GameView
 usantatecla.mastermind.views.graphics.GraphicsView ..> Game
-usantatecla.mastermind.views.graphics.GraphicsView .> usantatecla.mastermind.views.graphics.ResumeDialog
+usantatecla.mastermind.views.graphics.GraphicsView ..> usantatecla.mastermind.views.graphics.ResumeDialog
 
 class usantatecla.mastermind.views.graphics.GameView {
     - {static} GAME_OVER : String
