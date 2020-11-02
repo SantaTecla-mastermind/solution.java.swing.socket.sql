@@ -396,13 +396,17 @@ enum usantatecla.mastermind.models.Color {
 + GREEN
 + ORANGE
 + PURPLE
++ NULL
 ~ {static} length(): int
++ isNull(): boolean
 }
 
 enum usantatecla.mastermind.models.Error {
 + DUPLICATED
 + WRONG_CHARACTERS
 + WRONG_LENGTH
++ NULL
++ isNull(): boolean
 }
 
 @enduml

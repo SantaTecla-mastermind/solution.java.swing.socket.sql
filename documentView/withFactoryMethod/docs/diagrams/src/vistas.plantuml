@@ -5,6 +5,10 @@ package "  "  as mastermind.models {
 }
 package "  "  as mastermind.views {
 }
+package "  "  as mastermind.views.console {
+}
+package "  "  as mastermind.views.graphics {
+}
 package "  "  as mastermind.utils {
 }
 package "  "  as java.io {
@@ -17,6 +21,8 @@ package "  "  as java.util {
 jar *--> mastermind
 jar *--> mastermind.models
 jar *--> mastermind.views
+jar *--> mastermind.views.console
+jar *--> mastermind.views.graphics
 jar *--> mastermind.utils
 jar *--> java.io
 jar *--> java.util
