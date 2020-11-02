@@ -29,13 +29,13 @@ class ProposedCombinationView extends JLabel {
 	}
 
 	void read(String characters) {
-		this.error = null;
+		this.error = Error.NULL;
 		if (characters.length() != Combination.getWidth()) {
 			this.error = Error.WRONG_LENGTH;
 		} else {
 			for (int i = 0; i < characters.length(); i++) {
 				Color color = ColorView.getInstance(characters.charAt(i));
-				if (color == null) {
+				if (color.isNull()) {
 					this.error = Error.WRONG_CHARACTERS;
 				} else {
 					if (this.proposedCombination.getColors().contains(color)) {
@@ -46,7 +46,7 @@ class ProposedCombinationView extends JLabel {
 				}
 			}
 		}
-		if (this.error != null) {
+		if (!this.error.isNull()) {
 			JOptionPane.showMessageDialog(null, new ErrorView().MESSAGES[this.error.ordinal()], "ERROR",
 					JOptionPane.WARNING_MESSAGE);
 			this.proposedCombination.getColors().clear();
@@ -54,7 +54,11 @@ class ProposedCombinationView extends JLabel {
 	}
 
 	public boolean isValid() {
-		return this.error == null;
+		// TODO this.error da NullPointerException a pesar de ser iniciado a Error.NULL en el constructor. ¿Solución?
+		if(this.error != null) {
+			return this.error.isNull();
+		}
+		return true;
 	}
 
 }

@@ -21,7 +21,7 @@ class ColorView extends usantatecla.mastermind.views.ColorView {
 		if(!color.isNull()){
 			Console.getInstance()
 					.write(ColorCode.getColorByIndex(this.color.ordinal())
-							+ usantatecla.mastermind.views.ColorView.INITIALS[this.color.ordinal()]
+							+ ColorView.INITIALS[this.color.ordinal()]
 							+ ColorCode.RESET_COLOR.getColor());
 		}
 	}
