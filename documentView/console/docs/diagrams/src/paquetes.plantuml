@@ -1,5 +1,5 @@
 @startuml mastermind
-class  Mastermind as "mastermind.Mastermind"{
+class usantatecla.mastermind.Mastermind{
 - game: Game
 - view: View
 - Mastermind()
@@ -7,10 +7,8 @@ class  Mastermind as "mastermind.Mastermind"{
 - play(): void
 }
 
-class View as "mastermind.\nviews.View"{}
-class Game as "mastermind.\nmodels.Game"{}
-Mastermind *-down-> View
-Mastermind *-down-> Game
+usantatecla.mastermind.Mastermind *-down-> mastermind.views.View
+usantatecla.mastermind.Mastermind *-down-> mastermind.models.Game
 
 @enduml
 
@@ -202,13 +200,6 @@ mastermind.models.SecretCombination ..> mastermind.models.Color
 @startuml mastermind.utils
 class BufferedReader as "java.io.BufferedReader"{}
 
-class  mastermind.utils.ClosedInterval{
-- min: int
-- max: int
-+ ClosedInterval(int, int)
-+ includes(int): boolean
-}
-
 enum mastermind.utils.ColorCode{
 + RED
 + BLUE
@@ -240,7 +231,6 @@ class  mastermind.utils.Console{
 mastermind.utils.Console *-down-> BufferedReader
 
 abstract class mastermind.utils.WithConsoleView{
-# console: Console
 # WithConsoleView()
 }
 mastermind.utils.WithConsoleView *-down-> mastermind.utils.Console

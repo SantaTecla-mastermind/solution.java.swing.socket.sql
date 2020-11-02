@@ -1,75 +1,126 @@
 @startuml Mastermind
 
 title Secuencia versiones Mastermind
+
+state Solucion {
 [*] --> domainModel
+
 state domainModel
-note right: Clases del Modelo del Dominio pero acopladas a tecnologías de interfaz\nahora y todas con la Ley del Cambio Continuo y de granos grueso con el\nadvenimiento de nueva funcionalidad.
+note right: Clases del Modelo del Dominio\npero acopladas a tecnologÃ­as de\ninterfazahora y todas con la Ley\ndel Cambio Continuo y de granos\ngrueso con el advenimiento\nde nueva funcionalidad.
 state documentView
-
 state modelViewPresenter
-
-
-
+ note left of modelViewController #15D2F3
+  BÃ¡sica
+end note
 state modelViewController
 note right: Baile de la Triada.
-
-
-
-
-
+ note left of domainModel #15D2F3
+  BÃ¡sica
+end note
 domainModel --> documentView
 
 state documentView {
+[*] --> console
+ note left of console #15D2F3
+  BÃ¡sica
+end note
   state console
-  note right: Clases Vistas de Texto separadas de los Modelos del Dominio\npero con Modelos de grano gruesocon el advenimiento de nueva funcionalidad.[[https://github.com/SantaTecla-mastermind/solution.java.swing.socket.sql/tree/master/documentView/console Git]]
+  note right: Clases Vistas de Texto separadas\nde los Modelos del Dominio pero con\nModelos de grano grueso con el\nadvenimiento de nueva funcionalidad.
+
+   note left of withoutFactoryMethod #15D2F3
+  GrÃ¡ficos
+end note
   state withoutFactoryMethod
-  note right:Clase Vistas de Interfaz Gráfica de Usuario pero con DRY en Vistas de tecnologías diferentes\ny con Modelos de grano grueso con el advenimiento de nueva funcionalidad.
+  note right:Clase Vistas de Interfaz GrÃ¡fica de Usuario\npero con DRY en Vistas de tecnologÃ­as\ndiferentes y con Modelos de grano grueso\ncon el advenimiento de nueva funcionalidad.
+
+  note left of withFactoryMethod #15D2F3
+  GrÃ¡ficos
+end note
   state withFactoryMethod
-  note right: Clase Vista abstracta para Open/Close de sus tecnologías pero con Modelos de grano grueso\ncon el advenimiento de nueva funcionalidad.
-  
+  note right: Clase Vista abstracta para Open/Close de sus\ntecnologÃ­as pero con Modelos de grano grueso\ncon el advenimiento de nueva funcionalidad.
+
   console --> withoutFactoryMethod
   withoutFactoryMethod --> withFactoryMethod
+  withFactoryMethod-->[*]
 }
 
 documentView --> modelViewPresenter
 
+
 state modelViewPresenter{
+[*] --> presentationModel
+[*] --> passiveView
+presentationModel-->[*]
+
 
 state presentationModel{
+note left of basic #15D2F3
+  GrÃ¡ficos
+end note
 state basic
-note right:Clases Controladoras entre Vistas y Modelos por cada Caso de Uso pero con la clase Principal\ny las Vistas acopladas a cada controlador actual y futuro
+note right:Clases Controladoras entre Vistas y Modelos por\ncada Caso de Uso pero con la clase Principal y las\nVistas acopladas a cada controlador actual y futuro.
 
+note left of withFacade #15D2F3
+  GrÃ¡ficos
+end note
 state withFacade
-note right:Clase Lógica que encapsula Controladores y Modelos pero con Vistas con DRY\nen la Lógica de Control
+note right:Clase LÃ³gica que encapsula Controladores y Modelos\npero con Vistas con DRY en la LÃ³gica de Control.
 
+note left of withoutDoubleDispatching #15D2F3
+  GrÃ¡ficos
+end note
 state withoutDoubleDispatching
-note right:Clase Estado para la Inversión de Control de Vistas a la Lógica pero violando\nel Principio de Sustitución de Liskov
+note right:Clase Estado para la InversiÃ³n de Control de Vistas\na la LÃ³gica pero violando el Principio de SustituciÃ³n\nde Liskov.
 
+note left of withDoubleDispatching #15D2F3
+  GrÃ¡ficos
+end note
 state withDoubleDispatching
-note right:Clase Vistador de Controladores para Técnica de Doble Despacho
+note right:Clase Vistador de Controladores para TÃ©cnica\nde Doble Despacho
 
+note left of withComposite #15D2F3
+  UndoRedo
+end note
 state withComposite
-note right:Clase Comando del menú y Controlador Compuesto de ciertos Estados\npara Open/Close con nuevos Casos de Uso
+note right:Clase Comando del menÃº y Controlador Compuesto\nde ciertos Estados para Open/Close\ncon nuevos Casos de Uso.
 
+note left of withoutProxy #15D2F3
+  ClienteServidor
+end note
 state withoutProxy
-note right:Clase TCP/IP para tecnología de Despliegue pero con Controladores acoplados, poco cohesivos y\ngrano grueso con cada nueva tecnología
+note right:Clase TCP/IP para tecnologÃ­a de Despliegue\npero con Controladores acoplados, poco cohesivos y\ngrano grueso con cada nueva tecnologÃ­a.
 
+note left of withProxy #15D2F3
+  ClienteServidor
+end note
 state withProxy
-note right:Clases Proxy para Open/Close para nuevas tecnologías de Despliegue
+note right:Clases Proxy para Open/Close para nuevas\ntecnologÃ­as de Despliegue.
 
+note left of withoutDAO #15D2F3
+  Ficheros
+end note
 state withoutDAO
-note right:Clases Vistas y Controladores para la tecnología de persistencia pero con Modelos de grano grueso, baja cohesión\ny alto acoplamiento a tecnologías de persistencia de ficheros
+note right:Clases Vistas y Controladores para la tecnologÃ­a\nde persistencia pero con Modelos de grano grueso,\nbaja cohesiÃ³n y alto acoplamiento a tecnologÃ­as\nde persistencia de ficheros.
 
+note left of withDAO #15D2F3
+  Ficheros
+end note
 state withDAO
-note right: Patrón DAO
+note right: PatrÃ³n DAO
 
+note left of withoutPrototype #15D2F3
+  BasesDatos
+end note
 state withoutPrototype
-note right:Nuevas Vistas y DAOS para la nueva tecnología pero con clase Principal\nacoplada a las tecnologías actuales y futuras de persistencia
+note right:Nuevas Vistas y DAOS para la nueva tecnologÃ­a\npero con clase Principal acoplada a las tecnologÃ­as\nactuales y futuras de persistencia.
 
+note left of withPrototype #15D2F3
+  BasesDatos
+end note
 state withPrototype
-note right:Open/Close para arranque con configuración de persistencia
+note right:Open/Close para arranque con configuraciÃ³n de persistencia
 
-[*] --> basic
+
 basic --> withFacade
 withFacade --> withoutDoubleDispatching
 withoutDoubleDispatching --> withDoubleDispatching
@@ -83,19 +134,26 @@ withoutPrototype --> withPrototype
 
 
 }
-
+ note left of passiveView #15D2F3
+  BÃ¡sica
+end note
 state passiveView
 note right: Baile de la Triada.
+
+ note left of supervidorController #15D2F3
+  BÃ¡sica
+end note
 state supervisorController
 note right: Baile de la Triada.
 
-presentationModel-->passiveView
 passiveView-->supervisorController
-
+supervisorController-->[*]
 }
 
 modelViewPresenter --> modelViewController
 
 }
 modelViewController-->[*]
+}
+
 @enduml
