@@ -7,7 +7,7 @@ public class SecretCombination extends Combination {
 
 	SecretCombination() {
 		for(Color color: Color.values()) {
-			this.colors.add(color);
+			if(!color.isNull()) this.colors.add(color);
 		}
 		Random random = new Random(System.currentTimeMillis());
 		for (int i = 0; i < Color.length() - Combination.getWidth(); i++) {
@@ -22,7 +22,8 @@ public class SecretCombination extends Combination {
 		for (int i = 0; i < this.colors.size(); i++) {
 			if (proposedCombination.contains(this.colors.get(i), i)) {
 				blacks++;
-			}if (proposedCombination.contains(this.colors.get(i))) {
+			}
+			if (proposedCombination.contains(this.colors.get(i))) {
 				whites++;
 			}
 		}

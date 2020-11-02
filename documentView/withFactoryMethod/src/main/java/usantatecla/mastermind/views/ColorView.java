@@ -30,7 +30,7 @@ public abstract class ColorView {
 				return Color.values()[i];
 			}
 		}
-		return null;
+		return Color.NULL;
 	}
 
 }

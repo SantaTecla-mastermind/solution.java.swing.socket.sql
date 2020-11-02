@@ -4,11 +4,10 @@ import usantatecla.mastermind.models.Color;
 import usantatecla.mastermind.models.Error;
 import usantatecla.mastermind.models.Combination;
 import usantatecla.mastermind.models.ProposedCombination;
-import usantatecla.mastermind.views.console.ColorView;
-import usantatecla.utils.WithConsoleView;
-import usantatecla.mastermind.views.MessageView;
+import usantatecla.utils.Console;
+import usantatecla.mastermind.views.Message;
 
-class ProposedCombinationView extends WithConsoleView {
+class ProposedCombinationView {
 
 	private ProposedCombination proposedCombination;
 
@@ -25,15 +24,16 @@ class ProposedCombinationView extends WithConsoleView {
 	void read() {
 		Error error;
 		do {
-			error = null;
-			this.console.write(MessageView.PROPOSED_COMBINATION.getMessage());
-			String characters = this.console.readString();
+			error = Error.NULL;
+			Console.getInstance().write(Message.PROPOSED_COMBINATION.getMessage());
+			String characters = Console.getInstance().readString();
+
 			if (characters.length() != Combination.getWidth()) {
 				error = Error.WRONG_LENGTH;
 			} else {
 				for (int i = 0; i < characters.length(); i++) {
 					Color color = ColorView.getInstance(characters.charAt(i));
-					if (color == null) {
+					if (color.isNull()) {
 						error = Error.WRONG_CHARACTERS;
 					} else {
 						if (this.proposedCombination.getColors().contains(color)) {
@@ -44,11 +44,11 @@ class ProposedCombinationView extends WithConsoleView {
 					}
 				}
 			}
-			if (error != null) {
+			if (!error.isNull()) {
 				new ErrorView(error).writeln();
 				this.proposedCombination.getColors().clear();
 			}
-		} while (error != null);
+		} while (!error.isNull());
 	}
 
 }

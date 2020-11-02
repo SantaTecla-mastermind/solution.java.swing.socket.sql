@@ -12,7 +12,9 @@ class ErrorView extends usantatecla.mastermind.views.ErrorView {
 	}
 
 	void writeln() {
-		Console.getInstance().writeln(new ErrorView().MESSAGES[this.error.ordinal()]);
+		if(!this.error.isNull()) {
+			Console.getInstance().writeln(new ErrorView().MESSAGES[this.error.ordinal()]);
+		}
 	}
 
 	@Override
