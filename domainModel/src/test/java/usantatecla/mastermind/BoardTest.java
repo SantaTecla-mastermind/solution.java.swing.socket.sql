@@ -1,21 +1,33 @@
 package usantatecla.mastermind;
 
-import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.Mockito.mock;
 
 public class BoardTest {
 
     private Board board;
 
-    public BoardTest() {
+    @BeforeEach
+    void before() {
         this.board = new Board();
     }
 
     @Test
-    public void testIsFinished() {
-        assertFalse(false);
+    void testIsFinished() {
+        ProposedCombination proposedCombination = mock(ProposedCombination.class);
+        board.add(proposedCombination);
+        assertFalse(board.isFinished());
+    }
+
+    @Test
+    void testIsWinner() {
+        ProposedCombination proposedCombination = mock(ProposedCombination.class);
+        board.add(proposedCombination);
+        assertFalse(board.isWinner());
     }
 
 }
