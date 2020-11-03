@@ -49,7 +49,7 @@ class GameView extends JFrame {
 			System.out.println("");
 			if (this.proposalCombinationView.getCharacters() != null) {
 				proposedCombinationView.read(this.proposalCombinationView.getCharacters());		
-				if (!proposedCombinationView.isValid()) {
+				if (!proposedCombinationView.isOk()) {
 					this.proposalCombinationView.resetCharacters();
 				}		
 			}

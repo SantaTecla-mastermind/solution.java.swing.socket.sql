@@ -53,12 +53,8 @@ class ProposedCombinationView extends JLabel {
 		}
 	}
 
-	public boolean isValid() {
-		// TODO this.error da NullPointerException a pesar de ser iniciado a Error.NULL en el constructor. ¿Solución?
-		if(this.error != null) {
-			return this.error.isNull();
-		}
-		return true;
+	public boolean isOk() {
+		return this.error.isNull();
 	}
 
 }
