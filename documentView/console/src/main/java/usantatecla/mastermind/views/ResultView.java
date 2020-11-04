@@ -1,9 +1,8 @@
 package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.models.Result;
-import usantatecla.utils.WithConsoleView;
 
-class ResultView extends WithConsoleView {
+class ResultView {
 	
 	private Result result;
 

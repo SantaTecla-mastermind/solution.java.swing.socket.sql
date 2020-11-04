@@ -1,8 +1,6 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.utils.WithConsoleView;
-
-class StartView extends WithConsoleView {
+class StartView {
 
 	void interact() {
 		MessageView.TITLE.writeln();
