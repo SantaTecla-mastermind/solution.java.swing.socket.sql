@@ -5,7 +5,7 @@ package "  "  as mastermind.models {
 }
 package "  "  as mastermind.views {
 }
-package "  "  as mastermind.utils {
+package "  "  as usantatecla.utils {
 }
 package "  "  as java.io {
 }
@@ -17,7 +17,7 @@ package "  "  as java.util {
 jar *--> mastermind
 jar *--> mastermind.models
 jar *--> mastermind.views
-jar *--> mastermind.utils
+jar *--> usantatecla.utils
 jar *--> java.io
 jar *--> java.util
 @enduml

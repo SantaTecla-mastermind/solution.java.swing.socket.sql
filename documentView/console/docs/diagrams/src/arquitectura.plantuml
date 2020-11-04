@@ -1,17 +1,17 @@
 @startuml arquitectura
-package mastermind #DDDDDD { }
-mastermind .down.> mastermind.views
-mastermind .down.> mastermind.models
+package usantatecla.mastermind #DDDDDD { }
+usantatecla.mastermind .down.> usantatecla.mastermind.views
+usantatecla.mastermind .down.> usantatecla.mastermind.models
 
-package mastermind.models #DDDDDD { }
+package usantatecla.mastermind.models #DDDDDD { }
 package java.util{ }
-mastermind.models .down.> java.util
+usantatecla.mastermind.models .down.> java.util
 
-package mastermind.utils #DDDDDD { }
+package usantatecla.utils #DDDDDD { }
 package java.io{ }
-mastermind.utils .down.> java.io
+usantatecla.utils .down.> java.io
 
-package mastermind.views #DDDDDD { }
-mastermind.views .down.> mastermind.models
-mastermind.views .down.> mastermind.utils
+package usantatecla.mastermind.views #DDDDDD { }
+usantatecla.mastermind.views .down.> usantatecla.mastermind.models
+usantatecla.mastermind.views .down.> usantatecla.utils
 @enduml

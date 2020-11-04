@@ -1,8 +1,8 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.utils.WithConsoleView;
+import usantatecla.utils.Console;
 
-class SecretCombinationView extends WithConsoleView {
+class SecretCombinationView {
 
 	SecretCombinationView() {
 		super();
@@ -10,7 +10,7 @@ class SecretCombinationView extends WithConsoleView {
 
 	void writeln() {
 		MessageView.SECRET_COMBINATION.write();
-		this.console.writeln();
+		Console.getInstance().writeln();
 	}
 
 }

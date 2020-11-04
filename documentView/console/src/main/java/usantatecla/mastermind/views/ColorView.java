@@ -3,9 +3,8 @@ package usantatecla.mastermind.views;
 import usantatecla.mastermind.models.Color;
 import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
-import usantatecla.utils.WithConsoleView;
 
-class ColorView extends WithConsoleView{
+class ColorView {
 	
 	private static final char[] INITIALS = {'r', 'b', 'y', 'g', 'o', 'p'};
 	private Color color;
@@ -28,14 +27,16 @@ class ColorView extends WithConsoleView{
 				return Color.values()[i];
 			}
 		}
-		return null;
+		return Color.NULL;
 	}
 	
 	void write() {
-		Console.getInstance()
-				.write(ColorCode.getColorByIndex(this.color.ordinal())
-				+ ColorView.INITIALS[this.color.ordinal()]
-				+ ColorCode.RESET_COLOR.getColor());
+		if(!color.isNull()) {
+			Console.getInstance()
+					.write(ColorCode.getColorByIndex(this.color.ordinal())
+							+ ColorView.INITIALS[this.color.ordinal()]
+							+ ColorCode.RESET_COLOR.getColor());
+		}
 	}
 
 }
