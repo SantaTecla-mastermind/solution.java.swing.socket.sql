@@ -437,7 +437,6 @@ enum usantatecla.utils.ColorCode{
 
 class usantatecla.utils.Console{
 - {static} console: Console
-- bufferedReader: BufferedReader
 + {static} getInstance(): Console
 + readString(String): String
 + readString(): String

@@ -147,22 +147,24 @@ Mastermind .down.> YesNoDialog
 
 @startuml usantatecla.utils
 
-enum  usantatecla.utils.ColorCode{
-+ {static} RED: ColorCode
-+ {static} BLUE: ColorCode
-+ {static} YELLOW: ColorCode
-+ {static} GREEN: ColorCode
-+ {static} ORANGE: ColorCode
-+ {static} PURPLE: ColorCode
-+ {static} RESET_COLOR: ColorCode
+class BufferedReader as "java.io.BufferedReader"{}
+
+enum usantatecla.utils.ColorCode{
++ RED
++ BLUE
++ YELLOW
++ GREEN
++ ORANGE
++ PURPLE
++ RESET_COLOR
 - color: String
 ~ ColorCode(String)
 + getColor(): String
 + {static} getColorByIndex(int): String
 }
 
-class  usantatecla.utils.Console{
-+ {static} console: Console
+class usantatecla.utils.Console{
+- {static} console: Console
 + {static} getInstance(): Console
 + readString(String): String
 + readString(): String
@@ -174,12 +176,7 @@ class  usantatecla.utils.Console{
 + write(char)
 - writeError(String)
 }
-
-class BufferedReader as "java.io.BufferedReader"
-
-usantatecla.utils.Console *-down-> BufferedReader 
-
-
+usantatecla.utils.Console *-down-> BufferedReader
 
 class  usantatecla.utils.YesNoDialog{
 - {static} AFIRMATIVE: char
@@ -188,9 +185,8 @@ class  usantatecla.utils.YesNoDialog{
 - {static} MESSAGE: String
 + YesNoDialog()
 + read(String): boolean
-+ read(): boolean
 - {static} isAfirmative(char): boolean
 - {static} isNegative(char): boolean
 }
-usantatecla.utils.YesNoDialog .down.> usantatecla.utils.Console
+usantatecla.utils.YesNoDialog ..> usantatecla.utils.Console
 @enduml
