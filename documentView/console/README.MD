@@ -6,10 +6,10 @@ Universo Santa Tecla
 1. [Requisitos 1. Básica](#requisitos-1-básica)  
 2. [Vista de Lógica/Diseño](#vista-de-lógicadiseño)  
 2.1. [Arquitectura](#arquitectura)  
-2.2. [Paquete mastermind](#paquete-mastermind)  
-2.3. [Paquete mastermind.views](#paquete-mastermindviews)  
-2.4. [Paquete mastermind.models](#paquete-mastermindmodels)  
-2.5. [Paquete mastermind.utils](#paquete-mastermindutils)  
+2.2. [Paquete usantatecla.mastermind](#paquete-usantateclamastermind)  
+2.3. [Paquete usantatecla.mastermind.views](#paquete-usantateclamastermindviews)  
+2.4. [Paquete usantatecla.mastermind.models](#paquete-usantateclamastermindmodels)  
+2.5. [Paquete usantatecla.utils](#paquete-usantateclautils)  
 3. [Calidad del Software](#calidad-del-software)  
 3.1. [Diseño](#diseño)  
 3.2. [Rediseño](#rediseño)  
@@ -29,21 +29,21 @@ Universo Santa Tecla
 
 ![Arquitectura](./docs/diagrams/out/arquitectura/arquitectura.svg)
 
-### Paquete *mastermind*
+### Paquete *usantatecla.mastermind*
 
-![Paquete_Mastermind](./docs/diagrams/out/paquetes/mastermind.svg)
+![Paquete_Usantatecla.mastermind](./docs/diagrams/out/paquetes/usantatecla.mastermind.svg)
 
-### Paquete *mastermind.views*
+### Paquete *usantatecla.mastermind.views*
 
-![Paquete_Mastermind.views](./docs/diagrams/out/paquetes/mastermind.views.svg)
+![Paquete_Usantatecla.mastermind.views](./docs/diagrams/out/paquetes/usantatecla.mastermind.views.svg)
 
-### Paquete *mastermind.models*
+### Paquete *usantatecla.mastermind.models*
 
-![Paquete_Mastermind.models](./docs/diagrams/out/paquetes/mastermind.models.svg)
+![Paquete_Usantatecla.mastermind.models](./docs/diagrams/out/paquetes/usantatecla.mastermind.models.svg)
 
-### Paquete *mastermind.utils*
+### Paquete *usantatecla.utils*
 
-![Paquete_Mastermind.utils](./docs/diagrams/out/paquetes/mastermind.utils.svg)
+![Paquete_Usantatecla.utils](./docs/diagrams/out/paquetes/usantatecla.utils.svg)
 
 # Calidad del Software
 
