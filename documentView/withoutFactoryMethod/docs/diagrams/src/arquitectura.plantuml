@@ -1,33 +1,33 @@
 @startuml arquitectura
-package mastermind #DDDDDD { }
-mastermind .down.> mastermind.views.console
-mastermind .down.> mastermind.views.graphics
-mastermind .down.> mastermind.models
+package usantatecla.mastermind #DDDDDD { }
+usantatecla.mastermind .down.> usantatecla.mastermind.views.console
+usantatecla.mastermind .down.> usantatecla.mastermind.views.graphics
+usantatecla.mastermind .down.> usantatecla.mastermind.models
 
-package mastermind.views #DDDDDD { }
-mastermind.views .down.> mastermind.models
+package usantatecla.mastermind.views #DDDDDD { }
+usantatecla.mastermind.views .down.> usantatecla.mastermind.models
 
-package mastermind.models #DDDDDD { }
+package usantatecla.mastermind.models #DDDDDD { }
 package java.util{ }
-mastermind.models .down.> java.util
+usantatecla.mastermind.models .down.> java.util
 
-package mastermind.utils #DDDDDD { }
+package usantatecla.utils #DDDDDD { }
 package java.io{ }
-mastermind.utils .down.> java.io
+usantatecla.utils .down.> java.io
 
-package mastermind.views.console #DDDDDD { }
-mastermind.views.console .down.> mastermind.models
-mastermind.views.console .down.> mastermind.utils
-mastermind.views.console .down.> mastermind.views
+package usantatecla.mastermind.views.console #DDDDDD { }
+usantatecla.mastermind.views.console .down.> usantatecla.mastermind.models
+usantatecla.mastermind.views.console .down.> usantatecla.utils
+usantatecla.mastermind.views.console .down.> usantatecla.mastermind.views
 
-package mastermind.views.graphics #DDDDDD { }
+package usantatecla.mastermind.views.graphics #DDDDDD { }
 package java.awt{ }
 package java.awt.event{ }
 package javax.swing{ }
-mastermind.views.graphics .down.> mastermind.views
-mastermind.views.graphics .down.> mastermind.models
-mastermind.views.graphics .down.> java.awt
-mastermind.views.graphics .down.> java.awt.event
-mastermind.views.graphics .down.> javax.swing
+usantatecla.mastermind.views.graphics .down.> usantatecla.mastermind.views
+usantatecla.mastermind.views.graphics .down.> usantatecla.mastermind.models
+usantatecla.mastermind.views.graphics .down.> java.awt
+usantatecla.mastermind.views.graphics .down.> java.awt.event
+usantatecla.mastermind.views.graphics .down.> javax.swing
 
 @enduml
