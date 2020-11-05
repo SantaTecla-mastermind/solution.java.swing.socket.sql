@@ -30,7 +30,7 @@ class usantatecla.mastermind.views.ColorView{
     ~ {static} getInstance(char): Color
     ~ write()
 }
-usantatecla.mastermind.views.ColorView -up..> ColorCode
+usantatecla.mastermind.views.ColorView -down..> ColorCode
 usantatecla.mastermind.views.ColorView *-down-> Color
 
 class usantatecla.mastermind.views.ErrorView{
@@ -78,7 +78,7 @@ class usantatecla.mastermind.views.ProposalView {
 }
 usantatecla.mastermind.views.ProposalView *-down-> Game
 usantatecla.mastermind.views.ProposalView *-down-> usantatecla.mastermind.views.GameView
-usantatecla.mastermind.views.ProposalView -up..> ProposedCombination
+usantatecla.mastermind.views.ProposalView -down..> ProposedCombination
 usantatecla.mastermind.views.ProposalView ..> usantatecla.mastermind.views.ProposedCombinationView
 
 class usantatecla.mastermind.views.ProposedCombinationView {
@@ -106,7 +106,7 @@ class usantatecla.mastermind.views.ResumeView {
     ~ interact(): boolean
 }
 usantatecla.mastermind.views.ResumeView *-down-> Game
-usantatecla.mastermind.views.ResumeView -up..> YesNoDialog
+usantatecla.mastermind.views.ResumeView -down..> YesNoDialog
 usantatecla.mastermind.views.ResumeView ..> usantatecla.mastermind.views.MessageView
 
 class usantatecla.mastermind.views.SecretCombinationView {

@@ -331,7 +331,7 @@ class usantatecla.mastermind.views.graphics.ResumeDialog {
     ~ ResumeDialog()
     ~ isNewGame() : boolean
 }
-usantatecla.mastermind.views.graphics.ResumeDialog ..> javax.swing
+usantatecla.mastermind.views.graphics.ResumeDialog -down..> javax.swing
 usantatecla.mastermind.views.graphics.ResumeDialog ..> Message
 
 @enduml

@@ -338,7 +338,7 @@ class usantatecla.mastermind.views.graphics.ResumeDialog {
     ~ ResumeDialog()
     ~ isNewGame() : boolean
 }
-usantatecla.mastermind.views.graphics.ResumeDialog ..> javax.swing
+usantatecla.mastermind.views.graphics.ResumeDialog -down..> javax.swing
 usantatecla.mastermind.views.graphics.ResumeDialog ..> Message
 
 @enduml
@@ -394,7 +394,7 @@ class usantatecla.mastermind.models.Result {
 + getWhites(): int
 }
 
-usantatecla.mastermind.models.Result ..> usantatecla.mastermind.models.Combination
+usantatecla.mastermind.models.Result -down..> usantatecla.mastermind.models.Combination
 
 enum usantatecla.mastermind.models.Color {
 + RED
