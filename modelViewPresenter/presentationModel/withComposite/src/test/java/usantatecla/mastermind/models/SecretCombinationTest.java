@@ -1,12 +1,12 @@
 package usantatecla.mastermind.models;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import usantatecla.mastermind.types.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SecretCombinationTest {
     private SecretCombination secretCombination;

@@ -1,19 +1,16 @@
 package usantatecla.mastermind.views;
 
+import org.junit.jupiter.api.Test;
 import usantatecla.utils.*;
 
 import static org.mockito.Mockito.when;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.models.Session;
 
-@RunWith(MockitoJUnitRunner.class)
 public class ProposeCommandTest {
 
     @Mock

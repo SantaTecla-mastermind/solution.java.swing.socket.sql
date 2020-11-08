@@ -1,20 +1,16 @@
 package usantatecla.mastermind.views;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import usantatecla.utils.Console;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import usantatecla.mastermind.controllers.*;
 import usantatecla.mastermind.models.Session;
@@ -22,17 +18,23 @@ import usantatecla.mastermind.models.ProposedCombination.Builder;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.models.ProposedCombination;
 
-@RunWith(MockitoJUnitRunner.class)
 public class ProposedCombinationViewTest {
 
     @Mock
     Console console;
 
     @InjectMocks
-    ProposedCombinationView ProposedCombitanionView = new ProposedCombinationView(new PlayController(new Session()));
+    ProposedCombinationView ProposedCombitanionView;
+
+    @BeforeEach
+    void before() {
+        this.console = mock(Console.class);
+        this.ProposedCombitanionView = new ProposedCombinationView(new PlayController(new Session()));
+    }
 
     @Test
     public void testGivenAProposedCombinationWhenReadThenIsCorrect() {
+        // TODO No funciona el test, se queda cargando infinitamente. ¿Qué hay mal en el mock?
         when(this.console.readString("Propose a combination: ")).thenReturn("ybop");
         List<Color> proposedCombination = this.ProposedCombitanionView.read();
         List<Color> proposedCombinationExpected = ProposedCombination.builder().colors("ybop").build();
