@@ -1,6 +1,6 @@
-@startuml Mastermind
+@startuml TicTacToe
 
-title Secuencia versiones Mastermind
+title Secuencia versiones Tictactoe
 
 state Solucion {
 [*] --> domainModel
@@ -17,7 +17,7 @@ note right: Baile de la Triada.
  note left of domainModel #15D2F3
   Básica
 end note
-domainModel --> documentView
+domainModel --> documentView:Mantenimiento correctivo
 
 state documentView {
 [*] --> console
@@ -39,8 +39,8 @@ end note
   state withFactoryMethod
   note right: Clase Vista abstracta para Open/Close de sus\ntecnologías pero con Modelos de grano grueso\ncon el advenimiento de nueva funcionalidad.
 
-  console --> withoutFactoryMethod
-  withoutFactoryMethod --> withFactoryMethod
+  console --> withoutFactoryMethod:Mantenimiento perfectivo
+  withoutFactoryMethod --> withFactoryMethod:Mantenimiento correctivo
   withFactoryMethod-->[*]
 }
 
