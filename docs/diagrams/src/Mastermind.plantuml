@@ -140,7 +140,7 @@ end note
 state passiveView
 note right: Baile de la Triada.
 
- note left of supervidorController #15D2F3
+ note left of supervisorController #15D2F3
   Básica
 end note
 state supervisorController
