@@ -1,6 +1,8 @@
 package usantatecla.mastermind.views;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockitoAnnotations;
 import usantatecla.utils.*;
 
 import static org.mockito.Mockito.when;
@@ -18,6 +20,11 @@ public class ProposeCommandTest {
 
     @InjectMocks
     ProposeCommand proposeCommand = new ProposeCommand(new PlayController(new Session()));
+
+    @BeforeEach
+    void before() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     public void testProposeCombinationAndVerifyResult(){

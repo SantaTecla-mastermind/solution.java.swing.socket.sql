@@ -2,6 +2,7 @@ package usantatecla.mastermind.views;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockitoAnnotations;
 import usantatecla.utils.Console;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,23 +19,21 @@ import usantatecla.mastermind.models.ProposedCombination.Builder;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.models.ProposedCombination;
 
-public class ProposedCombinationViewTest {
+class ProposedCombinationViewTest {
 
     @Mock
-    Console console;
+    private Console console;
 
     @InjectMocks
-    ProposedCombinationView ProposedCombitanionView;
+    private ProposedCombinationView ProposedCombitanionView = new ProposedCombinationView(new PlayController(new Session()));
 
     @BeforeEach
     void before() {
-        this.console = mock(Console.class);
-        this.ProposedCombitanionView = new ProposedCombinationView(new PlayController(new Session()));
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
     public void testGivenAProposedCombinationWhenReadThenIsCorrect() {
-        // TODO No funciona el test, se queda cargando infinitamente. ¿Qué hay mal en el mock?
         when(this.console.readString("Propose a combination: ")).thenReturn("ybop");
         List<Color> proposedCombination = this.ProposedCombitanionView.read();
         List<Color> proposedCombinationExpected = ProposedCombination.builder().colors("ybop").build();
