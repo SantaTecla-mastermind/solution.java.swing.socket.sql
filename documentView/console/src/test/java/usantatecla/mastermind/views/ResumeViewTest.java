@@ -4,14 +4,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockedStatic;
 import org.mockito.MockitoAnnotations;
 import usantatecla.mastermind.models.Game;
 import usantatecla.utils.Console;
-import usantatecla.utils.YesNoDialog;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
 public class ResumeViewTest {
@@ -32,17 +33,24 @@ public class ResumeViewTest {
 
     @Test
     void testGivenNewGameIsFalseWhenInteractThenIsFalse() {
-        // TODO Al ser ahora la consola un singleton no soy capaz de hacer un mock de consola
-        // TODO Tampoco soy capaz de hacer mocks de clases que se crean al vuelo
-        //when(this.console.readString(anyString())).thenReturn("n");
+        // TODO Descubrir como crear mocks de objetos que se crean al vuelo
+        //when(this.yesNoDialog.read()).thenReturn(true);
 
-        //assertThat(this.resumeView.interact(), is(false));
+        when(this.console.readChar(anyString())).thenReturn('n');
+        try (MockedStatic console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+
+            assertThat(this.resumeView.interact(), is(false));
+        }
     }
 
     @Test
     void testGivenNewGameIsTrueWhenInteractThenIsTrue() {
-        //when(this.yesNoDialog.read()).thenReturn(true);
+        when(this.console.readChar(anyString())).thenReturn('y');
+        try (MockedStatic console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
 
-        //assertThat(this.resumeView.interact(), is(true));
+            assertThat(this.resumeView.interact(), is(true));
+        }
     }
 }
