@@ -2,7 +2,8 @@ package usantatecla.mastermind.views;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.utils.Console;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,6 +20,7 @@ import usantatecla.mastermind.models.ProposedCombination.Builder;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.models.ProposedCombination;
 
+@ExtendWith(MockitoExtension.class)
 class ProposedCombinationViewTest {
 
     @Mock
@@ -26,11 +28,6 @@ class ProposedCombinationViewTest {
 
     @InjectMocks
     private ProposedCombinationView ProposedCombitanionView = new ProposedCombinationView(new PlayController(new Session()));
-
-    @BeforeEach
-    void before() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     public void testGivenAProposedCombinationWhenReadThenIsCorrect() {
