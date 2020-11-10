@@ -37,23 +37,20 @@ public class ResumeViewTest {
     void testGivenNewGameIsFalseWhenInteractThenIsFalse() {
         // TODO Descubrir como crear mocks de objetos que se crean al vuelo
         //when(this.yesNoDialog.read()).thenReturn(true);
-        MockedStatic console = mockStatic(Console.class);
-        console.when(Console::getInstance).thenReturn(this.console);
-
         when(this.console.readChar(anyString())).thenReturn('n');
-
-        assertThat(this.resumeView.interact(), is(false));
+        try(MockedStatic console = mockStatic(Console.class)){
+            console.when(Console::getInstance).thenReturn(this.console);
+            assertThat(this.resumeView.interact(), is(false));
+        }
 
     }
 
     @Test
     void testGivenNewGameIsTrueWhenInteractThenIsTrue() {
-        MockedStatic console = mockStatic(Console.class);
-        console.when(Console::getInstance).thenReturn(this.console);
-
         when(this.console.readChar(anyString())).thenReturn('y');
-
-        assertThat(this.resumeView.interact(), is(true));
-
+        try(MockedStatic console = mockStatic(Console.class)){
+            console.when(Console::getInstance).thenReturn(this.console);
+            assertThat(this.resumeView.interact(), is(true));
+        }
     }
 }

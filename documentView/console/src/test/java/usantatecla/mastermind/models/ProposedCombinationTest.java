@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 public class ProposedCombinationTest {
@@ -29,7 +28,7 @@ public class ProposedCombinationTest {
         ArrayList<Color> colors = new ArrayList<>(Arrays.asList(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW));
         this.proposedCombination.colors = colors;
 
-        assertThat(this.proposedCombination.getColors(), is(equalTo(colors)));
+        assertThat(this.proposedCombination.getColors(), is(colors));
     }
 
     @Test

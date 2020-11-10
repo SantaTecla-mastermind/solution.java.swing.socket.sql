@@ -29,7 +29,7 @@ class GameTest {
 
     @Test
     void testGivenEmptyGameInstanceWhenGetAttemptsThenIs0() {
-        assertThat(this.game.getAttempts(), is(equalTo(0)));
+        assertThat(this.game.getAttempts(), is(0));
     }
 
 
@@ -54,7 +54,7 @@ class GameTest {
         combination.colors = colors;
         this.game.addProposedCombination(combination);
 
-        assertThat(this.game.getProposedCombination(0), is(equalTo(combination)));
+        assertThat(this.game.getProposedCombination(0), is(combination));
     }
 
     @Test
