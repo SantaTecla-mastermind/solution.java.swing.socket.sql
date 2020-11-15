@@ -23,8 +23,7 @@ class GameTest {
     @Test
     void testGivenEmptyGameInstanceWhenIsLooserOrWinnerThenIsFalse() {
         assertThat(this.game.isLooser(), is(equalTo(false)));
-        // TODO isWinner IndexOutOfBounds preguntar reunion 12/11
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> this.game.isWinner());
+        assertThat(this.game.isWinner(), is(equalTo(false)));
     }
 
     @Test
@@ -93,7 +92,7 @@ class GameTest {
 
         assertThat(this.game.getAttempts(), is(0));
         assertThat(this.game.isLooser(), is(false));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> this.game.isWinner());
+        assertThat(this.game.isWinner(), is(false));
         Assertions.assertThrows(IndexOutOfBoundsException.class, () -> this.game.getProposedCombination(0));
         Assertions.assertThrows(IndexOutOfBoundsException.class, () -> this.game.getResult(0));
     }
