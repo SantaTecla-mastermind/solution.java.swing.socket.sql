@@ -30,5 +30,4 @@ public class View {
 			newGame = this.resumeView.interact();
 		} while (newGame);
 	}
-
 }
