@@ -35,8 +35,6 @@ public class ResumeViewTest {
 
     @Test
     void testGivenNewGameIsFalseWhenInteractThenIsFalse() {
-        // TODO Descubrir como crear mocks de objetos que se crean al vuelo
-        //when(this.yesNoDialog.read()).thenReturn(true);
         when(this.console.readChar(anyString())).thenReturn('n');
         try(MockedStatic console = mockStatic(Console.class)){
             console.when(Console::getInstance).thenReturn(this.console);

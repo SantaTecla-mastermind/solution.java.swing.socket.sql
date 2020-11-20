@@ -15,6 +15,10 @@ class GameTest {
 
     private Game game;
 
+    private void setGame(String... proposedCombinationStrings) {
+        this.game = new GameBuilder().proposedCombinations(proposedCombinationStrings).build();
+    }
+
     @BeforeEach
     void before() {
         this.game = new Game();
@@ -34,15 +38,17 @@ class GameTest {
 
     @Test
     void testGivenNineAttemptsGameWhenPlaceAnotherProposedCombinationThenIsLooser() {
-        ArrayList<Color> colors = new ArrayList<>(Arrays.asList(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW));
-        ProposedCombination combination = new ProposedCombination();
-        combination.colors = colors;
-        for(int i = 0; i < 9; i++) {
-            this.game.addProposedCombination(combination);
-        }
+        this.setGame("rbgy", "rbgy", "rbgy",
+                     "rbgy", "rbgy", "rbgy",
+                     "rbgy", "rbgy", "rbgy");
+
         assertThat(this.game.isLooser(), is(false));
 
-        this.game.addProposedCombination(combination);
+        this.setGame("rbgy", "rbgy", "rbgy",
+                    "rbgy", "rbgy", "rbgy",
+                    "rbgy", "rbgy", "rbgy",
+                    "rbgy");
+
         assertThat(this.game.isLooser(), is(true));
     }
 
