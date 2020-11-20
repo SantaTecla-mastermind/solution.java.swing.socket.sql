@@ -21,6 +21,15 @@ public class GameBuilder {
         return this;
     }
 
+    public GameBuilder proposedCombinations(List<String> proposedCombinations) {
+        assert proposedCombinations.size() <= 10;
+        for (String proposedCombination : proposedCombinations) {
+            assert Pattern.matches("[rgbyop]{4}", proposedCombination);
+            this.proposedCombinationsStrings.add(proposedCombination);
+        }
+        return this;
+    }
+
     public Game build() {
         if (this.proposedCombinationsStrings.isEmpty())
             return new Game();
