@@ -2,12 +2,24 @@ package usantatecla.mastermind.views.console;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
+import org.mockito.MockedStatic;
+import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.models.Color;
+import usantatecla.utils.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 public class ColorViewTest {
+
+    @Mock
+    Console console;
 
     ColorView colorView;
 
@@ -35,5 +47,31 @@ public class ColorViewTest {
     @Test
     void testGivenMatchingInitialColorCharacterWhenGetInstanceThenReturnsCorrectColor() {
         assertThat(ColorView.getInstance('g'), is(Color.GREEN));
+    }
+
+    @Test
+    void testGivenAColorWhenWriteThenCapturesCorrectArguments() {
+        this.colorView = new ColorView(Color.GREEN);
+
+        ArgumentCaptor<String> completeColorCode = ArgumentCaptor.forClass(String.class);
+
+        try(MockedStatic console = mockStatic(Console.class)){
+            console.when(Console::getInstance).thenReturn(this.console);
+            this.colorView.write();
+            verify(this.console).write(completeColorCode.capture());
+            assertThat(completeColorCode.getValue(), is("\u001B[32m" + "g" + "\u001B[0m"));
+        }
+    }
+
+    @Test
+    void testGivenNullColorWhenWriteThenNothingHappen() {
+        this.colorView = new ColorView(Color.NULL);
+
+        try(MockedStatic console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            this.colorView.write();
+            verify(this.console, never()).write(anyString());
+        }
+
     }
 }
