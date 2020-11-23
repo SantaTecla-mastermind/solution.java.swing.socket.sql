@@ -1,63 +1,37 @@
 package usantatecla.mastermind.controllers;
 
-import java.util.List;
-
-import usantatecla.mastermind.models.Combination;
 import usantatecla.mastermind.models.Game;
-import usantatecla.mastermind.types.Color;
-import usantatecla.mastermind.types.Error;
+import usantatecla.mastermind.models.ProposedCombination;
+import usantatecla.mastermind.models.Result;
 
 public class ProposalController extends Controller {
 
-	public ProposalController(Game game) {
-		super(game);
-	}
+    public ProposalController(Game game) {
+        super(game);
+    }
 
-	public Error addProposedCombination(List<Color> colors) {
-		Error error = null;
-		if (colors.size() != Combination.getWidth()) {
-			error = Error.WRONG_LENGTH;
-		} else {
-			for (int i = 0; i < colors.size(); i++) {
-				if (colors.get(i) == null) {
-					error = Error.WRONG_CHARACTERS;
-				} else {
-					for (int j = i+1; j < colors.size(); j++) {
-						if (colors.get(i) == colors.get(j)) {
-							error = Error.DUPLICATED;
-						}
-					}
-				}				
-			}
-		}
-		if (error == null){
-			this.game.addProposedCombination(colors);
-		}
-		return error;	
-	}
+    public void addProposedCombination(ProposedCombination proposedCombination) {
+        this.game.addProposedCombination(proposedCombination);
+    }
 
-	public boolean isWinner() {
-		return this.game.isWinner();
-	}
+    public boolean isWinner() {
+        return this.game.isWinner();
+    }
 
-	public boolean isLooser() {
-		return this.game.isLooser();
-	}
-	
-	public int getAttempts() {
-		return this.game.getAttempts();
-	}
+    public boolean isLooser() {
+        return this.game.isLooser();
+    }
 
-	public List<Color> getColors(int position) {
-		return this.game.getColors(position);
-	}
+    public int getAttempts() {
+        return this.game.getAttempts();
+    }
 
-	public int getBlacks(int position) {
-		return this.game.getBlacks(position);
-	}
+    public ProposedCombination getProposedCombination(int position) {
+        return this.game.getProposedCombination(position);
+    }
 
-	public int getWhites(int position) {
-		return this.game.getWhites(position);
-	}
+    public Result getResult(int position) {
+        return this.game.getResult(position);
+    }
 
 }

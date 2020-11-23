@@ -1,23 +1,20 @@
 package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.StartController;
-import usantatecla.mastermind.views.MessageView;
-import usantatecla.utils.WithConsoleView;
+import usantatecla.mastermind.views.Message;
+import usantatecla.utils.Console;
 
-class StartView extends WithConsoleView {
-	
-	private StartController startController;
-	
-	private SecretCombinationView secretCombinationView;
-	
-	StartView (StartController startController){
-		this.startController = startController;
-		this.secretCombinationView = new SecretCombinationView(this.startController);
-	}
+class StartView {
 
-	void interact() {
-		this.console.writeln(MessageView.TITLE.getMessage());
-		this.secretCombinationView.writeln();
-	}
+    private StartController startController;
+
+    StartView(StartController startController) {
+        this.startController = startController;
+    }
+
+    void interact() {
+        Console.getInstance().writeln(Message.TITLE.getMessage());
+        new SecretCombinationView(this.startController).writeln();
+    }
 
 }

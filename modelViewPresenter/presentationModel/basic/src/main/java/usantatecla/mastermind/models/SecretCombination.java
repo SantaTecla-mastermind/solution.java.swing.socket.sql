@@ -3,13 +3,11 @@ package usantatecla.mastermind.models;
 import java.util.Collections;
 import java.util.Random;
 
-import usantatecla.mastermind.types.Color;
-
-class SecretCombination extends Combination {
+public class SecretCombination extends Combination {
 
 	SecretCombination() {
 		for(Color color: Color.values()) {
-			this.colors.add(color);
+			if(!color.isNull()) this.colors.add(color);
 		}
 		Random random = new Random(System.currentTimeMillis());
 		for (int i = 0; i < Color.length() - Combination.getWidth(); i++) {
@@ -20,14 +18,12 @@ class SecretCombination extends Combination {
 
 	Result getResult(ProposedCombination proposedCombination) {
 		int blacks = 0;
+		int whites = 0;
 		for (int i = 0; i < this.colors.size(); i++) {
 			if (proposedCombination.contains(this.colors.get(i), i)) {
 				blacks++;
 			}
-		}
-		int whites = 0;
-		for (Color color : this.colors) {
-			if (proposedCombination.contains(color)) {
+			if (proposedCombination.contains(this.colors.get(i))) {
 				whites++;
 			}
 		}
