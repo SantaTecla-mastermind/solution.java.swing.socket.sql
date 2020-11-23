@@ -1,8 +1,9 @@
 package usantatecla.mastermind.controllers;
 
-import usantatecla.mastermind.models.Game;
-import usantatecla.mastermind.models.ProposedCombination;
-import usantatecla.mastermind.models.Result;
+import usantatecla.mastermind.models.*;
+import usantatecla.mastermind.models.Error;
+
+import java.util.List;
 
 public class ProposalController extends Controller {
 
@@ -10,8 +11,29 @@ public class ProposalController extends Controller {
         super(game);
     }
 
-    public void addProposedCombination(ProposedCombination proposedCombination) {
-        this.game.addProposedCombination(proposedCombination);
+    public Error addProposedCombination(List<Color> colors) {
+        Error error = Error.NULL;
+        if (colors.size() != Combination.getWidth()) {
+            error = Error.WRONG_LENGTH;
+        } else {
+            for (int i = 0; i < colors.size(); i++) {
+                if (colors.get(i).isNull()) {
+                    error = Error.WRONG_CHARACTERS;
+                } else {
+                    for (int j = i+1; j < colors.size(); j++) {
+                        if (colors.get(i).equals(colors.get(j))) {
+                            error = Error.DUPLICATED;
+                        }
+                    }
+                }
+            }
+        }
+        if (error.isNull()) {
+            ProposedCombination proposedCombination = new ProposedCombination();
+            proposedCombination.getColors().addAll(colors);
+            this.game.addProposedCombination(proposedCombination);
+        }
+        return error;
     }
 
     public boolean isWinner() {

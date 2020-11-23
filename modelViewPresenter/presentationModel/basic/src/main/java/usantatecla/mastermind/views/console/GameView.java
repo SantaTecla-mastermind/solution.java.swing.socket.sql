@@ -8,11 +8,15 @@ import usantatecla.utils.Console;
 class GameView {
 
     private ProposalController proposalController;
+    private ProposedCombinationView proposedCombinationView;
     private SecretCombinationView secretCombinationView;
+    private ResultView resultView;
 
-    GameView(ProposalController proposalController) {
+    GameView(ProposalController proposalController, ProposedCombinationView proposedCombinationView) {
         this.proposalController = proposalController;
+        this.proposedCombinationView = proposedCombinationView;
         this.secretCombinationView = new SecretCombinationView(this.proposalController);
+        this.resultView = new ResultView(this.proposalController);
     }
 
     void write() {
@@ -20,8 +24,8 @@ class GameView {
         new AttemptsView(this.proposalController.getAttempts()).writeln();
         this.secretCombinationView.writeln();
         for (int i = 0; i < this.proposalController.getAttempts(); i++) {
-            new ProposedCombinationView(this.proposalController.getProposedCombination(i)).write();
-            new ResultView(this.proposalController.getResult(i)).writeln();
+            this.proposedCombinationView.write(i);
+            this.resultView.writeln(i);
         }
     }
 
