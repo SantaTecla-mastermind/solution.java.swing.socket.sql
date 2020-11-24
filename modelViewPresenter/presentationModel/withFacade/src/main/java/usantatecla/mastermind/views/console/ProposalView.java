@@ -4,12 +4,12 @@ import java.util.List;
 
 import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.views.console.ErrorView;
-import usantatecla.utils.WithConsoleView;
+import usantatecla.utils.Console;
 import usantatecla.mastermind.views.MessageView;
 import usantatecla.mastermind.types.Error;
 import usantatecla.mastermind.types.Color;
 
-class ProposalView extends WithConsoleView {
+class ProposalView extends Console {
 
 	private Logic logic;
 
@@ -31,11 +31,11 @@ class ProposalView extends WithConsoleView {
 		do {
 			List<Color> colors = this.proposedCombinationView.read();
 			error = this.logic.addProposedCombination(colors);
-			if (error != null) {
+			if (error != Error.NULL) {
 				new ErrorView(error).writeln();
 			}
-		} while (error != null);
-		this.console.writeln();
+		} while (error != Error.NULL);
+		Console.getInstance().writeln();
 		new AttemptsView(this.logic).writeln();
 		this.secretCombinationView.writeln();
 		for (int i = 0; i < this.logic.getAttempts(); i++) {
@@ -43,10 +43,10 @@ class ProposalView extends WithConsoleView {
 			this.resultView.writeln(i);
 		}
 		if (this.logic.isWinner()) {
-			this.console.writeln(MessageView.WINNER.getMessage());
+			Console.getInstance().writeln(MessageView.WINNER.getMessage());
 			return true;
 		} else if (this.logic.isLooser()) {
-			this.console.writeln(MessageView.LOOSER.getMessage());
+			Console.getInstance().writeln(MessageView.LOOSER.getMessage());
 			return true;
 		}
 		return false;

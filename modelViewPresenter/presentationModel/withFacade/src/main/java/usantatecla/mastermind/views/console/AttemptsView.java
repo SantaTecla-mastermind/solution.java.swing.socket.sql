@@ -2,9 +2,9 @@ package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.views.MessageView;
-import usantatecla.utils.WithConsoleView;
+import usantatecla.utils.Console;
 
-class AttemptsView extends WithConsoleView {
+class AttemptsView extends Console {
 
 	private Logic logic;
 
@@ -12,8 +12,8 @@ class AttemptsView extends WithConsoleView {
 		this.logic = logic;
 	}
 
-	void writeln() {
-		this.console
+	public void writeln() {
+		Console.getInstance()
 				.writeln(MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + this.logic.getAttempts()));
 	}
 

@@ -1,5 +1,6 @@
 package usantatecla.mastermind.controllers;
 
+import usantatecla.mastermind.models.Combination;
 import usantatecla.mastermind.models.Game;
 
 public abstract class Controller {
@@ -10,8 +11,8 @@ public abstract class Controller {
 		this.game = game;
 	}
 
-	int getWidth() {
-		return this.game.getWidth();
+	public int getWidth() {
+		return Combination.getWidth();
 	}
 
 }

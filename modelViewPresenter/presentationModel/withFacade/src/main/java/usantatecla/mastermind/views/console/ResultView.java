@@ -2,9 +2,9 @@ package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.views.MessageView;
-import usantatecla.utils.WithConsoleView;
+import usantatecla.utils.Console;
 
-class ResultView extends WithConsoleView {
+class ResultView extends Console {
 
 	private Logic logic;
 
@@ -13,7 +13,7 @@ class ResultView extends WithConsoleView {
 	}
 
 	void writeln(int i) {
-		this.console.writeln(MessageView.RESULT.getMessage()
+		Console.getInstance().writeln(MessageView.RESULT.getMessage()
 				.replaceFirst("#blacks", "" + this.logic.getBlacks(i))
 						.replaceFirst("#whites", "" + this.logic.getWhites(i)));
 	}

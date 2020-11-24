@@ -3,64 +3,57 @@ package usantatecla.mastermind.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import usantatecla.mastermind.types.Color;
-
 public class Game {
 
-	private static final int MAX_LONG = 10;
+    private static final int MAX_LONG = 10;
 
-	private SecretCombination secretCombination;
+    private SecretCombination secretCombination;
 
-	private List<ProposedCombination> proposedCombinations;
+    private List<ProposedCombination> proposedCombinations;
 
-	private List<Result> results;
+    private List<Result> results;
 
-	private int attempts;
+    private int attempts;
 
-	public Game() {
-		this.clear();
-	}
+    public Game() {
+        this.reset();
+    }
 
-	public void clear() {
-		this.secretCombination = new SecretCombination();
-		this.proposedCombinations = new ArrayList<ProposedCombination>();
-		this.results = new ArrayList<Result>();
-		this.attempts = 0;
-	}
+    public void reset() {
+        this.secretCombination = new SecretCombination();
+        this.proposedCombinations = new ArrayList<ProposedCombination>();
+        this.results = new ArrayList<Result>();
+        this.attempts = 0;
+    }
 
-	public void addProposedCombination(List<Color> colors) {
-		ProposedCombination proposedCombination = new ProposedCombination(colors);
-		this.proposedCombinations.add(proposedCombination);
-		this.results.add(this.secretCombination.getResult(proposedCombination));
-		this.attempts++;
-	}
+    public void addProposedCombination(ProposedCombination proposedCombination) {
+        this.proposedCombinations.add(proposedCombination);
+        this.results.add(this.secretCombination.getResult(proposedCombination));
+        this.attempts++;
+    }
 
-	public boolean isLooser() {
-		return this.attempts == Game.MAX_LONG;
-	}
-	
-	public boolean isWinner() {
-		return this.results.get(this.attempts-1).isWinner();
-	}
+    public boolean isLooser() {
+        return this.attempts == Game.MAX_LONG;
+    }
 
-	public int getAttempts() {
-		return this.attempts;
-	}
+    public boolean isWinner() {
+        return this.attempts > 0 && this.results.get(this.attempts - 1).isWinner();
+    }
 
-	public List<Color> getColors(int position) {
-		return this.proposedCombinations.get(position).colors;
-	}
+    public int getAttempts() {
+        return this.attempts;
+    }
 
-	public int getBlacks(int position) {
-		return this.results.get(position).getBlacks();
-	}
+    public ProposedCombination getProposedCombination(int position) {
+        assert position < this.proposedCombinations.size();
 
-	public int getWhites(int position) {
-		return this.results.get(position).getWhites();
-	}
+        return this.proposedCombinations.get(position);
+    }
 
-	public int getWidth() {
-		return Combination.getWidth();
-	}
+    public Result getResult(int position) {
+        assert position < this.results.size();
+
+        return this.results.get(position);
+    }
 
 }

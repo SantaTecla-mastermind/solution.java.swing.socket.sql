@@ -9,7 +9,7 @@ public class ResumeController extends Controller {
 	}
 
 	public void clearGame() {
-		this.game.clear();
+		this.game.reset();
 	}
 
 }

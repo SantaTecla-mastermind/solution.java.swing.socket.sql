@@ -2,9 +2,9 @@ package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.views.MessageView;
-import usantatecla.utils.WithConsoleView;
+import usantatecla.utils.Console;
 
-class StartView extends WithConsoleView {
+class StartView extends Console {
 	
 	private Logic logic;
 	
@@ -16,7 +16,7 @@ class StartView extends WithConsoleView {
 	}
 
 	void interact() {
-		this.console.writeln(MessageView.TITLE.getMessage());
+		Console.getInstance().writeln(MessageView.TITLE.getMessage());
 		this.secretCombinationView.writeln();
 	}
 

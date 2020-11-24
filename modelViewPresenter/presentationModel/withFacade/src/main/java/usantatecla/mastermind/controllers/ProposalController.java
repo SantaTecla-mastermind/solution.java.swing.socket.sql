@@ -4,6 +4,7 @@ import java.util.List;
 
 import usantatecla.mastermind.models.Combination;
 import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 
@@ -14,7 +15,7 @@ public class ProposalController extends Controller {
 	}
 
 	public Error addProposedCombination(List<Color> colors) {
-		Error error = null;
+		Error error = Error.NULL;
 		if (colors.size() != Combination.getWidth()) {
 			error = Error.WRONG_LENGTH;
 		} else {
@@ -30,8 +31,10 @@ public class ProposalController extends Controller {
 				}				
 			}
 		}
-		if (error == null){
-			this.game.addProposedCombination(colors);
+		if (error.isNull()){
+			ProposedCombination proposedCombination = new ProposedCombination();
+			proposedCombination.getColors().addAll(colors);
+			this.game.addProposedCombination(proposedCombination);
 		}
 		return error;	
 	}
@@ -49,15 +52,15 @@ public class ProposalController extends Controller {
 	}
 
 	public List<Color> getColors(int position) {
-		return this.game.getColors(position);
+		return this.game.getProposedCombination(position).getColors();
 	}
 
 	public int getBlacks(int position) {
-		return this.game.getBlacks(position);
+		return this.game.getResult(position).getBlacks();
 	}
 
 	public int getWhites(int position) {
-		return this.game.getWhites(position);
+		return this.game.getResult(position).getWhites();
 	}
 
 }
