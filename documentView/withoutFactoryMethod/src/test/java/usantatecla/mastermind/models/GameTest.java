@@ -77,7 +77,7 @@ class GameTest {
         assertThat(this.game.getAttempts(), is(0));
         assertThat(this.game.isLooser(), is(false));
         // assertThat(this.game.isWinner(), is(false));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> this.game.getProposedCombination(0));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> this.game.getResult(0));
+        Assertions.assertThrows(AssertionError.class, () -> this.game.getProposedCombination(0));
+        Assertions.assertThrows(AssertionError.class, () -> this.game.getResult(0));
     }
 }
