@@ -3,6 +3,8 @@ package "  "  as mastermind {
 }
 package "  "  as mastermind.models {
 }
+package "  "  as mastermind.controllers{
+}
 package "  "  as mastermind.views {
 }
 package "  "  as mastermind.views.console {
@@ -20,6 +22,7 @@ package "  "  as java.util {
 
 jar *--> mastermind
 jar *--> mastermind.models
+jar *--> mastermind.controllers
 jar *--> mastermind.views
 jar *--> mastermind.views.console
 jar *--> mastermind.views.graphics
