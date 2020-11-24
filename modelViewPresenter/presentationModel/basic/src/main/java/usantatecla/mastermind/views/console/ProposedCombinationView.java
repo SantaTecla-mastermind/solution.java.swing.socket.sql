@@ -2,9 +2,6 @@ package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.ProposalController;
 import usantatecla.mastermind.models.Color;
-import usantatecla.mastermind.models.Combination;
-import usantatecla.mastermind.models.Error;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.Console;
 
@@ -28,7 +25,7 @@ class ProposedCombinationView {
 
     List<Color> read() {
         String characters = Console.getInstance().readString(Message.PROPOSED_COMBINATION.getMessage());
-        List<Color> colors = new ArrayList<Color>();
+        List<Color> colors = new ArrayList<>();
         for (int i = 0; i < characters.length(); i++) {
             colors.add(ColorView.getInstance(characters.charAt(i)));
         }
