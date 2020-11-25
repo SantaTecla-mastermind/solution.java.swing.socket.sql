@@ -11,15 +11,15 @@ public enum ColorCode {
 
     private String color;
 
-    ColorCode(String color){
+    ColorCode(String color) {
         this.color = color;
+    }
+
+    public static String getColorByIndex(int index) {
+        return ColorCode.values()[index].getColor();
     }
 
     public String getColor() {
         return color;
-    }
-
-    public static String getColorByIndex(int index){
-        return ColorCode.values()[index].getColor();
     }
 }

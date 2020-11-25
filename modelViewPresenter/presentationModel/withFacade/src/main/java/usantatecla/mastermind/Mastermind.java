@@ -5,19 +5,19 @@ import usantatecla.mastermind.views.View;
 
 public abstract class Mastermind {
 
-	private Logic logic;
-	
-	private View view;
+    private Logic logic;
 
-	protected Mastermind() {
-		this.logic = new Logic();
-		this.view = this.createView(this.logic);
-	}
+    private View view;
 
-	protected abstract View createView(Logic logic);
+    protected Mastermind() {
+        this.logic = new Logic();
+        this.view = this.createView(this.logic);
+    }
 
-	protected void play() {
-		this.view.interact();
-	}
+    protected abstract View createView(Logic logic);
+
+    protected void play() {
+        this.view.interact();
+    }
 
 }

@@ -1,0 +1,54 @@
+@startuml desarrollo_implementacion
+package "  "  as mastermind {
+}
+package "  "  as mastermind.controllers {
+}
+package "  "  as mastermind.models {
+}
+package "  "  as mastermind.views {
+}
+package "  "  as mastermind.views.console {
+}
+package "  "  as mastermind.views.graphics {
+}
+package "  "  as mastermind.utils {
+}
+package "  "  as java.io {
+}
+package "  "  as java.util {
+}
+package "  "  as java.awt {
+}
+package "  "  as java.awt.event {
+}
+package "  "  as javax.swing {
+}
+
+[mastermind.jar] as jar
+
+jar *--> mastermind
+jar *--> mastermind.controllers
+jar *--> mastermind.models
+jar *--> mastermind.views
+jar *--> mastermind.views.console
+jar *--> mastermind.views.graphics
+jar *--> mastermind.utils
+jar *--> java.io
+jar *--> java.util
+jar *--> java.awt
+jar *--> java.awt.event
+jar *--> javax.swing
+@enduml
+
+@startuml despliegue_fisica
+node node #DDDDDD [
+<b>Personal Computer</b>
+----
+memory : xxx Mb
+cpu : xxx GHz
+]
+
+[ masterming.jar ] as component
+
+node *--> component
+@enduml

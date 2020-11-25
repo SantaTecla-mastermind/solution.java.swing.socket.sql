@@ -6,16 +6,16 @@ import usantatecla.utils.Console;
 
 class ResultView extends Console {
 
-	private Logic logic;
+    private Logic logic;
 
-	ResultView(Logic logic) {
-		this.logic = logic;
-	}
+    ResultView(Logic logic) {
+        this.logic = logic;
+    }
 
-	void writeln(int i) {
-		Console.getInstance().writeln(MessageView.RESULT.getMessage()
-				.replaceFirst("#blacks", "" + this.logic.getBlacks(i))
-						.replaceFirst("#whites", "" + this.logic.getWhites(i)));
-	}
+    void writeln(int i) {
+        Console.getInstance().writeln(MessageView.RESULT.getMessage()
+                .replaceFirst("#blacks", "" + this.logic.getBlacks(i))
+                .replaceFirst("#whites", "" + this.logic.getWhites(i)));
+    }
 
 }
