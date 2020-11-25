@@ -8,7 +8,6 @@ import usantatecla.utils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO Adaptar a la arquitectura mvp.pm (usar presentador y no modelo)
 class ProposedCombinationView {
 
     private ProposalController proposalController;
