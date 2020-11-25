@@ -187,123 +187,120 @@ mastermind.controllers.Controller <|-down- mastermind.controllers.StartControlle
 @enduml
 
 @startuml usantatecla.mastermind.models
-class  mastermind.models.Color{
-+ {static} RED: Color
-+ {static} BLUE: Color
-+ {static} YELLOW: Color
-+ {static} GREEN: Color
-+ {static} ORANGE: Color
-+ {static} PURPLE: Color
-- Color()
-+ {static} valueOf(String): Color
-~ {static} length(): int
-~ {static} getInstance(int): Color
-}
-
-class  mastermind.models.Combination{
+abstract class usantatecla.mastermind.models.Combination {
 - {static} WIDTH: int
-# colors: List<Color>
 # Combination()
 + {static} getWidth(): int
 }
-mastermind.models.Combination *-down-> java.util.List
-mastermind.models.Combination *-down-> mastermind.models.Color
+usantatecla.mastermind.models.Combination *-down-> "*" usantatecla.mastermind.models.Color
 
-class  mastermind.models.Error{
-+ {static} DUPLICATED: Error
-+ {static} WRONG_CHARACTERS: Error
-+ {static} WRONG_LENGTH: Error
-- Error()
-+ {static} valueOf(String): Error
-}
-
-class  mastermind.models.Game{
+class usantatecla.mastermind.models.Game {
 - {static} MAX_LONG: int
-- secretCombination: SecretCombination
-- proposedCombinations: List<ProposedCombination>
-- results: List<Result>
-- turn: int
+- attempts: int
 + Game()
-+ clear(): void
-+ proposeCombination(ProposedCombination): void
-+ getTurn(): int
++ clear()
++ addProposeCombination(ProposedCombination)
 + isLooser(): boolean
-+ getWidth(): int
 + isWinner(): boolean
-+ getCodes(): int[][][]
++ getAttempts(): int
++ getProposedCombination(int): ProposedCombination
++ getResult(int): Result
 }
-mastermind.models.Game *-down-> java.util.List
-mastermind.models.Game *-down-> mastermind.models.SecretCombination
-mastermind.models.Game *-down-> mastermind.models.Result
-mastermind.models.Game --> mastermind.models.ProposedCombination
+usantatecla.mastermind.models.Game *-down-> usantatecla.mastermind.models.SecretCombination
+usantatecla.mastermind.models.Game *-down-> "0..*" usantatecla.mastermind.models.Result
+usantatecla.mastermind.models.Game *-down-> "0..*" usantatecla.mastermind.models.ProposedCombination
 
-class  mastermind.models.ProposedCombination{
+class usantatecla.mastermind.models.ProposedCombination {
 + ProposedCombination()
-~ contains(Color): boolean
 ~ contains(Color, int): boolean
-+ {static} getInstance(int[]): ProposedCombination
-+ {static} isValid(int[]): Error
-~ getCodes(): int[]
+~ contains(Color): boolean
++ getColors(): List<Color>
 }
-mastermind.models.Combination <|-down- mastermind.models.ProposedCombination
-mastermind.models.ProposedCombination ..> mastermind.models.Error
+usantatecla.mastermind.models.Combination <|-down- usantatecla.mastermind.models.ProposedCombination
+usantatecla.mastermind.models.ProposedCombination ..> usantatecla.mastermind.models.Color
 
-class  mastermind.models.Result{
+class usantatecla.mastermind.models.SecretCombination {
+~ SecretCombination()
+~ getResult(ProposedCombination): Result
+}
+usantatecla.mastermind.models.Combination <|-down- usantatecla.mastermind.models.SecretCombination
+usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.models.Result
+usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.models.ProposedCombination
+usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.models.Color
+
+class usantatecla.mastermind.models.Result {
 - blacks: int
 - whites: int
 ~ Result(int, int)
 ~ isWinner(): boolean
-~ getCodes(): int[]
++ getBlacks(): int
++ getWhites(): int
 }
 
-class  mastermind.models.SecretCombination{
-~ SecretCombination()
-~ getResult(ProposedCombination): Result
+usantatecla.mastermind.models.Result -down..> usantatecla.mastermind.models.Combination
+
+enum usantatecla.mastermind.models.Color {
++ RED
++ BLUE
++ YELLOW
++ GREEN
++ ORANGE
++ PURPLE
++ NULL
+~ {static} length(): int
++ isNull(): boolean
 }
-mastermind.models.Combination <|-down- mastermind.models.SecretCombination
-mastermind.models.SecretCombination ..> mastermind.models.Result
-mastermind.models.SecretCombination ..> mastermind.models.ProposedCombination
+
+enum usantatecla.mastermind.models.Error {
++ DUPLICATED
++ WRONG_CHARACTERS
++ WRONG_LENGTH
++ NULL
++ isNull(): boolean
+}
 @enduml
 
 @startuml usantatecla.utils
+class BufferedReader as "java.io.BufferedReader"{}
 
-class  mastermind.utils.ClosedInterval{
-- min: int
-- max: int
-+ ClosedInterval(int, int)
-+ includes(int): boolean
+enum usantatecla.utils.ColorCode{
++ RED
++ BLUE
++ YELLOW
++ GREEN
++ ORANGE
++ PURPLE
++ RESET_COLOR
+- color: String
+~ ColorCode(String)
++ getColor(): String
++ {static} getColorByIndex(int): String
 }
 
-class  mastermind.utils.Console{
-- bufferedReader: BufferedReader
-+ Console()
-+ write(char): void
-+ write(String): void
+class usantatecla.utils.Console{
+- {static} console: Console
++ {static} getInstance(): Console
++ readString(String): String
++ readString(): String
 + readInt(String): int
 + readChar(String): char
-+ readString(String): String
-+ writeln(int): void
-+ writeln(String): void
-+ writeln(): void
-- writeError(String): void
++ writeln()
++ write(String)
++ writeln(String)
++ write(char)
+- writeError(String)
 }
-mastermind.utils.Console *-down-> java.io.BufferedReader
+usantatecla.utils.Console *-down-> BufferedReader
 
-class  mastermind.utils.WithConsoleView{
-# console: Console
-# WithConsoleView()
-}
-mastermind.utils.WithConsoleView *-down-> mastermind.utils.Console
-
-class  mastermind.utils.YesNoDialog{
+class  usantatecla.utils.YesNoDialog{
 - {static} AFIRMATIVE: char
 - {static} NEGATIVE: char
 - {static} QUESTION: String
 - {static} MESSAGE: String
 + YesNoDialog()
 + read(String): boolean
-- {static} isNegative(char): boolean
 - {static} isAfirmative(char): boolean
+- {static} isNegative(char): boolean
 }
-mastermind.utils.WithConsoleView <|-down- mastermind.utils.YesNoDialog
+usantatecla.utils.YesNoDialog ..> usantatecla.utils.Console
 @enduml
