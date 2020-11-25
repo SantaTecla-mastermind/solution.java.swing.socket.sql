@@ -10,10 +10,9 @@ version 0.0.1
     2.2. [Paquete mastermind](#paquete-mastermind)  
     2.3. [Paquete mastermind.views](#paquete-mastermind-viewa)  
     2.4. [Paquete mastermind.views.console](#paquete-mastermind-views-console)  
-    2.5. [Paquete mastermind.views.graphics](#paquete-mastermind-views-graphics)  
-    2.6. [Paquete mastermind.controllers](#paquete-mastermind-controllers)  
-    2.7. [Paquete mastermind.models](#paquete-mastermind-models)  
-    2.8. [Paquete mastermind.utils](#paquete-mastermind-utils)  
+    2.5. [Paquete mastermind.controllers](#paquete-mastermind-controllers)  
+    2.6. [Paquete mastermind.models](#paquete-mastermind-models)  
+    2.7. [Paquete mastermind.utils](#paquete-mastermind-utils)  
 3. [Calidad del Software](#calidad-del-software)  
     3.1. [Diseño](#diseño)  
     3.2. [Rediseño](#rediseño) 
@@ -38,19 +37,16 @@ version 0.0.1
 ![Texto alternativo](./docs/diagrams/out/paquetes/mastermind.svg)
 
 ### Paquete *mastermind.views*<a name="paquete-mastermind-viewa"></a>
-![Texto alternativo](./docs/diagrams/out/paquetes/mastermind.svg)
+![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.mastermind.views.svg)
 
 ### Paquete *mastermind.views.console*<a name="paquete-mastermind-views-console"></a>
-![Texto alternativo](./docs/diagrams/out/paquetes/mastermind.svg)
-
-### Paquete *mastermind.views.graphics*<a name="paquete-mastermind-views-graphics"></a>
-![Texto alternativo](./docs/diagrams/out/paquetes/mastermind.svg)
+![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.mastermind.console.svg)
 
 ### Paquete *mastermind.controllers*<a name="paquete-mastermind-controllers"></a>
-![Texto alternativo](./docs/diagrams/out/paquetes/mastermind.svg)
+![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.mastermind.controllers.svg)
 
 ### Paquete *mastermind.models*<a name="paquete-mastermind-models"></a>
-![Texto alternativo](./docs/diagrams/out/paquetes/mastermind.svg)
+![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.mastermind.models.svg)
 
 ### Paquete *utils*<a name="paquete-mastermind-utils"></a>
 ![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.utils.svg)
