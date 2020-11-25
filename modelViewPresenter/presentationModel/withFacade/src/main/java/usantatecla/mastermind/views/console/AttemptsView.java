@@ -6,15 +6,15 @@ import usantatecla.utils.Console;
 
 class AttemptsView extends Console {
 
-	private Logic logic;
+    private Logic logic;
 
-	AttemptsView(Logic logic) {
-		this.logic = logic;
-	}
+    AttemptsView(Logic logic) {
+        this.logic = logic;
+    }
 
-	public void writeln() {
-		Console.getInstance()
-				.writeln(MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + this.logic.getAttempts()));
-	}
+    public void writeln() {
+        Console.getInstance()
+                .writeln(MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + this.logic.getAttempts()));
+    }
 
 }
