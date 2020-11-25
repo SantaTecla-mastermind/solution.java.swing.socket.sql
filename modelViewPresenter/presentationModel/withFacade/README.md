@@ -4,7 +4,7 @@ Santa Tecla
 version 0.0.1  
 
 **Índice**
-1. [Requisitos 2. Gráficos](#requisitos-1-básica)  
+1. [Requisitos 2. Gráficos](#requisitos-2-graficos)  
 2. [Vista de Lógica/Diseño](#vista-de-lógicadiseño)  
     2.1. [Arquitectura](#arquitectura)  
     2.2. [Paquete mastermind](#paquete-mastermind)  
@@ -20,7 +20,7 @@ version 0.0.1
 5. [Vista de Despliegue/Física](#vista-de-desplieguefísica)
 6. [Vista de Procesos](#vista-de-procesos)
 
-## Requisitos 1. *Básica*<a name="requisitos-1-básica"></a>
+## Requisitos 2. *Gráficos*<a name="requisitos-2-graficos"></a>
 
 | [Youtube](https://www.youtube.com/watch?v=2-hTeg2M6GQ)  <br/>* _Funcionalidad: **Básica**_<br/>  * _Interfaz: **Gráfica** y **Texto**_<br/>  * _Distribución: **Stand Alone**_<br/>  * _Persistencia: **No**_<br/> | ![Texto alternativo](./docs/images/mastermind.jpg) | 
 | :------- | :------: |
