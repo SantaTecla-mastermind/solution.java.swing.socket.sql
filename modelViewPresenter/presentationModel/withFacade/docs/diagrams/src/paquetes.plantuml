@@ -1,0 +1,192 @@
+@startuml mastermind
+package usantatecla.mastermind {
+class Mastermind {
+	+ play()
+	- playGame()
+	- isResumedGame(): boolean 
+	+ {static} main(String[])
+}
+
+
+class Board {
+  - MAX_ATTEMPS: {static} int 
+  - attempts: int 
+  ~ Board()
+  + writeln()
+  + add(ProposedCombination)
+  + isFinished(): boolean 
+  + isWinner(): boolean 
+  - isLooser(): boolean 
+}
+
+abstract class Combination {
+	# colors: List<Color> 
+	# Combination ()
+}
+
+class SecretCombination {
+	~ SecretCombination()
+	~ getResult(ProposedCombination): Result 
+	~ writeln()
+}
+
+class ProposedCombination {
+	~write()
+	~read()
+	- checkError(String): Error 
+	~ contains(Color, int): boolean 
+	~ contains(Color): boolean 
+}
+
+class Result{
+	+ WIDTH: {static} int 
+	- blacks: int 
+	- whites: int 
+	~ Result(int, int)
+	~ isWinner(): boolean 
+	~ writeln()
+}
+
+enum Color {
+	+ RED
+	+ BLUE
+	+ YELLOW
+	+ GREEN
+	+ ORANGE
+	+ PURPLE
+	+ NULL_COLOR
+	- initial: String 
+	- RESET_COLOR: {static} String 
+	- Color()
+	- Color(char)
+	~ {static} getInitials(): String 
+	~ {static} getInstance(char): Color
+	~ {static} length(): int 
+	~ {static} get(int): Color 
+	~ write()
+	~ isNull(): boolean 
+}
+
+enum Error {
+	+ DUPLICATED
+	+ WRONG_CHARACTERS
+	+ WRONG_LENGTH
+	+ NULL_ERROR
+	- message: String
+	- Error()
+	- Error(String)
+	~ writeln()
+	+ isNull(): boolean 
+}
+
+enum Message {
+	+ ATTEMPTS
+	+ SECRET_COMBINATION
+	+ RESUME
+	+ RESULT
+	+ PROPOSED_COMBINATION
+	+ TITLE
+	+ WINNER
+	+ LOOSER
+	- message: String 
+	- Message(String)
+	~ write()
+	~ writeln()
+	~ writeln(int)
+	~ writeln(int, int)
+}
+
+
+
+Mastermind *-down-> Board 
+Mastermind .down.> ProposedCombination
+Board *-down-> SecretCombination 
+Board o-down-> "0..10" ProposedCombination 
+Board o-down-> "0..10" Result 
+
+Combination *-down-> "4" Color 
+Combination <|-down- SecretCombination
+Combination <|-down- ProposedCombination
+ProposedCombination .down.> Error
+
+
+Mastermind .down.> Message
+Board .down.> Message
+ProposedCombination .down.> Message
+Result .down.> Message
+
+}
+
+
+
+class Console as "usantatecla.utils.Console" {
+
+
+}
+
+class YesNoDialog as "usantatecla.utils.YesNoDialog" {
+
+}
+
+enum ColorCode as "usantatecla.utils.ColorCode" {
+
+}
+
+
+
+
+Board .down.> Console
+Color .down.> Console
+Color .down.> ColorCode 
+Error .down.> Console
+Message .down.> Console
+ProposedCombination .down.> Console
+SecretCombination .down.> Console
+Mastermind .down.> YesNoDialog
+@enduml
+
+@startuml usantatecla.utils
+
+class BufferedReader as "java.io.BufferedReader"{}
+
+enum usantatecla.utils.ColorCode{
++ RED
++ BLUE
++ YELLOW
++ GREEN
++ ORANGE
++ PURPLE
++ RESET_COLOR
+- color: String
+~ ColorCode(String)
++ getColor(): String
++ {static} getColorByIndex(int): String
+}
+
+class usantatecla.utils.Console{
+- {static} console: Console
++ {static} getInstance(): Console
++ readString(String): String
++ readString(): String
++ readInt(String): int
++ readChar(String): char
++ writeln()
++ write(String)
++ writeln(String)
++ write(char)
+- writeError(String)
+}
+usantatecla.utils.Console *-down-> BufferedReader
+
+class  usantatecla.utils.YesNoDialog{
+- {static} AFIRMATIVE: char
+- {static} NEGATIVE: char
+- {static} QUESTION: String
+- {static} MESSAGE: String
++ YesNoDialog()
++ read(String): boolean
+- {static} isAfirmative(char): boolean
+- {static} isNegative(char): boolean
+}
+usantatecla.utils.YesNoDialog ..> usantatecla.utils.Console
+@enduml
