@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.mastermind.models.Color;
+import usantatecla.mastermind.types.Color;
 
 public abstract class ColorView {
 

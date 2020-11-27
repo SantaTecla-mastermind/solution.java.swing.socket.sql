@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views.console;
 
-import usantatecla.mastermind.models.Error;
+import usantatecla.mastermind.types.Error;
 import usantatecla.utils.Console;
 
 class ErrorView extends usantatecla.mastermind.views.ErrorView {

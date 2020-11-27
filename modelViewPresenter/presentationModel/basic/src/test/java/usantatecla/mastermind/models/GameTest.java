@@ -2,6 +2,7 @@ package usantatecla.mastermind.models;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import usantatecla.mastermind.types.Color;
 
 import java.util.ArrayList;
 import java.util.Arrays;

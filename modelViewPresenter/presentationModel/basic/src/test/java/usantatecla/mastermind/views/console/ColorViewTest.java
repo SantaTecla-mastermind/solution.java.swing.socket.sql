@@ -7,7 +7,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.models.Color;
+import usantatecla.mastermind.types.Color;
 import usantatecla.utils.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;

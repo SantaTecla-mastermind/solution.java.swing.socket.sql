@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.mastermind.models.Error;
+import usantatecla.mastermind.types.Error;
 
 public abstract class ErrorView {
 

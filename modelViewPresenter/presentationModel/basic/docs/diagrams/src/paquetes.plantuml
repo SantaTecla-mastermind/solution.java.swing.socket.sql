@@ -221,8 +221,8 @@ usantatecla.mastermind.views.console.ErrorView ..> usantatecla.mastermind.views.
 
 abstract class Combination as "usantatecla.mastermind.models.Combination"
 class Game as "usantatecla.mastermind.models.Game"
-class Error as "usantatecla.mastermind.models.Error"
-class Color as "usantatecla.mastermind.models.Color"
+class Error as "usantatecla.mastermind.types.Error"
+class Color as "usantatecla.mastermind.types.Color"
 class ProposedCombination as "usantatecla.mastermind.models.ProposedCombination"
 class Result as "usantatecla.mastermind.models.Result"
 
@@ -267,7 +267,7 @@ usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.co
 
 @startuml usantatecla.mastermind.models
 
-enum usantatecla.mastermind.models.Color {
+enum usantatecla.mastermind.types.Color {
     + RED
     + BLUE
     + YELLOW
@@ -284,9 +284,9 @@ abstract class usantatecla.mastermind.models.Combination {
     # Combination()
     + {static} getWidth(): int
 }
-usantatecla.mastermind.models.Combination *-down-> "*" usantatecla.mastermind.models.Color
+usantatecla.mastermind.models.Combination *-down-> "*" usantatecla.mastermind.types.Color
 
-enum usantatecla.mastermind.models.Error {
+enum usantatecla.mastermind.types.Error {
     + DUPLICATED
     + WRONG_CHARACTERS
     + WRONG_LENGTH
@@ -316,7 +316,7 @@ class usantatecla.mastermind.models.ProposedCombination {
     + getColors(): List<Color>
 }
 usantatecla.mastermind.models.ProposedCombination -up-|> usantatecla.mastermind.models.Combination
-usantatecla.mastermind.models.ProposedCombination ..> usantatecla.mastermind.models.Color
+usantatecla.mastermind.models.ProposedCombination ..> usantatecla.mastermind.types.Color
 
 class usantatecla.mastermind.models.Result {
     - blacks: int
@@ -336,7 +336,7 @@ class usantatecla.mastermind.models.SecretCombination {
 usantatecla.mastermind.models.SecretCombination -up-|> usantatecla.mastermind.models.Combination
 usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.models.Result
 usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.models.ProposedCombination
-usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.models.Color
+usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.types.Color
 
 @enduml
 

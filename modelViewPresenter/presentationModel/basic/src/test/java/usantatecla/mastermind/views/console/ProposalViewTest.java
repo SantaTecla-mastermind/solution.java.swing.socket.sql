@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.ProposalController;
-import usantatecla.mastermind.models.Error;
+import usantatecla.mastermind.types.Error;
 import usantatecla.utils.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;

@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views.console;
 
-import usantatecla.mastermind.models.Color;
+import usantatecla.mastermind.types.Color;
 import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
 
