@@ -44,11 +44,9 @@ jar *--> javax.swing
 node node #DDDDDD [
 <b>Personal Computer</b>
 ----
-memory : xxx Mb
-cpu : xxx GHz
 ]
 
-[ masterming.jar ] as component
+[ mastermind.jar ] as component
 
 node *--> component
 @enduml
