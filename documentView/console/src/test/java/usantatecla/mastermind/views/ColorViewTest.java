@@ -2,7 +2,6 @@ package usantatecla.mastermind.views;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -24,7 +23,7 @@ public class ColorViewTest {
     @Test
     void testGivenStaticMethodAllInitialsWhenCallingThatMethodThenReturnsCorrectString() {
         String reset_color = "\u001B[0m";
-        assertThat(ColorView.allInitials(), is("\u001B[31mr" + reset_color +
+        assertThat(this.colorView.allInitials(), is("\u001B[31mr" + reset_color +
                 "\u001B[34mb" + reset_color +
                 "\u001B[33my" + reset_color +
                 "\u001B[32mg" + reset_color +
@@ -44,27 +43,21 @@ public class ColorViewTest {
 
     @Test
     void testGivenAColorWhenWriteThenCapturesCorrectArguments() {
-        this.colorView = new ColorView(Color.GREEN);
-
-        ArgumentCaptor<String> completeColorCode = ArgumentCaptor.forClass(String.class);
-
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic console = mockStatic(Console.class)) {
+            this.colorView = new ColorView(Color.GREEN);
             console.when(Console::getInstance).thenReturn(this.console);
             this.colorView.write();
-            verify(this.console).write(completeColorCode.capture());
-            assertThat(completeColorCode.getValue(), is("\u001B[32m" + "g" + "\u001B[0m"));
+            verify(this.console).write("\u001B[32m" + "g" + "\u001B[0m");
         }
     }
 
     @Test
     void testGivenNullColorWhenWriteThenNothingHappen() {
-        this.colorView = new ColorView(Color.NULL);
-
-        try(MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic console = mockStatic(Console.class)) {
+            this.colorView = new ColorView(Color.NULL);
             console.when(Console::getInstance).thenReturn(this.console);
             this.colorView.write();
             verify(this.console, never()).write(anyString());
         }
-
     }
 }

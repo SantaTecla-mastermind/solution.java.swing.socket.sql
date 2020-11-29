@@ -33,16 +33,13 @@ public class ResultViewTest {
     @Test
     void testGivenResultViewWhenWritelnThenCorrectMessageIsDisplayed() {
         try(MockedStatic console = mockStatic(Console.class)) {
-            console.when(Console::getInstance).thenReturn(this.console);
             ArgumentCaptor<String> resultCaptor = ArgumentCaptor.forClass(String.class);
             when(this.proposalController.getResult(anyInt())).thenReturn(this.result);
             when(this.result.getBlacks()).thenReturn(2);
             when(this.result.getWhites()).thenReturn(1);
-
+            console.when(Console::getInstance).thenReturn(this.console);
             this.resultView.writeln(0);
-
             verify(this.console).writeln(resultCaptor.capture());
-
             assertThat(resultCaptor.getValue(), is(" --> 2 blacks and 1 whites"));
         }
     }

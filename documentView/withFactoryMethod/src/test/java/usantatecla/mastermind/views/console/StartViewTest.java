@@ -8,6 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.utils.Console;
 
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 public class StartViewTest {
@@ -19,14 +20,12 @@ public class StartViewTest {
 
     @Test
     void testGivenStartViewWhenInteractThenCorrectMessagesAreCaptured() {
-        try(MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             startView.interact();
-
             verify(this.console).writeln("----- MASTERMIND -----");
             verify(this.console).writeln();
             verify(this.console, times(4)).write("*");
-
         }
     }
 }

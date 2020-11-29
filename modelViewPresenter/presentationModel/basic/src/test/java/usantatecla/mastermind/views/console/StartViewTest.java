@@ -25,11 +25,10 @@ public class StartViewTest {
 
     @Test
     void testGivenStartViewWhenInteractThenCorrectMessagesAreCaptured() {
-        try(MockedStatic console = mockStatic(Console.class)) {
-            console.when(Console::getInstance).thenReturn(this.console);
+        try (MockedStatic console = mockStatic(Console.class)) {
             when(this.startController.getWidth()).thenReturn(4);
+            console.when(Console::getInstance).thenReturn(this.console);
             startView.interact();
-
             verify(this.console).writeln("----- MASTERMIND -----");
             verify(this.console).writeln();
             verify(this.console, times(4)).write("*");

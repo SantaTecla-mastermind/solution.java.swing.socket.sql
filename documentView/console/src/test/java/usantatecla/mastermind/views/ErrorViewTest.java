@@ -2,15 +2,12 @@ package usantatecla.mastermind.views;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.models.Error;
 import usantatecla.utils.Console;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,20 +20,18 @@ public class ErrorViewTest {
 
     @Test
     void testGivenCorrectErrorWhenWritelnThenCapturesCorrectArgument() {
-        this.errorView = new ErrorView(Error.WRONG_LENGTH);
-        ArgumentCaptor<String> errorMessage = ArgumentCaptor.forClass(String.class);
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic console = mockStatic(Console.class)) {
+            this.errorView = new ErrorView(Error.WRONG_LENGTH);
             console.when(Console::getInstance).thenReturn(this.console);
             this.errorView.writeln();
-            verify(this.console).writeln(errorMessage.capture());
-            assertThat(errorMessage.getValue(), is("Wrong proposed combination length"));
+            verify(this.console).writeln("Wrong proposed combination length");
         }
     }
 
     @Test
     void testGivenNullErrorWhenWritelnThenConsoleIsNotCalled() {
-        this.errorView = new ErrorView(Error.NULL);
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic console = mockStatic(Console.class)) {
+            this.errorView = new ErrorView(Error.NULL);
             console.when(Console::getInstance).thenReturn(this.console);
             this.errorView.writeln();
             verify(this.console, never()).writeln(anyString());

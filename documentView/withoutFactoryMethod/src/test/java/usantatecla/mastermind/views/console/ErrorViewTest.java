@@ -23,20 +23,18 @@ public class ErrorViewTest {
 
     @Test
     void testGivenCorrectErrorWhenWritelnThenCapturesCorrectArgument() {
-        this.errorView = new ErrorView(Error.WRONG_LENGTH);
-        ArgumentCaptor<String> errorMessage = ArgumentCaptor.forClass(String.class);
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic console = mockStatic(Console.class)) {
+            this.errorView = new ErrorView(Error.WRONG_LENGTH);
             console.when(Console::getInstance).thenReturn(this.console);
             this.errorView.writeln();
-            verify(this.console).writeln(errorMessage.capture());
-            assertThat(errorMessage.getValue(), is("Wrong proposed combination length"));
+            verify(this.console).writeln("Wrong proposed combination length");
         }
     }
 
     @Test
     void testGivenNullErrorWhenWritelnThenConsoleIsNotCalled() {
-        this.errorView = new ErrorView(Error.NULL);
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic console = mockStatic(Console.class)) {
+            this.errorView = new ErrorView(Error.NULL);
             console.when(Console::getInstance).thenReturn(this.console);
             this.errorView.writeln();
             verify(this.console, never()).writeln(anyString());

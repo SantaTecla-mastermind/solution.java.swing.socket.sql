@@ -1,4 +1,4 @@
-package usantatecla.mastermind.models;
+package usantatecla.mastermind.types;
 
 import org.junit.jupiter.api.Test;
 import usantatecla.mastermind.types.Error;

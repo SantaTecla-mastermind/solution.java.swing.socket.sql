@@ -1,9 +1,8 @@
 package usantatecla.mastermind.views.console;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -21,12 +20,8 @@ public class ColorViewTest {
     @Mock
     Console console;
 
+    @InjectMocks
     ColorView colorView;
-
-    @BeforeEach
-    void before() {
-        this.colorView = new ColorView();
-    }
 
     @Test
     void testGivenStaticMethodAllInitialsWhenCallingThatMethodThenReturnsCorrectString() {
@@ -41,37 +36,31 @@ public class ColorViewTest {
 
     @Test
     void testGivenNotMatchingInitialColorCharacterWhenGetInstanceThenReturnsNullColor() {
-        assertThat(ColorView.getInstance('n'), is(Color.NULL));
+        assertThat(usantatecla.mastermind.views.ColorView.getInstance('n'), is(Color.NULL));
     }
 
     @Test
     void testGivenMatchingInitialColorCharacterWhenGetInstanceThenReturnsCorrectColor() {
-        assertThat(ColorView.getInstance('g'), is(Color.GREEN));
+        assertThat(usantatecla.mastermind.views.ColorView.getInstance('g'), is(Color.GREEN));
     }
 
     @Test
     void testGivenAColorWhenWriteThenCapturesCorrectArguments() {
-        this.colorView = new ColorView(Color.GREEN);
-
-        ArgumentCaptor<String> completeColorCode = ArgumentCaptor.forClass(String.class);
-
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic console = mockStatic(Console.class)) {
+            this.colorView = new ColorView(Color.GREEN);
             console.when(Console::getInstance).thenReturn(this.console);
             this.colorView.write();
-            verify(this.console).write(completeColorCode.capture());
-            assertThat(completeColorCode.getValue(), is("\u001B[32m" + "g" + "\u001B[0m"));
+            verify(this.console).write("\u001B[32m" + "g" + "\u001B[0m");
         }
     }
 
     @Test
     void testGivenNullColorWhenWriteThenNothingHappen() {
-        this.colorView = new ColorView(Color.NULL);
-
-        try(MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic console = mockStatic(Console.class)) {
+            this.colorView = new ColorView(Color.NULL);
             console.when(Console::getInstance).thenReturn(this.console);
             this.colorView.write();
             verify(this.console, never()).write(anyString());
         }
-
     }
 }

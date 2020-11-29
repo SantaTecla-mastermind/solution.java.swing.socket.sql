@@ -36,7 +36,7 @@ public class GameViewTest {
     Console console;
 
     @InjectMocks
-    GameView gameView = new GameView(this.game);
+    GameView gameView;
 
     @Test
     void testGivenWinGameWhenIsWinnerOrLooserThenReturnsTrue() {
@@ -60,37 +60,30 @@ public class GameViewTest {
 
     @Test
     void testGivenEmptyGameStateWhenWriteThenOnlySecretCombinationIsWritten() {
-        when(this.game.getAttempts()).thenReturn(0);
-        ArgumentCaptor<String> secretCombination = ArgumentCaptor.forClass(String.class);
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic console = mockStatic(Console.class)) {
+            when(this.game.getAttempts()).thenReturn(0);
             console.when(Console::getInstance).thenReturn(this.console);
             this.gameView.write();
             verify(this.console, times(2)).writeln();
-            verify(this.console, times(4)).write(secretCombination.capture());
-
-            assertThat(secretCombination.getAllValues().toString(), is("[*, *, *, *]"));
+            verify(this.console, times(4)).write("*");
         }
     }
 
     @Test
     void testGiven2AttemptsGameStateWhenWriteThenCorrectArgumentsAreCaptured() {
-        when(this.game.getAttempts()).thenReturn(2);
-        when(this.game.getProposedCombination(anyInt())).thenReturn(this.proposedCombination);
-        when(this.game.getResult(anyInt())).thenReturn(this.result);
-        when(this.proposedCombination.getColors()).thenReturn(Arrays.asList(Color.RED, Color.GREEN, Color.ORANGE, Color.YELLOW));
-        when(this.result.getBlacks()).thenReturn(0);
-        when(this.result.getWhites()).thenReturn(0);
-
-        ArgumentCaptor<String> secretCombination = ArgumentCaptor.forClass(String.class);
-        ArgumentCaptor<String> proposedCombination = ArgumentCaptor.forClass(String.class);
-
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic console = mockStatic(Console.class)) {
+            when(this.game.getAttempts()).thenReturn(2);
+            when(this.game.getProposedCombination(anyInt())).thenReturn(this.proposedCombination);
+            when(this.game.getResult(anyInt())).thenReturn(this.result);
+            when(this.proposedCombination.getColors()).thenReturn(Arrays.asList(Color.RED, Color.GREEN, Color.ORANGE, Color.YELLOW));
+            when(this.result.getBlacks()).thenReturn(0);
+            when(this.result.getWhites()).thenReturn(0);
+            ArgumentCaptor<String> secretCombination = ArgumentCaptor.forClass(String.class);
+            ArgumentCaptor<String> proposedCombination = ArgumentCaptor.forClass(String.class);
             console.when(Console::getInstance).thenReturn(this.console);
             this.gameView.write();
-
             verify(this.console, times(3)).writeln(secretCombination.capture());
             verify(this.console, times(12)).write(proposedCombination.capture());
-
             assertThat(secretCombination.getAllValues().get(0), is("2 attempt(s): "));
             assertThat(proposedCombination.getAllValues().toString(),
                     is("[*, *, *, *, " + "\u001B[31m" + "r" + "\u001B[0m, " +
