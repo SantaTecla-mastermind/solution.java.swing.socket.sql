@@ -68,7 +68,7 @@ enum usantatecla.mastermind.views.Message{
 abstract class usantatecla.mastermind.views.View {
     + View(Game)
     + interact()
-    # {abstract} start(): void
+    # {abstract} start()
     # {abstract} propose(): boolean
     # {abstract} isNewGame(): boolean
 }

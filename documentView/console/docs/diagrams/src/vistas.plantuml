@@ -1,9 +1,9 @@
 @startuml desarrollo_implementacion
-package "  "  as mastermind {
+package "  "  as usantatecla.mastermind {
 }
-package "  "  as mastermind.models {
+package "  "  as usantatecla.mastermind.models {
 }
-package "  "  as mastermind.views {
+package "  "  as usantatecla.mastermind.views {
 }
 package "  "  as usantatecla.utils {
 }
@@ -14,9 +14,9 @@ package "  "  as java.util {
 
 [mastermind.jar] as jar
 
-jar *--> mastermind
-jar *--> mastermind.models
-jar *--> mastermind.views
+jar *--> usantatecla.mastermind
+jar *--> usantatecla.mastermind.models
+jar *--> usantatecla.mastermind.views
 jar *--> usantatecla.utils
 jar *--> java.io
 jar *--> java.util

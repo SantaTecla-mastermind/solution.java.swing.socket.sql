@@ -1,14 +1,14 @@
 @startuml usantatecla.mastermind
 class usantatecla.mastermind.ConsoleMastermind{
 - ConsoleMastermind()
-+ {static} main(String[]): void
-- play(): void
++ {static} main(String[])
+- play()
 }
 
 class usantatecla.mastermind.GraphicsMastermind{
 - GraphicsMastermind()
-+ {static} main(String[]): void
-- play(): void
++ {static} main(String[])
+- play()
 }
 
 class ConsoleView as "usantatecla.mastermind.\nviews.console.\nConsoleView"{}
@@ -61,7 +61,7 @@ enum usantatecla.mastermind.views.Message{
 abstract class usantatecla.mastermind.views.View {
     + View(Game)
     + interact()
-    # {abstract} start(): void
+    # {abstract} start()
     # {abstract} propose(): boolean
     # {abstract} isNewGame(): boolean
 }

@@ -4,8 +4,8 @@ class Game as "usantatecla.models.\nGame"
 
 class usantatecla.mastermind.Mastermind{
     - Mastermind()
-    - play(): void
-    + {static} main(String[]): void
+    - play()
+    + {static} main(String[])
 }
 usantatecla.mastermind.Mastermind *-down-> View
 usantatecla.mastermind.Mastermind *-down-> Game

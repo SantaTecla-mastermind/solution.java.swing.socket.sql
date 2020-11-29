@@ -1,7 +1,7 @@
 @startuml desarrollo_implementacion
-package "  "  as mastermind {
+package "  "  as usantatecla.mastermind {
 }
-package "  "  as utils {
+package "  "  as usantatecla.utils {
 }
 package "  "  as java.io {
 }
@@ -10,8 +10,8 @@ package "  "  as java.util {
 
 [mastermind.jar] as jar
 
-jar *--> mastermind
-jar *--> utils
+jar *--> usantatecla.mastermind
+jar *--> usantatecla.utils
 jar *--> java.io
 jar *--> java.util
 @enduml
