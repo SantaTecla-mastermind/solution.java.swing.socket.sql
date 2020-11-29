@@ -15,7 +15,7 @@ class GameView {
 
     void write() {
         Console.getInstance().writeln();
-        MessageView.ATTEMPTS.writeln(this.game.getAttempts());
+        new AttemptsView(this.game.getAttempts()).writeln();
         this.secretCombinationView.writeln();
         for (int i = 0; i < this.game.getAttempts(); i++) {
             new ProposedCombinationView(this.game.getProposedCombination(i)).write();
@@ -25,10 +25,10 @@ class GameView {
 
     boolean isWinnerOrLooser() {
         if (this.game.isWinner()) {
-            MessageView.WINNER.writeln();
+            Console.getInstance().writeln(Message.WINNER.getMessage());
             return true;
         } else if (this.game.isLooser()) {
-            MessageView.LOOSER.writeln();
+            Console.getInstance().writeln(Message.LOOSER.getMessage());
             return true;
         }
         return false;

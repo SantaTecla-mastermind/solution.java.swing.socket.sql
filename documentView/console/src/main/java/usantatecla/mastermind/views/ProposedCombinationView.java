@@ -24,7 +24,7 @@ class ProposedCombinationView {
 		Error error;
 		do {
 			error = Error.NULL;
-			MessageView.PROPOSED_COMBINATION.write();
+			Console.getInstance().write(Message.PROPOSED_COMBINATION.getMessage());
 			String characters = Console.getInstance().readString();
 
 			if (characters.length() > Combination.getWidth() || characters.length() < Combination.getWidth()) {

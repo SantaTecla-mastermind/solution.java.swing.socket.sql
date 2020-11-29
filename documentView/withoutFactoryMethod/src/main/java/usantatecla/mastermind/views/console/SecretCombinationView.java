@@ -6,10 +6,6 @@ import usantatecla.utils.Console;
 
 class SecretCombinationView {
 
-	SecretCombinationView() {
-		super();
-	}
-
 	void writeln() {
 		for (int i = 0; i < SecretCombination.getWidth(); i++) {
 			Console.getInstance().write(Message.SECRET.getMessage());

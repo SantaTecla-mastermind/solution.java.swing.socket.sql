@@ -49,12 +49,12 @@ class usantatecla.mastermind.views.GameView {
 }
 usantatecla.mastermind.views.GameView *-down-> Game
 usantatecla.mastermind.views.GameView *-down-> usantatecla.mastermind.views.SecretCombinationView
-usantatecla.mastermind.views.GameView ..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.GameView ..> usantatecla.mastermind.views.Message
 usantatecla.mastermind.views.GameView ..> usantatecla.mastermind.views.ProposedCombinationView
 usantatecla.mastermind.views.GameView ..> usantatecla.mastermind.views.ResultView
 usantatecla.mastermind.views.GameView ..> Console
 
-enum usantatecla.mastermind.views.MessageView{
+enum usantatecla.mastermind.views.Message{
     + ATTEMPTS
     + SECRET_COMBINATION
     + RESUME
@@ -70,7 +70,7 @@ enum usantatecla.mastermind.views.MessageView{
     ~ writeln(int)
     ~ writeln(int, int)
 }
-usantatecla.mastermind.views.MessageView ..> Console
+usantatecla.mastermind.views.Message ..> Console
 
 class usantatecla.mastermind.views.ProposalView {
     ~ ProposalView(Game)
@@ -87,7 +87,7 @@ class usantatecla.mastermind.views.ProposedCombinationView {
     ~ read()
 }
 usantatecla.mastermind.views.ProposedCombinationView *-down-> ProposedCombination
-usantatecla.mastermind.views.ProposedCombinationView ..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.ProposedCombinationView ..> usantatecla.mastermind.views.Message
 usantatecla.mastermind.views.ProposedCombinationView ..> usantatecla.mastermind.views.ColorView
 usantatecla.mastermind.views.ProposedCombinationView ..> Combination
 usantatecla.mastermind.views.ProposedCombinationView ..> Error
@@ -99,7 +99,7 @@ class usantatecla.mastermind.views.ResultView {
     ~ writeln()
 }
 usantatecla.mastermind.views.ResultView *-down-> Result
-usantatecla.mastermind.views.ResultView ..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.ResultView ..> usantatecla.mastermind.views.Message
 
 class usantatecla.mastermind.views.ResumeView {
     ~ ResumeView(Game)
@@ -107,19 +107,19 @@ class usantatecla.mastermind.views.ResumeView {
 }
 usantatecla.mastermind.views.ResumeView *-down-> Game
 usantatecla.mastermind.views.ResumeView -down..> YesNoDialog
-usantatecla.mastermind.views.ResumeView ..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.ResumeView ..> usantatecla.mastermind.views.Message
 
 class usantatecla.mastermind.views.SecretCombinationView {
     ~ SecretCombinationView()
     ~ writeln()
 }
-usantatecla.mastermind.views.SecretCombinationView ..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.SecretCombinationView ..> usantatecla.mastermind.views.Message
 usantatecla.mastermind.views.SecretCombinationView ..> Console
 
 class usantatecla.mastermind.views.StartView {
     ~ interact()
 }
-usantatecla.mastermind.views.StartView..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.StartView..> usantatecla.mastermind.views.Message
 usantatecla.mastermind.views.StartView..> usantatecla.mastermind.views.SecretCombinationView
 
 class usantatecla.mastermind.views.View {

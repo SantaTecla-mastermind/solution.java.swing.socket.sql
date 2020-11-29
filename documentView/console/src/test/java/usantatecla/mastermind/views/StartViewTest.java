@@ -7,8 +7,7 @@ import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.utils.Console;
 
-import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class StartViewTest {
@@ -25,7 +24,7 @@ public class StartViewTest {
             startView.interact();
             verify(this.console).writeln("----- MASTERMIND -----");
             verify(this.console).writeln();
-            verify(this.console).write("****");
+            verify(this.console, times(4)).write("*");
         }
     }
 }
