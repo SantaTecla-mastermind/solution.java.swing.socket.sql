@@ -51,7 +51,7 @@ public class ProposalController extends Controller {
         return this.game.getAttempts();
     }
 
-    public List<Color> getColors(int position) {
+    public List<Color> getProposedCombination(int position) {
         return this.game.getProposedCombination(position).getColors();
     }
 

@@ -43,8 +43,8 @@ public class Logic {
         return this.proposalController.getAttempts();
     }
 
-    public List<Color> getColors(int position) {
-        return this.proposalController.getColors(position);
+    public List<Color> getProposedCombination(int position) {
+        return this.proposalController.getProposedCombination(position);
     }
 
     public int getBlacks(int position) {

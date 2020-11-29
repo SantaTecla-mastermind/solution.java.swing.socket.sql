@@ -17,7 +17,7 @@ class ProposedCombinationView extends Console {
     }
 
     void write(int i) {
-        for (Color color : this.logic.getColors(i)) {
+        for (Color color : this.logic.getProposedCombination(i)) {
             new ColorView(color).write();
         }
     }
