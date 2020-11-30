@@ -2,35 +2,37 @@ package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.types.Color;
 
-public class ColorView {
-	
-	public static final char[] INITIALS = {'r', 'b', 'y', 'g', 'o', 'p'};
+public abstract class ColorView {
 
-	protected Color color;
+    public static final char[] INITIALS = {'r', 'b', 'y', 'g', 'o', 'p'};
 
-	public ColorView(Color color) {
-		this.color = color;
-	}
+    protected Color color;
 
-	static String allInitials() {
-		String result = "";
-		for(char character: ColorView.INITIALS) {
-			result += character;
-		}
-		return result;
-	}
-	
-	public char getInitial() {
-		return ColorView.INITIALS[this.color.ordinal()];
-	}
+    protected ColorView() {
+    }
 
-	public static Color getInstance(char character) {
-		for (int i = 0; i < ColorView.INITIALS.length; i++) {
-			if (ColorView.INITIALS[i] == character) {
-				return Color.values()[i];
-			}
-		}
-		return null;
-	}
+    protected ColorView(Color color) {
+        this.color = color;
+    }
+
+    public static Color getInstance(char character) {
+        for (int i = 0; i < ColorView.INITIALS.length; i++) {
+            if (ColorView.INITIALS[i] == character) {
+                return Color.values()[i];
+            }
+        }
+        return Color.NULL;
+    }
+
+    public String allInitials() {
+        String result = "";
+        for (int i = 0; i < ColorView.INITIALS.length; i++) {
+            result += resultInitials(i);
+        }
+        return result;
+    }
+
+    protected abstract String resultInitials(int i);
 
 }
+
