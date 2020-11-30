@@ -4,12 +4,12 @@ import usantatecla.mastermind.types.Color;
 import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
 
-class ColorView extends usantatecla.mastermind.views.ColorView {
+public class ColorView extends usantatecla.mastermind.views.ColorView {
 
-    ColorView() {
+    public ColorView() {
     }
 
-    ColorView(Color color) {
+    public ColorView(Color color) {
         super(color);
     }
 
@@ -18,7 +18,7 @@ class ColorView extends usantatecla.mastermind.views.ColorView {
         return ColorCode.values()[i].getColor() + ColorView.INITIALS[i] + ColorCode.RESET_COLOR.getColor();
     }
 
-    void write() {
+    public void write() {
         if (!color.isNull()) {
             Console.getInstance()
                     .write(ColorCode.getColorByIndex(this.color.ordinal())

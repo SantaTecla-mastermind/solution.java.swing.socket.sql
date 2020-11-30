@@ -8,7 +8,7 @@ import usantatecla.mastermind.types.Color;
 import usantatecla.utils.Console;
 import usantatecla.mastermind.views.MessageView;
 
-class ProposedCombinationView extends ConsoleView {
+public class ProposedCombinationView extends ConsoleView {
 	
 	private ProposalController proposalController;
 	
