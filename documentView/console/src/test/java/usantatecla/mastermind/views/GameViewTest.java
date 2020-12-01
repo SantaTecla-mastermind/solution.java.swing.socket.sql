@@ -64,7 +64,7 @@ public class GameViewTest {
             console.when(Console::getInstance).thenReturn(this.console);
             this.gameView.write();
             verify(this.console, times(2)).writeln();
-            verify(this.console).write("****");
+            verify(this.console, times(4)).write("*");
         }
     }
 
@@ -82,10 +82,10 @@ public class GameViewTest {
             console.when(Console::getInstance).thenReturn(this.console);
             this.gameView.write();
             verify(this.console, times(3)).writeln(secretCombination.capture());
-            verify(this.console, times(9)).write(proposedCombination.capture());
+            verify(this.console, times(12)).write(proposedCombination.capture());
             assertThat(secretCombination.getAllValues().get(0), is("2 attempt(s): "));
             assertThat(proposedCombination.getAllValues().toString(),
-                    is("[****, " + "\u001B[31m" + "r" + "\u001B[0m, " +
+                    is("[*, *, *, *, " + "\u001B[31m" + "r" + "\u001B[0m, " +
                             "\u001B[32m" + "g" + "\u001B[0m, " +
                             "\u001B[37m" + "o" + "\u001B[0m, " +
                             "\u001B[33m" + "y" + "\u001B[0m, " +

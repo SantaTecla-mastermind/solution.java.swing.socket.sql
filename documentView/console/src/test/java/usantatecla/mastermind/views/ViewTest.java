@@ -34,7 +34,7 @@ public class ViewTest {
             this.view.interact();
             verify(this.console, times(3)).writeln(anyString());
             verify(this.console, times(3)).writeln();
-            verify(this.console, times(4)).write(anyString());
+            verify(this.console, times(10)).write(anyString());
         }
     }
 }

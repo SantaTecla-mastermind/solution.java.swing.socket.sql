@@ -1,7 +1,6 @@
 @startuml usantatecla.mastermind
 
 class View as "usantatecla.\nmastermind.views.\nView"
-Class Game as "usantatecla.\nmastermind.models.\nGame"
 class ConsoleView as "usantatecla.\nmastermind.views.\nconsole.ConsoleView"
 class GraphicsView as "usantatecla.\nmastermind.views.\nconsole.GraphicsView"
 class StartController as "usantatecla.\nmastermind.controllers.\nStartController"
@@ -14,7 +13,6 @@ class  usantatecla.mastermind.Mastermind{
     # play()
 }
 usantatecla.mastermind.Mastermind *-down-> View
-usantatecla.mastermind.Mastermind *-down-> Game
 usantatecla.mastermind.Mastermind *-down-> StartController
 usantatecla.mastermind.Mastermind *-down-> ProposalController
 usantatecla.mastermind.Mastermind *-down-> ResumeController
@@ -90,8 +88,8 @@ usantatecla.mastermind.views.View *-down-> ResumeController
 
 @startuml usantatecla.mastermind.views.console
 
-class Error as "usantatecla.\nmastermind.models.\nError"
-enum Color as "usantatecla.\nmastermind.models.\nColor"
+class Error as "usantatecla.\nmastermind.types.\nError"
+enum Color as "usantatecla.\nmastermind.types.\nColor"
 abstract class View as "usantatecla.\nmastermind.views.\nView"
 abstract class ColorView as "usantatecla.\nmastermind.views.\nColorView"
 abstract class ErrorView as "usantatecla.\nmastermind.views.\nErrorView"
