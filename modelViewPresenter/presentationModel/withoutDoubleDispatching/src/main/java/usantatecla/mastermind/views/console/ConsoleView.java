@@ -32,5 +32,4 @@ public class ConsoleView extends View {
 			}
 		}
 	}
-
 }
