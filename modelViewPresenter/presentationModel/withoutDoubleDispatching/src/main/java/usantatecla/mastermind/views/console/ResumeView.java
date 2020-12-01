@@ -6,7 +6,7 @@ import usantatecla.utils.YesNoDialog;
 
 public class ResumeView {
 
-	void interact(ResumeController resumeController) {
+	public void interact(ResumeController resumeController) {
 		resumeController.resume(new YesNoDialog().read(MessageView.RESUME.getMessage()));
 	}
 	

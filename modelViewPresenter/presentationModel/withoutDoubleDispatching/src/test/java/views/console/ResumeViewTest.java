@@ -7,13 +7,15 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.Logic;
+import usantatecla.mastermind.controllers.ResumeController;
+import usantatecla.mastermind.views.MessageView;
 import usantatecla.mastermind.views.console.ResumeView;
 import usantatecla.utils.Console;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ResumeViewTest {
@@ -22,28 +24,18 @@ public class ResumeViewTest {
     Console console;
 
     @Mock
-    Logic logic;
+    ResumeController resumeController;
 
     @InjectMocks
     ResumeView resumeView;
 
     @Test
-    void testGivenNewGameIsFalseWhenInteractThenIsFalse() {
+    void testGivenNewGameMessage() {
         when(this.console.readChar(anyString())).thenReturn('n');
         try(MockedStatic console = mockStatic(Console.class)){
             console.when(Console::getInstance).thenReturn(this.console);
-            assertThat(this.resumeView.interact(), is(false));
-        }
-
-    }
-
-    @Test
-    void testGivenNewGameIsTrueWhenInteractThenIsTrue() {
-        when(this.console.readChar(anyString())).thenReturn('y');
-        try(MockedStatic console = mockStatic(Console.class)){
-            console.when(Console::getInstance).thenReturn(this.console);
-            this.resumeView=new ResumeView(this.logic);
-            assertThat(this.resumeView.interact(), is(true));
+            this.resumeView.interact(this.resumeController);
+            verify(this.console).readChar("Do you want to continue? (y/n): ");
         }
     }
 }

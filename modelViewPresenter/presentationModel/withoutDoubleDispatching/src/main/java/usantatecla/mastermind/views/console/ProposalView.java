@@ -9,9 +9,9 @@ import usantatecla.mastermind.views.View;
 import usantatecla.utils.Console;
 import usantatecla.mastermind.views.MessageView;
 
-class ProposalView extends Console {
+public class ProposalView extends Console {
 
-	void interact(ProposalController proposalController) {
+	public void interact(ProposalController proposalController) {
 		Error error;
 		do {
 			List<Color> colors = new ProposedCombinationView(proposalController).read();

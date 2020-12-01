@@ -4,11 +4,11 @@ import usantatecla.mastermind.controllers.StartController;
 import usantatecla.mastermind.views.MessageView;
 import usantatecla.utils.Console;
 
-class StartView extends Console {
+public class StartView extends Console {
 
 	private SecretCombinationView secretCombinationView;
 
-	void interact(StartController startController) {
+	public void interact(StartController startController) {
 		startController.start();
 		Console.getInstance().writeln(MessageView.TITLE.getMessage());
 		this.secretCombinationView = new SecretCombinationView(startController);

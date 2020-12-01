@@ -8,6 +8,8 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.Logic;
+import usantatecla.mastermind.controllers.ProposalController;
+import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.views.console.ProposedCombinationView;
 import usantatecla.utils.Console;
@@ -25,7 +27,7 @@ public class ProposedCombinationViewTest {
     Console console;
 
     @Mock
-    Logic logic;
+    ProposalController proposalController;
 
     @InjectMocks
     ProposedCombinationView proposedCombinationView;
@@ -34,9 +36,9 @@ public class ProposedCombinationViewTest {
     void testGivenColorsOfProposedCombinationWhenWriteThenCorrectColorsAreCaptured() {
         try(MockedStatic console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposedCombinationView=new ProposedCombinationView(this.logic);
+            this.proposedCombinationView=new ProposedCombinationView(this.proposalController);
             ArgumentCaptor<String> colorCaptor = ArgumentCaptor.forClass(String.class);
-            when(this.logic.getProposedCombination(anyInt())).thenReturn(Arrays.asList(Color.BLUE, Color.ORANGE, Color.PURPLE, Color.GREEN));
+            when(this.proposalController.getColors(anyInt())).thenReturn(Arrays.asList(Color.BLUE, Color.ORANGE, Color.PURPLE, Color.GREEN));
 
             this.proposedCombinationView.write(0);
             verify(this.console, times(4)).write(colorCaptor.capture());

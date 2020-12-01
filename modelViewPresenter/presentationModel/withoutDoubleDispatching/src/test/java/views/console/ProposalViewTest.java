@@ -7,10 +7,13 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.Logic;
+import usantatecla.mastermind.controllers.ProposalController;
 import usantatecla.mastermind.types.Error;
+import usantatecla.mastermind.views.MessageView;
 import usantatecla.mastermind.views.console.ProposalView;
 import usantatecla.utils.Console;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -23,21 +26,37 @@ public class ProposalViewTest {
     Console console;
 
     @Mock
-    Logic logic;
+    ProposalController proposalController;
 
     @InjectMocks
     ProposalView proposalView;
 
     @Test
-    void testGiven1AttemptAndIsWinnerGameWhenInteractThenReturnsTrue() {
+    void testGiven1AttemptAndIsWinnerGame() {
         try(MockedStatic console = mockStatic(Console.class)){
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposalView= new ProposalView(this.logic);
+            this.proposalView= new ProposalView();
             when(this.console.readString(anyString())).thenReturn("rgby");
-            when(this.logic.addProposedCombination(any())).thenReturn(Error.NULL);
-            when(this.logic.isWinner()).thenReturn(true);
+            when(this.proposalController.addProposedCombination(any())).thenReturn(Error.NULL);
+            when(this.proposalController.isWinner()).thenReturn(true);
+            this.proposalView.interact(this.proposalController);
+            verify(this.console, times(2)).writeln();
+            verify(this.console).writeln(MessageView.WINNER.getMessage());
+        }
+    }
 
-            assertThat(this.proposalView.interact(), is(true));
+    @Test
+    void testGiven1AttemptAndIsLooserGame() {
+        try(MockedStatic console = mockStatic(Console.class)){
+            console.when(Console::getInstance).thenReturn(this.console);
+            this.proposalView= new ProposalView();
+            when(this.console.readString(anyString())).thenReturn("rgby");
+            when(this.proposalController.addProposedCombination(any())).thenReturn(Error.NULL);
+            when(this.proposalController.isWinner()).thenReturn(false);
+            when(this.proposalController.isLooser()).thenReturn(true);
+            this.proposalView.interact(this.proposalController);
+            verify(this.console, times(2)).writeln();
+            verify(this.console).writeln(MessageView.LOOSER.getMessage());
         }
     }
 
@@ -45,13 +64,13 @@ public class ProposalViewTest {
     void testGiven1AttemptAndIsNotWinnerNorLooserGameWhenInteractThenReturnsFalse() {
         try(MockedStatic console = mockStatic(Console.class)){
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposalView= new ProposalView(this.logic);
+            this.proposalView= new ProposalView();
             when(this.console.readString(anyString())).thenReturn("rgby");
-            when(this.logic.addProposedCombination(any())).thenReturn(Error.NULL);
-            when(this.logic.isWinner()).thenReturn(false);
-            when(this.logic.isLooser()).thenReturn(false);
-
-            assertThat(this.proposalView.interact(), is(false));
+            when(this.proposalController.addProposedCombination(any())).thenReturn(Error.NULL);
+            when(this.proposalController.isWinner()).thenReturn(false);
+            when(this.proposalController.isLooser()).thenReturn(false);
+            this.proposalView.interact(this.proposalController);
+            verify(this.console, times(2)).writeln();
         }
     }
 
@@ -59,14 +78,13 @@ public class ProposalViewTest {
     void testGivenSomeBadProposedCombinationWhenCorrectOneIsGivenThenInteractFinish() {
         try(MockedStatic console = mockStatic(Console.class)){
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposalView= new ProposalView(this.logic);
+            this.proposalView= new ProposalView();
             when(this.console.readString(anyString()))
                     .thenReturn("rgbyo", "rgby");
-            when(this.logic.addProposedCombination(any()))
+            when(this.proposalController.addProposedCombination(any()))
                     .thenReturn(Error.WRONG_LENGTH, Error.NULL);
-            when(this.logic.isWinner()).thenReturn(true);
-
-            assertThat(this.proposalView.interact(), is(true));
+            when(this.proposalController.isWinner()).thenReturn(true);
+            this.proposalView.interact(this.proposalController);
             verify(this.console).writeln("Wrong proposed combination length");
 
         }
