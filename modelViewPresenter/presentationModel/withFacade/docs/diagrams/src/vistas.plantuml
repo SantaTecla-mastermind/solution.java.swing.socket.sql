@@ -1,17 +1,17 @@
 @startuml desarrollo_implementacion
-package "  "  as mastermind {
+package "  "  as usantatecla.mastermind {
 }
-package "  "  as mastermind.controllers {
+package "  "  as usantatecla.mastermind.controllers {
 }
-package "  "  as mastermind.models {
+package "  "  as usantatecla.mastermind.models {
 }
-package "  "  as mastermind.views {
+package "  "  as usantatecla.mastermind.views {
 }
-package "  "  as mastermind.views.console {
+package "  "  as usantatecla.mastermind.views.console {
 }
-package "  "  as mastermind.views.graphics {
+package "  "  as usantatecla.mastermind.views.graphics {
 }
-package "  "  as mastermind.utils {
+package "  "  as usantatecla.utils {
 }
 package "  "  as java.io {
 }
@@ -26,13 +26,13 @@ package "  "  as javax.swing {
 
 [mastermind.jar] as jar
 
-jar *--> mastermind
-jar *--> mastermind.controllers
-jar *--> mastermind.models
-jar *--> mastermind.views
-jar *--> mastermind.views.console
-jar *--> mastermind.views.graphics
-jar *--> mastermind.utils
+jar *--> usantatecla.mastermind
+jar *--> usantatecla.mastermind.controllers
+jar *--> usantatecla.mastermind.models
+jar *--> usantatecla.mastermind.views
+jar *--> usantatecla.mastermind.views.console
+jar *--> usantatecla.mastermind.views.graphics
+jar *--> usantatecla.utils
 jar *--> java.io
 jar *--> java.util
 jar *--> java.awt
