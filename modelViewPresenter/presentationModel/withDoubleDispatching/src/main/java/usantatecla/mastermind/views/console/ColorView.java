@@ -1,16 +1,30 @@
 package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.types.Color;
+import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
 
-class ColorView extends usantatecla.mastermind.views.ColorView {
+public class ColorView extends usantatecla.mastermind.views.ColorView {
 
-	ColorView(Color color) {
+	public ColorView() {
+	}
+
+	public ColorView(Color color) {
 		super(color);
 	}
-	
-	void write() {
-		new Console().write(ColorView.INITIALS[this.color.ordinal()]);
+
+	@Override
+	protected String resultInitials(int i) {
+		return ColorCode.values()[i].getColor() + ColorView.INITIALS[i] + ColorCode.RESET_COLOR.getColor();
+	}
+
+	public void write() {
+		if (!color.isNull()) {
+			Console.getInstance()
+					.write(ColorCode.getColorByIndex(this.color.ordinal())
+							+ ColorView.INITIALS[this.color.ordinal()]
+							+ ColorCode.RESET_COLOR.getColor());
+		}
 	}
 
 }

@@ -12,7 +12,7 @@ public abstract class Combination {
     public List<Color> colors;
 
     protected Combination() {
-        this.colors = new ArrayList<Color>();
+        this.colors = new ArrayList<>();
     }
 
     public static int getWidth() {
