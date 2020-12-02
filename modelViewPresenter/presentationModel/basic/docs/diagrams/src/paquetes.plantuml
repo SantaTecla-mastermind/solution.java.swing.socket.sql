@@ -7,7 +7,7 @@ class StartController as "usantatecla.\nmastermind.controllers.\nStartController
 class ProposalController as "usantatecla.\nmastermind.controllers.\nProposalController"
 class ResumeController as "usantatecla.\nmastermind.controllers.\nResumeController"
 
-class  usantatecla.mastermind.Mastermind{
+abstract class  usantatecla.mastermind.Mastermind{
     # Mastermind()
     # {abstract} createView(StartController, ProposalController, ResumeController): View
     # play()

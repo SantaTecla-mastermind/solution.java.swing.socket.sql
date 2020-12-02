@@ -4,7 +4,7 @@ Class Game as "usantatecla.\nmastermind.models.\nGame"
 class ConsoleView as "usantatecla.\nmastermind.views.\nconsole.ConsoleView" 
 class GraphicsView as "usantatecla.\nmastermind.views.\nconsole.GraphicsView" 
 
-class  usantatecla.mastermind.Mastermind{
+abstract class  usantatecla.mastermind.Mastermind{
     # Mastermind()
     # {abstract} createView(Game): View
     # play() 
