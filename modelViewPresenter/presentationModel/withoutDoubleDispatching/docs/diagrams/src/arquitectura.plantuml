@@ -7,7 +7,7 @@ usantatecla.mastermind  .down.> usantatecla.mastermind.views
 usantatecla.mastermind  .down.> usantatecla.mastermind.views.console
 usantatecla.mastermind  .down.> usantatecla.mastermind.views.graphics
 usantatecla.mastermind  .down.> usantatecla.mastermind.controllers
-usantatecla.mastermind.controllers .down.> java.util
+
 package usantatecla.mastermind.models #DDDDDD { }
 package java.util{ }
 usantatecla.mastermind.models .down.> java.util
@@ -29,5 +29,5 @@ package usantatecla.mastermind.views.graphics #DDDDDD { }
 usantatecla.mastermind.views.graphics .down.> usantatecla.mastermind.controllers
 
 usantatecla.mastermind.views.graphics .down.> usantatecla.mastermind.views
-
+usantatecla.mastermind.controllers .down.> java.util
 @enduml
