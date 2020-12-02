@@ -8,21 +8,21 @@ import usantatecla.mastermind.types.Color;
 import usantatecla.utils.Console;
 import usantatecla.mastermind.views.MessageView;
 
-class ProposedCombinationView extends Console {
+public class ProposedCombinationView extends Console {
 	
 	private final ProposalController proposalController;
 	
-	ProposedCombinationView(ProposalController proposalController) {
+	public ProposedCombinationView(ProposalController proposalController) {
 		this.proposalController = proposalController;
 	}
 	
-	void write(int position) {
+	public void write(int position) {
 		for (Color color : this.proposalController.getColors(position)) {
 			new ColorView(color).write();
 		}
 	}
 
-	List<Color> read() {
+	public List<Color> read() {
 		String characters = Console.getInstance().readString(MessageView.PROPOSED_COMBINATION.getMessage());
 		List<Color> colors = new ArrayList<Color>();
 		for (int i=0; i<characters.length(); i++) {

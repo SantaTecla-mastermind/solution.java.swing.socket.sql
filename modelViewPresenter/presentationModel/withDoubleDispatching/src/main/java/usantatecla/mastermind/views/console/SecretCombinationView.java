@@ -4,7 +4,7 @@ import usantatecla.mastermind.controllers.Controller;
 import usantatecla.mastermind.views.MessageView;
 import usantatecla.utils.Console;
 
-class SecretCombinationView extends Console {
+public class SecretCombinationView extends Console {
 	
 	private Controller controller;
 	
