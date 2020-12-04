@@ -18,7 +18,7 @@ reverse link usantatecla.mastermind.models.Combination to usantatecla.mastermind
 link usantatecla.mastermind.models.SecretCombination to usantatecla.mastermind.models.Result--><path codeLine="38" d="M286.492,351.134 C263.663,369.668 235.281,392.71 209.401,413.721 " fill="none" id="usantatecla.mastermind.models.SecretCombination-to-usantatecla.mastermind.models.Result" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="205.27,417.074,214.7787,414.5081,209.1522,413.9231,209.7373,408.2966,205.27,417.074" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[be5e6334e25a1733719410e897fbe715]
 link usantatecla.mastermind.models.SecretCombination to usantatecla.mastermind.models.ProposedCombination--><path codeLine="39" d="M331.229,351.134 C331.357,371.229 331.518,396.622 331.66,418.981 " fill="none" id="usantatecla.mastermind.models.SecretCombination-to-usantatecla.mastermind.models.ProposedCombination" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="331.692,423.998,335.6328,414.9719,331.6591,418.9981,327.6329,415.0245,331.692,423.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5ad286f9c8779d13f70a16acb15e8d92]
 link usantatecla.mastermind.models.SecretCombination to usantatecla.mastermind.types.Color--><path codeLine="40" d="M387.293,351.068 C407.508,366.96 428.404,387.411 441,411 C472.877,470.698 480.863,547.43 481.445,605.545 " fill="none" id="usantatecla.mastermind.models.SecretCombination-to-usantatecla.mastermind.types.Color" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="481.478,610.755,485.4214,601.73,481.4466,605.7551,477.4215,601.7803,481.478,610.755" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[6f6994a70a46872d34bd35a5dd21f76b]
-link usantatecla.mastermind.models.Result to usantatecla.mastermind.models.Combination--><path codeLine="51" d="M137.831,410.989 C141.62,368.344 153.399,312.969 187,277 C245.141,214.761 298.655,265.018 369,217 C384.837,206.189 399.083,190.94 410.641,176.222 " fill="none" id="usantatecla.mastermind.models.Result-to-usantatecla.mastermind.models.Combination" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="413.829,172.089,405.1661,176.7746,410.7762,176.0489,411.5019,181.659,413.829,172.089" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[aa22d1c813aab03e21d3020f2f3e53c9]
+link usantatecla.mastermind.models.Result to usantatecla.mastermind.models.Combination--><path codeLine="51" d="M137.831,410.989 C141.62,368.344 153.399,312.969 187,277 C245.141,214.761 298.655,265.018 369,217 C384.837,206.189 399.083,190.94 410.641,176.222 " fill="none" id="usantatecla.mastermind.models.Result-to-usantatecla.mastermind.models.Combination" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="413.829,172.089,405.1661,176.7746,410.7762,176.0489,411.5019,181.659,413.829,172.089" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9476b3e316b33d78a2eb7bb66a1110d4]
 @startuml
 abstract class usantatecla.mastermind.models.Combination {
 - {static} WIDTH: int
@@ -93,7 +93,7 @@ enum usantatecla.mastermind.types.Error {
 }
 @enduml
 
-PlantUML version 1.2020.21beta7(Unknown compile time)
+PlantUML version 1.2020.22beta3(Unknown compile time)
 (GPL source distribution)
 Java Runtime: Java(TM) SE Runtime Environment
 JVM: Java HotSpot(TM) 64-Bit Server VM

@@ -1,7 +1,7 @@
 package usantatecla.mastermind.models;
 
 import org.junit.jupiter.api.Test;
-import usantatecla.mastermind.models.Error;
+import usantatecla.mastermind.types.Error;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
