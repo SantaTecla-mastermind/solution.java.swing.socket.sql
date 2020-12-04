@@ -346,76 +346,79 @@ usantatecla.mastermind.views.graphics.ResumeDialog ..> Message
 @enduml
 
 @startuml usantatecla.mastermind.models
+enum Color as "usantatecla.\nmastermind.types.\nColor"
+
 abstract class usantatecla.mastermind.models.Combination {
-- {static} WIDTH: int
-# Combination()
-+ {static} getWidth(): int
+    - {static} WIDTH: int
+    # Combination()
+    + {static} getWidth(): int
 }
-usantatecla.mastermind.models.Combination *-down-> "*" usantatecla.mastermind.types.Color
+usantatecla.mastermind.models.Combination *-down-> "*" Color
 
 class usantatecla.mastermind.models.Game {
-- {static} MAX_LONG: int
-- attempts: int
-+ Game()
-+ clear()
-+ addProposeCombination(ProposedCombination)
-+ isLooser(): boolean
-+ isWinner(): boolean
-+ getAttempts(): int
-+ getProposedCombination(int): ProposedCombination
-+ getResult(int): Result
+    - {static} MAX_LONG: int
+    - attempts: int
+    + Game()
+    + reset()
+    + addProposeCombination(ProposedCombination)
+    + isLooser(): boolean
+    + isWinner(): boolean
+    + getAttempts(): int
+    + getProposedCombination(int): ProposedCombination
+    + getResult(int): Result
 }
 usantatecla.mastermind.models.Game *-down-> usantatecla.mastermind.models.SecretCombination
-usantatecla.mastermind.models.Game *-down-> "0..*" usantatecla.mastermind.models.Result
-usantatecla.mastermind.models.Game *-down-> "0..*" usantatecla.mastermind.models.ProposedCombination
+usantatecla.mastermind.models.Game *-down-> "*" usantatecla.mastermind.models.Result
+usantatecla.mastermind.models.Game *-down-> "*" usantatecla.mastermind.models.ProposedCombination
 
 class usantatecla.mastermind.models.ProposedCombination {
-+ ProposedCombination()
-~ contains(Color, int): boolean
-~ contains(Color): boolean
-+ getColors(): List<Color>
+    ~ contains(Color, int): boolean
+    ~ contains(Color): boolean
+    + getColors(): List<Color>
 }
-usantatecla.mastermind.models.Combination <|-down- usantatecla.mastermind.models.ProposedCombination
-usantatecla.mastermind.models.ProposedCombination ..> usantatecla.mastermind.types.Color
-
-class usantatecla.mastermind.models.SecretCombination {
-~ SecretCombination()
-~ getResult(ProposedCombination): Result
-}
-usantatecla.mastermind.models.Combination <|-down- usantatecla.mastermind.models.SecretCombination
-usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.models.Result
-usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.models.ProposedCombination
-usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.types.Color
+usantatecla.mastermind.models.ProposedCombination -up-|> usantatecla.mastermind.models.Combination
+usantatecla.mastermind.models.ProposedCombination ..> Color
 
 class usantatecla.mastermind.models.Result {
-- blacks: int
-- whites: int
-~ Result(int, int)
-~ isWinner(): boolean
-+ getBlacks(): int
-+ getWhites(): int
+    - blacks: int
+    - whites: int
+    ~ Result(int, int)
+    ~ isWinner(): boolean
+    + getBlacks(): int
+    + getWhites(): int
 }
 
 usantatecla.mastermind.models.Result ..> usantatecla.mastermind.models.Combination
 
+class usantatecla.mastermind.models.SecretCombination {
+    ~ SecretCombination()
+    ~ getResult(ProposedCombination): Result
+}
+usantatecla.mastermind.models.SecretCombination -up-|> usantatecla.mastermind.models.Combination
+usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.models.Result
+usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.models.ProposedCombination
+usantatecla.mastermind.models.SecretCombination ..> Color
+@enduml
+
+@startuml usantatecla.mastermind.types
 enum usantatecla.mastermind.types.Color {
-+ RED
-+ BLUE
-+ YELLOW
-+ GREEN
-+ ORANGE
-+ PURPLE
-+ NULL
-~ {static} length(): int
-+ isNull(): boolean
+    + RED
+    + BLUE
+    + YELLOW
+    + GREEN
+    + ORANGE
+    + PURPLE
+    + NULL
+    + {static} length(): int
+    + isNull() : boolean
 }
 
 enum usantatecla.mastermind.types.Error {
-+ DUPLICATED
-+ WRONG_CHARACTERS
-+ WRONG_LENGTH
-+ NULL
-+ isNull(): boolean
+    + DUPLICATED
+    + WRONG_CHARACTERS
+    + WRONG_LENGTH
+    + NULL
+    + isNull() : boolean
 }
 
 @enduml
