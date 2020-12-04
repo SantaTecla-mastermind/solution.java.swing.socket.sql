@@ -1,0 +1,33 @@
+@startuml arquitectura
+package usantatecla.mastermind #DDDDDD { }
+
+package usantatecla.mastermind.controllers #DDDDDD { }
+usantatecla.mastermind.controllers .down.> usantatecla.mastermind.models
+usantatecla.mastermind  .down.> usantatecla.mastermind.views
+usantatecla.mastermind  .down.> usantatecla.mastermind.views.console
+usantatecla.mastermind  .down.> usantatecla.mastermind.views.graphics
+usantatecla.mastermind  .down.> usantatecla.mastermind.controllers
+
+package usantatecla.mastermind.models #DDDDDD { }
+package java.util{ }
+usantatecla.mastermind.models .down.> java.util
+
+package usantatecla.utils #DDDDDD { }
+package java.io{ }
+usantatecla.utils .down.> java.io
+
+package usantatecla.mastermind.views #DDDDDD { }
+usantatecla.mastermind.views .down.> usantatecla.mastermind.controllers
+
+package usantatecla.mastermind.views.console #DDDDDD { }
+usantatecla.mastermind.views.console .down.> usantatecla.mastermind.controllers
+usantatecla.mastermind.views.console .down.> usantatecla.mastermind.views
+usantatecla.mastermind.views.console .down.> usantatecla.utils
+
+package usantatecla.mastermind.views.graphics #DDDDDD { }
+
+usantatecla.mastermind.views.graphics .down.> usantatecla.mastermind.controllers
+
+usantatecla.mastermind.views.graphics .down.> usantatecla.mastermind.views
+usantatecla.mastermind.controllers .down.> java.util
+@enduml

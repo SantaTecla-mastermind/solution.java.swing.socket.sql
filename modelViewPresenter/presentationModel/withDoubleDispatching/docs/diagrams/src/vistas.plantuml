@@ -1,0 +1,52 @@
+@startuml desarrollo_implementacion
+package "  "  as usantatecla.mastermind {
+}
+package "  "  as usantatecla.mastermind.controllers {
+}
+package "  "  as usantatecla.mastermind.models {
+}
+package "  "  as usantatecla.mastermind.views {
+}
+package "  "  as usantatecla.mastermind.views.console {
+}
+package "  "  as usantatecla.mastermind.views.graphics {
+}
+package "  "  as usantatecla.utils {
+}
+package "  "  as java.io {
+}
+package "  "  as java.util {
+}
+package "  "  as java.awt {
+}
+package "  "  as java.awt.event {
+}
+package "  "  as javax.swing {
+}
+
+[mastermind.jar] as jar
+
+jar *--> usantatecla.mastermind
+jar *--> usantatecla.mastermind.controllers
+jar *--> usantatecla.mastermind.models
+jar *--> usantatecla.mastermind.views
+jar *--> usantatecla.mastermind.views.console
+jar *--> usantatecla.mastermind.views.graphics
+jar *--> usantatecla.utils
+jar *--> java.io
+jar *--> java.util
+jar *--> java.awt
+jar *--> java.awt.event
+jar *--> javax.swing
+@enduml
+
+@startuml despliegue_fisica
+node node #DDDDDD [
+<b>Personal Computer</b>
+----
+]
+
+[ mastermind.jar ] as component
+
+node *--> component
+@enduml
