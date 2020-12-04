@@ -8,8 +8,9 @@ Universo Santa Tecla
 2.1. [Arquitectura](#arquitectura)  
 2.2. [Paquete usantatecla.mastermind](#paquete-usantateclamastermind)  
 2.3. [Paquete usantatecla.mastermind.views](#paquete-usantateclamastermindviews)  
-2.4. [Paquete usantatecla.mastermind.models](#paquete-usantateclamastermindmodels)  
-2.5. [Paquete usantatecla.utils](#paquete-usantateclautils)  
+2.4. [Paquete usantatecla.mastermind.models](#paquete-usantateclamastermindmodels) 
+2.5. [Paquete usantatecla.mastermind.types](#paquete-usantateclamastermindtypes) 
+2.6. [Paquete usantatecla.utils](#paquete-usantateclautils)  
 3. [Calidad del Software](#calidad-del-software)  
 3.1. [Diseño](#diseño)  
 3.2. [Rediseño](#rediseño)  
@@ -40,6 +41,10 @@ Universo Santa Tecla
 ### Paquete *usantatecla.mastermind.models*
 
 ![Paquete_Usantatecla.mastermind.models](./docs/diagrams/out/paquetes/usantatecla.mastermind.models.svg)
+
+### Paquete *usantatecla.mastermind.types*
+
+![Paquete_Usantatecla.mastermind.types](./docs/diagrams/out/paquetes/usantatecla.mastermind.types.svg)
 
 ### Paquete *usantatecla.utils*
 
