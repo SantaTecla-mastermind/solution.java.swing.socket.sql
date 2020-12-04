@@ -9,11 +9,10 @@ version 0.0.1
     2.1. [Arquitectura](#arquitectura)  
     2.2. [Paquete mastermind](#paquete-mastermind)  
     2.3. [Paquete mastermind.views](#paquete-mastermind-viewa)  
-    2.4. [Paquete mastermind.views.console](#paquete-mastermind-views-console)  
-    2.5. [Paquete mastermind.views.graphics](#paquete-mastermind-views-graphics)  
-    2.6. [Paquete mastermind.controllers](#paquete-mastermind-controllers)  
-    2.7. [Paquete mastermind.models](#paquete-mastermind-models)  
-    2.8. [Paquete mastermind.utils](#paquete-mastermind-utils)  
+    2.4. [Paquete mastermind.views.console](#paquete-mastermind-views-console)   
+    2.5. [Paquete mastermind.controllers](#paquete-mastermind-controllers)  
+    2.6. [Paquete mastermind.models](#paquete-mastermind-models)  
+    2.7. [Paquete mastermind.utils](#paquete-mastermind-utils)  
 3. [Calidad del Software](#calidad-del-software)  
     3.1. [Diseño](#diseño)  
 4. [Vista de Desarrollo/Implementación](#vista-de-desarrolloimplementación)  
@@ -40,9 +39,6 @@ version 0.0.1
 
 ### Paquete *mastermind.views.console*<a name="paquete-mastermind-views-console"></a>
 ![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.mastermind.console.svg)
-
-### Paquete *mastermind.views.graphics*<a name="paquete-mastermind-views-graphics"></a>
-![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.mastermind.graphics.svg)
 
 ### Paquete *mastermind.controllers*<a name="paquete-mastermind-controllers"></a>
 ![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.mastermind.controllers.svg)

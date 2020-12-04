@@ -53,7 +53,7 @@ abstract class  usantatecla.mastermind.views.ErrorView{
 # abstract colorInitials(): String
 }
 
- enum  usantatecla.mastermind.views.Message{
+ enum  usantatecla.mastermind.views.MessageView{
 + ATTEMPTS
 + SECRET
 + RESUME
