@@ -38,7 +38,7 @@ class GameTestWithoutBuilder {
         ArrayList<Color> colors = new ArrayList<>(Arrays.asList(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW));
         ProposedCombination combination = new ProposedCombination();
         combination.colors = colors;
-        for(int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             this.game.addProposedCombination(combination);
         }
         assertThat(this.game.isLooser(), is(false));
@@ -85,7 +85,7 @@ class GameTestWithoutBuilder {
         ProposedCombination combination = new ProposedCombination();
         combination.colors = colors;
         Random random = new Random(System.currentTimeMillis());
-        for(int i = 0; i < random.nextInt(10); i++) {
+        for (int i = 0; i < random.nextInt(10); i++) {
             this.game.addProposedCombination(combination);
         }
 

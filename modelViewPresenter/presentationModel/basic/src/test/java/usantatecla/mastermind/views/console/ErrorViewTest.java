@@ -20,7 +20,7 @@ public class ErrorViewTest {
 
     @Test
     void testGivenCorrectErrorWhenWritelnThenCapturesCorrectArgument() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             this.errorView = new ErrorView(Error.WRONG_LENGTH);
             console.when(Console::getInstance).thenReturn(this.console);
             this.errorView.writeln();
@@ -30,7 +30,7 @@ public class ErrorViewTest {
 
     @Test
     void testGivenNullErrorWhenWritelnThenConsoleIsNotCalled() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             this.errorView = new ErrorView(Error.NULL);
             console.when(Console::getInstance).thenReturn(this.console);
             this.errorView.writeln();

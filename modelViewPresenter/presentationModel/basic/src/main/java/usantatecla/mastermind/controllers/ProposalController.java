@@ -21,7 +21,7 @@ public class ProposalController extends Controller {
                 if (colors.get(i).isNull()) {
                     error = Error.WRONG_CHARACTERS;
                 } else {
-                    for (int j = i+1; j < colors.size(); j++) {
+                    for (int j = i + 1; j < colors.size(); j++) {
                         if (colors.get(i).equals(colors.get(j))) {
                             error = Error.DUPLICATED;
                         }

@@ -26,10 +26,10 @@ class Error as "usantatecla.mastermind.models.\nError"{}
 class Color as "usantatecla.mastermind.models.\nColor"{}
 class Game as "usantatecla.mastermind.models.\nGame"{}
 
-abstract class usantatecla.mastermind.views.WithGameView {
+abstract class usantatecla.mastermind.WithGameView {
     + WithGameView(Game)
 }
-usantatecla.mastermind.views.WithGameView *-down-> Game
+usantatecla.mastermind.WithGameView *-down-> Game
 
 abstract class usantatecla.mastermind.views.ColorView{
     + {static} INITIALS: char []
@@ -70,7 +70,7 @@ abstract class usantatecla.mastermind.views.View {
     # {abstract} propose(): boolean
     # {abstract} isNewGame(): boolean
 }
-usantatecla.mastermind.views.View -up-|> usantatecla.mastermind.views.WithGameView
+usantatecla.mastermind.views.View -up-|> usantatecla.mastermind.WithGameView
 usantatecla.mastermind.views.View .down.> Game
 @enduml
 

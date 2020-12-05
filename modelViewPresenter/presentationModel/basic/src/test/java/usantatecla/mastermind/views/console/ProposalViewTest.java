@@ -30,7 +30,7 @@ public class ProposalViewTest {
 
     @Test
     void testGiven1AttemptAndIsWinnerGameWhenInteractThenReturnsTrue() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             when(this.console.readString(anyString())).thenReturn("rgby");
             when(this.proposalController.addProposedCombination(any())).thenReturn(Error.NULL);
             when(this.proposalController.isWinner()).thenReturn(true);
@@ -41,7 +41,7 @@ public class ProposalViewTest {
 
     @Test
     void testGiven1AttemptAndIsNotWinnerNorLooserGameWhenInteractThenReturnsFalse() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             when(this.console.readString(anyString())).thenReturn("rgby");
             when(this.proposalController.addProposedCombination(any())).thenReturn(Error.NULL);
             when(this.proposalController.isWinner()).thenReturn(false);
@@ -53,7 +53,7 @@ public class ProposalViewTest {
 
     @Test
     void testGivenSomeBadProposedCombinationWhenCorrectOneIsGivenThenInteractFinish() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             when(this.console.readString(anyString())).thenReturn("rgbyo", "rgby");
             when(this.proposalController.addProposedCombination(any())).thenReturn(Error.WRONG_LENGTH, Error.NULL);
             when(this.proposalController.isWinner()).thenReturn(true);

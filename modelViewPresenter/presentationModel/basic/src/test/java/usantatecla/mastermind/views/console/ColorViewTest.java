@@ -24,6 +24,7 @@ public class ColorViewTest {
     @Test
     void testGivenStaticMethodAllInitialsWhenCallingThatMethodThenReturnsCorrectString() {
         String reset_color = "\u001B[0m";
+        this.colorView = new ColorView();
         assertThat(this.colorView.allInitials(), is("\u001B[31mr" + reset_color +
                 "\u001B[34mb" + reset_color +
                 "\u001B[33my" + reset_color +
@@ -44,7 +45,7 @@ public class ColorViewTest {
 
     @Test
     void testGivenAColorWhenWriteThenCapturesCorrectArguments() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             this.colorView = new ColorView(Color.GREEN);
             console.when(Console::getInstance).thenReturn(this.console);
             this.colorView.write();
@@ -54,7 +55,7 @@ public class ColorViewTest {
 
     @Test
     void testGivenNullColorWhenWriteThenNothingHappen() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             this.colorView = new ColorView(Color.NULL);
             console.when(Console::getInstance).thenReturn(this.console);
             this.colorView.write();
