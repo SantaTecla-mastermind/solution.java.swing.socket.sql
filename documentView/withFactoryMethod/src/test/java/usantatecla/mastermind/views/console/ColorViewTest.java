@@ -6,7 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.models.Color;
+import usantatecla.mastermind.types.Color;
 import usantatecla.utils.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -46,7 +46,7 @@ public class ColorViewTest {
 
     @Test
     void testGivenAColorWhenWriteThenCapturesCorrectArguments() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             this.colorView = new ColorView(Color.GREEN);
             console.when(Console::getInstance).thenReturn(this.console);
             this.colorView.write();
@@ -56,7 +56,7 @@ public class ColorViewTest {
 
     @Test
     void testGivenNullColorWhenWriteThenNothingHappen() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             this.colorView = new ColorView(Color.NULL);
             console.when(Console::getInstance).thenReturn(this.console);
             this.colorView.write();

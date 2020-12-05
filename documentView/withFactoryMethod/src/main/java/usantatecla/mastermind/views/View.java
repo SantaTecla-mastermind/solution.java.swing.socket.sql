@@ -2,28 +2,26 @@ package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.models.Game;
 
-public abstract class View {
+public abstract class View extends WithGameView {
 
-	protected Game game;
+    public View(Game game) {
+        super(game);
+    }
 
-	public View(Game game) {
-		this.game = game;
-	}
+    public void interact() {
+        do {
+            this.start();
+            boolean finished;
+            do {
+                finished = this.propose();
+            } while (!finished);
+        } while (this.isNewGame());
+    }
 
-	public void interact() {
-		do {
-			this.start();
-			boolean finished;
-			do {
-				finished = this.propose();
-			} while (!finished);
-		} while (this.isNewGame());
-	}
+    protected abstract void start();
 
-	protected abstract void start();
+    protected abstract boolean propose();
 
-	protected abstract boolean propose();
-
-	protected abstract boolean isNewGame();
+    protected abstract boolean isNewGame();
 
 }
