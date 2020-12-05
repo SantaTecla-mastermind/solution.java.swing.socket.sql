@@ -27,7 +27,7 @@ public class ProposedCombination extends Combination {
 	}
 	
 	ProposedCombination copy() {
-		List<Color> colors = new ArrayList<Color>();
+		List<Color> colors = new ArrayList<>();
 		for(Color color: this.colors) {
 			colors.add(color);
 		}
@@ -40,10 +40,10 @@ public class ProposedCombination extends Combination {
 	public static class Builder {
 		private ProposedCombination proposedCombination;
 		private Builder () {
-			this.proposedCombination = new ProposedCombination(new ArrayList<Color>());
+			this.proposedCombination = new ProposedCombination(new ArrayList<>());
 		}
 		public Builder colors (String colors){
-			List<Color> colorsOut = new ArrayList<Color>();
+			List<Color> colorsOut = new ArrayList<>();
 			for(int i = 0; i< colors.length(); i++){
 				char caracter = colors.charAt(i);
 				switch(caracter){

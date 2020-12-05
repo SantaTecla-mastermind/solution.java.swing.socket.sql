@@ -1,9 +1,8 @@
 package usantatecla.mastermind.models;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 public class ResultTest {
     private Result result;
@@ -14,30 +13,30 @@ public class ResultTest {
 
     @Test
     public void testGetBlacksThenGet2(){
-        assertEquals(2,this.result.getBlacks());
+        assertThat(this.result.getBlacks(), is(2));
     }
 
     @Test
     public void testGetWhitesThenGet1(){
-        assertEquals(1,this.result.getWhites());
+        assertThat(this.result.getWhites(), is(1));
     }
 
     @Test
     public void testCopyResult(){
         Result resultcopy = this.result.copy();
-        assertEquals(this.result.getBlacks(), resultcopy.getBlacks());
-        assertEquals(this.result.getWhites(), resultcopy.getWhites());
+        assertThat(resultcopy.getBlacks(), is(this.result.getBlacks()));
+        assertThat(resultcopy.getWhites(), is(this.result.getWhites()));
     }
 
     @Test
     public void testIsWinnerThenReturnFalse(){
-        assertFalse(this.result.isWinner());
+        assertThat(this.result.isWinner(), is(false));
     }
 
     @Test
     public void testIsWinnerThenReturnTrue(){
         Result result2 = new Result(4,0);
-        assertTrue(result2.isWinner());
+        assertThat(result2.isWinner(), is(true));
     }
 
 }
