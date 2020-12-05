@@ -4,6 +4,8 @@ usantatecla.mastermind .down.> usantatecla.mastermind.views
 usantatecla.mastermind .down.> usantatecla.mastermind.models
 
 package usantatecla.mastermind.models #DDDDDD { }
+usantatecla.mastermind.models .down.> usantatecla.mastermind.types
+package usantatecla.mastermind.types #DDDDDD { }
 package java.util{ }
 usantatecla.mastermind.models .down.> java.util
 
@@ -13,5 +15,6 @@ usantatecla.utils .down.> java.io
 
 package usantatecla.mastermind.views #DDDDDD { }
 usantatecla.mastermind.views .down.> usantatecla.mastermind.models
+usantatecla.mastermind.views .down.> usantatecla.mastermind.types
 usantatecla.mastermind.views .down.> usantatecla.utils
 @enduml

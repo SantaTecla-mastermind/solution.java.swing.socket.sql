@@ -2,15 +2,15 @@ package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.models.Game;
 import usantatecla.mastermind.views.Message;
+import usantatecla.mastermind.views.WithGameView;
 import usantatecla.utils.Console;
 
-class GameView {
-    private Game game;
+class GameView extends WithGameView {
 
     private SecretCombinationView secretCombinationView;
 
     GameView(Game game) {
-        this.game = game;
+        super(game);
         this.secretCombinationView = new SecretCombinationView();
     }
 

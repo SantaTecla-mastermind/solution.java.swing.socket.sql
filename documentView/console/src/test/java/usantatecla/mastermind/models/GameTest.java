@@ -1,12 +1,11 @@
 package usantatecla.mastermind.models;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import usantatecla.mastermind.types.Color;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -20,8 +19,8 @@ class GameTest {
         this.game = new GameBuilder().proposedCombinations(proposedCombinationStrings).build();
     }
 
-    private void setGame(int times, String proposedCombinationString) {
-        this.game = new GameBuilder().proposedCombinations(times, proposedCombinationString).build();
+    private void setGame(int times) {
+        this.game = new GameBuilder().proposedCombinations(times, "rbgy").build();
     }
 
     @Test
@@ -40,9 +39,9 @@ class GameTest {
 
     @Test
     void testGivenNineAttemptsGameWhenPlaceAnotherProposedCombinationThenIsLooser() {
-        this.setGame(9, "rbgy");
+        this.setGame(9);
         assertThat(this.game.isLooser(), is(false));
-        this.setGame(10, "rbgy");
+        this.setGame(10);
         assertThat(this.game.isLooser(), is(true));
     }
 
@@ -56,7 +55,7 @@ class GameTest {
 
     @Test
     void testGivenGameWith3ProposedCombinationsWhenGetAttemptsThenReturns3() {
-        this.setGame(3, "rbgy");
+        this.setGame(3);
 
         assertThat(this.game.getAttempts(), is(3));
     }
@@ -72,13 +71,12 @@ class GameTest {
     void testGivenGameInAnyStateWhenResetThenIsEmpty() {
         Random random = new Random(System.currentTimeMillis());
         int length = random.nextInt(10);
-        this.setGame(length, "rbgy");
+        this.setGame(length);
 
         this.game.reset();
 
         assertThat(this.game.getAttempts(), is(0));
         assertThat(this.game.isLooser(), is(false));
-        // assertThat(this.game.isWinner(), is(false));
         Assertions.assertThrows(AssertionError.class, () -> this.game.getProposedCombination(0));
         Assertions.assertThrows(AssertionError.class, () -> this.game.getResult(0));
     }

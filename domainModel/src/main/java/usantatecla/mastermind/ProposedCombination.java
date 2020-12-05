@@ -1,7 +1,6 @@
 package usantatecla.mastermind;
 
 import usantatecla.utils.Console;
-
 import java.util.ArrayList;
 
 class ProposedCombination extends Combination {
@@ -19,7 +18,7 @@ class ProposedCombination extends Combination {
             error = this.checkError(Console.getInstance().readString());
             error.writeln();
             if (!error.isNull()) {
-                this.colors = new ArrayList<Color>();
+                this.colors = new ArrayList<>();
             }
         } while (!error.isNull());
     }

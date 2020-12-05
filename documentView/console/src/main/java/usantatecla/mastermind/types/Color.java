@@ -1,15 +1,15 @@
-package usantatecla.mastermind.models;
+package usantatecla.mastermind.types;
 
 public enum Color {
-	RED,
-	BLUE,
-	YELLOW,
-	GREEN,
-	ORANGE,
+	RED, 
+	BLUE, 
+	YELLOW, 
+	GREEN, 
+	ORANGE, 
 	PURPLE,
 	NULL;
 
-	static int length() {
+	public static int length() {
 		return Color.values().length;
 	}
 
