@@ -3,6 +3,8 @@ package "  "  as usantatecla.mastermind {
 }
 package "  "  as usantatecla.mastermind.models {
 }
+package "  "  as usantatecla.mastermind.types {
+}
 package "  "  as usantatecla.mastermind.views {
 }
 package "  "  as usantatecla.mastermind.views.console {
@@ -20,6 +22,7 @@ package "  "  as java.util {
 
 jar *--> usantatecla.mastermind
 jar *--> usantatecla.mastermind.models
+jar *--> usantatecla.mastermind.types
 jar *--> usantatecla.mastermind.views
 jar *--> usantatecla.mastermind.views.console
 jar *--> usantatecla.mastermind.views.graphics

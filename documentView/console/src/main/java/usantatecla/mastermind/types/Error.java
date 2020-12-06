@@ -1,4 +1,4 @@
-package usantatecla.mastermind.models;
+package usantatecla.mastermind.types;
 
 public enum Error {
 	DUPLICATED,
@@ -9,5 +9,4 @@ public enum Error {
 	public boolean isNull() {
 		return this == Error.NULL;
 	}
-	
 }

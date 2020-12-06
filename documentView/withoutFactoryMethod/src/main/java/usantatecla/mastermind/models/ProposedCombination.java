@@ -1,5 +1,7 @@
 package usantatecla.mastermind.models;
 
+import usantatecla.mastermind.types.Color;
+
 import java.util.List;
 
 public class ProposedCombination extends Combination {

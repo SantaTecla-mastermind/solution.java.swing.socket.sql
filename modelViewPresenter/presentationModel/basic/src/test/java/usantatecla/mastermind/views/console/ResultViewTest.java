@@ -32,7 +32,7 @@ public class ResultViewTest {
 
     @Test
     void testGivenResultViewWhenWritelnThenCorrectMessageIsDisplayed() {
-        try(MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             ArgumentCaptor<String> resultCaptor = ArgumentCaptor.forClass(String.class);
             when(this.proposalController.getResult(anyInt())).thenReturn(this.result);
             when(this.result.getBlacks()).thenReturn(2);

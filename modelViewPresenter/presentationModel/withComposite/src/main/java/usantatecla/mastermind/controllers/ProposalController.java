@@ -7,14 +7,14 @@ import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 
-class ProposalController extends Controller {
+public class ProposalController extends Controller {
 
 	ProposalController(Session session) {
 		super(session);
 	}
 
 	Error addProposedCombination(List<Color> colors) {
-		Error error = null;
+		Error error = Error.NULL;
 		if (colors.size() != Combination.getWidth()) {
 			error = Error.WRONG_LENGTH;
 		} else {
@@ -30,7 +30,7 @@ class ProposalController extends Controller {
 				}				
 			}
 		}
-		if (error == null){
+		if (error.isNull()){
 			this.session.addProposedCombination(colors);
 			if (this.session.isWinner() || this.session.isLooser()) {
 				this.session.next();

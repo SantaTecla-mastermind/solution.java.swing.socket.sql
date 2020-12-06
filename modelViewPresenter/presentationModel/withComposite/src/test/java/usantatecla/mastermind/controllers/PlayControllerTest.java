@@ -1,7 +1,11 @@
 package usantatecla.mastermind.controllers;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import usantatecla.mastermind.types.Color;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,25 +13,23 @@ import java.util.List;
 
 import usantatecla.mastermind.models.Session;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
 public class PlayControllerTest {
     private PlayController playController;
     private Session session;
     private List<Color> colors;
     private List<Color> colors2;
 
-    public PlayControllerTest() {
+    @BeforeEach
+    void PlayControllerTest() {
         this.session = new Session();
         this.playController = new PlayController(session);
-        colors = new ArrayList<Color>();
+        colors = new ArrayList<>();
         colors.add(Color.BLUE);
         colors.add(Color.ORANGE);
         colors.add(Color.RED);
         colors.add(Color.GREEN);
         
-        colors2 = new ArrayList<Color>();
+        colors2 = new ArrayList<>();
         colors2.add(Color.YELLOW);
         colors2.add(Color.PURPLE);
         colors2.add(Color.ORANGE);
@@ -37,30 +39,28 @@ public class PlayControllerTest {
 
     @Test
     public void testIsWinnerAtTheGameBeginsThenIsFalse(){
-        assertFalse(this.playController.isWinner());
+        assertThat(this.playController.isWinner(), is(false));
     }
-
     @Test
     public void testIsLooserAtTheGameBeginsThenIsFalse(){
-        assertFalse(this.playController.isLooser());
+        assertThat(this.playController.isLooser(), is(false));
     }
-
     @Test
     public void testGetAttempsAtTheGameBeginsThenIs0(){
-        assertEquals(this.playController.getAttempts(),0);
+        assertThat(this.playController.getAttempts(),is(0));
     }
     @Test
     public void testRedoableAtTheGameBeginsThenIsFalse(){
-        assertFalse(this.playController.redoable());
+        assertThat(this.playController.redoable(), is(false));
     }
     @Test
     public void testUndoableAtTheGameBeginsThenIsFalse(){
-        assertFalse(this.playController.undoable());
+        assertThat(this.playController.undoable(), is(false));
     }
     @Test
     public void testGetColorsAfterProposeACombination(){
         this.playController.addProposedCombination(colors);
-        assertEquals(colors, this.playController.getColors(0));
+        assertThat(this.playController.getColors(0), is(colors));
     }
 
     @Test
@@ -68,8 +68,8 @@ public class PlayControllerTest {
         this.playController.addProposedCombination(colors);
         this.playController.addProposedCombination(colors2);
         this.playController.undo();
-        assertEquals(colors, this.playController.getColors(0));
-      //  this.session.clearGame();
+        assertThat(this.playController.getColors(0), is(colors));
+        //this.session.clearGame();
     }
 
     @Test
@@ -78,23 +78,31 @@ public class PlayControllerTest {
         this.playController.addProposedCombination(colors2);
         this.playController.undo();
         this.playController.redo();
-        assertEquals(colors2, this.playController.getColors(1));
-        assertEquals(2, this.playController.getAttempts());
-      //  this.session.clearGame();
+        assertThat(this.playController.getColors(1), is(colors2));
+        assertThat(this.playController.getAttempts(), is(2));
+        //this.session.clearGame();
     }
 
 
 
     @Test
     public void testGetWhitesAfterProposeCombination(){
-       // List<Color> colors = this.playController.session.getSecretCombination();
-       // this.playController.addProposedCombination(colors);
-       // assertEquals(0, this.playController.getWhites(0));
+        /*List<Color> colors = new ArrayList<>();
+        colors.add(Color.ORANGE);
+        colors.add(Color.PURPLE);
+        colors.add(Color.YELLOW);
+        colors.add(Color.RED);
+        this.playController.addProposedCombination(colors);
+        assertThat(this.playController.getWhites(0), is(0));*/
     }
     @Test
     public void testGetBlacksAfterProposeCombination(){
-      //  List<Color> colors = this.playController.session.getSecretCombination();
-       // this.playController.addProposedCombination(colors);
-      //  assertEquals(4, this.playController.getBlacks(0));
+        /*List<Color> colors = new ArrayList<>();
+        colors.add(Color.ORANGE);
+        colors.add(Color.PURPLE);
+        colors.add(Color.YELLOW);
+        colors.add(Color.RED);
+        this.playController.addProposedCombination(colors);
+        assertThat(this.playController.getBlacks(0), is(0));*/
     }
 }

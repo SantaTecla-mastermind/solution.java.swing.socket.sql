@@ -18,10 +18,10 @@ class ProposeCommand extends Command {
 		do {
 			List<Color> colors = new ProposedCombinationView(this.playController).read();
 			error = this.playController.addProposedCombination(colors);
-			if (error != null) {
+			if (!error.isNull()) {
 				new ErrorView(error).writeln();
 			}
-		} while (error != null);
+		} while (!error.isNull());
 		new GameView(this.playController);
 	}
 

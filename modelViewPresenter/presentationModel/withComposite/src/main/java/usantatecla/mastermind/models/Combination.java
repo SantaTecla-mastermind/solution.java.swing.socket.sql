@@ -1,7 +1,6 @@
 package usantatecla.mastermind.models;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import usantatecla.mastermind.types.Color;
@@ -13,7 +12,7 @@ public abstract class Combination {
 	protected List<Color> colors;
 	
 	protected Combination (){
-		this.colors = new ArrayList<Color>();
+		this.colors = new ArrayList<>();
 	}
 	
 	public static int getWidth() {

@@ -12,7 +12,7 @@ class Registry {
 	
 	Registry(Game game) {
 		this.game = game;
-		this.mementoList = new ArrayList<Memento>();
+		this.mementoList = new ArrayList<>();
 		this.mementoList.add(firstPrevious, this.game.createMemento());
 		this.firstPrevious = 0;
 	}
@@ -44,7 +44,7 @@ class Registry {
 	}
 
 	void reset() {
-		this.mementoList = new ArrayList<Memento>();
+		this.mementoList = new ArrayList<>();
 		this.mementoList.add(firstPrevious, this.game.createMemento());
 		this.firstPrevious = 0;
 	}

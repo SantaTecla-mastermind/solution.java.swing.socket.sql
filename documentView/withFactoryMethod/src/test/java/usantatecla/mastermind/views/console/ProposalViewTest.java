@@ -7,10 +7,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.models.Color;
 import usantatecla.mastermind.models.Game;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.models.Result;
+import usantatecla.mastermind.types.Color;
 import usantatecla.utils.Console;
 
 import java.util.Arrays;
@@ -52,7 +52,7 @@ public class ProposalViewTest {
 
     @Test
     void testGiven1AttemptAndIsWinnerGameWhenInteractThenReturnsTrue() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             when(this.game.isWinner()).thenReturn(true);
             console.when(Console::getInstance).thenReturn(this.console);
             assertThat(this.proposalView.interact(), is(true));
@@ -61,7 +61,7 @@ public class ProposalViewTest {
 
     @Test
     void testGiven1AttemptAndIsNotWinnerNorLooserGameWhenInteractThenReturnsFalse() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             when(this.game.isWinner()).thenReturn(false);
             when(this.game.isLooser()).thenReturn(false);
             console.when(Console::getInstance).thenReturn(this.console);

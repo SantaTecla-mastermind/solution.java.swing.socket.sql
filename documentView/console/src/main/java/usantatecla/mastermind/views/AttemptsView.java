@@ -6,11 +6,11 @@ class AttemptsView {
 
     private int attempts;
 
-    AttemptsView(int attempts){
+    AttemptsView(int attempts) {
         this.attempts = attempts;
     }
 
     void writeln() {
-        Console.getInstance().writeln(Message.ATTEMPTS.getMessage().replace("#attempts", ""+this.attempts));
+        Console.getInstance().writeln(Message.ATTEMPTS.getMessage().replace("#attempts", "" + this.attempts));
     }
 }

@@ -69,7 +69,7 @@ link usantatecla.mastermind.views.console.ColorView to Color--><path codeLine="1
 reverse link ErrorView to usantatecla.mastermind.views.console.ErrorView--><path codeLine="121" d="M166.77,658.229 C168.522,658.84 170.266,659.432 172,660 C328.933,711.448 520.721,743.948 622.178,758.877 " fill="none" id="ErrorView-backto-usantatecla.mastermind.views.console.ErrorView" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="164.093,664.699,147.903,651.029,169.084,651.619,164.093,664.699" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7451bd3d087460174f80dc13e9004d7a]
 link usantatecla.mastermind.views.console.ErrorView to Error--><path codeLine="122" d="M763.68,790.151 C797.305,799.291 838.131,810.085 875,819 C997.015,848.503 1033.47,834.909 1151,879 C1160.68,882.633 1170.6,887.185 1180.13,892.036 " fill="none" id="usantatecla.mastermind.views.console.ErrorView-to-Error" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="1184.77,894.438,1178.6184,886.7466,1180.3303,892.1382,1174.9387,893.85,1184.77,894.438" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b6f3fff8c22bf6afa8b0a8da791006e0]
 link usantatecla.mastermind.views.console.ErrorView to Console--><path codeLine="123" d="M763.769,784.726 C814.435,794.75 884.318,808.247 946,819 C1115.31,848.516 1170.94,809.227 1328,879 C1407.42,914.282 1407.36,954.302 1480,1002 C1502.6,1016.8359 1528.75,1031.0604 1551.78,1042.6992 " fill="none" id="usantatecla.mastermind.views.console.ErrorView-to-Console" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="1556.35,1044.9919,1550.1012,1037.3793,1551.8814,1042.7487,1546.512,1044.529,1556.35,1044.9919" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0144a89e07469074881e23a062c69e12]
-link usantatecla.mastermind.views.console.ErrorView to usantatecla.mastermind.views.console.ColorView--><path codeLine="124" d="M693,819.315 C693,836.528 693,855.973 693,873.583 " fill="none" id="usantatecla.mastermind.views.console.ErrorView-to-usantatecla.mastermind.views.console.ColorView" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="693,878.985,697,869.985,693,873.985,689,869.985,693,878.985" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[62c1833a8dc5fa13297be96463ba1b80]
+link usantatecla.mastermind.views.console.ErrorView to usantatecla.mastermind.views.console.ColorView--><path codeLine="124" d="M693,819.315 C693,836.528 693,855.973 693,873.583 " fill="none" id="usantatecla.mastermind.views.console.ErrorView-to-usantatecla.mastermind.views.console.ColorView" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="693,878.985,697,869.985,693,873.985,689,869.985,693,878.985" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[334ce17ae0d634e72f7ee371c3126eea]
 @startuml
 class Error as "usantatecla.\nmastermind.types.\nError"
 enum Color as "usantatecla.\nmastermind.types.\nColor"
@@ -197,7 +197,7 @@ usantatecla.mastermind.views.console.ErrorView ..> Console
 usantatecla.mastermind.views.console.ErrorView ..> usantatecla.mastermind.views.console.ColorView
 @enduml
 
-PlantUML version 1.2020.21(Mon Nov 30 16:40:11 UTC 2020)
+PlantUML version 1.2020.22beta3(Unknown compile time)
 (GPL source distribution)
 Java Runtime: Java(TM) SE Runtime Environment
 JVM: Java HotSpot(TM) 64-Bit Server VM

@@ -2,6 +2,7 @@ package usantatecla.mastermind.models;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import usantatecla.mastermind.types.Color;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,8 +35,7 @@ public class ProposedCombinationTest {
 
     @Test
     void testGivenColorsInProposedCombinationWhenColorIsNotContainedThenIsFalse() {
-        ArrayList<Color> colors = new ArrayList<>(Arrays.asList(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW));
-        this.proposedCombination.colors = colors;
+        this.proposedCombination.colors = new ArrayList<>(Arrays.asList(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW));
 
         assertThat(this.proposedCombination.getColors().contains(Color.PURPLE), is(false));
     }

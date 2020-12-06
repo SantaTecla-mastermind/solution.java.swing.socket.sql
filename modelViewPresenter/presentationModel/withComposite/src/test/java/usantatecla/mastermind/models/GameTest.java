@@ -6,8 +6,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import usantatecla.mastermind.types.Color;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 public class GameTest {
     private Game game;
@@ -30,7 +30,7 @@ public class GameTest {
     @Test
     public void testAddProposedCombinationAndVerifyFirstColor(){
         this.game.addProposedCombination(colors);
-        assertEquals(Color.BLUE, this.game.getColors(0).get(0));
+        assertThat(this.game.getColors(0).get(0), is(Color.BLUE));
         this.game.clear();
 
     }
@@ -38,8 +38,8 @@ public class GameTest {
     @Test
     public void testsetMementoAndCompareResults(){
         this.game.set(memento);
-        assertEquals(2, this.game.getBlacks(0));
-        assertEquals(1, this.game.getWhites(0));
+        assertThat(this.game.getBlacks(0), is(2));
+        assertThat(this.game.getWhites(0), is(1));
         this.game.clear();
     }
 
@@ -47,12 +47,12 @@ public class GameTest {
     public void testCreateMementoAndCompareAttemps(){
         this.game.addProposedCombination(colors);
         this.game.createMemento();
-        assertEquals(1, this.game.getAttempts());
+        assertThat(this.game.getAttempts(), is(1));
         this.game.clear();
     }
     @Test
     public void testGetWidthThenReturn4(){
-        assertEquals(4, this.game.getWidth());
+        assertThat(this.game.getWidth(), is(4));
     }
     @Test
     public void testIsLooserAfter10AttempsThenGetTrue(){
@@ -66,14 +66,14 @@ public class GameTest {
         this.game.addProposedCombination(colors);
         this.game.addProposedCombination(colors);
         this.game.addProposedCombination(colors);
-        assertTrue(this.game.isLooser());
+        assertThat(this.game.isLooser(), is(true));
         this.game.clear();
     }
 
     @Test
     public void testisWinnerAfterAWinnerPropossedThenGetTrue(){
         this.game.set(mementoWinner);
-        assertTrue(this.game.isWinner());
+        assertThat(this.game.isWinner(), is(true));
         this.game.clear();
     }
     

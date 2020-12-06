@@ -1,17 +1,25 @@
 @startuml usantatecla.mastermind
 
 class View as "usantatecla.\nmastermind.views.\nView"
+class Game as "usantatecla.\nmastermind.models.\nGame"
 class ConsoleView as "usantatecla.\nmastermind.views.\nconsole.ConsoleView"
 class GraphicsView as "usantatecla.\nmastermind.views.\nconsole.GraphicsView"
 class StartController as "usantatecla.\nmastermind.controllers.\nStartController"
 class ProposalController as "usantatecla.\nmastermind.controllers.\nProposalController"
 class ResumeController as "usantatecla.\nmastermind.controllers.\nResumeController"
 
+abstract class usantatecla.mastermind.WithGameView{
+    + WithGameView(Game)
+}
+usantatecla.mastermind.WithGameView *-down-> Game
+
 abstract class  usantatecla.mastermind.Mastermind{
     # Mastermind()
     # {abstract} createView(StartController, ProposalController, ResumeController): View
     # play()
 }
+usantatecla.mastermind.Mastermind -up-|> usantatecla.mastermind.WithGameView
+usantatecla.mastermind.Mastermind .down.> Game
 usantatecla.mastermind.Mastermind *-down-> View
 usantatecla.mastermind.Mastermind *-down-> StartController
 usantatecla.mastermind.Mastermind *-down-> ProposalController
@@ -25,8 +33,8 @@ usantatecla.mastermind.ConsoleMastermind -up-|> usantatecla.mastermind.Mastermin
 usantatecla.mastermind.ConsoleMastermind ..> ConsoleView
 
 class  usantatecla.mastermind.GraphicsMastermind{
-# createView(StartController, ProposalController, ResumeController): GraphicsView
-+ {static} main(String[])
+    # createView(StartController, ProposalController, ResumeController): GraphicsView
+    + {static} main(String[])
 }
 usantatecla.mastermind.GraphicsMastermind -up-|> usantatecla.mastermind.Mastermind
 usantatecla.mastermind.GraphicsMastermind ..> GraphicsView
@@ -217,80 +225,61 @@ usantatecla.mastermind.views.console.ErrorView ..> usantatecla.mastermind.views.
 
 @startuml usantatecla.mastermind.controllers
 
-abstract class Combination as "usantatecla.mastermind.models.Combination"
-class Game as "usantatecla.mastermind.models.Game"
-class Error as "usantatecla.mastermind.types.Error"
-class Color as "usantatecla.mastermind.types.Color"
-class ProposedCombination as "usantatecla.mastermind.models.ProposedCombination"
-class Result as "usantatecla.mastermind.models.Result"
+abstract class WithGameView as "usantatecla.mastermind.\nWithGameView"
+abstract class Combination as "usantatecla.\nmastermind.models.\nCombination"
+class Game as "usantatecla.\nmastermind.models.\nGame"
+class Error as "usantatecla.\nmastermind.types.\nError"
+class Color as "usantatecla.\nmastermind.types.\nColor"
+class ProposedCombination as "usantatecla.\nmastermind.models.\nProposedCombination"
+class Result as "usantatecla.\nmastermind.models.\nResult"
 
 abstract class usantatecla.mastermind.controllers.Controller {
-	#game: Game
-
-	#Controller(Game)
-	+getWidth(): int
+    # Controller(Game)
+    + getWidth(): int
 }
-usantatecla.mastermind.controllers.Controller *-down-> Game
+usantatecla.mastermind.controllers.Controller -up-|> WithGameView
+usantatecla.mastermind.controllers.Controller .down.> Game
 usantatecla.mastermind.controllers.Controller .down.> Combination
 
 class usantatecla.mastermind.controllers.StartController {
-	+StartController(Game)
+    + StartController(Game)
 }
 usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.StartController
+usantatecla.mastermind.controllers.StartController .down.> Game
 
 class usantatecla.mastermind.controllers.ProposalController {
-
-    +ProposalController(Game)
-    +addProposedCombination(List<Color>): Error
-    +boolean isWinner(): boolean
-    +isLooser(): boolean
-    +getAttempts(): int
-    +getProposedCombination(int position): ProposedCombination
-    +getResult(int position): Result
-
+    + ProposalController(Game)
+    + addProposedCombination(List<Color>): Error
+    + boolean isWinner(): boolean
+    + isLooser(): boolean
+    + getAttempts(): int
+    + getProposedCombination(int position): ProposedCombination
+    + getResult(int position): Result
 }
 usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.ProposalController
 usantatecla.mastermind.controllers.ProposalController .down.> Error
 usantatecla.mastermind.controllers.ProposalController .down.> ProposedCombination
 usantatecla.mastermind.controllers.ProposalController .down.> Result
 usantatecla.mastermind.controllers.ProposalController .down.> Color
+usantatecla.mastermind.controllers.ProposalController .down.> Game
 
 class usantatecla.mastermind.controllers.ResumeController {
-	+ResumeController(Game)
-	+reset()
+    + ResumeController(Game)
+    + reset()
 }
 usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.ResumeController
-
+usantatecla.mastermind.controllers.ResumeController .down.> Game
 @enduml
 
 @startuml usantatecla.mastermind.models
-
-enum usantatecla.mastermind.types.Color {
-    + RED
-    + BLUE
-    + YELLOW
-    + GREEN
-    + ORANGE
-    + PURPLE
-    + NULL
-    ~ {static} length(): int
-    + isNull() : boolean
-}
+enum Color as "usantatecla.\nmastermind.types.\nColor"
 
 abstract class usantatecla.mastermind.models.Combination {
     - {static} WIDTH: int
     # Combination()
     + {static} getWidth(): int
 }
-usantatecla.mastermind.models.Combination *-down-> "*" usantatecla.mastermind.types.Color
-
-enum usantatecla.mastermind.types.Error {
-    + DUPLICATED
-    + WRONG_CHARACTERS
-    + WRONG_LENGTH
-    + NULL
-    + isNull() : boolean
-}
+usantatecla.mastermind.models.Combination *-down-> "*" Color
 
 class usantatecla.mastermind.models.Game {
     - {static} MAX_LONG: int
@@ -314,7 +303,7 @@ class usantatecla.mastermind.models.ProposedCombination {
     + getColors(): List<Color>
 }
 usantatecla.mastermind.models.ProposedCombination -up-|> usantatecla.mastermind.models.Combination
-usantatecla.mastermind.models.ProposedCombination ..> usantatecla.mastermind.types.Color
+usantatecla.mastermind.models.ProposedCombination ..> Color
 
 class usantatecla.mastermind.models.Result {
     - blacks: int
@@ -334,7 +323,29 @@ class usantatecla.mastermind.models.SecretCombination {
 usantatecla.mastermind.models.SecretCombination -up-|> usantatecla.mastermind.models.Combination
 usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.models.Result
 usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.models.ProposedCombination
-usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.types.Color
+usantatecla.mastermind.models.SecretCombination ..> Color
+@enduml
+
+@startuml usantatecla.mastermind.types
+enum usantatecla.mastermind.types.Color {
+    + RED
+    + BLUE
+    + YELLOW
+    + GREEN
+    + ORANGE
+    + PURPLE
+    + NULL
+    + {static} length(): int
+    + isNull() : boolean
+}
+
+enum usantatecla.mastermind.types.Error {
+    + DUPLICATED
+    + WRONG_CHARACTERS
+    + WRONG_LENGTH
+    + NULL
+    + isNull() : boolean
+}
 
 @enduml
 
@@ -343,43 +354,43 @@ usantatecla.mastermind.models.SecretCombination ..> usantatecla.mastermind.types
 class BufferedReader as "java.io.BufferedReader"{}
 
 enum usantatecla.utils.ColorCode{
-+ RED
-+ BLUE
-+ YELLOW
-+ GREEN
-+ ORANGE
-+ PURPLE
-+ RESET_COLOR
-- color: String
-~ ColorCode(String)
-+ getColor(): String
-+ {static} getColorByIndex(int): String
+    + RED
+    + BLUE
+    + YELLOW
+    + GREEN
+    + ORANGE
+    + PURPLE
+    + RESET_COLOR
+    - color: String
+    ~ ColorCode(String)
+    + getColor(): String
+    + {static} getColorByIndex(int): String
 }
 
 class usantatecla.utils.Console{
-- {static} console: Console
-+ {static} getInstance(): Console
-+ readString(String): String
-+ readString(): String
-+ readInt(String): int
-+ readChar(String): char
-+ writeln()
-+ write(String)
-+ writeln(String)
-+ write(char)
-- writeError(String)
+    - {static} console: Console
+    + {static} getInstance(): Console
+    + readString(String): String
+    + readString(): String
+    + readInt(String): int
+    + readChar(String): char
+    + writeln()
+    + write(String)
+    + writeln(String)
+    + write(char)
+    - writeError(String)
 }
 usantatecla.utils.Console *-down-> BufferedReader
 
 class  usantatecla.utils.YesNoDialog{
-- {static} AFIRMATIVE: char
-- {static} NEGATIVE: char
-- {static} QUESTION: String
-- {static} MESSAGE: String
-+ YesNoDialog()
-+ read(String): boolean
-- {static} isAfirmative(char): boolean
-- {static} isNegative(char): boolean
+    - {static} AFIRMATIVE: char
+    - {static} NEGATIVE: char
+    - {static} QUESTION: String
+    - {static} MESSAGE: String
+    + YesNoDialog()
+    + read(String): boolean
+    - {static} isAfirmative(char): boolean
+    - {static} isNegative(char): boolean
 }
 usantatecla.utils.YesNoDialog ..> usantatecla.utils.Console
 

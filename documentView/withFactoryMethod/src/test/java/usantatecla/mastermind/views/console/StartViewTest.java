@@ -8,7 +8,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.utils.Console;
 
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 public class StartViewTest {

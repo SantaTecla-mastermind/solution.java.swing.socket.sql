@@ -18,11 +18,8 @@ enum MessageView {
 
 	private String message;
 
-	private Console console;
-
 	private MessageView(String message) {
 		this.message = message;
-		this.console = new Console();
 	}
 
 	public String getMessage() {
@@ -30,19 +27,19 @@ enum MessageView {
 	}
 
 	public void writeln() {
-		this.console.writeln(this.message);
+		Console.getInstance().writeln(this.message);
 	}
 
 	public void writeln(int attempts) {
-		this.console.writeln(this.message.replaceAll("#attempts", "" + attempts));
+		Console.getInstance().writeln(this.message.replaceAll("#attempts", "" + attempts));
 	}
 
 	public void writeln(int blacks, int whites) {
-		this.console.writeln(this.message.replaceAll("#blacks", "" + blacks).replaceAll("#whites", "" + whites));
+		Console.getInstance().writeln(this.message.replaceAll("#blacks", "" + blacks).replaceAll("#whites", "" + whites));
 	}
 
 	public void write() {
-		this.console.write(this.message);
+		Console.getInstance().write(this.message);
 	}
 
 }

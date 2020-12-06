@@ -11,7 +11,8 @@ version 0.0.1
 2.4. [Paquete usantatecla.mastermind.views.console](#paquete-usantateclamastermindviewsconsole)  
 2.5. [Paquete usantatecla.mastermind.views.graphics](#paquete-usantateclamastermindviewsgraphics)  
 2.6. [Paquete usantatecla.mastermind.models](#paquete-usantateclamastermindmodels)  
-2.7. [Paquete usantatecla.utils](#paquete-usantateclautils)  
+2.7. [Paquete usantatecla.mastermind.types](#paquete-usantateclamastermindtypes)   
+2.8. [Paquete usantatecla.utils](#paquete-usantateclautils)  
 3. [Calidad del Software](#calidad-del-software)  
 3.1. [Diseño](#diseño)  
 3.2. [Rediseño](#rediseño)  
@@ -49,7 +50,11 @@ version 0.0.1
 
 ### Paquete *usantatecla.mastermind.models*
 
-![Paquete_usantatecla.mastermind.models](./docs/diagrams/out/paquetes/usantatecla.mastermind.models.svg)
+![Paquete_usantatecla.mastermind.models](./docs/diagrams/out/paquetes/usantatecla.mastermind.models.svg)  
+
+### Paquete *usantatecla.mastermind.types*
+
+![Paquete_Usantatecla.mastermind.types](./docs/diagrams/out/paquetes/usantatecla.mastermind.types.svg)
 
 ### Paquete *usantatecla.utils*
 

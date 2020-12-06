@@ -2,15 +2,12 @@ package usantatecla.mastermind.views.console;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.models.Error;
+import usantatecla.mastermind.types.Error;
 import usantatecla.utils.Console;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,7 +20,7 @@ public class ErrorViewTest {
 
     @Test
     void testGivenCorrectErrorWhenWritelnThenCapturesCorrectArgument() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             this.errorView = new ErrorView(Error.WRONG_LENGTH);
             console.when(Console::getInstance).thenReturn(this.console);
             this.errorView.writeln();
@@ -33,7 +30,7 @@ public class ErrorViewTest {
 
     @Test
     void testGivenNullErrorWhenWritelnThenConsoleIsNotCalled() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             this.errorView = new ErrorView(Error.NULL);
             console.when(Console::getInstance).thenReturn(this.console);
             this.errorView.writeln();

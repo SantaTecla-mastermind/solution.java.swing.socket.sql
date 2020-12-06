@@ -19,14 +19,14 @@ class ProposalView {
     }
 
     boolean interact() {
-        Error error = Error.NULL;
+        Error error;
         do {
             List<Color> colors = this.proposedCombinationView.read();
             error = this.proposalController.addProposedCombination(colors);
             if (!error.isNull()) {
                 new ErrorView(error).writeln();
             }
-        } while(!error.isNull());
+        } while (!error.isNull());
 
         this.gameView.write();
         return this.gameView.isWinnerOrLooser();

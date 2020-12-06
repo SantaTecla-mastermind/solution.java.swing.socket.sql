@@ -5,10 +5,10 @@ import java.util.List;
 
 abstract class Combination {
 
-	protected List<Color> colors;
-	
-	protected Combination (){
-		this.colors = new ArrayList<Color>();
-	}
-		
+    protected List<Color> colors;
+
+    protected Combination() {
+        this.colors = new ArrayList<>();
+    }
+
 }

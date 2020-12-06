@@ -3,26 +3,24 @@ package usantatecla.mastermind.views;
 import usantatecla.mastermind.models.Game;
 import usantatecla.mastermind.models.ProposedCombination;
 
-class ProposalView {
+class ProposalView extends WithGameView {
 
-	private Game game;
-	
-	private GameView gameView;
+    private GameView gameView;
 
-	ProposalView(Game game) {
-		this.game = game;
-		this.gameView = new GameView(game);
-	}
+    ProposalView(Game game) {
+        super(game);
+        this.gameView = new GameView(game);
+    }
 
-	boolean interact() {
-		ProposedCombination proposedCombination = new ProposedCombination();
-		ProposedCombinationView proposedCombinationView = new ProposedCombinationView(proposedCombination);
-		proposedCombinationView.read();
-		this.game.addProposedCombination(proposedCombination);
+    boolean interact() {
+        ProposedCombination proposedCombination = new ProposedCombination();
+        ProposedCombinationView proposedCombinationView = new ProposedCombinationView(proposedCombination);
+        proposedCombinationView.read();
+        this.game.addProposedCombination(proposedCombination);
 
-		this.gameView.write();
+        this.gameView.write();
 
-		return this.gameView.isWinnerOrLooser();
-	}
+        return this.gameView.isWinnerOrLooser();
+    }
 
 }

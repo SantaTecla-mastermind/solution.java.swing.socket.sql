@@ -7,24 +7,24 @@ import usantatecla.mastermind.views.View;
 
 public class GraphicsView extends View {
 
-	public GraphicsView(StartController startController, ProposalController proposalController,
-			ResumeController resumeController) {
-		super(startController, proposalController, resumeController);
-		//TODO Graphics
-	}
+    public GraphicsView(StartController startController, ProposalController proposalController,
+                        ResumeController resumeController) {
+        super(startController, proposalController, resumeController);
+        //TODO Graphics
+    }
 
-	@Override
-	protected void start() {
-	}
+    @Override
+    protected void start() {
+    }
 
-	@Override
-	protected boolean propose() {
-		return true;
-	}
+    @Override
+    protected boolean propose() {
+        return true;
+    }
 
-	@Override
-	protected boolean isNewGame() {
-		return true;
-	}
+    @Override
+    protected boolean isNewGame() {
+        return true;
+    }
 
 }

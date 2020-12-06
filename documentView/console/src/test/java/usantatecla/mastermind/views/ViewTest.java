@@ -25,7 +25,7 @@ public class ViewTest {
 
     @Test
     void testGivenViewWhenInteractAndIsFinishedAndIsNotNewGameThenCorrectNumberOfConsoleCallsHappens() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             when(this.game.getAttempts()).thenReturn(0);
             when(this.game.isWinner()).thenReturn(true);
             when(this.console.readString()).thenReturn("rgby");

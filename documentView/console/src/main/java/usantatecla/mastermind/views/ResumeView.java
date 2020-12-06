@@ -4,12 +4,10 @@ import usantatecla.mastermind.models.Game;
 import usantatecla.utils.Console;
 import usantatecla.utils.YesNoDialog;
 
-class ResumeView {
-
-    private Game game;
+class ResumeView extends WithGameView {
 
     ResumeView(Game game) {
-        this.game = game;
+        super(game);
     }
 
     boolean interact() {

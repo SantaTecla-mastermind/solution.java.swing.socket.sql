@@ -6,7 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.models.Color;
+import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.models.Game;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.models.Result;
@@ -41,7 +41,7 @@ public class ConsoleViewTest {
 
     @Test
     void testGivenNewGameIsFalseWhenInteractThenIsFalse() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             when(this.console.readChar(anyString())).thenReturn('n');
             console.when(Console::getInstance).thenReturn(this.console);
             assertThat(this.consoleView.isNewGame(), is(false));
@@ -50,7 +50,7 @@ public class ConsoleViewTest {
 
     @Test
     void testGivenNewGameIsTrueWhenInteractThenIsTrue() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             when(this.console.readChar(anyString())).thenReturn('y');
             console.when(Console::getInstance).thenReturn(this.console);
             assertThat(this.consoleView.isNewGame(), is(true));
@@ -59,7 +59,7 @@ public class ConsoleViewTest {
 
     @Test
     void testGiven1AttemptAndIsWinnerGameWhenInteractThenReturnsTrue() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             when(this.console.readString()).thenReturn("rgby");
             when(this.proposedCombination.getColors()).thenReturn(Arrays.asList(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW));
             when(this.game.getAttempts()).thenReturn(1);
@@ -75,7 +75,7 @@ public class ConsoleViewTest {
 
     @Test
     void testGiven1AttemptAndIsNotWinnerNorLooserGameWhenInteractThenReturnsFalse() {
-        try (MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             when(this.console.readString()).thenReturn("rgby");
             when(this.proposedCombination.getColors()).thenReturn(Arrays.asList(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW));
             when(this.game.getAttempts()).thenReturn(1);

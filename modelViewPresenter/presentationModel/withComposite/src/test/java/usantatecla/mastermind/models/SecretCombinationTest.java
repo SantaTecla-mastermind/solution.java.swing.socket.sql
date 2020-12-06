@@ -3,10 +3,11 @@ package usantatecla.mastermind.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 import org.junit.jupiter.api.Test;
 import usantatecla.mastermind.types.*;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SecretCombinationTest {
     private SecretCombination secretCombination;
@@ -25,26 +26,26 @@ public class SecretCombinationTest {
 
 @Test
 public void testGetResultObtainBlackAndWhitesThenGet2BlacksAnd2Whites(){
-    List<Color> colors2 = new ArrayList<Color>();
+    List<Color> colors2 = new ArrayList<>();
         colors2.add(Color.GREEN);
         colors2.add(Color.BLUE);
         colors2.add(Color.ORANGE);
         colors2.add(Color.PURPLE);
         Result result = this.secretCombination.getResult(new ProposedCombination(colors2));
-        assertEquals(2, result.getBlacks());
-        assertEquals(2, result.getWhites());
+        assertThat(result.getBlacks(), is(2));
+        assertThat(result.getWhites(), is(2));
 }
 
 @Test
 public void testGetResultObtainBlackAndWhitesThenGet4BlacksAnd0Whites(){
-    List<Color> colors2 = new ArrayList<Color>();
+    List<Color> colors2 = new ArrayList<>();
         colors2.add(Color.BLUE);
         colors2.add(Color.GREEN);
         colors2.add(Color.ORANGE);
         colors2.add(Color.PURPLE);
         Result result = this.secretCombination.getResult(new ProposedCombination(colors2));
-        assertEquals(4, result.getBlacks());
-        assertEquals(0, result.getWhites());
+        assertThat(result.getBlacks(), is(4));
+        assertThat(result.getWhites(), is(0));
 }
 
 }
