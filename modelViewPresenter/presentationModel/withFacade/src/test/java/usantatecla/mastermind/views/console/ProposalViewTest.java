@@ -7,7 +7,6 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.controllers.ProposalController;
 import usantatecla.mastermind.types.Error;
 import usantatecla.utils.Console;
 
@@ -31,9 +30,9 @@ public class ProposalViewTest {
 
     @Test
     void testGiven1AttemptAndIsWinnerGameWhenInteractThenReturnsTrue() {
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposalView= new ProposalView(this.logic);
+            this.proposalView = new ProposalView(this.logic);
             when(this.console.readString(anyString())).thenReturn("rgby");
             when(this.logic.addProposedCombination(any())).thenReturn(Error.NULL);
             when(this.logic.isWinner()).thenReturn(true);
@@ -44,9 +43,9 @@ public class ProposalViewTest {
 
     @Test
     void testGiven1AttemptAndIsNotWinnerNorLooserGameWhenInteractThenReturnsFalse() {
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposalView= new ProposalView(this.logic);
+            this.proposalView = new ProposalView(this.logic);
             when(this.console.readString(anyString())).thenReturn("rgby");
             when(this.logic.addProposedCombination(any())).thenReturn(Error.NULL);
             when(this.logic.isWinner()).thenReturn(false);
@@ -58,9 +57,9 @@ public class ProposalViewTest {
 
     @Test
     void testGivenSomeBadProposedCombinationWhenCorrectOneIsGivenThenInteractFinish() {
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposalView= new ProposalView(this.logic);
+            this.proposalView = new ProposalView(this.logic);
             when(this.console.readString(anyString()))
                     .thenReturn("rgbyo", "rgby");
             when(this.logic.addProposedCombination(any()))

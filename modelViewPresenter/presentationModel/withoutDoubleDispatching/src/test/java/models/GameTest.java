@@ -21,8 +21,8 @@ class GameTest {
         this.game = new GameBuilder().proposedCombinations(proposedCombinationStrings).build();
     }
 
-    private void setGame(int times, String proposedCombinationString) {
-        this.game = new GameBuilder().proposedCombinations(times, proposedCombinationString).build();
+    private void setGame(int times) {
+        this.game = new GameBuilder().proposedCombinations(times, "rbgy").build();
     }
 
     @Test
@@ -41,9 +41,9 @@ class GameTest {
 
     @Test
     void testGivenNineAttemptsGameWhenPlaceAnotherProposedCombinationThenIsLooser() {
-        this.setGame(9, "rbgy");
+        this.setGame(9);
         assertThat(this.game.isLooser(), is(false));
-        this.setGame(10, "rbgy");
+        this.setGame(10);
         assertThat(this.game.isLooser(), is(true));
     }
 
@@ -57,7 +57,7 @@ class GameTest {
 
     @Test
     void testGivenGameWith3ProposedCombinationsWhenGetAttemptsThenReturns3() {
-        this.setGame(3, "rbgy");
+        this.setGame(3);
 
         assertThat(this.game.getAttempts(), is(3));
     }
@@ -73,13 +73,12 @@ class GameTest {
     void testGivenGameInAnyStateWhenResetThenIsEmpty() {
         Random random = new Random(System.currentTimeMillis());
         int length = random.nextInt(10);
-        this.setGame(length, "rbgy");
+        this.setGame(length);
 
         this.game.reset();
 
         assertThat(this.game.getAttempts(), is(0));
         assertThat(this.game.isLooser(), is(false));
-        // assertThat(this.game.isWinner(), is(false));
         Assertions.assertThrows(AssertionError.class, () -> this.game.getProposedCombination(0));
         Assertions.assertThrows(AssertionError.class, () -> this.game.getResult(0));
     }

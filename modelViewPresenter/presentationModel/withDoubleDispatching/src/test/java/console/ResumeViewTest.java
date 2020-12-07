@@ -28,7 +28,7 @@ public class ResumeViewTest {
     @Test
     void testGivenNewGameMessage() {
         when(this.console.readChar(anyString())).thenReturn('n');
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             this.resumeView.interact(this.resumeController);
             verify(this.console).readChar("Do you want to continue? (y/n): ");

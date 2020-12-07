@@ -6,7 +6,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.ProposalController;
 import usantatecla.mastermind.models.Game;
 import usantatecla.mastermind.models.State;
-import usantatecla.mastermind.models.StateValue;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 

@@ -55,7 +55,7 @@ public class ColorViewTest {
 
         ArgumentCaptor<String> completeColorCode = ArgumentCaptor.forClass(String.class);
 
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             this.colorView.write();
             verify(this.console).write(completeColorCode.capture());
@@ -67,7 +67,7 @@ public class ColorViewTest {
     void testGivenNullColorWhenWriteThenNothingHappen() {
         this.colorView = new ColorView(Color.NULL);
 
-        try(MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             this.colorView.write();
             verify(this.console, never()).write(anyString());

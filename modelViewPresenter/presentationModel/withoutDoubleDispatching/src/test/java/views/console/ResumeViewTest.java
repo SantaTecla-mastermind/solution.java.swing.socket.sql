@@ -6,14 +6,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.controllers.ResumeController;
-import usantatecla.mastermind.views.MessageView;
 import usantatecla.mastermind.views.console.ResumeView;
 import usantatecla.utils.Console;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -32,7 +28,7 @@ public class ResumeViewTest {
     @Test
     void testGivenNewGameMessage() {
         when(this.console.readChar(anyString())).thenReturn('n');
-        try(MockedStatic console = mockStatic(Console.class)){
+        try(MockedStatic<Console> console = mockStatic(Console.class)){
             console.when(Console::getInstance).thenReturn(this.console);
             this.resumeView.interact(this.resumeController);
             verify(this.console).readChar("Do you want to continue? (y/n): ");

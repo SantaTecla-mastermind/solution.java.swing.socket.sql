@@ -32,9 +32,9 @@ public class ProposedCombinationViewTest {
 
     @Test
     void testGivenColorsOfProposedCombinationWhenWriteThenCorrectColorsAreCaptured() {
-        try(MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposedCombinationView=new ProposedCombinationView(this.proposalController);
+            this.proposedCombinationView = new ProposedCombinationView(this.proposalController);
             ArgumentCaptor<String> colorCaptor = ArgumentCaptor.forClass(String.class);
             when(this.proposalController.getColors(anyInt())).thenReturn(Arrays.asList(Color.BLUE, Color.ORANGE, Color.PURPLE, Color.GREEN));
 
@@ -51,7 +51,7 @@ public class ProposedCombinationViewTest {
 
     @Test
     void testGivenInputColorsWhenReadThenCorrectColorsAreReturned() {
-        try(MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString("Propose a combination: ")).thenReturn("rgby");
             assertThat(this.proposedCombinationView.read(), is(Arrays.asList(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW)));

@@ -30,9 +30,9 @@ public class ProposalViewTest {
 
     @Test
     void testGiven1AttemptAndIsWinnerGame() {
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposalView= new ProposalView();
+            this.proposalView = new ProposalView();
             when(this.console.readString(anyString())).thenReturn("rgby");
             when(this.proposalController.addProposedCombination(any())).thenReturn(Error.NULL);
             when(this.proposalController.isWinner()).thenReturn(true);
@@ -44,9 +44,9 @@ public class ProposalViewTest {
 
     @Test
     void testGiven1AttemptAndIsLooserGame() {
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposalView= new ProposalView();
+            this.proposalView = new ProposalView();
             when(this.console.readString(anyString())).thenReturn("rgby");
             when(this.proposalController.addProposedCombination(any())).thenReturn(Error.NULL);
             when(this.proposalController.isWinner()).thenReturn(false);
@@ -59,9 +59,9 @@ public class ProposalViewTest {
 
     @Test
     void testGiven1AttemptAndIsNotWinnerNorLooserGameWhenInteractThenReturnsFalse() {
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposalView= new ProposalView();
+            this.proposalView = new ProposalView();
             when(this.console.readString(anyString())).thenReturn("rgby");
             when(this.proposalController.addProposedCombination(any())).thenReturn(Error.NULL);
             when(this.proposalController.isWinner()).thenReturn(false);
@@ -73,9 +73,9 @@ public class ProposalViewTest {
 
     @Test
     void testGivenSomeBadProposedCombinationWhenCorrectOneIsGivenThenInteractFinish() {
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposalView= new ProposalView();
+            this.proposalView = new ProposalView();
             when(this.console.readString(anyString()))
                     .thenReturn("rgbyo", "rgby");
             when(this.proposalController.addProposedCombination(any()))

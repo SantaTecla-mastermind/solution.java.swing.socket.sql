@@ -7,7 +7,6 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.controllers.StartController;
 import usantatecla.utils.Console;
 
 import static org.mockito.Mockito.*;
@@ -26,9 +25,9 @@ public class StartViewTest {
 
     @Test
     void testGivenStartViewWhenInteractThenCorrectMessagesAreCaptured() {
-        try(MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.startView=new StartView(this.logic);
+            this.startView = new StartView(this.logic);
             when(this.logic.getWidth()).thenReturn(4);
             startView.interact();
 

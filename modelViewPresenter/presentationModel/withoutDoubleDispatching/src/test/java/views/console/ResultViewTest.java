@@ -7,7 +7,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.controllers.ProposalController;
 import usantatecla.mastermind.views.console.ResultView;
 import usantatecla.utils.Console;
@@ -30,9 +29,9 @@ public class ResultViewTest {
 
     @Test
     void testGivenResultViewWhenWritelnThenCorrectMessageIsDisplayed() {
-        try(MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.resultView=new ResultView(this.proposalController);
+            this.resultView = new ResultView(this.proposalController);
             ArgumentCaptor<String> resultCaptor = ArgumentCaptor.forClass(String.class);
             when(this.proposalController.getBlacks(anyInt())).thenReturn(2);
             when(this.proposalController.getWhites(anyInt())).thenReturn(1);

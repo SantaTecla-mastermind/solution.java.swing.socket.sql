@@ -7,7 +7,6 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.controllers.ResumeController;
 import usantatecla.utils.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -31,7 +30,7 @@ public class ResumeViewTest {
     @Test
     void testGivenNewGameIsFalseWhenInteractThenIsFalse() {
         when(this.console.readChar(anyString())).thenReturn('n');
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             assertThat(this.resumeView.interact(), is(false));
         }
@@ -41,9 +40,9 @@ public class ResumeViewTest {
     @Test
     void testGivenNewGameIsTrueWhenInteractThenIsTrue() {
         when(this.console.readChar(anyString())).thenReturn('y');
-        try(MockedStatic console = mockStatic(Console.class)){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.resumeView=new ResumeView(this.logic);
+            this.resumeView = new ResumeView(this.logic);
             assertThat(this.resumeView.interact(), is(true));
         }
     }

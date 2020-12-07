@@ -8,8 +8,6 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.controllers.ProposalController;
-import usantatecla.mastermind.models.Result;
 import usantatecla.utils.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,9 +28,9 @@ public class ResultViewTest {
 
     @Test
     void testGivenResultViewWhenWritelnThenCorrectMessageIsDisplayed() {
-        try(MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.resultView=new ResultView(this.logic);
+            this.resultView = new ResultView(this.logic);
             ArgumentCaptor<String> resultCaptor = ArgumentCaptor.forClass(String.class);
             when(this.logic.getBlacks(anyInt())).thenReturn(2);
             when(this.logic.getWhites(anyInt())).thenReturn(1);

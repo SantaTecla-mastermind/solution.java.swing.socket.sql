@@ -8,14 +8,10 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.controllers.ProposalController;
 import usantatecla.mastermind.types.Color;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.utils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -35,9 +31,9 @@ public class ProposedCombinationViewTest {
 
     @Test
     void testGivenColorsOfProposedCombinationWhenWriteThenCorrectColorsAreCaptured() {
-        try(MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposedCombinationView=new ProposedCombinationView(this.logic);
+            this.proposedCombinationView = new ProposedCombinationView(this.logic);
             ArgumentCaptor<String> colorCaptor = ArgumentCaptor.forClass(String.class);
             when(this.logic.getProposedCombination(anyInt())).thenReturn(Arrays.asList(Color.BLUE, Color.ORANGE, Color.PURPLE, Color.GREEN));
 
@@ -54,7 +50,7 @@ public class ProposedCombinationViewTest {
 
     @Test
     void testGivenInputColorsWhenReadThenCorrectColorsAreReturned() {
-        try(MockedStatic console = mockStatic(Console.class)) {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString("Propose a combination: ")).thenReturn("rgby");
             assertThat(this.proposedCombinationView.read(), is(Arrays.asList(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW)));

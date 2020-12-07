@@ -12,7 +12,7 @@ public class GameBuilder {
     private List<String> proposedCombinationsStrings;
 
     public GameBuilder() {
-        this.proposedCombinationsStrings = new ArrayList<String>();
+        this.proposedCombinationsStrings = new ArrayList<>();
     }
 
     public GameBuilder proposedCombinations(String... proposedCombinations) {
@@ -37,8 +37,8 @@ public class GameBuilder {
             return new Game();
 
         Game game = new Game();
-        for (int i = 0; i < this.proposedCombinationsStrings.size(); i++) {
-            this.setProposedCombination(game, this.proposedCombinationsStrings.get(i));
+        for (String proposedCombinationsString : this.proposedCombinationsStrings) {
+            this.setProposedCombination(game, proposedCombinationsString);
         }
         return game;
     }
