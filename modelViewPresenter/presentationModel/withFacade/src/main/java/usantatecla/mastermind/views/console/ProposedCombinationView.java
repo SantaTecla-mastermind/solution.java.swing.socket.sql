@@ -24,7 +24,7 @@ class ProposedCombinationView extends Console {
 
     List<Color> read() {
         String characters = Console.getInstance().readString(MessageView.PROPOSED_COMBINATION.getMessage());
-        List<Color> colors = new ArrayList<Color>();
+        List<Color> colors = new ArrayList<>();
         for (int i = 0; i < characters.length(); i++) {
             colors.add(ColorView.getInstance(characters.charAt(i)));
         }

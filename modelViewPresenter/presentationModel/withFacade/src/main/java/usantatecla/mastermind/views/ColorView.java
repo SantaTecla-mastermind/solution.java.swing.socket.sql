@@ -5,7 +5,6 @@ import usantatecla.mastermind.types.Color;
 public abstract class ColorView {
 
     public static final char[] INITIALS = {'r', 'b', 'y', 'g', 'o', 'p'};
-
     protected Color color;
 
     protected ColorView() {

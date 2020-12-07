@@ -4,6 +4,7 @@ import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.views.View;
 
 public class GraphicsView extends View {
+
     public GraphicsView(Logic logic) {
         super(logic);
     }

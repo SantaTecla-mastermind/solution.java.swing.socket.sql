@@ -11,11 +11,8 @@ import java.util.List;
 class ProposalView extends Console {
 
     private Logic logic;
-
     private SecretCombinationView secretCombinationView;
-
     private ProposedCombinationView proposedCombinationView;
-
     private ResultView resultView;
 
     ProposalView(Logic logic) {

@@ -9,11 +9,8 @@ import java.util.List;
 public class Logic {
 
     private Game game;
-
     private StartController startController;
-
     private ProposalController proposalController;
-
     private ResumeController resumeController;
 
     public Logic() {

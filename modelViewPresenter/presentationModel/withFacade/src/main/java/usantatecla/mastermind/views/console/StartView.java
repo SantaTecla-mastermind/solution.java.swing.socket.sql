@@ -7,7 +7,6 @@ import usantatecla.utils.Console;
 class StartView extends Console {
 
     private Logic logic;
-
     private SecretCombinationView secretCombinationView;
 
     StartView(Logic logic) {

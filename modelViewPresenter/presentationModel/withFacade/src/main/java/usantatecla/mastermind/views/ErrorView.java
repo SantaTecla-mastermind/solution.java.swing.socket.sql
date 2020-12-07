@@ -8,7 +8,6 @@ public abstract class ErrorView {
             "Repeated colors",
             "Wrong colors, they must be: " + this.colorInitials(),
             "Wrong proposed combination length"};
-
     protected Error error;
 
     protected ErrorView() {

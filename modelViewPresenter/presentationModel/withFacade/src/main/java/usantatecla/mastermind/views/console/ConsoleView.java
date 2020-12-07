@@ -6,9 +6,7 @@ import usantatecla.mastermind.views.View;
 public class ConsoleView extends View {
 
     private StartView startView;
-
     private ProposalView proposalView;
-
     private ResumeView resumeView;
 
     public ConsoleView(Logic logic) {

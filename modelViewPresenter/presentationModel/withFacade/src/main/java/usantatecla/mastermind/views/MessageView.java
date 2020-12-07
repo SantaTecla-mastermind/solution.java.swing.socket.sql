@@ -9,7 +9,6 @@ public enum MessageView {
     TITLE("----- MASTERMIND -----"),
     WINNER("You've won!!! ;-)"),
     LOOSER("You've lost!!! :-(");
-
     private String message;
 
     MessageView(String message) {
