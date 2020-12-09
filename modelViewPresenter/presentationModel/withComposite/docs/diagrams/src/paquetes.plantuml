@@ -19,251 +19,327 @@ usantatecla.mastermind.Mastermind *-down-> Logic
 @enduml
 
 @startuml usantatecla.mastermind.views
-class  mastermind.views.Color{
-+ {static} RED: Color
-+ {static} BLUE: Color
-+ {static} YELLOW: Color
-+ {static} GREEN: Color
-+ {static} ORANGE: Color
-+ {static} PURPLE: Color
-- initial: char
-- Color(char)
-+ {static} valueOf(String): Color
-+ {static} getInstance(char): Color
-+ {static} getInstance(int): Color
-+ getInitial(): char
-+ {static} allInitials(): String
-}
-mastermind.views.Color ..> mastermind.views.Color
+class PlayController as "usantatecla.mastermind.controllers.PlayController" {
 
-class  mastermind.views.Command{
+
+}
+class ResumeController as "usantatecla.mastermind.controllers.ResumeController" {
+
+
+}
+class StartController as "usantatecla.mastermind.controllers.StartController" {
+
+
+}
+class ControllersVisitor as "usantatecla.mastermind.controllers.ControllersVisitor" {
+
+
+}
+class AcceptorController as "usantatecla.mastermind.controllers.AcceptorController" {
+
+
+}
+class Console as "usantatecla.utils.Console" {
+
+
+}
+class Command as "usantatecla.utils.Command" {
+
+
+}
+class Menu as "usantatecla.utils.Menu" {
+
+
+}
+
+class  usantatecla.mastermind.views.ColorView{
++ {static} INITIALS: char[]
+# color: Color
+# ColorView()
+# ColorView(Color)
++ {static} getInstance(char): Color
++ allInitials(): String
+# resultInitials(int): String
++ write()
+}
+usantatecla.mastermind.views.ColorView ..> usantatecla.mastermind.views.ColorView
+
+abstract class  usantatecla.mastermind.views.Command{
 # playController: PlayController
 # Command(PlayController, String)
 }
-mastermind.utils.Command <|-down- mastermind.views.Command
-mastermind.views.Command *-down-> mastermind.controllers.PlayController
-mastermind.views.Command ..> mastermind.views.GameView
-mastermind.views.Command..> mastermind.views.Message
+Command <|-down- usantatecla.mastermind.views.Command
+usantatecla.mastermind.views.Command *-down-> PlayController
+usantatecla.mastermind.views.Command ..> usantatecla.mastermind.views.GameView
+usantatecla.mastermind.views.Command..> usantatecla.mastermind.views.MessageView
 
-class  mastermind.views.Error{
-+ {static} DUPLICATED: Error
-+ {static} WRONG_CHARACTERS: Error
-+ {static} WRONG_LENGTH: Error
-- message: String
-- Error(String)
-+ {static} valueOf(String): Error
-+ getMessage(): String
+class  usantatecla.mastermind.views.ErrorView{
++ MESSAGES: String[]
+# error: Error
+# ErrorView()
+# ErrorView(Error)
++ writeln()
+# colorInitials(): String
 }
-mastermind.views.Error ..> mastermind.views.Error
- mastermind.views.Error ..>  mastermind.views.Color
+usantatecla.mastermind.views.ErrorView ..> usantatecla.mastermind.views.ErrorView
+usantatecla.mastermind.views.ErrorView ..>  usantatecla.mastermind.views.ColorView
 
-class  mastermind.views.GameView{
-+ GameView(PlayController)
+class  usantatecla.mastermind.views.GameView{
+~ GameView(PlayController)
 }
-mastermind.utils.WithConsoleView <|-down- mastermind.views.GameView
-mastermind.views.GameView ..> mastermind.controllers.PlayController
-mastermind.views.GameView..> mastermind.views.SecretCombinationView
-mastermind.views.GameView..>  mastermind.views.ProposedCombinationView
-mastermind.views.GameView..>  mastermind.views.ResultView
-mastermind.views.GameView..> mastermind.views.Message
+Console <|-down- usantatecla.mastermind.views.GameView
+usantatecla.mastermind.views.GameView ..> PlayController
+usantatecla.mastermind.views.GameView..> usantatecla.mastermind.views.SecretCombinationView
+usantatecla.mastermind.views.GameView..>  usantatecla.mastermind.views.ProposedCombinationView
+usantatecla.mastermind.views.GameView..>  usantatecla.mastermind.views.ResultView
+usantatecla.mastermind.views.GameView..> usantatecla.mastermind.views.MessageView
 
-class  mastermind.views.Message{
-+ {static} TURN: Message
-+ {static} SECRET: Message
-+ {static} RESUME: Message
-+ {static} RESULT: Message
-+ {static} PROPOSED_COMBINATION: Message
-+ {static} TITLE: Message
-+ {static} WINNER: Message
-+ {static} LOOSER: Message
-+ {static} OPTION: Message
-+ {static} PROPOSE_COMMAND: Message
-+ {static} UNDO_COMMAND: Message
-+ {static} REDO_COMMAND: Message
+enum  usantatecla.mastermind.views.MessageView{
+~ ATTEMPTS
+~ SECRET
+~ RESUME
+~ RESULT
+~ PROPOSED_COMBINATION
+~ TITLE
+~ WINNER
+~ LOOSER
+~ PROPOSE_COMMAND
+~ UNDO_COMMAND
+~ REDO_COMMAND
+~ NEW_LINE
 - message: String
 - Message(String)
-+ {static} valueOf(String): Message
 + getMessage(): String
++ writeln()
++ writeln(int)
++ writeln(int, int)
++ write()
 }
-mastermind.views.Message ..> mastermind.views.Message
+usantatecla.mastermind.views.MessageView ..> usantatecla.mastermind.views.MessageView
 
-class  mastermind.views.PlayMenu{
-+ PlayMenu(PlayController)
+class  usantatecla.mastermind.views.PlayMenu{
+~ PlayMenu(PlayController)
 }
-mastermind.utils.Menu <|-down- mastermind.views.PlayMenu
-mastermind.views.PlayMenu ..> mastermind.controllers.PlayController
-mastermind.views.PlayMenu *-down-> mastermind.views.ProposeCommand
-mastermind.views.PlayMenu *-down-> mastermind.views.UndoCommand
-mastermind.views.PlayMenu *-down-> mastermind.views.RedoCommand
+Menu <|-down- usantatecla.mastermind.views.PlayMenu
+usantatecla.mastermind.views.PlayMenu ..> PlayController
+usantatecla.mastermind.views.PlayMenu *-down-> usantatecla.mastermind.views.ProposeCommand
+usantatecla.mastermind.views.PlayMenu *-down-> usantatecla.mastermind.views.UndoCommand
+usantatecla.mastermind.views.PlayMenu *-down-> usantatecla.mastermind.views.RedoCommand
 
-class  mastermind.views.PlayView{
-~ PlayView()
-~ interact(PlayController): void
+class  usantatecla.mastermind.views.PlayView{
+~ interact(PlayController)
 }
-mastermind.utils.WithConsoleView <|-down- mastermind.views.PlayView
-mastermind.views.PlayView ..> mastermind.controllers.PlayController
-mastermind.views.PlayView ..> mastermind.views.PlayMenu
+Console <|-down- usantatecla.mastermind.views.PlayView
+usantatecla.mastermind.views.PlayView ..> PlayController
+usantatecla.mastermind.views.PlayView ..> usantatecla.mastermind.views.PlayMenu
 
-class  mastermind.views.ProposeCommand{
+class  usantatecla.mastermind.views.ProposeCommand{
 ~ ProposeCommand(PlayController)
-# execute(): void
+# execute()
 # isActive(): boolean
 }
-mastermind.views.Command <|-down- mastermind.views.ProposeCommand
-mastermind.views.ProposeCommand ..> mastermind.views.ProposedCombinationView
-mastermind.views.ProposeCommand ..> mastermind.views.Error
+usantatecla.mastermind.views.Command <|-down- usantatecla.mastermind.views.ProposeCommand
+usantatecla.mastermind.views.ProposeCommand ..> usantatecla.mastermind.views.ProposedCombinationView
+usantatecla.mastermind.views.ProposeCommand ..> usantatecla.mastermind.views.ErrorView
 
-class  mastermind.views.ProposedCombinationView{
-- {static} ERROR_CODE: int
-~ ProposedCombinationView()
-~ write(int[]): void
-~ read(): int[]
+class  usantatecla.mastermind.views.ProposedCombinationView{
+- playController: PlayController
+~ ProposedCombinationView(PlayController)
+~ write(int)
+~ read(): List<Color>
 }
-mastermind.utils.WithConsoleView <|-down- mastermind.views.ProposedCombinationView
-mastermind.views.ProposedCombinationView..> mastermind.views.Message
- mastermind.views.ProposedCombinationView ..>  mastermind.views.Color
+Console <|-down- usantatecla.mastermind.views.ProposedCombinationView
+usantatecla.mastermind.views.ProposedCombinationView..> usantatecla.mastermind.views.MessageView
+ usantatecla.mastermind.views.ProposedCombinationView ..>  usantatecla.mastermind.views.ColorView
 
-class  mastermind.views.RedoCommand{
+class  usantatecla.mastermind.views.RedoCommand{
 ~ RedoCommand(PlayController)
-# execute(): void
+# execute()
 # isActive(): boolean
 }
-mastermind.views.Command <|-down- mastermind.views.RedoCommand
+usantatecla.mastermind.views.Command <|-down- usantatecla.mastermind.views.RedoCommand
 
-class  mastermind.views.ResultView{
+class  usantatecla.mastermind.views.ResultView{
+- playController: PlayController
 ~ ResultView()
-~ writeln(int[]): void
+~ writeln(int)
 }
-mastermind.utils.WithConsoleView <|-down- mastermind.views.ResultView
-mastermind.views.ResultView..> mastermind.views.Message
+Console <|-down- usantatecla.mastermind.views.ResultView
+usantatecla.mastermind.views.ResultView..> usantatecla.mastermind.views.MessageView
 
-class  mastermind.views.ResumeView{
-~ ResumeView()
-~ interact(ResumeController): void
+class  usantatecla.mastermind.views.ResumeView{
+~ interact(ResumeController)
 }
-mastermind.views.ResumeView ..> mastermind.controllers.ResumeController
-mastermind.views.ResumeView..> mastermind.views.Message
+usantatecla.mastermind.views.ResumeView ..> ResumeController
+usantatecla.mastermind.views.ResumeView..> usantatecla.mastermind.views.MessageView
 
-class  mastermind.views.SecretCombinationView{
-~ SecretCombinationView()
-~ writeln(int): void
+class  usantatecla.mastermind.views.SecretCombinationView{
+- controller: Controller
+~ SecretCombinationView(Controller)
+~ writeln()
 }
-mastermind.utils.WithConsoleView <|-down- mastermind.views.SecretCombinationView
-mastermind.views.SecretCombinationView..> mastermind.views.Message
+Console <|-down- usantatecla.mastermind.views.SecretCombinationView
+usantatecla.mastermind.views.SecretCombinationView..> usantatecla.mastermind.views.MessageView
 
-class  mastermind.views.StartView{
-~ StartView()
-~ interact(StartController): void
+class  usantatecla.mastermind.views.StartView{
+- secretCombinationView: SecretCombinationView
+~ interact(StartController)
 }
-mastermind.utils.WithConsoleView <|-down- mastermind.views.StartView
-mastermind.views.StartView ..> mastermind.controllers.StartController
-mastermind.views.StartView ..> mastermind.views.SecretCombinationView
-mastermind.views.StartView..> mastermind.views.Message
+Console <|-down- usantatecla.mastermind.views.StartView
+usantatecla.mastermind.views.StartView ..> StartController
+usantatecla.mastermind.views.StartView ..> usantatecla.mastermind.views.SecretCombinationView
+usantatecla.mastermind.views.StartView..> usantatecla.mastermind.views.MessageView
 
-class  mastermind.views.UndoCommand{
+class  usantatecla.mastermind.views.UndoCommand{
 ~ UndoCommand(PlayController)
-# execute(): void
+# execute()
 # isActive(): boolean
 }
-mastermind.views.Command <|-down- mastermind.views.UndoCommand
+usantatecla.mastermind.views.Command <|-down- usantatecla.mastermind.views.UndoCommand
 
-class  mastermind.views.View{
+class  usantatecla.mastermind.views.View{
 - startView: StartView
 - playView: PlayView
 - resumeView: ResumeView
 + View()
-+ visit(ResumeController): void
-+ visit(PlayController): void
-+ visit(StartController): void
-+ interact(AcceptorController): void
++ visit(ResumeController)
++ visit(PlayController)
++ visit(StartController)
++ interact(AcceptorController)
 }
-mastermind.controllers.ControllersVisitor <|-down- mastermind.views.View
-mastermind.views.View *-down-> mastermind.views.PlayView
-mastermind.views.View *-down-> mastermind.views.StartView
-mastermind.views.View *-down-> mastermind.views.ResumeView
-mastermind.views.View ..> mastermind.controllers.AcceptorController
+ControllersVisitor <|-down- usantatecla.mastermind.views.View
+usantatecla.mastermind.views.View *-down-> usantatecla.mastermind.views.PlayView
+usantatecla.mastermind.views.View *-down-> usantatecla.mastermind.views.StartView
+usantatecla.mastermind.views.View *-down-> usantatecla.mastermind.views.ResumeView
+usantatecla.mastermind.views.View ..> AcceptorController
 @enduml
 
 @startuml usantatecla.mastermind.controllers
-class Game as "usantatecla.mastermind.models.Game" {
+class Map as "java.util.Map" {
 
 
 }
-
-class State as "usantatecla.mastermind.models.State" {
-
-
-}
-
-Enum StateValue as "usantatecla.mastermind.models.StateValue" {
+class Session as "usantatecla.mastermind.models.Session" {
 
 
 }
+class StateValue as "usantatecla.mastermind.models.StateValue" {
 
-class Map as "java.util.map"
 
-abstract class usantatecla.mastermind.controllers.Controller{
-# game: Game
-# state: State
-~ Controller(State, Game)
+}
+class  mastermind.controllers.AcceptorController{
+~ AcceptorController(Session)
 + {abstract} accept(ControllersVisitor)
+}
+mastermind.controllers.Controller <|-down- mastermind.controllers.AcceptorController
+mastermind.controllers.AcceptorController ..> mastermind.controllers.ControllersVisitor
+
+class  mastermind.controllers.Controller{
+# session: Session
+~ Controller(Session)
 + getWidth(): int
 }
-usantatecla.mastermind.controllers.Controller *-down-> State
-usantatecla.mastermind.controllers.Controller *-down-> Game
-usantatecla.mastermind.controllers.Controller ..> usantatecla.mastermind.controllers.ControllersVisitor
+mastermind.controllers.Controller -down-> Session
 
-interface usantatecla.mastermind.controllers.ControllersVisitor{
+
+interface  mastermind.controllers.ControllersVisitor{
 ~ visit(StartController)
-~ visit(ProposalController)
+~ visit(PlayController)
 ~ visit(ResumeController)
 }
-usantatecla.mastermind.controllers.ControllersVisitor ..> usantatecla.mastermind.controllers.ResumeController
-usantatecla.mastermind.controllers.ControllersVisitor ..> usantatecla.mastermind.controllers.StartController
-usantatecla.mastermind.controllers.ControllersVisitor ..> usantatecla.mastermind.controllers.ProposalController
+mastermind.controllers.ControllersVisitor ..> mastermind.controllers.ResumeController
+mastermind.controllers.ControllersVisitor ..> mastermind.controllers.StartController
+mastermind.controllers.ControllersVisitor ..> mastermind.controllers.PlayController
 
-class  usantatecla.mastermind.controllers.Logic{
-- state: State
-- game: Game
-- controllers: Map<StateValue, Controller>
+class  mastermind.controllers.Logic{
+- session: Session
+- acceptorControllers: Map<StateValue, AcceptorController>
 + Logic()
-+ getController(): Controller
++ getController(): AcceptorController
 }
-usantatecla.mastermind.controllers.Logic *-down-> StateValue
-usantatecla.mastermind.controllers.Logic *-down-> State
-usantatecla.mastermind.controllers.Logic *-down-> Map
-usantatecla.mastermind.controllers.Logic *-down-> Game
-usantatecla.mastermind.controllers.Logic --> usantatecla.mastermind.controllers.Controller
 
-class  usantatecla.mastermind.controllers.ProposalController{
-+ ProposalController(State, Game)
+mastermind.controllers.Logic *-down-> Session
+mastermind.controllers.Logic *-down-> StateValue
+mastermind.controllers.Logic *-down-> Map
+
+mastermind.controllers.Logic *-> mastermind.controllers.AcceptorController
+
+class  mastermind.controllers.PlayController{
+- proposalController: ProposalController
+- undoController: UndoController
+- redoController: RedoController
++ PlayController(Session)
 + accept(ControllersVisitor)
++ addProposeCombination(List<Color>): Error
++ undoable(): boolean
++ redoable(): boolean
++ undo()
 + isLooser(): boolean
++ redo()
 + isWinner(): boolean
-+ addProposedCombination(Lis<Color>): Error
 + getAttempts(): int
++ getColors(int): List<Color>
 + getBlacks(int): int
 + getWhites(int): int
-+ getColors(int): List<Color>
 }
-usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.ProposalController
+mastermind.controllers.AcceptorController <|-down- mastermind.controllers.PlayController
+mastermind.controllers.PlayController *-down-> mastermind.controllers.RedoController
+mastermind.controllers.PlayController *-down-> mastermind.controllers.UndoController
+mastermind.controllers.PlayController *-down-> mastermind.controllers.ProposalController
+mastermind.controllers.PlayController ..> Session
 
-class  usantatecla.mastermind.controllers.ResumeController{
-+ ResumeController(State, Game)
+class  mastermind.controllers.ProposalController{
+~ ProposalController(Session)
+~ addProposeCombination(List<Color>): Error
+~ isLooser(): boolean
+~ isWinner(): boolean
+~ getAttempts(): int
+~ getColors(int): List<Color>
+~ getBlacks(int): int
+~ getWhites(int): int
+}
+mastermind.controllers.Controller <|-down- mastermind.controllers.ProposalController
+
+class  mastermind.controllers.RedoController{
+~ RedoController(Session)
+~ redoable(): boolean
+~ redo()
+}
+mastermind.controllers.Controller <|-down- mastermind.controllers.RedoController
+
+class  mastermind.controllers.ResumeController{
++ ResumeController(Session)
 + accept(ControllersVisitor)
 + resume(boolean)
 }
-usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.ResumeController
+mastermind.controllers.AcceptorController <|-down- mastermind.controllers.ResumeController
+mastermind.controllers.ResumeController ..> Session
 
-class  usantatecla.mastermind.controllers.StartController{
-+ StartController(Game, State)
+class  mastermind.controllers.StartController{
++ StartController(Session)
 + accept(ControllersVisitor)
 + start()
 }
-usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.StartController
+mastermind.controllers.AcceptorController <|-down- mastermind.controllers.StartController
+mastermind.controllers.StartController ..> Session
+
+class  mastermind.controllers.UndoController{
+~ UndoController(Session)
+~ undoable(): boolean
+~ undo()
+}
+mastermind.controllers.Controller <|-down- mastermind.controllers.UndoController
 @enduml
 
 @startuml usantatecla.mastermind.models
+class List as "java.util.List" {
+
+
+}
+class ArrayList as "java.util.ArrayList" {
+
+
+}
 class Logic as "usantatecla.mastermind.controllers.Logic" {
 
 
@@ -286,10 +362,10 @@ class ProposalController as "usantatecla.mastermind.controllers.ProposalControll
 
 class usantatecla.mastermind.models.State {
     - stateValue: StateValue
-    + state()
-    + next()
-    + reset()
-    + getValueState(): StateValue
+    ~ state()
+    ~ next()
+    ~ reset()
+    ~ getValueState(): StateValue
 }
 
 enum usantatecla.mastermind.models.StateValue {
@@ -318,23 +394,30 @@ class usantatecla.mastermind.models.Game {
 - proposedCombination: List<ProposedCombination>
 - results: List<Result>
 - attempts: int
-+ Game()
-+ clear()
-+ addProposeCombination(ProposedCombination)
-+ isLooser(): boolean
-+ isWinner(): boolean
-+ getAttempts(): int
-+ getProposedCombination(int): ProposedCombination
-+ getResult(int): Result
+~ Game()
+~ clear()
+~ addProposeCombination(List<Color>)
+~ isLooser(): boolean
+~ isWinner(): boolean
+~ getAttempts(): int
+~ getColors(int): List<Color>
+~ getBlacks(int): int
+~ getWhites(int): int
+~ getWidth(): int
+~ createMemento(): Memento
+~ set(Memento)
 }
 usantatecla.mastermind.models.Game *-down-> usantatecla.mastermind.models.SecretCombination
 usantatecla.mastermind.models.Game *-down-> "0..*" usantatecla.mastermind.models.Result
 usantatecla.mastermind.models.Game *-down-> "0..*" usantatecla.mastermind.models.ProposedCombination
 
 class usantatecla.mastermind.models.ProposedCombination {
++ proposedCombination(List<Color>)
 ~ contains(Color, int): boolean
 ~ contains(Color): boolean
-+ getColors(): List<Color>
+~ copy(): ProposedCombination
++ {static} builder: Builder
++ {static} class Builder()
 }
 usantatecla.mastermind.models.Combination <|-down- usantatecla.mastermind.models.ProposedCombination
 usantatecla.mastermind.models.ProposedCombination ..> usantatecla.mastermind.types.Color
@@ -353,8 +436,9 @@ class usantatecla.mastermind.models.Result {
 - whites: int
 ~ Result(int, int)
 ~ isWinner(): boolean
-+ getBlacks(): int
-+ getWhites(): int
+~ getBlacks(): int
+~ getWhites(): int
+~ copy(): Result
 }
 
 usantatecla.mastermind.models.Result -down..> usantatecla.mastermind.models.Combination
@@ -378,11 +462,68 @@ enum usantatecla.mastermind.types.Error {
 + NULL
 + isNull(): boolean
 }
+
+class  usantatecla.mastermind.models.Memento{
+- proposedCombinations: List<ProposedCombination>
+- results: List<Result>
+- turn: int
+~ Memento(int)
+~ set(ProposedCombination, Result)
+~ getSize(): int
+~ getResult(int): Result
+~ getAttempts(): int
+~ getProposedCombination(int): ProposedCombination
+}
+usantatecla.mastermind.models.Memento *-down-> List
+usantatecla.mastermind.models.Memento --> usantatecla.mastermind.models.Result
+usantatecla.mastermind.models.Memento --> usantatecla.mastermind.models.ProposedCombination
+
+class  usantatecla.mastermind.models.Registry{
+- mementoList: ArrayList<Memento>
+- game: Game
+- firstPrevious: int
+~ Registry(Game)
+~ reset()
+~ registry()
+~ undoable(): boolean
+~ redoable(): boolean
+~ undo(Game)
+~ redo(Game)
+}
+usantatecla.mastermind.models.Registry *-down-> usantatecla.mastermind.models.Memento
+usantatecla.mastermind.models.Registry *-down-> ArrayList
+usantatecla.mastermind.models.Registry --> usantatecla.mastermind.models.Game
+
+class  usantatecla.mastermind.models.Session{
+- state: State
+- game: Game
+- registry: Registry
++ Session()
++ next()
++ addProposeCombination(List<Color>)
++ undoable(): boolean
++ redoable(): boolean
++ getWidth(): int
++ undo()
++ getValueState(): StateValue
++ isWinner(): boolean
++ getAttempts(): int
++ redo()
++ getColors(int): List<Color>
++ isLooser(): boolean
++ clearGame()
++ getBlacks(int): int
++ getWhites(int): int
+}
+usantatecla.mastermind.models.Session *-down-> usantatecla.mastermind.models.Registry
+usantatecla.mastermind.models.Session *-down-> usantatecla.mastermind.models.State
+usantatecla.mastermind.models.Session *-down-> usantatecla.mastermind.models.Game
+usantatecla.mastermind.models.Session ..> usantatecla.mastermind.models.ProposedCombination
 @enduml
 
 @startuml usantatecla.utils
 class BufferedReader as "java.io.BufferedReader"{}
-
+class ArrayList as "java.util.ArrayList"{}
 enum usantatecla.utils.ColorCode{
 + RED
 + BLUE
@@ -423,4 +564,31 @@ class  usantatecla.utils.YesNoDialog{
 - {static} isNegative(char): boolean
 }
 usantatecla.utils.YesNoDialog ..> usantatecla.utils.Console
+
+class  usantatecla.utils.ClosedInterval{
+- min: int
+- max: int
++ ClosedInterval(int, int)
++ includes(int): boolean
+}
+
+abstract  usantatecla.utils.Command{
+# title: String
+# Command(String)
+# {abstract} execute()
+# {abstract} isActive(): boolean
+~ getTitle(): String
+}
+usantatecla.utils.Console <|-down- usantatecla.utils.Command
+
+abstract  usantatecla.utils.Menu{
+- {static} OPTION: String
+- commandList: ArrayList<Command>
++ Menu()
++ execute()
+# addCommand(Command)
+}
+usantatecla.utils.Console <|-down- usantatecla.utils.Menu
+usantatecla.utils.Menu *-down-> ArrayList
+usantatecla.utils.Menu --> usantatecla.utils.Command
 @enduml
