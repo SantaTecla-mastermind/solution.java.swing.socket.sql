@@ -7,7 +7,7 @@ import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.types.Color;
 import usantatecla.utils.Console;
 
-class ProposedCombinationView extends Console {
+class ProposedCombinationView {
 	
 	private PlayController playController;
 	

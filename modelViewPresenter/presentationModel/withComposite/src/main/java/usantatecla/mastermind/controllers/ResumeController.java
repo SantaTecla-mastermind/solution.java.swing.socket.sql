@@ -2,7 +2,7 @@ package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Session;
 
-public class ResumeController extends AcceptorController {
+public class ResumeController extends Controller implements AcceptorController {
 
 	public ResumeController(Session session) {
 		super(session);

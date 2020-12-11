@@ -3,7 +3,7 @@ package usantatecla.mastermind.views;
 import usantatecla.mastermind.types.Error;
 import usantatecla.utils.Console;
 
-class ErrorView extends Console{
+class ErrorView{
 
 	public final String[] MESSAGES = {
 			"Repeated colors",

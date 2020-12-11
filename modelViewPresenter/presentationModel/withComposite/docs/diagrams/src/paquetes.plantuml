@@ -227,9 +227,8 @@ class StateValue as "usantatecla.mastermind.models.StateValue" {
 
 
 }
-class  mastermind.controllers.AcceptorController{
-~ AcceptorController(Session)
-+ {abstract} accept(ControllersVisitor)
+interface  mastermind.controllers.AcceptorController{
++ accept(ControllersVisitor)
 }
 mastermind.controllers.Controller <|-down- mastermind.controllers.AcceptorController
 mastermind.controllers.AcceptorController ..> mastermind.controllers.ControllersVisitor
