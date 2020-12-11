@@ -12,7 +12,7 @@ version 0.0.1
     2.4. [Paquete mastermind.views.console](#paquete-mastermind-views-console)  
     2.5. [Paquete mastermind.controllers](#paquete-mastermind-controllers)  
     2.6. [Paquete mastermind.models](#paquete-mastermind-models)  
-    2.7. [Paquete mastermind.models](#paquete-mastermind-types)  
+    2.7. [Paquete mastermind.types](#paquete-mastermind-types)  
     2.8. [Paquete mastermind.utils](#paquete-mastermind-utils)  
 3. [Calidad del Software](#calidad-del-software)  
     3.1. [Diseño](#diseño)  
