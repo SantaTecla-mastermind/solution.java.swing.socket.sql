@@ -10,7 +10,7 @@ abstract class  usantatecla.mastermind.Mastermind{
     # play() 
 }
 usantatecla.mastermind.Mastermind *-down-> View
-usantatecla.mastermind.Mastermind *-down-> Game
+usantatecla.mastermind.Mastermind .down.> Game
 
 class  usantatecla.mastermind.ConsoleMastermind{
     # createView(Game): ConsoleView

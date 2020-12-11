@@ -71,7 +71,7 @@ abstract class  usantatecla.mastermind.views.Command{
 Command <|-down- usantatecla.mastermind.views.Command
 usantatecla.mastermind.views.Command *-down-> PlayController
 usantatecla.mastermind.views.Command ..> usantatecla.mastermind.views.GameView
-usantatecla.mastermind.views.Command..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.Command..> usantatecla.mastermind.views.Message
 
 class  usantatecla.mastermind.views.ErrorView{
 + MESSAGES: String[]
@@ -92,9 +92,9 @@ usantatecla.mastermind.views.GameView ..> PlayController
 usantatecla.mastermind.views.GameView..> usantatecla.mastermind.views.SecretCombinationView
 usantatecla.mastermind.views.GameView..>  usantatecla.mastermind.views.ProposedCombinationView
 usantatecla.mastermind.views.GameView..>  usantatecla.mastermind.views.ResultView
-usantatecla.mastermind.views.GameView..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.GameView..> usantatecla.mastermind.views.Message
 
-enum  usantatecla.mastermind.views.MessageView{
+enum  usantatecla.mastermind.views.Message{
 ~ ATTEMPTS
 ~ SECRET
 ~ RESUME
@@ -115,7 +115,7 @@ enum  usantatecla.mastermind.views.MessageView{
 + writeln(int, int)
 + write()
 }
-usantatecla.mastermind.views.MessageView ..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.Message ..> usantatecla.mastermind.views.Message
 
 class  usantatecla.mastermind.views.PlayMenu{
 ~ PlayMenu(PlayController)
@@ -149,7 +149,7 @@ class  usantatecla.mastermind.views.ProposedCombinationView{
 ~ read(): List<Color>
 }
 Console <|-down- usantatecla.mastermind.views.ProposedCombinationView
-usantatecla.mastermind.views.ProposedCombinationView..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.ProposedCombinationView..> usantatecla.mastermind.views.Message
  usantatecla.mastermind.views.ProposedCombinationView ..>  usantatecla.mastermind.views.ColorView
 
 class  usantatecla.mastermind.views.RedoCommand{
@@ -165,13 +165,13 @@ class  usantatecla.mastermind.views.ResultView{
 ~ writeln(int)
 }
 Console <|-down- usantatecla.mastermind.views.ResultView
-usantatecla.mastermind.views.ResultView..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.ResultView..> usantatecla.mastermind.views.Message
 
 class  usantatecla.mastermind.views.ResumeView{
 ~ interact(ResumeController)
 }
 usantatecla.mastermind.views.ResumeView ..> ResumeController
-usantatecla.mastermind.views.ResumeView..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.ResumeView..> usantatecla.mastermind.views.Message
 
 class  usantatecla.mastermind.views.SecretCombinationView{
 - controller: Controller
@@ -179,7 +179,7 @@ class  usantatecla.mastermind.views.SecretCombinationView{
 ~ writeln()
 }
 Console <|-down- usantatecla.mastermind.views.SecretCombinationView
-usantatecla.mastermind.views.SecretCombinationView..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.SecretCombinationView..> usantatecla.mastermind.views.Message
 
 class  usantatecla.mastermind.views.StartView{
 - secretCombinationView: SecretCombinationView
@@ -188,7 +188,7 @@ class  usantatecla.mastermind.views.StartView{
 Console <|-down- usantatecla.mastermind.views.StartView
 usantatecla.mastermind.views.StartView ..> StartController
 usantatecla.mastermind.views.StartView ..> usantatecla.mastermind.views.SecretCombinationView
-usantatecla.mastermind.views.StartView..> usantatecla.mastermind.views.MessageView
+usantatecla.mastermind.views.StartView..> usantatecla.mastermind.views.Message
 
 class  usantatecla.mastermind.views.UndoCommand{
 ~ UndoCommand(PlayController)

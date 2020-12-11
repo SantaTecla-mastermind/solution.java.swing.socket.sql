@@ -5,13 +5,10 @@ import usantatecla.mastermind.views.View;
 
 public abstract class Mastermind {
 
-	private Game game;
-
-	private View view;
+	private final View view;
 
 	protected Mastermind() {
-		this.game = new Game();
-		this.view = this.createView(this.game);
+		this.view = this.createView(new Game());
 	}
 
 	protected abstract View createView(Game game);

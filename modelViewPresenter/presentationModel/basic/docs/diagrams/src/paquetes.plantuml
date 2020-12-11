@@ -8,22 +8,16 @@ class StartController as "usantatecla.\nmastermind.controllers.\nStartController
 class ProposalController as "usantatecla.\nmastermind.controllers.\nProposalController"
 class ResumeController as "usantatecla.\nmastermind.controllers.\nResumeController"
 
-abstract class usantatecla.mastermind.WithGameView{
-    + WithGameView(Game)
-}
-usantatecla.mastermind.WithGameView *-down-> Game
-
 abstract class  usantatecla.mastermind.Mastermind{
     # Mastermind()
     # {abstract} createView(StartController, ProposalController, ResumeController): View
     # play()
 }
-usantatecla.mastermind.Mastermind -up-|> usantatecla.mastermind.WithGameView
-usantatecla.mastermind.Mastermind .down.> Game
 usantatecla.mastermind.Mastermind *-down-> View
-usantatecla.mastermind.Mastermind *-down-> StartController
-usantatecla.mastermind.Mastermind *-down-> ProposalController
-usantatecla.mastermind.Mastermind *-down-> ResumeController
+usantatecla.mastermind.Mastermind .down.> Game
+usantatecla.mastermind.Mastermind .down.> StartController
+usantatecla.mastermind.Mastermind .down.> ProposalController
+usantatecla.mastermind.Mastermind .down.> ResumeController
 
 class  usantatecla.mastermind.ConsoleMastermind{
     # createView(StartController, ProposalController, ResumeController): ConsoleView
@@ -225,7 +219,6 @@ usantatecla.mastermind.views.console.ErrorView ..> usantatecla.mastermind.views.
 
 @startuml usantatecla.mastermind.controllers
 
-abstract class WithGameView as "usantatecla.mastermind.\nWithGameView"
 abstract class Combination as "usantatecla.\nmastermind.models.\nCombination"
 class Game as "usantatecla.\nmastermind.models.\nGame"
 class Error as "usantatecla.\nmastermind.types.\nError"
@@ -237,8 +230,7 @@ abstract class usantatecla.mastermind.controllers.Controller {
     # Controller(Game)
     + getWidth(): int
 }
-usantatecla.mastermind.controllers.Controller -up-|> WithGameView
-usantatecla.mastermind.controllers.Controller .down.> Game
+usantatecla.mastermind.controllers.Controller *-down-> Game
 usantatecla.mastermind.controllers.Controller .down.> Combination
 
 class usantatecla.mastermind.controllers.StartController {

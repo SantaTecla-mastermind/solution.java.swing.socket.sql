@@ -8,7 +8,7 @@ class usantatecla.mastermind.Mastermind{
     + {static} main(String[])
 }
 usantatecla.mastermind.Mastermind *-down-> View
-usantatecla.mastermind.Mastermind *-down-> Game
+usantatecla.mastermind.Mastermind .down.> Game
 
 @enduml
 
@@ -23,10 +23,10 @@ class Game as "usantatecla.\nmastermind.models.\nGame"
 class YesNoDialog as "usantatecla.\nutils.\nYesNoDialog"
 class Console as "usantatecla.\nutils.\nConsole"
 
-abstract class usantatecla.mastermind.WithGameView {
+abstract class usantatecla.mastermind.views.WithGameView {
     + WithGameView(Game)
 }
-usantatecla.mastermind.WithGameView *-down-> Game
+usantatecla.mastermind.views.WithGameView *-down-> Game
 
 class usantatecla.mastermind.views.ColorView{
     - {static} INITIALS: char []
@@ -52,7 +52,7 @@ class usantatecla.mastermind.views.GameView {
     ~ write()
     ~ isWinnerOrLooser() : boolean
 }
-usantatecla.mastermind.views.GameView -up-|> usantatecla.mastermind.WithGameView
+usantatecla.mastermind.views.GameView -up-|> usantatecla.mastermind.views.WithGameView
 usantatecla.mastermind.views.GameView *-down-> usantatecla.mastermind.views.SecretCombinationView
 usantatecla.mastermind.views.GameView ..> usantatecla.mastermind.views.Message
 usantatecla.mastermind.views.GameView ..> usantatecla.mastermind.views.ProposedCombinationView
@@ -81,7 +81,7 @@ class usantatecla.mastermind.views.ProposalView {
     ~ ProposalView(Game)
     ~ interact(): boolean
 }
-usantatecla.mastermind.views.ProposalView -up-|> usantatecla.mastermind.WithGameView
+usantatecla.mastermind.views.ProposalView -up-|> usantatecla.mastermind.views.WithGameView
 usantatecla.mastermind.views.ProposalView *-down-> usantatecla.mastermind.views.GameView
 usantatecla.mastermind.views.ProposalView -down..> ProposedCombination
 usantatecla.mastermind.views.ProposalView ..> usantatecla.mastermind.views.ProposedCombinationView
@@ -110,7 +110,7 @@ class usantatecla.mastermind.views.ResumeView {
     ~ ResumeView(Game)
     ~ interact(): boolean
 }
-usantatecla.mastermind.views.ResumeView -up-|> usantatecla.mastermind.WithGameView
+usantatecla.mastermind.views.ResumeView -up-|> usantatecla.mastermind.views.WithGameView
 usantatecla.mastermind.views.ResumeView -down..> YesNoDialog
 usantatecla.mastermind.views.ResumeView ..> usantatecla.mastermind.views.Message
 

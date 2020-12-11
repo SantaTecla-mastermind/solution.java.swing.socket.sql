@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views;
 
-public enum MessageView {
+public enum Message {
     ATTEMPTS("#attempts attempt(s): "),
     SECRET("*"),
     RESUME("Do you want to continue"),
@@ -11,7 +11,7 @@ public enum MessageView {
     LOOSER("You've lost!!! :-(");
     private String message;
 
-    MessageView(String message) {
+    Message(String message) {
         this.message = message;
     }
 
