@@ -8,7 +8,6 @@ import java.util.List;
 public abstract class Combination {
 
     private static final int WIDTH = 4;
-
     public List<Color> colors;
 
     protected Combination() {

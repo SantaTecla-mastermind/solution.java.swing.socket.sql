@@ -8,7 +8,7 @@ import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.ProposalController;
 import usantatecla.mastermind.types.Error;
-import usantatecla.mastermind.views.MessageView;
+import usantatecla.mastermind.views.Message;
 import usantatecla.mastermind.views.console.ProposalView;
 import usantatecla.utils.Console;
 
@@ -38,7 +38,7 @@ public class ProposalViewTest {
             when(this.proposalController.isWinner()).thenReturn(true);
             this.proposalView.interact(this.proposalController);
             verify(this.console, times(2)).writeln();
-            verify(this.console).writeln(MessageView.WINNER.getMessage());
+            verify(this.console).writeln(Message.WINNER.getMessage());
         }
     }
 
@@ -53,7 +53,7 @@ public class ProposalViewTest {
             when(this.proposalController.isLooser()).thenReturn(true);
             this.proposalView.interact(this.proposalController);
             verify(this.console, times(2)).writeln();
-            verify(this.console).writeln(MessageView.LOOSER.getMessage());
+            verify(this.console).writeln(Message.LOOSER.getMessage());
         }
     }
 

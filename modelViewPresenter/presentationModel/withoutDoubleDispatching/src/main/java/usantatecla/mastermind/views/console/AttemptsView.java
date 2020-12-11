@@ -1,10 +1,10 @@
 package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.ProposalController;
-import usantatecla.mastermind.views.MessageView;
+import usantatecla.mastermind.views.Message;
 import usantatecla.utils.Console;
 
-public class AttemptsView extends ConsoleView {
+public class AttemptsView {
 
 	private ProposalController proposalController;
 
@@ -13,7 +13,7 @@ public class AttemptsView extends ConsoleView {
 	}
 
 	void writeln() {
-		Console.getInstance().writeln(MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts",
+		Console.getInstance().writeln(Message.ATTEMPTS.getMessage().replaceFirst("#attempts",
 				"" + this.proposalController.getAttempts()));
 	}
 

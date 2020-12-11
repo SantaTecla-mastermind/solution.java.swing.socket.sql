@@ -10,9 +10,7 @@ import usantatecla.mastermind.models.StateValue;
 public class Logic {
 	
 	private State state;
-	
 	private Game game;
-	
 	private Map<StateValue, Controller> controllers;
 		
 	public Logic() {
