@@ -1,23 +1,23 @@
 @startuml usantatecla.mastermind
 class usantatecla.mastermind.ConsoleMastermind{
-- ConsoleMastermind()
-+ {static} main(String[])
-- play()
+    - ConsoleMastermind()
+    + {static} main(String[])
+    - play()
 }
 
 class usantatecla.mastermind.GraphicsMastermind{
-- GraphicsMastermind()
-+ {static} main(String[])
-- play()
+    - GraphicsMastermind()
+    + {static} main(String[])
+    - play()
 }
 
 class ConsoleView as "usantatecla.mastermind.\nviews.console.\nConsoleView"{}
 class GraphicsView as "usantatecla.mastermind.\nviews.graphics.\nGraphicsView"{}
 class Game as "usantatecla.mastermind.\nmodels.\nGame"{}
 usantatecla.mastermind.ConsoleMastermind *-down-> ConsoleView
-usantatecla.mastermind.ConsoleMastermind *-down-> Game
+usantatecla.mastermind.ConsoleMastermind .down.> Game
 usantatecla.mastermind.GraphicsMastermind *-down-> GraphicsView
-usantatecla.mastermind.GraphicsMastermind *-down-> Game
+usantatecla.mastermind.GraphicsMastermind .down.> Game
 
 @enduml
 
@@ -26,10 +26,10 @@ class Error as "usantatecla.mastermind.models.\nError"{}
 class Color as "usantatecla.mastermind.models.\nColor"{}
 class Game as "usantatecla.mastermind.models.\nGame"{}
 
-abstract class usantatecla.mastermind.WithGameView {
+abstract class usantatecla.mastermind.views.WithGameView {
     + WithGameView(Game)
 }
-usantatecla.mastermind.WithGameView *-down-> Game
+usantatecla.mastermind.views.WithGameView *-down-> Game
 
 abstract class usantatecla.mastermind.views.ColorView{
     + {static} INITIALS: char []
@@ -70,7 +70,7 @@ abstract class usantatecla.mastermind.views.View {
     # {abstract} propose(): boolean
     # {abstract} isNewGame(): boolean
 }
-usantatecla.mastermind.views.View -up-|> usantatecla.mastermind.WithGameView
+usantatecla.mastermind.views.View -up-|> usantatecla.mastermind.views.WithGameView
 usantatecla.mastermind.views.View .down.> Game
 @enduml
 
@@ -427,43 +427,43 @@ enum usantatecla.mastermind.types.Error {
 class BufferedReader as "java.io.BufferedReader"{}
 
 enum usantatecla.utils.ColorCode{
-+ RED
-+ BLUE
-+ YELLOW
-+ GREEN
-+ ORANGE
-+ PURPLE
-+ RESET_COLOR
-- color: String
-~ ColorCode(String)
-+ getColor(): String
-+ {static} getColorByIndex(int): String
+    + RED
+    + BLUE
+    + YELLOW
+    + GREEN
+    + ORANGE
+    + PURPLE
+    + RESET_COLOR
+    - color: String
+    ~ ColorCode(String)
+    + getColor(): String
+    + {static} getColorByIndex(int): String
 }
 
 class usantatecla.utils.Console{
-- {static} console: Console
-+ {static} getInstance(): Console
-+ readString(String): String
-+ readString(): String
-+ readInt(String): int
-+ readChar(String): char
-+ writeln()
-+ write(String)
-+ writeln(String)
-+ write(char)
-- writeError(String)
+    - {static} console: Console
+    + {static} getInstance(): Console
+    + readString(String): String
+    + readString(): String
+    + readInt(String): int
+    + readChar(String): char
+    + writeln()
+    + write(String)
+    + writeln(String)
+    + write(char)
+    - writeError(String)
 }
 usantatecla.utils.Console *-down-> BufferedReader
 
 class  usantatecla.utils.YesNoDialog{
-- {static} AFIRMATIVE: char
-- {static} NEGATIVE: char
-- {static} QUESTION: String
-- {static} MESSAGE: String
-+ YesNoDialog()
-+ read(String): boolean
-- {static} isAfirmative(char): boolean
-- {static} isNegative(char): boolean
+    - {static} AFIRMATIVE: char
+    - {static} NEGATIVE: char
+    - {static} QUESTION: String
+    - {static} MESSAGE: String
+    + YesNoDialog()
+    + read(String): boolean
+    - {static} isAfirmative(char): boolean
+    - {static} isNegative(char): boolean
 }
 usantatecla.utils.YesNoDialog ..> usantatecla.utils.Console
 @enduml

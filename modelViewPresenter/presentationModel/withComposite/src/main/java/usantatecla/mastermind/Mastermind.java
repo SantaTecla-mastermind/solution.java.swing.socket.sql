@@ -7,7 +7,6 @@ import usantatecla.mastermind.views.View;
 public class Mastermind {
 	
 	private Logic logic;
-	
 	private View view;
 	
 	protected Mastermind() {

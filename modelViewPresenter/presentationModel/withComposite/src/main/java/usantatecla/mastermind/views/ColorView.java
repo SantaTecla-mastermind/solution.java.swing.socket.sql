@@ -4,7 +4,7 @@ import usantatecla.mastermind.types.Color;
 import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
 
-class ColorView extends Console {
+class ColorView {
 
 	public static final char[] INITIALS = {'r', 'b', 'y', 'g', 'o', 'p'};
 

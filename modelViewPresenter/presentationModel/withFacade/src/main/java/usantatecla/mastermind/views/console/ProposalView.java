@@ -3,23 +3,19 @@ package usantatecla.mastermind.views.console;
 import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
-import usantatecla.mastermind.views.MessageView;
-import usantatecla.utils.Console;
+import usantatecla.mastermind.views.WithLogicView;
 
 import java.util.List;
 
-class ProposalView extends Console {
+class ProposalView extends WithLogicView {
 
-    private Logic logic;
-    private SecretCombinationView secretCombinationView;
     private ProposedCombinationView proposedCombinationView;
-    private ResultView resultView;
+    private GameView gameView;
 
     ProposalView(Logic logic) {
-        this.logic = logic;
-        this.secretCombinationView = new SecretCombinationView(this.logic);
+        super(logic);
         this.proposedCombinationView = new ProposedCombinationView(this.logic);
-        this.resultView = new ResultView(this.logic);
+        this.gameView = new GameView(this.logic, this.proposedCombinationView);
     }
 
     boolean interact() {
@@ -31,21 +27,9 @@ class ProposalView extends Console {
                 new ErrorView(error).writeln();
             }
         } while (error != Error.NULL);
-        Console.getInstance().writeln();
-        new AttemptsView(this.logic).writeln();
-        this.secretCombinationView.writeln();
-        for (int i = 0; i < this.logic.getAttempts(); i++) {
-            this.proposedCombinationView.write(i);
-            this.resultView.writeln(i);
-        }
-        if (this.logic.isWinner()) {
-            Console.getInstance().writeln(MessageView.WINNER.getMessage());
-            return true;
-        } else if (this.logic.isLooser()) {
-            Console.getInstance().writeln(MessageView.LOOSER.getMessage());
-            return true;
-        }
-        return false;
+
+        this.gameView.write();
+        return this.gameView.isWinnerOrLooser();
     }
 
 }

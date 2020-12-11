@@ -2,10 +2,9 @@ package usantatecla.utils;
 
 import java.util.ArrayList;
 
-public abstract class Menu extends Console {
+public abstract class Menu {
 
 	private static final String OPTION = "----- Choose one option -----";
-	
 	private ArrayList<Command> commandList;
 
 	public Menu() {

@@ -2,12 +2,13 @@ package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Combination;
 import usantatecla.mastermind.models.Game;
-import usantatecla.mastermind.WithGameView;
 
-public abstract class Controller extends WithGameView {
+public abstract class Controller {
+
+    protected Game game;
 
     Controller(Game game) {
-        super(game);
+        this.game = game;
     }
 
     public int getWidth() {

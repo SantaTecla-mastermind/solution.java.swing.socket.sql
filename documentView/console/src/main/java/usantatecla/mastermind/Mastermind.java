@@ -5,12 +5,10 @@ import usantatecla.mastermind.views.View;
 
 public class Mastermind {
 
-	private Game game;
-	private View view;
+	private final View view;
 
 	private Mastermind() {
-		this.game = new Game();
-		this.view = new View(this.game);
+		this.view = new View(new Game());
 	}
 
 	private void play() {

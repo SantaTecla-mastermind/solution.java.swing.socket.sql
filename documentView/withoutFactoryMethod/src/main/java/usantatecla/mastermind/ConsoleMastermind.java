@@ -5,13 +5,10 @@ import usantatecla.mastermind.views.console.ConsoleView;
 
 public class ConsoleMastermind {
 
-    private Game game;
-
-    private ConsoleView consoleView;
+    private final ConsoleView consoleView;
 
     private ConsoleMastermind() {
-        this.game = new Game();
-        this.consoleView = new ConsoleView(this.game);
+        this.consoleView = new ConsoleView(new Game());
     }
 
     private void play() {

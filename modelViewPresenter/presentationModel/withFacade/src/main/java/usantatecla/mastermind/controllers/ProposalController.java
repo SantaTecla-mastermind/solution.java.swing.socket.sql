@@ -1,6 +1,5 @@
 package usantatecla.mastermind.controllers;
 
-import usantatecla.mastermind.models.Combination;
 import usantatecla.mastermind.models.Game;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
@@ -16,7 +15,7 @@ public class ProposalController extends Controller {
 
     public Error addProposedCombination(List<Color> colors) {
         Error error = Error.NULL;
-        if (colors.size() != Combination.getWidth()) {
+        if (colors.size() != this.getWidth()) {
             error = Error.WRONG_LENGTH;
         } else {
             for (int i = 0; i < colors.size(); i++) {

@@ -2,12 +2,10 @@ package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.controllers.Logic;
 
-public abstract class View {
-
-    protected Logic logic;
+public abstract class View extends WithLogicView {
 
     public View(Logic logic) {
-        this.logic = logic;
+        super(logic);
     }
 
     public void interact() {

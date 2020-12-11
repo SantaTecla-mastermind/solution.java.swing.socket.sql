@@ -6,12 +6,10 @@ import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 
-public class PlayController extends AcceptorController {
+public class PlayController extends Controller implements AcceptorController {
 
 	private ProposalController proposalController;
-
 	private UndoController undoController;
-
 	private RedoController redoController;
 
 	public PlayController(Session session) {

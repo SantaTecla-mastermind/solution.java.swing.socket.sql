@@ -5,13 +5,10 @@ import usantatecla.mastermind.views.graphics.GraphicsView;
 
 public class GraphicsMastermind {
 
-    private Game game;
-
-    private GraphicsView graphicsView;
+    private final GraphicsView graphicsView;
 
     private GraphicsMastermind() {
-        this.game = new Game();
-        this.graphicsView = new GraphicsView(this.game);
+        this.graphicsView = new GraphicsView(new Game());
     }
 
     private void play() {
