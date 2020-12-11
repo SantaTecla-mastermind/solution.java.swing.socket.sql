@@ -1,41 +1,52 @@
 package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.types.Color;
+import usantatecla.utils.ColorCode;
+import usantatecla.utils.Console;
 import usantatecla.utils.WithConsoleView;
 
-class ColorView extends WithConsoleView{
+class ColorView extends Console {
 
-	static final char[] INITIALS = { 'r', 'b', 'y', 'g', 'o', 'p' };
+	public static final char[] INITIALS = {'r', 'b', 'y', 'g', 'o', 'p'};
 
 	protected Color color;
 
-	ColorView(Color color) {
+	protected ColorView() {
+	}
+
+	protected ColorView(Color color) {
 		this.color = color;
 	}
 
-	static String allInitials() {
-		String result = "";
-		for (char character : ColorView.INITIALS) {
-			result += character;
-		}
-		return result;
-	}
-
-	char getInitial() {
-		return ColorView.INITIALS[this.color.ordinal()];
-	}
-
-	static Color getInstance(char character) {
+	public static Color getInstance(char character) {
 		for (int i = 0; i < ColorView.INITIALS.length; i++) {
 			if (ColorView.INITIALS[i] == character) {
 				return Color.values()[i];
 			}
 		}
-		return null;
+		return Color.NULL;
 	}
 
-	void write() {
-		this.console.write(ColorView.INITIALS[this.color.ordinal()]);
+	public String allInitials() {
+		String result = "";
+		for (int i = 0; i < ColorView.INITIALS.length; i++) {
+			result += resultInitials(i);
+		}
+		return result;
+	}
+
+	protected String resultInitials(int i) {
+		return ColorCode.values()[i].getColor() + ColorView.INITIALS[i] + ColorCode.RESET_COLOR.getColor();
+	}
+
+	public void write() {
+		if (!color.isNull()) {
+			Console.getInstance()
+					.write(ColorCode.getColorByIndex(this.color.ordinal())
+							+ ColorView.INITIALS[this.color.ordinal()]
+							+ ColorCode.RESET_COLOR.getColor());
+		}
 	}
 
 }
+

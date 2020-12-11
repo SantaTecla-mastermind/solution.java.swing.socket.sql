@@ -25,7 +25,7 @@ class ProposedCombination extends Combination {
 	}
 	
 	ProposedCombination copy() {
-		List<Color> colors = new ArrayList<Color>();
+		List<Color> colors = new ArrayList<>();
 		for(Color color: this.colors) {
 			colors.add(color);
 		}

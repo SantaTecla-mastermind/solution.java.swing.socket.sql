@@ -23,8 +23,8 @@ class Game {
 
 	void clear() {
 		this.secretCombination = new SecretCombination();
-		this.proposedCombinations = new ArrayList<ProposedCombination>();
-		this.results = new ArrayList<Result>();
+		this.proposedCombinations = new ArrayList<>();
+		this.results = new ArrayList<>();
 		this.attempts = 0;
 	}
 
@@ -45,8 +45,8 @@ class Game {
 
 	void set(Memento memento) {
 		this.attempts = memento.getAttempts();
-		this.proposedCombinations = new ArrayList<ProposedCombination>();
-		this.results = new ArrayList<Result>();
+		this.proposedCombinations = new ArrayList<>();
+		this.results = new ArrayList<>();
 		for (int i = 0; i < memento.getSize(); i++) {
 			this.proposedCombinations.add(memento.getProposedCombination(i).copy());
 			this.results.add(memento.getResult(i).copy());

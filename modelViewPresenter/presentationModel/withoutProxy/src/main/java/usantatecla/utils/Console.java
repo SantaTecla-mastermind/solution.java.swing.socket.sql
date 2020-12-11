@@ -5,7 +5,12 @@ import java.io.InputStreamReader;
 
 public class Console {
 
+	private static Console console = new Console();
 	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+	public static Console getInstance() {
+		return console;
+	}
 
 	public String readString(String title) {
 		String input = null;
@@ -20,6 +25,10 @@ public class Console {
 			}
 		} while (!ok);
 		return input;
+	}
+
+	public String readString() {
+		return this.readString("");
 	}
 
 	public int readInt(String title) {

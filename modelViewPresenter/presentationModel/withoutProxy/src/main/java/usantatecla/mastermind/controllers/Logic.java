@@ -27,7 +27,7 @@ public class Logic {
 			this.tcpip = TCPIP.createClientSocket();
 		}
 		this.session = new Session(this.tcpip);
-		this.acceptorControllers = new HashMap<StateValue, AcceptorController>();
+		this.acceptorControllers = new HashMap<>();
 		this.startController = new StartController(this.session, this.tcpip);
 		this.acceptorControllers.put(StateValue.INITIAL, this.startController);
 		this.playController = new PlayController(this.session, this.tcpip);

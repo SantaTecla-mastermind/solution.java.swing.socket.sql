@@ -62,6 +62,14 @@ public class Session {
 		return this.game.isLooser();
 	}
 
+	public int getWidth() {
+		if (this.tcpip == null) {
+			return this.game.getWidth();
+		}
+		this.tcpip.send(FrameType.WIDTH.name());
+		return this.tcpip.receiveInt();
+	}
+
 	public int getAttempts() {
 		return this.game.getAttempts();
 	}
@@ -76,14 +84,6 @@ public class Session {
 
 	public int getWhites(int position) {
 		return this.game.getWhites(position);
-	}
-
-	public int getWidth() {
-		if (this.tcpip == null) {
-			return this.game.getWidth();
-		}
-		this.tcpip.send(FrameType.WIDTH.name());
-		return this.tcpip.receiveInt();
 	}
 
 	public StateValue getValueState() {

@@ -13,8 +13,8 @@ public class Memento {
 
 	Memento(int attempts) {
 		this.attempts = attempts;
-		this.proposedCombinations = new ArrayList<ProposedCombination>();
-		this.results = new ArrayList<Result>();
+		this.proposedCombinations = new ArrayList<>();
+		this.results = new ArrayList<>();
 	}
 
 	void set(ProposedCombination proposedCombination, Result result) {
