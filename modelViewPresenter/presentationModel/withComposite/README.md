@@ -11,7 +11,8 @@ version 0.0.1
     2.3. [Paquete mastermind.views](#paquete-mastermind-viewa)  
     2.4. [Paquete mastermind.controllers](#paquete-mastermind-controllers)  
     2.5. [Paquete mastermind.models](#paquete-mastermind-models)  
-    2.6. [Paquete mastermind.utils](#paquete-mastermind-utils)  
+    2.6. [Paquete mastermind.types](#paquete-mastermind-types)  
+    2.7. [Paquete mastermind.utils](#paquete-mastermind-utils)  
 3. [Calidad del Software](#calidad-del-software)  
     3.1. [Diseño](#diseño)  
 4. [Vista de Desarrollo/Implementación](#vista-de-desarrolloimplementación)  
@@ -41,6 +42,9 @@ version 0.0.1
 
 ### Paquete *mastermind.models*<a name="paquete-mastermind-models"></a>
 ![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.mastermind.models.svg)
+
+### Paquete *mastermind.types*<a name="paquete-mastermind-types"></a>
+![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.mastermind.types.svg)
 
 ### Paquete *utils*<a name="paquete-mastermind-utils"></a>
 ![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.utils.svg)

@@ -11,8 +11,6 @@ public class ProposedCombination extends Combination {
 		this.colors = colors;
 	}
 
-	
-
 	boolean contains(Color color, int position) {
 		return this.colors.get(position) == color;
 	}

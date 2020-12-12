@@ -5,9 +5,7 @@ import java.util.ArrayList;
 class Registry {
 	
 	private ArrayList<Memento> mementoList;
-	
 	private Game game;
-	
 	private int firstPrevious;
 	
 	Registry(Game game) {

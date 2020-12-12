@@ -6,9 +6,7 @@ import java.util.List;
 class Memento {
 
 	private List<ProposedCombination> proposedCombinations;
-
 	private List<Result> results;
-
 	private int attempts;
 
 	Memento(int attempts) {

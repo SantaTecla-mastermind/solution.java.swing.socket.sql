@@ -7,9 +7,7 @@ import usantatecla.mastermind.types.Color;
 public class Session {
 
 	private State state;
-	
 	private Game game;
-	
 	private Registry registry;
 	
 	public Session() {

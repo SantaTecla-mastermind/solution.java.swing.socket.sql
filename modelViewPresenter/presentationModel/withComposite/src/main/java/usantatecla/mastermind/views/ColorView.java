@@ -7,13 +7,12 @@ import usantatecla.utils.Console;
 class ColorView {
 
 	public static final char[] INITIALS = {'r', 'b', 'y', 'g', 'o', 'p'};
+	Color color;
 
-	protected Color color;
-
-	protected ColorView() {
+	ColorView() {
 	}
 
-	protected ColorView(Color color) {
+	ColorView(Color color) {
 		this.color = color;
 	}
 
@@ -34,7 +33,7 @@ class ColorView {
 		return result;
 	}
 
-	protected String resultInitials(int i) {
+	String resultInitials(int i) {
 		return ColorCode.values()[i].getColor() + ColorView.INITIALS[i] + ColorCode.RESET_COLOR.getColor();
 	}
 

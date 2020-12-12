@@ -3,16 +3,16 @@ package usantatecla.mastermind.views;
 import usantatecla.mastermind.types.Error;
 import usantatecla.utils.Console;
 
-class ErrorView{
+class ErrorView {
 
 	public final String[] MESSAGES = {
 			"Repeated colors",
 			"Wrong colors, they must be: " + this.colorInitials(),
 			"Wrong proposed combination length"};
 
-	protected Error error;
+	Error error;
 
-	protected ErrorView() {
+	ErrorView() {
 	}
 
 	public ErrorView(Error error) {
@@ -25,7 +25,7 @@ class ErrorView{
 		}
 	}
 
-	protected String colorInitials() {
+	String colorInitials() {
 		return new ColorView().allInitials();
 	}
 	

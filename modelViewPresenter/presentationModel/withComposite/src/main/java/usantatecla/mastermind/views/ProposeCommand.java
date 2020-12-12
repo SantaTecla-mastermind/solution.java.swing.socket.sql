@@ -9,7 +9,7 @@ import usantatecla.mastermind.types.Error;
 class ProposeCommand extends Command {
 
 	ProposeCommand(PlayController playController) {
-		super(MessageView.PROPOSE_COMMAND.getMessage(), playController);
+		super(Message.PROPOSE_COMMAND.getMessage(), playController);
 	}
 
 	@Override

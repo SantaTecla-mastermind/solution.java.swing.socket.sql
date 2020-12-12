@@ -1,6 +1,7 @@
 package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.utils.Console;
 
 class ResultView {
 	
@@ -11,7 +12,9 @@ class ResultView {
 	}
 
 	void writeln(int position) {
-		MessageView.RESULT.writeln(this.playController.getBlacks(position), this.playController.getWhites(position));
+		Console.getInstance().writeln(Message.RESULT.getMessage()
+				.replaceFirst("#blacks", "" + this.playController.getBlacks(position))
+				.replaceFirst("#whites", "" + this.playController.getWhites(position)));
 	}
 
 }

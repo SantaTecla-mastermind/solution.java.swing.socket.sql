@@ -9,9 +9,7 @@ import usantatecla.mastermind.controllers.StartController;
 public class View implements ControllersVisitor {
 	
 	private StartView startView;
-
 	private PlayView playView;
-
 	private ResumeView resumeView;
 
 	public View() {
@@ -23,18 +21,15 @@ public class View implements ControllersVisitor {
 	public void interact(AcceptorController acceptorController) {
 		acceptorController.accept(this);
 	}
-
 	
 	public void visit(StartController startController) {
 		this.startView.interact(startController);
 	}
-
 	
 	public void visit(PlayController playController) {
 		this.playView.interact(playController);
 	}
 
-	
 	public void visit(ResumeController resumeController) {
 		this.resumeView.interact(resumeController);
 	}

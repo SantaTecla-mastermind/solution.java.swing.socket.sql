@@ -5,7 +5,7 @@ import usantatecla.mastermind.controllers.PlayController;
 class RedoCommand extends Command{
 	
 	RedoCommand(PlayController playController) {
-		super(MessageView.REDO_COMMAND.getMessage(), playController);
+		super(Message.REDO_COMMAND.getMessage(), playController);
 	}
 
 	@Override

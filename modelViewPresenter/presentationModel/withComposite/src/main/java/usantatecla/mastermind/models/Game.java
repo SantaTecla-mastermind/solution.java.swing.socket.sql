@@ -8,13 +8,9 @@ import usantatecla.mastermind.types.Color;
 class Game {
 
 	private static final int MAX_LONG = 10;
-
 	private SecretCombination secretCombination;
-
 	private List<ProposedCombination> proposedCombinations;
-
 	private List<Result> results;
-
 	private int attempts;
 
 	Game() {
