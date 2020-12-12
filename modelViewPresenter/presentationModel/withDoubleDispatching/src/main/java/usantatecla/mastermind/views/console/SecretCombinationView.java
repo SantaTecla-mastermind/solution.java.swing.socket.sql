@@ -1,12 +1,12 @@
 package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.Controller;
-import usantatecla.mastermind.views.MessageView;
+import usantatecla.mastermind.views.Message;
 import usantatecla.utils.Console;
 
-public class SecretCombinationView extends Console {
+public class SecretCombinationView {
 	
-	private Controller controller;
+	private final Controller controller;
 	
 	SecretCombinationView(Controller controller) {
 		super();
@@ -15,7 +15,7 @@ public class SecretCombinationView extends Console {
 	
 	public void writeln() {
 		for (int i = 0; i < this.controller.getWidth(); i++) {
-			Console.getInstance().write(MessageView.SECRET.getMessage());
+			Console.getInstance().write(Message.SECRET.getMessage());
 		}
 		Console.getInstance().writeln();
 	}

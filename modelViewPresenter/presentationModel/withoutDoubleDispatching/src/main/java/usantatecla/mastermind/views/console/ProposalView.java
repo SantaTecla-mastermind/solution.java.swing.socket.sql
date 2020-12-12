@@ -13,10 +13,10 @@ public class ProposalView {
 		do {
 			List<Color> colors = new ProposedCombinationView(proposalController).read();
 			error = proposalController.addProposedCombination(colors);
-			if (error != Error.NULL) {
+			if (!error.isNull()) {
 				new ErrorView(error).writeln();
 			}
-		} while (error != Error.NULL);
+		} while (!error.isNull());
 
 		new GameView(proposalController).write();
 	}
