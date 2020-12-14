@@ -17,7 +17,8 @@ public class PlayController extends AcceptorController {
 
 	private RedoController redoController;
 
-	protected PlayController(Session session, TCPIP tcpip) {
+	//TODO Session se instancia con TCPIP
+	public PlayController(Session session, TCPIP tcpip) {
 		super(session, tcpip);
 		if (tcpip == null) {
 			this.proposalController = new ProposalController(this.session);
