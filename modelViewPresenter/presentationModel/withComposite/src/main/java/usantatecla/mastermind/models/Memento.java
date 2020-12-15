@@ -5,33 +5,34 @@ import java.util.List;
 
 class Memento {
 
-	private List<ProposedCombination> proposedCombinations;
-	private List<Result> results;
 	private int attempts;
+	private List<String> proposedCombinationsColors;
+	private List<Integer> blacks;
+	private List<Integer> whites;
 
-	Memento(int attempts) {
+	public Memento(int attempts, List<String> proposedCombinationsColors, List<Integer> blacks, List<Integer> whites) {
 		this.attempts = attempts;
-		this.proposedCombinations = new ArrayList<>();
-		this.results = new ArrayList<>();
+		this.proposedCombinationsColors = proposedCombinationsColors;
+		this.blacks = blacks;
+		this.whites = whites;
 	}
 
-	void set(ProposedCombination proposedCombination, Result result) {
-		this.proposedCombinations.add(proposedCombination);
-		this.results.add(result);
+	List<ProposedCombination> getProposedCombinations(){
+		List<ProposedCombination> proposedCombinations = new ArrayList<>();
+		for(String proposedCombinationColor : this.proposedCombinationsColors) {
+			proposedCombinations.add(ProposedCombination.parse(proposedCombinationColor));
+		}
+		return proposedCombinations;
 	}
 	
-	ProposedCombination getProposedCombination(int position){
-		return this.proposedCombinations.get(position);
+	List<Result> getResults(){
+		List<Result> results = new ArrayList<>();
+		for(int i = 0; i < this.blacks.size(); i++) {
+			results.add(new Result(this.blacks.get(i), this.whites.get(i)));
+		}
+		return results;
 	}
-	
-	Result getResult(int position){
-		return this.results.get(position);
-	}
-	
-	int getSize() {
-		return proposedCombinations.size();
-	}
-	
+
 	int getAttempts(){
 		return this.attempts;
 	}

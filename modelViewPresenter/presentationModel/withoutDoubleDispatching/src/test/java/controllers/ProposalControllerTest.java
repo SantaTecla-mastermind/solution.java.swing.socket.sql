@@ -30,7 +30,7 @@ class ProposalControllerTest {
     @Test
     void testGivenWrongColorWhenAddProposedCombinationThenCorrectErrorIsReturned() {
         List<Color> colors = new ArrayList<>(Arrays.asList(Color.BLUE, Color.GREEN, Color.ORANGE, Color.NULL));
-        assertThat(this.proposalController.addProposedCombination(colors), is(Error.NULL));
+        assertThat(this.proposalController.addProposedCombination(colors), is(Error.WRONG_CHARACTERS));
     }
 
     @Test
