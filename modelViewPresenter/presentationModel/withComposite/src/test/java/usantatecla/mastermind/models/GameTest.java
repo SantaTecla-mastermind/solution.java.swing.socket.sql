@@ -1,6 +1,7 @@
 package usantatecla.mastermind.models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -14,17 +15,20 @@ public class GameTest {
     private List<Color> colors;
     private Memento memento;
     private Memento mementoWinner;
+
     public GameTest(){
         this.game = new Game();
-        this.colors = new ArrayList<Color>();
+        this.colors = new ArrayList<>();
         colors.add(Color.BLUE);
         colors.add(Color.GREEN);
         colors.add(Color.ORANGE);
         colors.add(Color.PURPLE);
-        this.memento = new Memento(1);
-        this.memento.set(new ProposedCombination(colors), new Result(2, 1));
-        this.mementoWinner = new Memento(1);
-        this.mementoWinner.set(new ProposedCombination(colors), new Result(4, 0));
+
+        this.memento = new Memento(1, new ArrayList<>(Arrays.asList(new ProposedCombination(colors).toString())),
+                new ArrayList<>(Arrays.asList(2)), new ArrayList<>(Arrays.asList(1)));
+
+        this.mementoWinner = new Memento(1, new ArrayList<>(Arrays.asList(new ProposedCombination(colors).toString())),
+                new ArrayList<>(Arrays.asList(4)), new ArrayList<>(Arrays.asList(0)));
     }
 
     @Test

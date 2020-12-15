@@ -32,21 +32,23 @@ class Game {
 	}
 	
 	Memento createMemento() {
-		Memento memento = new Memento(this.attempts);
-		for (int i = 0; i < this.proposedCombinations.size(); i++) {
-			memento.set(this.proposedCombinations.get(i).copy(), this.results.get(i).copy());
+		List<String> proposedCombinationsColors = new ArrayList<>();
+		List<Integer> blacks = new ArrayList<>();
+		List<Integer> whites = new ArrayList<>();
+
+		for (int i = 0; i < this.attempts; i++) {
+			proposedCombinationsColors.add(this.proposedCombinations.get(i).toString());
+			blacks.add(this.results.get(i).getBlacks());
+			whites.add(this.results.get(i).getWhites());
 		}
-		return memento;
+
+		return new Memento(this.attempts, proposedCombinationsColors, blacks, whites);
 	}
 
 	void set(Memento memento) {
 		this.attempts = memento.getAttempts();
-		this.proposedCombinations = new ArrayList<>();
-		this.results = new ArrayList<>();
-		for (int i = 0; i < memento.getSize(); i++) {
-			this.proposedCombinations.add(memento.getProposedCombination(i).copy());
-			this.results.add(memento.getResult(i).copy());
-		}
+		this.proposedCombinations = memento.getProposedCombinations();
+		this.results = memento.getResults();
 	}
 
 	boolean isLooser() {
