@@ -357,9 +357,8 @@ class usantatecla.mastermind.models.ProposedCombination {
     + ProposedCombination(List<Color>)
     ~ contains(Color, int): boolean
     ~ contains(Color): boolean
-    ~ copy(): ProposedCombination
-    + {static} builder: Builder
-    + {static} class Builder()
+    + {static} parse(String): ProposedCombination
+    + toString(): String
 }
 usantatecla.mastermind.models.Combination <|-down- usantatecla.mastermind.models.ProposedCombination
 usantatecla.mastermind.models.ProposedCombination .down.> Color
@@ -386,15 +385,13 @@ usantatecla.mastermind.models.Result .down.> usantatecla.mastermind.models.Combi
 
 class  usantatecla.mastermind.models.Memento{
     - attempts: int
-    ~ Memento(int)
-    ~ set(ProposedCombination, Result)
-    ~ getProposedCombination(int): ProposedCombination
-    ~ getResult(int): Result
-    ~ getSize(): int
+    + Memento(int, List<String>, List<Integer>, List<Integer>)
+    ~ getProposedCombinations(): List<ProposedCombination>
+    ~ getResults(): List<Result>
     ~ getAttempts(): int
 }
-usantatecla.mastermind.models.Memento *-down-> "*"usantatecla.mastermind.models.Result
-usantatecla.mastermind.models.Memento *-down-> "*"usantatecla.mastermind.models.ProposedCombination
+usantatecla.mastermind.models.Memento .down.> usantatecla.mastermind.models.Result
+usantatecla.mastermind.models.Memento .down.> usantatecla.mastermind.models.ProposedCombination
 
 class  usantatecla.mastermind.models.Registry{
     - firstPrevious: int
@@ -446,6 +443,8 @@ enum usantatecla.mastermind.types.Color {
     + NULL
     ~ {static} length(): int
     + isNull(): boolean
+    + {static} parse(char): Color
+    + toString(): String
 }
 
 enum usantatecla.mastermind.types.Error {
