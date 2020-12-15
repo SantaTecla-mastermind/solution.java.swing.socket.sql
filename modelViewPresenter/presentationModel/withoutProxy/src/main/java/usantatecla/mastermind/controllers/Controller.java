@@ -15,7 +15,7 @@ public abstract class Controller {
 		return this.session.getWidth();
 	}
 	
-	public StateValue getValueState() {
+	public StateValue getStateValue() {
 		return this.session.getValueState();
 	}
 

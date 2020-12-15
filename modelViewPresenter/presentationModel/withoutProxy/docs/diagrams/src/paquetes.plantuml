@@ -3,15 +3,20 @@ class Logic as "usantatecla.\nmastermind.controllers.\nLogic"
 class View as "usantatecla.\nmastermind.views.\nView"
 interface AcceptorController as "usantatecla.\nmastermind.controllers.\nAcceptorController"
 
-class  usantatecla.mastermind.Mastermind{
+abstract class  usantatecla.mastermind.Mastermind{
     # Mastermind()
+    # isStandalone():boolean
     # play()
-    + {static} main(String[])
 }
 usantatecla.mastermind.Mastermind *-down-> View
 usantatecla.mastermind.Mastermind *-down-> Logic
 usantatecla.mastermind.Mastermind .down.> AcceptorController
 
+class  usantatecla.mastermind.MastermindStandalone{
+    # isStandalone():boolean
+    + {static} main(String[])
+}
+usantatecla.mastermind.Mastermind <|-down- usantatecla.mastermind.MastermindStandalone
 @enduml
 
 @startuml usantatecla.mastermind.views
@@ -34,7 +39,6 @@ class  usantatecla.mastermind.views.AttemptsView{
     ~ AttemptsView(PlayController)
     ~ writeln()
 }
-
 usantatecla.mastermind.views.AttemptsView .down.> Console
 usantatecla.mastermind.views.AttemptsView .down.> PlayController
 
@@ -75,11 +79,11 @@ usantatecla.mastermind.views.GameView .down.> usantatecla.mastermind.views.Attem
 usantatecla.mastermind.views.GameView .down.> usantatecla.mastermind.views.SecretCombinationView
 usantatecla.mastermind.views.GameView .down.> usantatecla.mastermind.views.ProposedCombinationView
 usantatecla.mastermind.views.GameView .down.> usantatecla.mastermind.views.ResultView
-usantatecla.mastermind.views.GameView .down.> usantatecla.mastermind.views.Message
+usantatecla.mastermind.views.GameView .down.> usantatecla.mastermind.views.MessageView
 usantatecla.mastermind.views.GameView .down.> PlayController
 usantatecla.mastermind.views.GameView .down.> Console
 
-enum  usantatecla.mastermind.views.Message{
+enum  usantatecla.mastermind.views.MessageView{
     ~ ATTEMPTS
     ~ SECRET
     ~ RESUME
@@ -91,9 +95,13 @@ enum  usantatecla.mastermind.views.Message{
     ~ PROPOSE_COMMAND
     ~ UNDO_COMMAND
     ~ REDO_COMMAND
+    ~ NEW_LINE
     - message: String
-    - Message(String)
+    - MessageView(String)
     + getMessage(): String
+    + writeln(int)
+    + writeln(int,int)
+    + write()
 }
 
 class  usantatecla.mastermind.views.PlayMenu{
@@ -120,7 +128,7 @@ usantatecla.mastermind.views.Command <|-down- usantatecla.mastermind.views.Propo
 usantatecla.mastermind.views.ProposeCommand .down.> usantatecla.mastermind.views.ProposedCombinationView
 usantatecla.mastermind.views.ProposeCommand .down.> usantatecla.mastermind.views.ErrorView
 usantatecla.mastermind.views.ProposeCommand .down.> usantatecla.mastermind.views.RedoCommand
-usantatecla.mastermind.views.ProposeCommand .down.> usantatecla.mastermind.views.Message
+usantatecla.mastermind.views.ProposeCommand .down.> usantatecla.mastermind.views.MessageView
 usantatecla.mastermind.views.ProposeCommand .down.> PlayController
 usantatecla.mastermind.views.ProposeCommand .down.> Color
 usantatecla.mastermind.views.ProposeCommand .down.> Error
@@ -131,7 +139,7 @@ class  usantatecla.mastermind.views.ProposedCombinationView{
     ~ read(): List<Color>
 }
 usantatecla.mastermind.views.ProposedCombinationView *-down-> PlayController
-usantatecla.mastermind.views.ProposedCombinationView .down.> usantatecla.mastermind.views.Message
+usantatecla.mastermind.views.ProposedCombinationView .down.> usantatecla.mastermind.views.MessageView
 usantatecla.mastermind.views.ProposedCombinationView .down.> usantatecla.mastermind.views.ColorView
 usantatecla.mastermind.views.ProposedCombinationView .down.> Color
 usantatecla.mastermind.views.ProposedCombinationView .down.> Console
@@ -143,21 +151,20 @@ class  usantatecla.mastermind.views.RedoCommand{
 }
 usantatecla.mastermind.views.Command <|-down- usantatecla.mastermind.views.RedoCommand
 usantatecla.mastermind.views.RedoCommand .down.> usantatecla.mastermind.views.GameView
-usantatecla.mastermind.views.RedoCommand .down.> usantatecla.mastermind.views.Message
+usantatecla.mastermind.views.RedoCommand .down.> usantatecla.mastermind.views.MessageView
 
 class  usantatecla.mastermind.views.ResultView{
     ~ ResultView(PlayController)
     ~ writeln(int)
 }
 usantatecla.mastermind.views.ResultView *-down-> PlayController
-usantatecla.mastermind.views.ResultView .down.> usantatecla.mastermind.views.Message
-usantatecla.mastermind.views.ResultView .down.> Console
+usantatecla.mastermind.views.ResultView .down.> usantatecla.mastermind.views.MessageView
 
 class  usantatecla.mastermind.views.ResumeView{
     ~ interact(ResumeController)
 }
 usantatecla.mastermind.views.ResumeView .down.> ResumeController
-usantatecla.mastermind.views.ResumeView .down.> usantatecla.mastermind.views.Message
+usantatecla.mastermind.views.ResumeView .down.> usantatecla.mastermind.views.MessageView
 usantatecla.mastermind.views.ResumeView .down.> YesNoDialog
 
 class  usantatecla.mastermind.views.SecretCombinationView{
@@ -165,7 +172,7 @@ class  usantatecla.mastermind.views.SecretCombinationView{
     ~ writeln()
 }
 usantatecla.mastermind.views.SecretCombinationView *-down-> Controller
-usantatecla.mastermind.views.SecretCombinationView .down.> usantatecla.mastermind.views.Message
+usantatecla.mastermind.views.SecretCombinationView .down.> usantatecla.mastermind.views.MessageView
 usantatecla.mastermind.views.SecretCombinationView .down.> Console
 
 class  usantatecla.mastermind.views.StartView{
@@ -173,7 +180,7 @@ class  usantatecla.mastermind.views.StartView{
 }
 usantatecla.mastermind.views.StartView .down.> StartController
 usantatecla.mastermind.views.StartView .down.> usantatecla.mastermind.views.SecretCombinationView
-usantatecla.mastermind.views.StartView .down.> usantatecla.mastermind.views.Message
+usantatecla.mastermind.views.StartView .down.> usantatecla.mastermind.views.MessageView
 
 class  usantatecla.mastermind.views.UndoCommand{
     ~ UndoCommand(PlayController)
@@ -207,17 +214,25 @@ class Session as "usantatecla.\nmastermind.models.\nSession"
 class StateValue as "usantatecla.\nmastermind.models.\nStateValue"
 enum Color as "usantatecla.\nmastermind.types.\nColor"
 enum Error as "usantatecla.\nmastermind.types.\nError"
+class TCPIP as "usantatecla.\nmastermind.distributed.\ndispatchers.TCPIP"
+class FrameType as "usantatecla.\nmastermind.distributed.\ndispatchers.FrameType"
 
-interface  usantatecla.mastermind.controllers.AcceptorController{
-    + accept(ControllersVisitor)
+abstract class  usantatecla.mastermind.controllers.AcceptorController{
+    ~ AcceptorController(Session, TCPIP)
+    + {abstract}accept(ControllersVisitor)
 }
 usantatecla.mastermind.controllers.AcceptorController .down.> usantatecla.mastermind.controllers.ControllersVisitor
+usantatecla.mastermind.controllers.AcceptorController .down.> TCPIP
+usantatecla.mastermind.controllers.AcceptorController .down.> Session
+usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.AcceptorController
 
-class  usantatecla.mastermind.controllers.Controller{
+abstract class  usantatecla.mastermind.controllers.Controller{
     ~ Controller(Session)
     + getWidth(): int
+    + getValueState(): StateValue
 }
 usantatecla.mastermind.controllers.Controller *-down-> Session
+usantatecla.mastermind.controllers.Controller .down.> StateValue
 
 interface  usantatecla.mastermind.controllers.ControllersVisitor{
     ~ visit(StartController)
@@ -229,15 +244,20 @@ usantatecla.mastermind.controllers.ControllersVisitor .down.> usantatecla.master
 usantatecla.mastermind.controllers.ControllersVisitor .down.> usantatecla.mastermind.controllers.ResumeController
 
 class  usantatecla.mastermind.controllers.Logic{
-    + Logic()
+    + Logic(boolean)
     + getController(): AcceptorController
+    + close()
 }
 usantatecla.mastermind.controllers.Logic *-down-> Session
 usantatecla.mastermind.controllers.Logic *-down-> StateValue
 usantatecla.mastermind.controllers.Logic *-down-> usantatecla.mastermind.controllers.AcceptorController
+usantatecla.mastermind.controllers.Logic *-down-> usantatecla.mastermind.controllers.StartController
+usantatecla.mastermind.controllers.Logic *-down-> usantatecla.mastermind.controllers.PlayController
+usantatecla.mastermind.controllers.Logic *-down-> usantatecla.mastermind.controllers.ResumeController
+usantatecla.mastermind.controllers.Logic *-down-> TCPIP
 
 class  usantatecla.mastermind.controllers.PlayController{
-    + PlayController(Session)
+    + PlayController(Session,TCPIP)
     + addProposeCombination(List<Color>): Error
     + undo()
     + redo()
@@ -259,6 +279,8 @@ usantatecla.mastermind.controllers.PlayController .down.> usantatecla.mastermind
 usantatecla.mastermind.controllers.PlayController .down.> Session
 usantatecla.mastermind.controllers.PlayController .down.> Color
 usantatecla.mastermind.controllers.PlayController .down.> Error
+usantatecla.mastermind.controllers.PlayController .down.> TCPIP
+usantatecla.mastermind.controllers.PlayController .down.> FrameType
 
 class  usantatecla.mastermind.controllers.ProposalController{
     ~ ProposalController(Session)
@@ -285,22 +307,26 @@ usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.co
 usantatecla.mastermind.controllers.RedoController .down.> Session
 
 class  usantatecla.mastermind.controllers.ResumeController{
-    + ResumeController(Session)
+    + ResumeController(Session,TCPIP)
     + resume(boolean)
     + accept(ControllersVisitor)
 }
 usantatecla.mastermind.controllers.AcceptorController <|-down- usantatecla.mastermind.controllers.ResumeController
 usantatecla.mastermind.controllers.ResumeController .down.> usantatecla.mastermind.controllers.ControllersVisitor
 usantatecla.mastermind.controllers.ResumeController .down.> Session
+usantatecla.mastermind.controllers.ResumeController .down.> TCPIP
+usantatecla.mastermind.controllers.ResumeController .down.> FrameType
 
 class  usantatecla.mastermind.controllers.StartController{
-    + StartController(Session)
+    + StartController(Session,TCPIP)
     + start()
     + accept(ControllersVisitor)
 }
 usantatecla.mastermind.controllers.AcceptorController <|-down- usantatecla.mastermind.controllers.StartController
 usantatecla.mastermind.controllers.StartController .down.> usantatecla.mastermind.controllers.ControllersVisitor
 usantatecla.mastermind.controllers.StartController .down.> Session
+usantatecla.mastermind.controllers.StartController .down.> TCPIP
+usantatecla.mastermind.controllers.StartController .down.> FrameType
 
 class  usantatecla.mastermind.controllers.UndoController{
     ~ UndoController(Session)

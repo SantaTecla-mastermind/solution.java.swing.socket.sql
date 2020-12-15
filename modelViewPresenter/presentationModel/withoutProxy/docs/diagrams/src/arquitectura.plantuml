@@ -1,0 +1,47 @@
+@startuml arquitectura
+package tictactoe #DDDDDD { }
+tictactoe .down.> tictactoe.views
+tictactoe .down.> tictactoe.controllers
+
+package tictactoe.controllers #DDDDDD { }
+tictactoe.controllers .down.> tictactoe.models
+
+tictactoe.controllers .down.> utils
+
+package tictactoe.distributed #DDDDDD { }
+tictactoe.distributed .down.> tictactoe.controllers
+tictactoe.distributed .down.> tictactoe
+tictactoe.distributed .down.> tictactoe.distributed.dispatchers
+
+package tictactoe.distributed.dispatchers #DDDDDD { }
+tictactoe.distributed.dispatchers .down.> tictactoe.controllers
+package java.util{ }
+tictactoe.distributed.dispatchers .down.> java.util
+tictactoe.distributed.dispatchers .down.> utils
+
+package tictactoe.distributed.dispatchers.errors #DDDDDD { }
+tictactoe.distributed.dispatchers.errors .down.> tictactoe.distributed.dispatchers
+tictactoe.distributed.dispatchers.errors .down.> tictactoe.controllers
+
+package tictactoe.distributed.dispatchers.undoredo #DDDDDD { }
+tictactoe.distributed.dispatchers.undoredo .down.> tictactoe.distributed.dispatchers
+tictactoe.distributed.dispatchers.undoredo .down.> tictactoe.controllers
+
+package tictactoe.models #DDDDDD { }
+package java.util{ }
+tictactoe.models .down.> java.util
+tictactoe.models .down.> utils
+
+package utils #DDDDDD { }
+package java.util{ }
+utils .down.> java.util
+package java.net{ }
+utils .down.> java.net
+package java.io{ }
+utils .down.> java.io
+tictactoe.controllers .down.> java.util
+
+package tictactoe.views #DDDDDD { }
+tictactoe.views .down.> tictactoe.controllers
+tictactoe.views .down.> utils
+@enduml

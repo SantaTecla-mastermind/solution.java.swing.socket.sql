@@ -3,18 +3,17 @@ package usantatecla.mastermind.views;
 import usantatecla.mastermind.types.Color;
 import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
-import usantatecla.utils.WithConsoleView;
 
 class ColorView extends Console {
 
 	public static final char[] INITIALS = {'r', 'b', 'y', 'g', 'o', 'p'};
 
-	protected Color color;
+	Color color;
 
-	protected ColorView() {
+	ColorView() {
 	}
 
-	protected ColorView(Color color) {
+	ColorView(Color color) {
 		this.color = color;
 	}
 
@@ -35,7 +34,7 @@ class ColorView extends Console {
 		return result;
 	}
 
-	protected String resultInitials(int i) {
+	String resultInitials(int i) {
 		return ColorCode.values()[i].getColor() + ColorView.INITIALS[i] + ColorCode.RESET_COLOR.getColor();
 	}
 
