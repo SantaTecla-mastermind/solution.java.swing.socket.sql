@@ -17,7 +17,6 @@ public class PlayController extends AcceptorController {
 
 	private RedoController redoController;
 
-	//TODO Session se instancia con TCPIP
 	public PlayController(Session session, TCPIP tcpip) {
 		super(session, tcpip);
 		if (tcpip == null) {

@@ -10,7 +10,7 @@ public class StateDispatcher extends Dispatcher {
 
 	@Override
 	public void dispatch() {
-		this.tcpip.send(this.acceptorController.getValueState().ordinal());
+		this.tcpip.send(this.acceptorController.getStateValue().ordinal());
 	}
 
 }

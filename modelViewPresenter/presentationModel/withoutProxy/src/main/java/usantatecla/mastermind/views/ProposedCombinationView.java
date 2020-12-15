@@ -6,7 +6,6 @@ import java.util.List;
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.types.Color;
 import usantatecla.utils.Console;
-import usantatecla.utils.WithConsoleView;
 
 class ProposedCombinationView {
 	
