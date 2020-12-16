@@ -19,7 +19,7 @@ public class ProposalController extends Controller {
 			error = Error.WRONG_LENGTH;
 		} else {
 			for (int i = 0; i < colors.size(); i++) {
-				if (colors.get(i) == null) {
+				if (colors.get(i).isNull()) {
 					error = Error.WRONG_CHARACTERS;
 				} else {
 					for (int j = i+1; j < colors.size(); j++) {
