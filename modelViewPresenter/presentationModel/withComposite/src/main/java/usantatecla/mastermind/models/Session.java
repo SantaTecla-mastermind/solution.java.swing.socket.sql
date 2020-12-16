@@ -22,7 +22,7 @@ public class Session {
 
 	public void addProposedCombination(List<Color> colors) {
 		this.game.addProposedCombination(colors);
-		this.registry.registry();
+		this.registry.register();
 	}
 
 	public boolean undoable() {
@@ -34,11 +34,11 @@ public class Session {
 	}
 
 	public void undo() {
-		this.registry.undo(this.game);
+		this.registry.undo();
 	}
 
 	public void redo() {
-		this.registry.redo(this.game);
+		this.registry.redo();
 	}
 
 	public void clearGame() {

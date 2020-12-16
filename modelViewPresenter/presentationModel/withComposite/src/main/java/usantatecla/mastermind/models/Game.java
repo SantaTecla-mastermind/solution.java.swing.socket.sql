@@ -67,14 +67,17 @@ class Game {
 	}
 
 	List<Color> getColors(int position) {
+		assert position < this.proposedCombinations.size();
 		return this.proposedCombinations.get(position).colors;
 	}
 
 	int getBlacks(int position) {
+		assert position < this.results.size();
 		return this.results.get(position).getBlacks();
 	}
 
 	int getWhites(int position) {
+		assert position < this.results.size();
 		return this.results.get(position).getWhites();
 	}
 

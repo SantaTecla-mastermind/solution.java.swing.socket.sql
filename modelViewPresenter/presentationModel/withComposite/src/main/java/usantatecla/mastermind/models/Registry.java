@@ -15,7 +15,7 @@ class Registry {
 		this.firstPrevious = 0;
 	}
 
-	void registry() {
+	void register() {
 		for (int i = 0; i < this.firstPrevious; i++) {
 			this.mementoList.remove(0);
 		}
@@ -23,14 +23,14 @@ class Registry {
 		this.mementoList.add(this.firstPrevious, this.game.createMemento());
 	}
 
-	void undo(Game game) {
+	void undo() {
 		this.firstPrevious++;
-		game.set(this.mementoList.get(this.firstPrevious));
+		this.game.set(this.mementoList.get(this.firstPrevious));
 	}
 
-	void redo(Game game) {
+	void redo() {
 		this.firstPrevious--;
-		game.set(this.mementoList.get(this.firstPrevious));
+		this.game.set(this.mementoList.get(this.firstPrevious));
 	}
 
 	boolean undoable() {

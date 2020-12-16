@@ -1,84 +1,83 @@
 package usantatecla.mastermind.models;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import usantatecla.mastermind.types.Color;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.Matchers.*;
 
-public class GameTest {
+class GameTest {
+
     private Game game;
-    private List<Color> colors;
-    private Memento memento;
-    private Memento mementoWinner;
 
-    public GameTest(){
-        this.game = new Game();
-        this.colors = new ArrayList<>();
-        colors.add(Color.BLUE);
-        colors.add(Color.GREEN);
-        colors.add(Color.ORANGE);
-        colors.add(Color.PURPLE);
+    private void setGame(String... proposedCombinationStrings) {
+        this.game = new GameBuilder().proposedCombinations(proposedCombinationStrings).build();
+    }
 
-        this.memento = new Memento(1, new ArrayList<>(Arrays.asList(new ProposedCombination(colors).toString())),
-                new ArrayList<>(Arrays.asList(2)), new ArrayList<>(Arrays.asList(1)));
-
-        this.mementoWinner = new Memento(1, new ArrayList<>(Arrays.asList(new ProposedCombination(colors).toString())),
-                new ArrayList<>(Arrays.asList(4)), new ArrayList<>(Arrays.asList(0)));
+    private void setGame(int times) {
+        this.game = new GameBuilder().proposedCombinations(times, "rbgy").build();
     }
 
     @Test
-    public void testAddProposedCombinationAndVerifyFirstColor(){
-        this.game.addProposedCombination(colors);
-        assertThat(this.game.getColors(0).get(0), is(Color.BLUE));
-        this.game.clear();
-
+    void testGivenEmptyGameInstanceWhenIsLooserOrWinnerThenIsFalse() {
+        this.setGame();
+        assertThat(this.game.isLooser(), is(equalTo(false)));
+        assertThat(this.game.isWinner(), is(equalTo(false)));
     }
 
     @Test
-    public void testsetMementoAndCompareResults(){
-        this.game.set(memento);
-        assertThat(this.game.getBlacks(0), is(2));
-        assertThat(this.game.getWhites(0), is(1));
-        this.game.clear();
+    void testGivenEmptyGameInstanceWhenGetAttemptsThenIs0() {
+        this.setGame();
+        assertThat(this.game.getAttempts(), is(0));
     }
 
+
     @Test
-    public void testCreateMementoAndCompareAttemps(){
-        this.game.addProposedCombination(colors);
-        this.game.createMemento();
-        assertThat(this.game.getAttempts(), is(1));
-        this.game.clear();
-    }
-    @Test
-    public void testGetWidthThenReturn4(){
-        assertThat(this.game.getWidth(), is(4));
-    }
-    @Test
-    public void testIsLooserAfter10AttempsThenGetTrue(){
-        this.game.addProposedCombination(colors);
-        this.game.addProposedCombination(colors);
-        this.game.addProposedCombination(colors);
-        this.game.addProposedCombination(colors);
-        this.game.addProposedCombination(colors);
-        this.game.addProposedCombination(colors);
-        this.game.addProposedCombination(colors);
-        this.game.addProposedCombination(colors);
-        this.game.addProposedCombination(colors);
-        this.game.addProposedCombination(colors);
+    void testGivenNineAttemptsGameWhenPlaceAnotherProposedCombinationThenIsLooser() {
+        this.setGame(9);
+        assertThat(this.game.isLooser(), is(false));
+        this.setGame(10);
         assertThat(this.game.isLooser(), is(true));
-        this.game.clear();
     }
 
     @Test
-    public void testisWinnerAfterAWinnerPropossedThenGetTrue(){
-        this.game.set(mementoWinner);
-        assertThat(this.game.isWinner(), is(true));
-        this.game.clear();
+    void testGivenGameWith1ProposedCombinationWhenGetProposedCombinationAtPosition0ThenReturnsThatProposedCombination() {
+        this.setGame("rbgy");
+
+        ArrayList<Color> colors = new ArrayList<>(Arrays.asList(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW));
+        assertThat(this.game.getColors(0), is(colors));
     }
-    
+
+    @Test
+    void testGivenGameWith3ProposedCombinationsWhenGetAttemptsThenReturns3() {
+        this.setGame(3);
+
+        assertThat(this.game.getAttempts(), is(3));
+    }
+
+    @Test
+    void testGivenGameWith1ProposedCombinationWhenGetWhitesAt0ThenReturnsValidResult() {
+        this.setGame("rbgy");
+
+        assertThat(this.game.getWhites(0), notNullValue(Integer.class));
+    }
+
+    @Test
+    void testGivenGameInAnyStateWhenClearThenIsEmpty() {
+        Random random = new Random(System.currentTimeMillis());
+        int length = random.nextInt(10);
+        this.setGame(length);
+
+        this.game.clear();
+
+        assertThat(this.game.getAttempts(), is(0));
+        assertThat(this.game.isLooser(), is(false));
+        Assertions.assertThrows(AssertionError.class, () -> this.game.getColors(0));
+        Assertions.assertThrows(AssertionError.class, () -> this.game.getBlacks(0));
+    }
 }

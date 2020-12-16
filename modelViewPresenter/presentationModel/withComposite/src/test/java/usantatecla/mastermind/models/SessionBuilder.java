@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class GameBuilder {
+public class SessionBuilder {
     private List<String> proposedCombinationsStrings;
 
-    public GameBuilder() {
+    public SessionBuilder() {
         this.proposedCombinationsStrings = new ArrayList<>();
     }
 
-    public GameBuilder proposedCombinations(String... proposedCombinations) {
+    public SessionBuilder proposedCombinations(String... proposedCombinations) {
         assert proposedCombinations.length <= 10;
         for (String proposedCombination : proposedCombinations) {
             assert Pattern.matches("[rgbyop]{4}", proposedCombination);
@@ -22,7 +22,7 @@ public class GameBuilder {
         return this;
     }
 
-    public GameBuilder proposedCombinations(int times, String proposedCombination) {
+    public SessionBuilder proposedCombinations(int times, String proposedCombination) {
         assert Pattern.matches("[rgbyop]{4}", proposedCombination);
         for (int i = 0; i < times; i++) {
             this.proposedCombinationsStrings.add(proposedCombination);
@@ -30,25 +30,25 @@ public class GameBuilder {
         return this;
     }
 
-    public Game build() {
+    public Session build() {
         if (this.proposedCombinationsStrings.isEmpty())
-            return new Game();
+            return new Session();
 
-        Game game = new Game();
+        Session session = new Session();
         for (String proposedCombinationsString : this.proposedCombinationsStrings) {
-            this.setProposedCombination(game, proposedCombinationsString);
+            this.setProposedCombination(session, proposedCombinationsString);
         }
-        return game;
+        return session;
     }
 
-    private void setProposedCombination(Game game, String proposedCombinationString) {
+    private void setProposedCombination(Session session, String proposedCombinationString) {
         ProposedCombination proposedCombination = new ProposedCombination(new ArrayList<>());
         for (int i = 0; i < proposedCombinationString.length(); i++) {
             Color color = this.getColor(proposedCombinationString.charAt(i));
             proposedCombination.colors.add(color);
         }
 
-        game.addProposedCombination(proposedCombination.colors);
+        session.addProposedCombination(proposedCombination.colors);
     }
 
     private Color getColor(char character) {
