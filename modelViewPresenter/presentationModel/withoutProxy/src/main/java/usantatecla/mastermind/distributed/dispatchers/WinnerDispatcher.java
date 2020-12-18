@@ -10,7 +10,7 @@ public class WinnerDispatcher extends Dispatcher {
 
 	@Override
 	public void dispatch() {
-		this.tcpip.send(((PlayController)this.acceptorController).isWinner());
+		tcpip.send(((PlayController)this.acceptorController).isWinner());
 	}
 
 }
