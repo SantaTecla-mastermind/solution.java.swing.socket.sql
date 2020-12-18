@@ -7,6 +7,8 @@ class Memento {
 
 	private int attempts;
 	private List<String> proposedCombinationsColors;
+
+	// TODO blacks y whites se puede recalcular a partir de la SecretCombination
 	private List<Integer> blacks;
 	private List<Integer> whites;
 

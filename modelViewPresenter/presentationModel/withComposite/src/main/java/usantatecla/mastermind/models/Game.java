@@ -41,7 +41,7 @@ class Game {
 			blacks.add(this.results.get(i).getBlacks());
 			whites.add(this.results.get(i).getWhites());
 		}
-
+		// TODO
 		return new Memento(this.attempts, proposedCombinationsColors, blacks, whites);
 	}
 
