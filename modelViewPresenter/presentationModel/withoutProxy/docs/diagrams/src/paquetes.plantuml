@@ -339,21 +339,7 @@ usantatecla.mastermind.controllers.UndoController .down.> Session
 
 @startuml usantatecla.mastermind.models
 enum Color as "usantatecla.\nmastermind.types.\nColor"
-
-class usantatecla.mastermind.models.State {
-    ~ state()
-    ~ next()
-    ~ reset()
-    ~ getValueState(): StateValue
-}
-usantatecla.mastermind.models.State *-down-> usantatecla.mastermind.models.StateValue
-
-enum usantatecla.mastermind.models.StateValue {
-    + INITIAL
-    + IN_GAME
-    + FINAL
-    + EXIT
-}
+class TCPIP as "usantatecla.\nutils.TCPIP"
 
 abstract class usantatecla.mastermind.models.Combination {
     - {static} WIDTH: int
@@ -385,37 +371,6 @@ usantatecla.mastermind.models.Game .down.> usantatecla.mastermind.models.Memento
 usantatecla.mastermind.models.Game .down.> usantatecla.mastermind.models.Combination
 usantatecla.mastermind.models.Game .down.> Color
 
-class usantatecla.mastermind.models.ProposedCombination {
-    + ProposedCombination(List<Color>)
-    ~ contains(Color, int): boolean
-    ~ contains(Color): boolean
-    ~ copy(): ProposedCombination
-    + {static} builder: Builder
-    + {static} class Builder()
-}
-usantatecla.mastermind.models.Combination <|-down- usantatecla.mastermind.models.ProposedCombination
-usantatecla.mastermind.models.ProposedCombination .down.> Color
-
-class usantatecla.mastermind.models.SecretCombination {
-    ~ SecretCombination()
-    ~ getResult(ProposedCombination): Result
-}
-usantatecla.mastermind.models.Combination <|-down- usantatecla.mastermind.models.SecretCombination
-usantatecla.mastermind.models.SecretCombination .down.> usantatecla.mastermind.models.Result
-usantatecla.mastermind.models.SecretCombination .down.> usantatecla.mastermind.models.ProposedCombination
-usantatecla.mastermind.models.SecretCombination .down.> Color
-
-class usantatecla.mastermind.models.Result {
-    - blacks: int
-    - whites: int
-    ~ Result(int, int)
-    ~ isWinner(): boolean
-    ~ getBlacks(): int
-    ~ getWhites(): int
-    ~ copy(): Result
-}
-usantatecla.mastermind.models.Result .down.> usantatecla.mastermind.models.Combination
-
 class  usantatecla.mastermind.models.Memento{
     - attempts: int
     ~ Memento(int)
@@ -427,6 +382,15 @@ class  usantatecla.mastermind.models.Memento{
 }
 usantatecla.mastermind.models.Memento *-down-> "*"usantatecla.mastermind.models.Result
 usantatecla.mastermind.models.Memento *-down-> "*"usantatecla.mastermind.models.ProposedCombination
+
+class usantatecla.mastermind.models.ProposedCombination {
+    ~ ProposedCombination(List<Color>)
+    ~ contains(Color, int): boolean
+    ~ contains(Color): boolean
+    ~ copy(): ProposedCombination
+}
+usantatecla.mastermind.models.Combination <|-down- usantatecla.mastermind.models.ProposedCombination
+usantatecla.mastermind.models.ProposedCombination .down.> Color
 
 class  usantatecla.mastermind.models.Registry{
     - firstPrevious: int
@@ -441,8 +405,28 @@ class  usantatecla.mastermind.models.Registry{
 usantatecla.mastermind.models.Registry *-down-> "*"usantatecla.mastermind.models.Memento
 usantatecla.mastermind.models.Registry *-down-> usantatecla.mastermind.models.Game
 
+class usantatecla.mastermind.models.Result {
+    - blacks: int
+    - whites: int
+    ~ Result(int, int)
+    ~ isWinner(): boolean
+    ~ getBlacks(): int
+    ~ getWhites(): int
+    ~ copy(): Result
+}
+usantatecla.mastermind.models.Result .down.> usantatecla.mastermind.models.Combination
+
+class usantatecla.mastermind.models.SecretCombination {
+    ~ SecretCombination()
+    ~ getResult(ProposedCombination): Result
+}
+usantatecla.mastermind.models.Combination <|-down- usantatecla.mastermind.models.SecretCombination
+usantatecla.mastermind.models.SecretCombination .down.> usantatecla.mastermind.models.Result
+usantatecla.mastermind.models.SecretCombination .down.> usantatecla.mastermind.models.ProposedCombination
+usantatecla.mastermind.models.SecretCombination .down.> Color
+
 class  usantatecla.mastermind.models.Session{
-    + Session()
+    + Session(TCPIP)
     + next()
     + addProposeCombination(List<Color>)
     + undoable(): boolean
@@ -462,9 +446,26 @@ class  usantatecla.mastermind.models.Session{
 usantatecla.mastermind.models.Session *-down-> usantatecla.mastermind.models.State
 usantatecla.mastermind.models.Session *-down-> usantatecla.mastermind.models.Game
 usantatecla.mastermind.models.Session *-down-> usantatecla.mastermind.models.Registry
+usantatecla.mastermind.models.Session *-down-> TCPIP
 usantatecla.mastermind.models.Session .down.> usantatecla.mastermind.models.ProposedCombination
 usantatecla.mastermind.models.Session .down.> usantatecla.mastermind.models.StateValue
 usantatecla.mastermind.models.Session .down.> Color
+
+class usantatecla.mastermind.models.State {
+    ~ State()
+    ~ next()
+    ~ reset()
+    ~ getValueState(): StateValue
+}
+usantatecla.mastermind.models.State *-down-> usantatecla.mastermind.models.StateValue
+
+enum usantatecla.mastermind.models.StateValue {
+    + INITIAL
+    + IN_GAME
+    + FINAL
+    + EXIT
+}
+
 @enduml
 
 @startuml usantatecla.mastermind.types
@@ -489,9 +490,212 @@ enum usantatecla.mastermind.types.Error {
 }
 @enduml
 
+@startuml usantatecla.mastermind.distributed
+
+class Logic as "usantatecla.mastermind.\ncontrollers.Logic"
+class Mastermind as "usantatecla.mastermind.\nMastermind"
+class DispatcherPrototype as "usantatecla.mastermind.distributed.\ndispatchers.DispatcherPrototype"
+
+class  usantatecla.mastermind.distributed.LogicServer{
+    + LogicServer(Boolean)
+    + createDispatchers(DispatcherPrototype)
+}
+
+Logic <|-down- usantatecla.mastermind.distributed.LogicServer
+usantatecla.mastermind.distributed.LogicServer .down.> DispatcherPrototype
+
+class  usantatecla.mastermind.distributed.MastermindClient{
+    # isStandalone(): Boolean
+    + {static} main(String[])
+}
+Mastermind <|-down- usantatecla.mastermind.distributed.MastermindClient
+
+class usantatecla.mastermind.distributed.MastermindServer{
+    - MastermindServer()
+    - serve()
+    + {static} main(String[])
+}
+usantatecla.mastermind.distributed.MastermindServer *-down-> DispatcherPrototype
+usantatecla.mastermind.distributed.MastermindServer *-down-> usantatecla.mastermind.distributed.LogicServer
+
+@enduml
+
+@startuml usantatecla.mastermind.distributed.dispatchers
+
+class AcceptorController as "mastermind.controllers.\nAcceptorController"
+class PlayController as "mastermind.controllers.PlayController"
+class Color as "usantatecla.mastermind.\ntypes.Color"
+class Error as "usantatecla.mastermind.\ntypes.Error"
+class TCPIP as "usantatecla.utils.\nTCPIP"
+
+class  usantatecla.mastermind.distributed.dispatchers.AttemptsDispatcher{
++ AttemptsDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.AttemptsDispatcher
+usantatecla.mastermind.distributed.dispatchers.AttemptsDispatcher .down.> PlayController
+
+class  usantatecla.mastermind.distributed.dispatchers.BlacksDispatcher{
++ BlacksDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.BlacksDispatcher
+usantatecla.mastermind.distributed.dispatchers.BlacksDispatcher .down.> PlayController
+
+class  usantatecla.mastermind.distributed.dispatchers.ColorsDispatcher{
++ ColorsDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.ColorsDispatcher
+usantatecla.mastermind.distributed.dispatchers.ColorsDispatcher .down.> PlayController
+
+abstract class  usantatecla.mastermind.distributed.dispatchers.Dispatcher{
++ Dispatcher(AcceptorController)
++ {abstract} dispatch()
++ associate(TCPIP)
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher *-down-> AcceptorController
+usantatecla.mastermind.distributed.dispatchers.Dispatcher *-down-> usantatecla.mastermind.distributed.dispatchers.TCPIP
+
+class  usantatecla.mastermind.distributed.dispatchers.DispatcherPrototype{
++ DispatcherPrototype()
++ add(FrameType, Dispatcher)
++ dispatch(FrameType)
++ serve()
+}
+usantatecla.mastermind.distributed.dispatchers.DispatcherPrototype *-down-> usantatecla.mastermind.distributed.dispatchers.TCPIP
+usantatecla.mastermind.distributed.dispatchers.DispatcherPrototype *-down-> usantatecla.mastermind.distributed.dispatchers.Dispatcher
+usantatecla.mastermind.distributed.dispatchers.DispatcherPrototype *-down-> usantatecla.mastermind.distributed.dispatchers.FrameType
+
+enum usantatecla.mastermind.distributed.dispatchers.FrameType{
+    + START
+	+ STATE
+	+ UNDO
+	+ REDO
+	+ UNDOABLE
+	+ REDOABLE
+	+ WINNER
+	+ LOOSER
+	+ ATTEMPTS
+	+ COLORS
+	+ PROPOSECOMBINATION
+	+ WIDTH
+	+ NEW_GAME
+	+ BLACKS
+	+ WHITES
+	+ CLOSE
+    + {static} parser(String): FrameType
+}
+
+class  usantatecla.mastermind.distributed.dispatchers.LooserDispatcher{
++ LooserDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.LooserDispatcher
+usantatecla.mastermind.distributed.dispatchers.LooserDispatcher .down.> PlayController
+
+class  usantatecla.mastermind.distributed.dispatchers.ProposeCombinationDispatcher{
++ ProposeCombinationDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.ProposeCombinationDispatcher
+usantatecla.mastermind.distributed.dispatchers.ProposeCombinationDispatcher .down.> PlayController
+usantatecla.mastermind.distributed.dispatchers.ProposeCombinationDispatcher .down.> Color
+
+class  usantatecla.mastermind.distributed.dispatchers.RedoableDispatcher{
++ RedoableDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.RedoableDispatcher
+usantatecla.mastermind.distributed.dispatchers.RedoableDispatcher .down.> PlayController
+
+class  usantatecla.mastermind.distributed.dispatchers.RedoDispatcher{
++ RedoDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.RedoDispatcher
+usantatecla.mastermind.distributed.dispatchers.RedoDispatcher .down.> PlayController
+
+class  usantatecla.mastermind.distributed.dispatchers.ResumeDispatcher{
++ ResumeDispatcher(ResumeController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.ResumeDispatcher
+usantatecla.mastermind.distributed.dispatchers.ResumeDispatcher .down.> ResumeController
+
+class  usantatecla.mastermind.distributed.dispatchers.StartDispatcher{
++ StartDispatcher(StartController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.StartDispatcher
+usantatecla.mastermind.distributed.dispatchers.StartDispatcher .down.> StartController
+
+class  usantatecla.mastermind.distributed.dispatchers.StateDispatcher{
++ StateDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.StateDispatcher
+usantatecla.mastermind.distributed.dispatchers.StateDispatcher .down.> PlayController
+
+class  usantatecla.mastermind.distributed.dispatchers.TCPIP{
++ {static}createClientSocket(): TCPIP
++ {static}createServerSocket(): TCPIP
++ TCPIP(Socket)
++ TCPIP(ServerSocket,Socket)
++ send(Color)
++ send(Error)
++ receiveError(): Error
++ receiveColor(): Color
++ close()
+
+}
+TCPIP <|-down- usantatecla.mastermind.distributed.dispatchers.TCPIP
+usantatecla.mastermind.distributed.dispatchers.TCPIP .down.> PlayController
+usantatecla.mastermind.distributed.dispatchers.TCPIP .down.> Color
+usantatecla.mastermind.distributed.dispatchers.TCPIP .down.> Error
+
+class  usantatecla.mastermind.distributed.dispatchers.UndoableDispatcher{
++ UndoableDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.UndoableDispatcher
+usantatecla.mastermind.distributed.dispatchers.UndoableDispatcher .down.> PlayController
+
+class  usantatecla.mastermind.distributed.dispatchers.UndoDispatcher{
++ UndoDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.UndoDispatcher
+usantatecla.mastermind.distributed.dispatchers.UndoDispatcher .down.> PlayController
+
+class  usantatecla.mastermind.distributed.dispatchers.WhitesDispatcher{
++ WhitesDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.WhitesDispatcher
+usantatecla.mastermind.distributed.dispatchers.WhitesDispatcher .down.> PlayController
+
+class  usantatecla.mastermind.distributed.dispatchers.WidthDispatcher{
++ WidthDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.WidthDispatcher
+usantatecla.mastermind.distributed.dispatchers.WidthDispatcher .down.> PlayController
+
+class  usantatecla.mastermind.distributed.dispatchers.WinnerDispatcher{
++ WinnerDispatcher(PlayController)
++ dispatch()
+}
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.WinnerDispatcher
+usantatecla.mastermind.distributed.dispatchers.WinnerDispatcher .down.> PlayController
+
+@enduml
+
 @startuml usantatecla.utils
-class BufferedReader as "java.io.BufferedReader"{}
-class ArrayList as "java.util.ArrayList"{}
+class BufferedReader as "java.io.\nBufferedReader"{}
+class PrintWritter as "java.io.\nPrintWriter" {}
+class ServerSocket as "java.net.\nServerSocket" {}
+class Socket as "java.net.\nSocket" {}
 
 enum usantatecla.utils.ColorCode{
     + RED
@@ -556,6 +760,22 @@ abstract  usantatecla.utils.Menu{
     + execute()
     # addCommand(Command)
 }
-usantatecla.utils.Menu *-down-> ArrayList
-usantatecla.utils.Menu *-down-> usantatecla.utils.Command
+
+class usantatecla.utils.TCPIP{
+    + TCPIP(Socket)
+    + TCPIP(ServerSocket,Socket)
+    + send(String)
+    + send(int)
+    + send(boolean)
+    + receiveLine(): String
+    + receiveBoolean(): boolean
+    + receiveInt(): int
+    + close()
+}
+
+usantatecla.utils.TCPIP *-down-> BufferedReader
+usantatecla.utils.TCPIP *-down-> PrintWritter
+usantatecla.utils.TCPIP *-down-> ServerSocket
+usantatecla.utils.TCPIP *-down-> Socket
+
 @enduml

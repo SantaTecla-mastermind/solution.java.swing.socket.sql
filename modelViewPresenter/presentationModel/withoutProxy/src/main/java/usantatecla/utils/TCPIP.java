@@ -34,31 +34,6 @@ public class TCPIP {
 		this.serverSocket = serverSocket;
 	}
 
-	public static TCPIP createClientSocket() {
-		try {
-			Socket socket = new Socket("localhost", 2020);
-			System.out.println("Cliente> Establecida conexion");
-			return new TCPIP(socket);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static TCPIP createServerSocket() {
-		try {
-			ServerSocket serverSocket = new ServerSocket(2020);
-			System.out.println("Servidor> Esperando conexion...");
-			Socket socket = serverSocket.accept();
-			System.out.println("Servidor> Recibida conexion de " + socket.getInetAddress().getHostAddress() + ":"
-					+ socket.getPort());
-			return new TCPIP(serverSocket, socket);
-		} catch (IOException ex) {
-			ex.printStackTrace();
-			return null;
-		}
-	}
-
 	public void send(String value) {
 		this.out.println(value);
 		this.out.flush();

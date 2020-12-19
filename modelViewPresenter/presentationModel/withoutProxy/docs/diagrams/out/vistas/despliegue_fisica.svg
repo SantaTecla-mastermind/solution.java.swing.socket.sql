@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="242px" preserveAspectRatio="none" style="width:757px;height:242px;" version="1.1" viewBox="0 0 757 242" width="757px" zoomAndPan="magnify"><defs><filter height="300%" id="flyw2okid9o0a" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[20b9009069f87779452bcb708ea562ab]
+cluster standalone--><polygon fill="#FFFFFF" filter="url(#flyw2okid9o0a)" points="514,6,611,6,618,28.2969,740,28.2969,740,235,514,235,514,6" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="514" x2="618" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="91" x="518" y="20.9951">standalone</text><!--MD5=[816382f1fbfd18fe8817fa7d9b151445]
+cluster clientServer--><polygon fill="#FFFFFF" filter="url(#flyw2okid9o0a)" points="16,6,119,6,126,28.2969,490,28.2969,490,235,16,235,16,6" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="126" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="97" x="20" y="20.9951">clientServer</text><!--MD5=[edf2d59ef1ec77e050f8c60c2bfbc012]
+entity standaloneNode--><polygon fill="#DDDDDD" filter="url(#flyw2okid9o0a)" points="530,51,540,41,724,41,724,101.5938,714,111.5938,530,111.5938,530,51" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="714" x2="724" y1="51" y2="41"/><line style="stroke:#000000;stroke-width:1.5;" x1="530" x2="714" y1="51" y2="51"/><line style="stroke:#000000;stroke-width:1.5;" x1="714" x2="714" y1="51" y2="111.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="154" x="545" y="73.9951">Personal Computer</text><line style="stroke:#000000;stroke-width:1.0;" x1="530" x2="714" y1="77.2969" y2="77.2969"/><line style="stroke:#000000;stroke-width:1.0;" x1="714" x2="724" y1="77.2969" y2="67.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="549" y="94.292"/><!--MD5=[cc35db5a3701c6dae1ee20d8378a7647]
+entity standaloneComponent--><rect fill="#FEFECE" filter="url(#flyw2okid9o0a)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="158" x="548" y="173"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="686" y="178"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="684" y="180"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="684" y="184"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="110" x="567" y="205.9951">mastermind.jar</text><!--MD5=[0a47f41a79208e3933daa41d23af385b]
+entity clientNode--><polygon fill="#DDDDDD" filter="url(#flyw2okid9o0a)" points="40.5,51,50.5,41,211.5,41,211.5,101.5938,201.5,111.5938,40.5,111.5938,40.5,51" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="201.5" x2="211.5" y1="51" y2="41"/><line style="stroke:#000000;stroke-width:1.5;" x1="40.5" x2="201.5" y1="51" y2="51"/><line style="stroke:#000000;stroke-width:1.5;" x1="201.5" x2="201.5" y1="51" y2="111.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="131" x="55.5" y="73.9951">Client Computer</text><line style="stroke:#000000;stroke-width:1.0;" x1="40.5" x2="201.5" y1="77.2969" y2="77.2969"/><line style="stroke:#000000;stroke-width:1.0;" x1="201.5" x2="211.5" y1="77.2969" y2="67.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="59.5" y="94.292"/><!--MD5=[b44ab08de9c6116d244b4c6b384e4695]
+entity clientComponent--><rect fill="#FEFECE" filter="url(#flyw2okid9o0a)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="201" x="32.5" y="173"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="213.5" y="178"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="211.5" y="180"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="211.5" y="184"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="153" x="51.5" y="205.9951">mastermindClient.jar</text><!--MD5=[bcff5647ca6ec4a090d791fb3b6060ea]
+entity serverNode--><polygon fill="#DDDDDD" filter="url(#flyw2okid9o0a)" points="288.5,51,298.5,41,463.5,41,463.5,101.5938,453.5,111.5938,288.5,111.5938,288.5,51" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="453.5" x2="463.5" y1="51" y2="41"/><line style="stroke:#000000;stroke-width:1.5;" x1="288.5" x2="453.5" y1="51" y2="51"/><line style="stroke:#000000;stroke-width:1.5;" x1="453.5" x2="453.5" y1="51" y2="111.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="135" x="303.5" y="73.9951">Server Computer</text><line style="stroke:#000000;stroke-width:1.0;" x1="288.5" x2="453.5" y1="77.2969" y2="77.2969"/><line style="stroke:#000000;stroke-width:1.0;" x1="453.5" x2="463.5" y1="77.2969" y2="67.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="307.5" y="94.292"/><!--MD5=[ab98a9d3ff13fe65effa79b19be1637f]
+entity serverComponent--><rect fill="#FEFECE" filter="url(#flyw2okid9o0a)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="205" x="268.5" y="173"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="453.5" y="178"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="451.5" y="180"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="451.5" y="184"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="157" x="287.5" y="205.9951">mastermindServer.jar</text><!--MD5=[45819993284a36ebeb12e800119fbac3]
+link standaloneNode to standaloneComponent--><path d="M627,124.118 C627,124.118 627,148.88 627,159.6054 " fill="none" id="standaloneNode-standaloneComponent" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="627,172.8388,631,163.8388,627,167.8388,623,163.8388,627,172.8388" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="627" x2="627" y1="167.8388" y2="159.8388"/><polygon fill="#A80036" points="627,112.118,623,118.118,627,124.118,631,118.118,627,112.118" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e79b9563b7c71f60e1c69fc11aa07838]
+link clientNode to clientComponent--><path d="M128.7754,124.0968 C128.7754,124.0968 130.252,148.88 130.891,159.6054 " fill="none" id="clientNode-clientComponent" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="131.68,172.8388,135.1376,163.6168,131.3826,167.8477,127.1517,164.0927,131.68,172.8388" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="131.3826" x2="130.907" y1="167.8477" y2="159.8618"/><polygon fill="#A80036" points="128.062,112.118,124.4258,118.3452,128.7754,124.0968,132.4116,117.8696,128.062,112.118" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9c76aa55618d65bdcfa1fd5a68b0a55b]
+link serverNode to serverComponent--><path d="M374.0167,124.1071 C374.0167,124.1071 372.963,148.88 372.506,159.6054 " fill="none" id="serverNode-serverComponent" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="371.943,172.8388,376.3221,164.017,372.1556,167.8433,368.3294,163.6768,371.943,172.8388" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="372.1556" x2="372.496" y1="167.8433" y2="159.8505"/><polygon fill="#A80036" points="374.527,112.118,370.2755,117.9425,374.0167,124.1071,378.2682,118.2827,374.527,112.118" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[08cd5eaabd4cf0d24fab1f837caacf66]
+link clientNode to serverNode--><path d="M211.686,76.5 C234.683,76.5 259.656,76.5 283.027,76.5 " fill="none" id="clientNode-to-serverNode" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="288.301,76.5,279.301,72.5,283.301,76.5,279.301,80.5,288.301,76.5" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="40" x="230" y="69.5669">TCP/IP</text><!--MD5=[87b8a18ffbf5715aebd199652880bb65]
+@startuml
+package standalone {
+
+node standaloneNode #DDDDDD [
+<b>Personal Computer</b>
+- - - -
+
+]
+
+[ mastermind.jar ] as standaloneComponent
+
+}
+
+standaloneNode *- -> standaloneComponent
+
+package clientServer {
+
+node clientNode #DDDDDD [
+<b>Client Computer</b>
+- - - -
+
+]
+
+[ mastermindClient.jar ] as clientComponent
+
+node serverNode #DDDDDD [
+<b>Server Computer</b>
+- - - -
+
+]
+
+[ mastermindServer.jar ] as serverComponent
+
+}
+
+clientNode *- -> clientComponent
+serverNode *- -> serverComponent
+
+clientNode -right-> serverNode : TCP/IP
+@enduml
+
+PlantUML version 1.2020.24(Fri Dec 18 17:00:36 UTC 2020)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

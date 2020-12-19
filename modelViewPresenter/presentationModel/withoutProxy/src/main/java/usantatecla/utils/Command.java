@@ -1,6 +1,6 @@
 package usantatecla.utils;
 
-public abstract class Command extends WithConsoleView {
+public abstract class Command {
 
 	protected String title;
 	

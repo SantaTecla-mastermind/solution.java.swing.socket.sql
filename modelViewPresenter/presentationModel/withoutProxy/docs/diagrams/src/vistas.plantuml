@@ -1,0 +1,142 @@
+@startuml desarrollo_implementacion_mastermind.jar
+package "  "  as usantatecla.mastermind {
+}
+package "  "  as usantatecla.mastermind.controllers {
+}
+package "  "  as usantatecla.mastermind.models {
+}
+package "  "  as usantatecla.mastermind.views {
+}
+package "  "  as usantatecla.mastermind.types {
+}
+package "  "  as usantatecla.utils {
+}
+package "  "  as java.io {
+}
+package "  "  as java.util {
+}
+package "  "  as java.lang {
+}
+
+[mastermind.jar] as jar
+
+jar *--> usantatecla.mastermind
+jar *--> usantatecla.mastermind.controllers
+jar *--> usantatecla.mastermind.models
+jar *--> usantatecla.mastermind.views
+jar *--> usantatecla.mastermind.types
+jar *--> usantatecla.utils
+jar *--> java.io
+jar *--> java.util
+jar *--> java.lang
+@enduml
+
+@startuml desarrollo_implementacion_mastermindClient.jar
+package "  "  as usantatecla.mastermind {
+}
+package "  "  as usantatecla.mastermind.controllers {
+}
+package "  "  as usantatecla.mastermind.models {
+}
+package "  "  as usantatecla.mastermind.views {
+}
+package "  "  as usantatecla.mastermind.types {
+}
+package "  "  as usantatecla.utils {
+}
+package "  "  as java.io {
+}
+package "  "  as java.util {
+}
+package "  "  as java.lang {
+}
+
+[mastermindClient.jar] as jar
+
+jar *--> usantatecla.mastermind
+jar *--> usantatecla.mastermind.controllers
+jar *--> usantatecla.mastermind.models
+jar *--> usantatecla.mastermind.views
+jar *--> usantatecla.mastermind.types
+jar *--> usantatecla.utils
+jar *--> java.io
+jar *--> java.util
+jar *--> java.lang
+@enduml
+
+@startuml desarrollo_implementacion_MastermindServer.jar
+package "  "  as usantatecla.mastermind {
+}
+package "  "  as usantatecla.mastermind.controllers {
+}
+package "  "  as usantatecla.mastermind.models {
+}
+package "  "  as usantatecla.mastermind.views {
+}
+package "  "  as usantatecla.mastermind.types {
+}
+package "  "  as usantatecla.mastermind.distributed {
+}
+package "  "  as usantatecla.utils {
+}
+package "  "  as java.io {
+}
+package "  "  as java.util {
+}
+package "  "  as java.lang {
+}
+
+[mastermindServer.jar] as jar
+
+jar *--> usantatecla.mastermind
+jar *--> usantatecla.mastermind.controllers
+jar *--> usantatecla.mastermind.models
+jar *--> usantatecla.mastermind.views
+jar *--> usantatecla.mastermind.distributed
+jar *--> usantatecla.mastermind.types
+jar *--> usantatecla.utils
+jar *--> java.io
+jar *--> java.util
+jar *--> java.lang
+@enduml
+
+@startuml despliegue_fisica
+package standalone {
+
+node standaloneNode #DDDDDD [
+<b>Personal Computer</b>
+----
+
+]
+
+[ mastermind.jar ] as standaloneComponent
+
+}
+
+standaloneNode *--> standaloneComponent
+
+package clientServer {
+
+node clientNode #DDDDDD [
+<b>Client Computer</b>
+----
+
+]
+
+[ mastermindClient.jar ] as clientComponent
+
+node serverNode #DDDDDD [
+<b>Server Computer</b>
+----
+
+]
+
+[ mastermindServer.jar ] as serverComponent
+
+}
+
+clientNode *--> clientComponent
+serverNode *--> serverComponent
+
+clientNode -right-> serverNode : TCP/IP
+@enduml
