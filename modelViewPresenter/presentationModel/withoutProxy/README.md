@@ -4,7 +4,7 @@ Santa Tecla
 
 **Índice**
 1. [Requisitos 4. Cliente/Servidor](#requisitos-4-clienteservidor)
-2. [Vista de Lógica/Diseño](#vista-de-lgicadiseo)  
+2. [Vista de Lógica/Diseño](#vista-de-lógicadiseño)  
    2.1. [Arquitectura](#arquitectura)  
    2.2. [Paquete mastermind](#paquete-mastermind)  
    2.3. [Paquete mastermind.views](#paquete-mastermindviews)  
@@ -16,8 +16,9 @@ Santa Tecla
    2.9. [Paquete mastermind.utils](#paquete-utils)
 3. [Calidad del Software](#calidad-del-software)  
    3.1. [Diseño](#diseño)
-4. [Vista de Desarrollo/Implementación](#vista-de-desarrolloimplementacin)
-5. [Vista de Despliegue/Física](#vista-de-desplieguefsica)
+   3.2. [Rediseño](#rediseño)
+4. [Vista de Desarrollo/Implementación](#vista-de-desarrolloimplementación)
+5. [Vista de Despliegue/Física](#vista-de-desplieguefísica)
 6. [Vista de Procesos](#vista-de-procesos)
 
 ## Requisitos 4. *Cliente/Servidor*
@@ -57,8 +58,13 @@ Santa Tecla
 ![Texto alternativo](./docs/diagrams/out/paquetes/usantatecla.utils.svg)
 
 ## Calidad del Software
-### Diseño
-- **Principio de Sustitución de Liskov:** *las vistas preguntan por el tipo de controlador polimórfico.*
+### Diseño  
+- **Baja Cohesión**: *de Lógica y Controladores que controlan y comunican.*
+- **Alto Acoplamiento**: *de Lógica y Controladores a tecnologías de comunicación.*
+- **Open/Close**: *en Lógica y Controladores cuando hay que cambiar el código de éstos con nuevas tecnologías de comunicación.*  
+
+###Rediseño
+- **Clases Grandes**: *de Controladores con distintas ramas para distintas tecnologías de comunicación.*
 
 ## Vista de Desarrollo/Implementación
 ![Texto alternativo](./docs/diagrams/out/vistas/desarrollo_implementacion_mastermind.jar.svg)  
