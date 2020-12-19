@@ -15,8 +15,8 @@ Santa Tecla
    2.8. [Paquete mastermind.distributed.dispatchers](#paquete-masterminddistributeddispatchers)  
    2.9. [Paquete mastermind.utils](#paquete-utils)
 3. [Calidad del Software](#calidad-del-software)  
-   3.1. [Diseño](#diseño)
-   3.2. [Rediseño](#rediseño)
+   3.1. [Diseño](#diseño)  
+   3.2. [Rediseño](#rediseño)  
 4. [Vista de Desarrollo/Implementación](#vista-de-desarrolloimplementación)
 5. [Vista de Despliegue/Física](#vista-de-desplieguefísica)
 6. [Vista de Procesos](#vista-de-procesos)
@@ -62,8 +62,8 @@ Santa Tecla
 - **Baja Cohesión**: *de Lógica y Controladores que controlan y comunican.*
 - **Alto Acoplamiento**: *de Lógica y Controladores a tecnologías de comunicación.*
 - **Open/Close**: *en Lógica y Controladores cuando hay que cambiar el código de éstos con nuevas tecnologías de comunicación.*  
-
-###Rediseño
+  
+### Rediseño
 - **Clases Grandes**: *de Controladores con distintas ramas para distintas tecnologías de comunicación.*
 
 ## Vista de Desarrollo/Implementación
@@ -72,6 +72,7 @@ Santa Tecla
 ![Texto alternativo](./docs/diagrams/out/vistas/desarrollo_implementacion_mastermindClient.jar.svg)  
 
 ![Texto alternativo](./docs/diagrams/out/vistas/desarrollo_implementacion_MastermindServer.jar.svg)
+
 ## Vista de Despliegue/Física
 ![Texto alternativo](./docs/diagrams/out/vistas/despliegue_fisica.svg)
 
