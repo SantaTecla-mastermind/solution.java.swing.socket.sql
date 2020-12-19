@@ -8,11 +8,13 @@ class UndoCommand extends Command {
 		super(Message.UNDO_COMMAND.getMessage(), playController);
 	}
 
+	@Override
 	protected void execute() {
 		this.playController.undo();
 		new GameView(this.playController);
 	}
-	
+
+	@Override
 	protected boolean isActive() {
 		return this.playController.undoable();
 	}
