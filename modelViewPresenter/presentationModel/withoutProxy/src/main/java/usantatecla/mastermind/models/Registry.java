@@ -26,11 +26,13 @@ public class Registry {
 	}
 
 	void undo(Game game) {
+		assert this.undoable();
 		this.firstPrevious++;
 		game.set(this.mementoList.get(this.firstPrevious));
 	}
 
 	void redo(Game game) {
+		assert this.redoable();
 		this.firstPrevious--;
 		game.set(this.mementoList.get(this.firstPrevious));
 	}
