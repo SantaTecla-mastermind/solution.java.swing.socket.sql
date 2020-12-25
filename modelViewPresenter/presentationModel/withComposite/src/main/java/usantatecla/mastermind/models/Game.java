@@ -1,88 +1,86 @@
 package usantatecla.mastermind.models;
 
+import usantatecla.mastermind.types.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import usantatecla.mastermind.types.Color;
-
 class Game {
 
-	private static final int MAX_LONG = 10;
-	private SecretCombination secretCombination;
-	private List<ProposedCombination> proposedCombinations;
-	private List<Result> results;
-	private int attempts;
+    private static final int MAX_LONG = 10;
+    private SecretCombination secretCombination;
+    private List<ProposedCombination> proposedCombinations;
+    private List<Result> results;
+    private int attempts;
 
-	Game() {
-		this.clear();
-	}
+    Game() {
+        this.clear();
+    }
 
-	void clear() {
-		this.secretCombination = new SecretCombination();
-		this.proposedCombinations = new ArrayList<>();
-		this.results = new ArrayList<>();
-		this.attempts = 0;
-	}
+    void clear() {
+        this.secretCombination = new SecretCombination();
+        this.proposedCombinations = new ArrayList<>();
+        this.results = new ArrayList<>();
+        this.attempts = 0;
+    }
 
-	void addProposedCombination(List<Color> colors) {
-		ProposedCombination proposedCombination = new ProposedCombination(colors);
-		this.proposedCombinations.add(proposedCombination);
-		this.results.add(this.secretCombination.getResult(proposedCombination));
-		this.attempts++;
-	}
-	
-	Memento createMemento() {
-		List<String> proposedCombinationsColors = new ArrayList<>();
-		List<Integer> blacks = new ArrayList<>();
-		List<Integer> whites = new ArrayList<>();
+    void addProposedCombination(List<Color> colors) {
+        ProposedCombination proposedCombination = new ProposedCombination(colors);
+        this.proposedCombinations.add(proposedCombination);
+        this.results.add(this.secretCombination.getResult(proposedCombination));
+        this.attempts++;
+    }
 
-		for (int i = 0; i < this.attempts; i++) {
-			proposedCombinationsColors.add(this.proposedCombinations.get(i).toString());
-			blacks.add(this.results.get(i).getBlacks());
-			whites.add(this.results.get(i).getWhites());
-		}
-		// TODO
-		return new Memento(this.attempts, proposedCombinationsColors, blacks, whites);
-	}
+    ProposedCombination getProposedCombination(int position) {
+        return this.proposedCombinations.get(position);
+    }
 
-	void set(Memento memento) {
-		this.attempts = memento.getAttempts();
-		this.proposedCombinations = memento.getProposedCombinations();
-		this.results = memento.getResults();
-	}
+    SecretCombination getSecretCombination() {
+        return this.secretCombination;
+    }
 
-	boolean isLooser() {
-		return this.attempts == Game.MAX_LONG;
-	}
-	
-	boolean isWinner() {
-		if (this.attempts == 0) {
-			return false;
-		}
-		return this.results.get(this.attempts-1).isWinner();
-	}
+    Memento createMemento() {
+        return new Memento(this);
+    }
 
-	int getAttempts() {
-		return this.attempts;
-	}
+    void setMemento(Memento memento) {
+        this.attempts = memento.getAttempts();
+        this.proposedCombinations = memento.getProposedCombinations();
+        this.results = memento.getResults();
+    }
 
-	List<Color> getColors(int position) {
-		assert position < this.proposedCombinations.size();
-		return this.proposedCombinations.get(position).colors;
-	}
+    boolean isLooser() {
+        return this.attempts == Game.MAX_LONG;
+    }
 
-	int getBlacks(int position) {
-		assert position < this.results.size();
-		return this.results.get(position).getBlacks();
-	}
+    boolean isWinner() {
+        if (this.attempts == 0) {
+            return false;
+        }
+        return this.results.get(this.attempts - 1).isWinner();
+    }
 
-	int getWhites(int position) {
-		assert position < this.results.size();
-		return this.results.get(position).getWhites();
-	}
+    int getAttempts() {
+        return this.attempts;
+    }
 
-	int getWidth() {
-		return Combination.getWidth();
-	}
+    List<Color> getColors(int position) {
+        assert position < this.proposedCombinations.size();
+        return this.proposedCombinations.get(position).colors;
+    }
+
+    int getBlacks(int position) {
+        assert position < this.results.size();
+        return this.results.get(position).getBlacks();
+    }
+
+    int getWhites(int position) {
+        assert position < this.results.size();
+        return this.results.get(position).getWhites();
+    }
+
+    int getWidth() {
+        return Combination.getWidth();
+    }
 
 }
