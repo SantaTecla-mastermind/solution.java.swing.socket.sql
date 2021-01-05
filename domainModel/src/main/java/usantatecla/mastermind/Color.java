@@ -8,8 +8,8 @@ enum Color {
     BLUE('b'),
     YELLOW('y'),
     GREEN('g'),
-    ORANGE('o'),
-    PURPLE('p'),
+    CYAN('o'),
+    MAGENTA('p'),
     NULL_COLOR;
 
     private char initial;

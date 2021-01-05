@@ -17,11 +17,19 @@ public class Mastermind {
         this.board = new Board();
         this.board.writeln();
         do {
-            ProposedCombination proposedCombination = new ProposedCombination();
-            proposedCombination.read();
-            this.board.add(proposedCombination);
+            this.playTurn();
             this.board.writeln();
         } while (!this.board.isFinished());
+        this.write();
+    }
+
+    private void playTurn() {
+        ProposedCombination proposedCombination = new ProposedCombination();
+        proposedCombination.read();
+        this.board.add(proposedCombination);
+    }
+
+    private void write() {
         Message message = Message.LOOSER;
         if (this.board.isWinner()) {
             message = Message.WINNER;
