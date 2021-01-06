@@ -4,10 +4,10 @@ import java.io.InputStreamReader;
 
 public class Console {
 
-	private static Console console = new Console();
+	private static Console instance = new Console();
 	
 	public static Console getInstance() {
-		return console;
+		return instance;
 	}
 	
 	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -36,7 +36,7 @@ public class Console {
 			} catch (Exception ex) {
 				this.writeError("integer");
 			}
-			assert ok;
+			assert ok; // TODO Para qué el assert
 		} while (!ok);
 		return input;
 	}

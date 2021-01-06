@@ -1,7 +1,6 @@
 package usantatecla.mastermind;
 
 import java.util.Random;
-import usantatecla.utils.Console;
 import java.util.Collections;
 
 class SecretCombination extends Combination {
@@ -33,8 +32,7 @@ class SecretCombination extends Combination {
     }
 
     void writeln() {
-        Message.SECRET_COMBINATION.write();
-        Console.getInstance().writeln();
+        Message.SECRET_COMBINATION.writeln();
     }
 
 }

@@ -3,14 +3,15 @@ package usantatecla.mastermind;
 import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
 
+// TODO Factoría de color
 enum Color {
     RED('r'),
     BLUE('b'),
     YELLOW('y'),
     GREEN('g'),
-    CYAN('o'),
-    MAGENTA('p'),
-    NULL_COLOR;
+    CYAN('c'),
+    MAGENTA('m'),
+    NULL;
 
     private char initial;
 
@@ -29,13 +30,14 @@ enum Color {
         return result;
     }
 
+    // TODO ¿Cambiar nombre a getByCharacter?
     static Color getInstance(char character) {
         for (int i = 0; i < Color.length(); i++) {
             if (Color.get(i).initial == character) {
                 return Color.get(i);
             }
         }
-        return Color.NULL_COLOR;
+        return Color.NULL;
     }
 
     static int length() {
@@ -47,7 +49,7 @@ enum Color {
     }
 
     void write() {
-        assert this != Color.NULL_COLOR;
+        assert this != Color.NULL;
         Console.getInstance()
                 .write(ColorCode.getColorByIndex(getInstance(initial).ordinal())
                         + initial
@@ -55,7 +57,7 @@ enum Color {
     }
 
     boolean isNull() {
-        return this == Color.NULL_COLOR;
+        return this == Color.NULL;
     }
 
 }

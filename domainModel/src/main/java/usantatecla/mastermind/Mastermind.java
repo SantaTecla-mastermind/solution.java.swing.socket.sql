@@ -6,7 +6,11 @@ public class Mastermind {
 
     private Board board;
 
-    public void play() {
+    Mastermind() {
+        this.board = new Board();
+    }
+
+    private void play() {
         do {
             this.playGame();
         } while (this.isResumedGame());
@@ -14,11 +18,10 @@ public class Mastermind {
 
     private void playGame() {
         Message.TITLE.writeln();
-        this.board = new Board();
-        this.board.writeln();
+        this.board.write();
         do {
             this.playTurn();
-            this.board.writeln();
+            this.board.write(); // TODO Revisar writeln y cambiar a write o a writeln en TicTacToe
         } while (!this.board.isFinished());
         this.write();
     }
@@ -35,10 +38,18 @@ public class Mastermind {
             message = Message.WINNER;
         }
         message.writeln();
+
+        // TODO ¿Operador ternario para reducir?
+        // (this.board.isWinner() ? Message.WINNER : Message.LOOSER).writeln();
     }
 
     private boolean isResumedGame() {
-        return new YesNoDialog().read(Message.RESUME.toString());
+        YesNoDialog yesNoDialog = new YesNoDialog();
+        yesNoDialog.read(Message.RESUME.toString());
+        if (yesNoDialog.isAffirmative()) {
+            this.board.reset();
+        }
+        return yesNoDialog.isAffirmative();
     }
 
     public static void main(String[] args) {

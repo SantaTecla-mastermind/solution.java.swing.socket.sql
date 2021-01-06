@@ -11,13 +11,35 @@ public class Board {
     private int attempts;
 
     Board() {
+        this.reset();
+    }
+
+    void reset() {
         this.secretCombination = new SecretCombination();
         this.proposedCombinations = new ProposedCombination[Board.MAX_ATTEMPTS];
         this.results = new Result[Board.MAX_ATTEMPTS];
         this.attempts = 0;
     }
 
-    public void writeln() {
+    void add(ProposedCombination proposedCombination) {
+        this.proposedCombinations[this.attempts] = proposedCombination;
+        this.results[this.attempts] = this.secretCombination.getResult(proposedCombination);
+        this.attempts++;
+    }
+
+    boolean isFinished() {
+        return this.isWinner() || this.isLooser();
+    }
+
+    boolean isWinner() {
+        return this.results[this.attempts - 1].isWinner();
+    }
+
+    private boolean isLooser() {
+        return this.attempts == Board.MAX_ATTEMPTS;
+    }
+
+    void write() {
         Console.getInstance().writeln();
         Message.ATTEMPTS.writeln(this.attempts);
         this.secretCombination.writeln();
@@ -26,23 +48,4 @@ public class Board {
             this.results[i].writeln();
         }
     }
-
-    public void add(ProposedCombination proposedCombination) {
-        this.proposedCombinations[this.attempts] = proposedCombination;
-        this.results[this.attempts] = this.secretCombination.getResult(proposedCombination);
-        this.attempts++;
-    }
-
-    public boolean isFinished() {
-        return this.isWinner() || this.isLooser();
-    }
-
-    public boolean isWinner() {
-        return this.results[this.attempts - 1].isWinner();
-    }
-
-    private boolean isLooser() {
-        return this.attempts == Board.MAX_ATTEMPTS;
-    }
-
 }

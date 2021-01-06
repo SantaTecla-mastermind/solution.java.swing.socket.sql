@@ -15,7 +15,7 @@ class ProposedCombination extends Combination {
         Error error;
         do {
             Message.PROPOSED_COMBINATION.write();
-            error = this.checkError(Console.getInstance().readString());
+            error = this.getColorsError(Console.getInstance().readString());
             error.writeln();
             if (!error.isNull()) {
                 this.colors = new ArrayList<>();
@@ -23,7 +23,8 @@ class ProposedCombination extends Combination {
         } while (!error.isNull());
     }
 
-    private Error checkError(String characters) {
+    // TODO ¿Reducir el método con otros métodos privados?
+    private Error getColorsError(String characters) {
         if (characters.length() != Result.WIDTH) {
             return Error.WRONG_LENGTH;
         }
@@ -39,7 +40,7 @@ class ProposedCombination extends Combination {
             }
             this.colors.add(color);
         }
-        return Error.NULL_ERROR;
+        return Error.NULL;
     }
 
     boolean contains(Color color, int position) {

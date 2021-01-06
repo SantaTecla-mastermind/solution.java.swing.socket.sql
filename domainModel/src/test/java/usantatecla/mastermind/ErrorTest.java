@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ErrorTest {
     @Test
     public void testColorIsNull(){
-        Error error = Error.NULL_ERROR;
+        Error error = Error.NULL;
         assertTrue(error.isNull());
     }
 }
