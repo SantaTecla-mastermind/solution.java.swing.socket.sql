@@ -4,8 +4,8 @@ import usantatecla.utils.Console;
 
 enum Error {
 
-    DUPLICATED("Repeated colors"),
-    WRONG_CHARACTERS("Wrong colors, they must be: " + Color.getInitials()),
+    DUPLICATED("Repeated colorFactories"),
+    WRONG_CHARACTERS("Wrong colors, they must be: " + ColorFactory.getInstance().getInitials()),
     WRONG_LENGTH("Wrong proposed combination length"),
     NULL;
 

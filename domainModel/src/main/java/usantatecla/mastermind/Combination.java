@@ -1,14 +1,16 @@
 package usantatecla.mastermind;
 
+import usantatecla.utils.ColorCode;
+
 import java.util.ArrayList;
 import java.util.List;
 
 abstract class Combination {
 
-    protected List<Color> colors;
+    protected List<ColorCode> colorCodes;
 
     protected Combination() {
-        this.colors = new ArrayList<>();
+        this.colorCodes = new ArrayList<>();
     }
 
 }

@@ -2,6 +2,7 @@ package usantatecla.mastermind;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import usantatecla.utils.ColorCode;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
@@ -21,8 +22,8 @@ public class SecretCombinationTest {
     @Test
     void testGetResult() {
         ProposedCombination proposedCombination = mock(ProposedCombination.class);
-        when(proposedCombination.contains(any(Color.class), anyInt())).thenReturn(true);
-        when(proposedCombination.contains(any(Color.class))).thenReturn(true);
+        when(proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(true);
+        when(proposedCombination.contains(any(ColorCode.class))).thenReturn(true);
         Result result = secretCombination.getResult(proposedCombination);
         assertTrue(result.isWinner());
     }
