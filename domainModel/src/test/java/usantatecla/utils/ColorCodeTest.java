@@ -14,6 +14,6 @@ public class ColorCodeTest {
 
     @Test
     void testGivenAnIndexWhenCallGetColorByIndexThenReturnCorrectStringColor() {
-        assertThat(ColorCode.getColorByIndex(0), is("\u001B[31m"));
+        assertThat(ColorCode.getColorByIndex(0), is("\u001B[30m"));
     }
 }
