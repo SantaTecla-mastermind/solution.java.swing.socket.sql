@@ -19,7 +19,6 @@ class ProposedCombination extends Combination {
         } while (!error.isNull());
     }
 
-    // TODO ¿Reducir el método con otros métodos privados?
     private Error getColorsError(String characters) {
         if (characters.length() != Result.WIDTH) {
             return Error.WRONG_LENGTH;
@@ -51,7 +50,7 @@ class ProposedCombination extends Combination {
 
     void write() {
         for (ColorCode colorCode : this.colorCodes) {
-            ColorFactory.getInstance().write(colorCode);
+            colorCode.write();
         }
     }
 

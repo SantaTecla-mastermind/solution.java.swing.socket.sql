@@ -12,7 +12,7 @@ public class BoundedIntDialog {
 	public int read(String message) {
 		assert message != null;
 
-		boolean ok = false;
+		boolean ok;
 		int value;
 		do {
 			value = Console.getInstance().readInt(message + "? " + this.LIMITS + ": ");

@@ -7,9 +7,10 @@ class SecretCombination extends Combination {
 
     SecretCombination() {
         super();
-        this.colorCodes = ColorFactory.getInstance().getColors();
+        this.colorCodes = ColorFactory.getInstance().getAllColors();
+        int x = this.colorCodes.size() - Result.WIDTH;
         Random random = new Random(System.currentTimeMillis());
-        for (int i = 0; i < ColorFactory.getInstance().length() - Result.WIDTH; i++) {
+        for (int i = 0; i < x; i++) {
             this.colorCodes.remove(random.nextInt(this.colorCodes.size()));
         }
         Collections.shuffle(this.colorCodes);

@@ -21,7 +21,7 @@ public class Mastermind {
         this.board.write();
         do {
             this.playTurn();
-            this.board.write(); // TODO Revisar writeln y cambiar a write o a writeln en TicTacToe
+            this.board.write();
         } while (!this.board.isFinished());
         this.write();
     }
@@ -38,9 +38,6 @@ public class Mastermind {
             message = Message.WINNER;
         }
         message.writeln();
-
-        // TODO ¿Operador ternario para reducir?
-        // (this.board.isWinner() ? Message.WINNER : Message.LOOSER).writeln();
     }
 
     private boolean isResumedGame() {

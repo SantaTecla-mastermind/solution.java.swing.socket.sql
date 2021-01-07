@@ -3,8 +3,8 @@ package usantatecla.mastermind;
 class Result {
 
     public static final int WIDTH = 4;
-    private int blacks;
-    private int whites;
+    private final int blacks;
+    private final int whites;
 
     Result(int blacks, int whites) {
         assert blacks >= 0;

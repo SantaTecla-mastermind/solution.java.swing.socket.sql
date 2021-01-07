@@ -41,21 +41,8 @@ public class ColorFactory {
         return ColorCode.NULL;
     }
 
-    List<ColorCode> getColors() {
+    List<ColorCode> getAllColors() {
         return new ArrayList<>(Arrays.asList(COLORS));
-    }
-
-    int length() {
-        return COLORS.length;
-    }
-
-    void write(ColorCode colorCode) {
-        assert colorCode != ColorCode.NULL;
-        Console.getInstance().write(
-                colorCode.getColor()
-                        + colorCode.getInitial()
-                        + ColorCode.RESET_COLOR.getColor()
-        );
     }
 
 }

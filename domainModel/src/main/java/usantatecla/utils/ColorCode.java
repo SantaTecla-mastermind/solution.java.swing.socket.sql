@@ -38,4 +38,14 @@ public enum ColorCode {
         return this == ColorCode.NULL;
     }
 
+    public void write() {
+        if (!this.isNull()) {
+            Console.getInstance().write(
+                    this.getColor()
+                            + this.getInitial()
+                            + ColorCode.RESET_COLOR.getColor()
+            );
+        }
+    }
+
 }
