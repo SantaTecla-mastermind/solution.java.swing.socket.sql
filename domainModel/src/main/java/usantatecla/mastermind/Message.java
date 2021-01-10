@@ -38,4 +38,8 @@ enum Message {
         Console.getInstance().writeln(this.message.replaceFirst("#blacks", "" + blacks).replaceFirst("#whites", "" + whites));
     }
 
+    String getMessage(){
+        return this.message;
+    }
+
 }
