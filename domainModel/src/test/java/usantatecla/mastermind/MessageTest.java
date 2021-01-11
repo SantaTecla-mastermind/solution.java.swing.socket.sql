@@ -23,20 +23,20 @@ public class MessageTest {
 
     @Test
     public void testGivenNewMessageWhenToString() {
-        assertThat(Message.RESUME.getMessage(), is("Do you want to continue"));
+        assertThat(Message.RESUME.toString(), is("Do you want to continue"));
     }
 
     @Test
     public void testGivenNewMessageWhenWrite(){
         Message.PROPOSED_COMBINATION.write();
-        assertThat(Message.PROPOSED_COMBINATION.getMessage(), is(output.toString()));
+        assertThat(Message.PROPOSED_COMBINATION.toString(), is(output.toString()));
     }
 
     @Test
     public void testGivenNewMessageWhenWritelnWithoutParams(){
         String newLine = System.getProperty("line.separator");
         Message.PROPOSED_COMBINATION.writeln();
-        assertThat(Message.PROPOSED_COMBINATION.getMessage()+newLine, is(output.toString()));
+        assertThat(Message.PROPOSED_COMBINATION.toString()+newLine, is(output.toString()));
     }
 
     @Test
@@ -44,6 +44,6 @@ public class MessageTest {
         int attempts = 5;
         String newLine = System.getProperty("line.separator");
         Message.ATTEMPTS.writeln(attempts);
-        assertThat(Message.ATTEMPTS.getMessage().replaceAll("#attempts", "" + attempts)+newLine, is(output.toString()));
+        assertThat(Message.ATTEMPTS.toString().replaceAll("#attempts", "" + attempts)+newLine, is(output.toString()));
     }
 }
