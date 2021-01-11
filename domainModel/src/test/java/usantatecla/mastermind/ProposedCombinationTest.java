@@ -79,13 +79,6 @@ public class ProposedCombinationTest {
     }
 
     @Test
-    void testGivenColorsInProposedCombinationWhenIsEqualsToOtherColorArrayThenIsTrue() {
-        ArrayList<ColorCode> colors = new ArrayList<>(Arrays.asList(ColorCode.RED,ColorCode.GREEN,ColorCode.YELLOW,ColorCode.CYAN));
-        this.proposedCombination.colorCodes = colors;
-        assertThat(this.proposedCombination.colorCodes, is(colors));
-    }
-
-    @Test
     void testGivenColorsInProposedCombinationWhenColorIsNotContainedThenIsFalse() {
         this.proposedCombination.colorCodes = new ArrayList<>(Arrays.asList(ColorCode.RED,ColorCode.GREEN,ColorCode.YELLOW,ColorCode.CYAN));
         assertThat(this.proposedCombination.contains(ColorCode.MAGENTA), is(false));
