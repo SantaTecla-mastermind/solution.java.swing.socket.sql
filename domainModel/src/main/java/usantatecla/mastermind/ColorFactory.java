@@ -11,11 +11,11 @@ public class ColorFactory {
 
     private static final ColorCode[] COLORS = {
             ColorCode.RED,
-            ColorCode.BLUE,
-            ColorCode.YELLOW,
             ColorCode.GREEN,
-            ColorCode.CYAN,
-            ColorCode.MAGENTA
+            ColorCode.YELLOW,
+            ColorCode.BLUE,
+            ColorCode.MAGENTA,
+            ColorCode.CYAN
     };
 
     private static ColorFactory instance = new ColorFactory();

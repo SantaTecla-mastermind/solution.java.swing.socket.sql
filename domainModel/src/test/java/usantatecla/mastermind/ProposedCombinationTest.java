@@ -9,9 +9,7 @@ import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -73,27 +71,49 @@ public class ProposedCombinationTest {
         }
     }
 
-    //TODO con un for
     @Test
-    void testGivenEmptyProposedCombinationWhenGetColorsLengthThenReturns0() {
-        assertThat(this.proposedCombination.colorCodes.size(), is(0));
-    }
-
-    @Test
-    void testGivenColorsInProposedCombinationWhenColorIsNotContainedThenIsFalse() {
-        this.proposedCombination.colorCodes = new ArrayList<>(Arrays.asList(ColorCode.RED,ColorCode.GREEN,ColorCode.YELLOW,ColorCode.CYAN));
-        assertThat(this.proposedCombination.contains(ColorCode.MAGENTA), is(false));
+    void testGivenEmptyProposedCombinationThenNotContainAnyColor() {
+            List<ColorCode> colorCodes = ColorFactory.getInstance().getAllColors();
+            for(ColorCode colorCode : colorCodes){
+                assertThat(this.proposedCombination.contains(colorCode),is(false));
+            }
     }
 
     @Test
     void testGivenColorsInProposedCombinationWhenColorIsContainedThenIsTrue() {
-        this.proposedCombination.colorCodes = new ArrayList<>(Arrays.asList(ColorCode.RED,ColorCode.GREEN,ColorCode.YELLOW,ColorCode.CYAN));
-        assertThat(this.proposedCombination.contains(ColorCode.RED), is(true));
-    }
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString()).thenReturn("rgby");
+            this.proposedCombination.read();
+            assertThat(this.proposedCombination.contains(ColorCode.RED), is(true));
+            assertThat(this.proposedCombination.contains(ColorCode.GREEN), is(true));
+            assertThat(this.proposedCombination.contains(ColorCode.BLUE), is(true));
+            assertThat(this.proposedCombination.contains(ColorCode.YELLOW), is(true));
+            }
+        }
 
     @Test
     void testGivenColorsInProposedCombinationWhenColorIsContainedByPositionOutOfSizeThenIsAssert() {
-        this.proposedCombination.colorCodes = new ArrayList<>(Arrays.asList(ColorCode.RED,ColorCode.GREEN,ColorCode.YELLOW,ColorCode.CYAN));
-        Assertions.assertThrows(AssertionError.class, () -> this.proposedCombination.contains(ColorCode.RED,10));
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString()).thenReturn("rgby");
+            this.proposedCombination.read();
+            Assertions.assertThrows(AssertionError.class, () -> this.proposedCombination.contains(ColorCode.RED, 10));
+        }
     }
+
+    @Test
+    void testGivenProposedCombinationWhenWriteThenWriteColors(){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString()).thenReturn("rgby");
+            this.proposedCombination.read();
+            this.proposedCombination.write();
+            verify(this.console, times(1)).write(ColorCode.RED.getColor()+"r"+ColorCode.RESET_COLOR.getColor());
+            verify(this.console, times(1)).write(ColorCode.GREEN.getColor()+"g"+ColorCode.RESET_COLOR.getColor());
+            verify(this.console, times(1)).write(ColorCode.BLUE.getColor()+"b"+ColorCode.RESET_COLOR.getColor());
+            verify(this.console, times(1)).write(ColorCode.YELLOW.getColor()+"y"+ColorCode.RESET_COLOR.getColor());
+        }
+    }
+
 }

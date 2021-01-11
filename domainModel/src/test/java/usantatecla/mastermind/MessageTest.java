@@ -1,25 +1,21 @@
 package usantatecla.mastermind;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.MockedStatic;
+import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.utils.Console;
-import java.io.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.in;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 public class MessageTest {
 
-    private final ByteArrayOutputStream output = new ByteArrayOutputStream();
-
+    @Mock
     Console console;
-
-    @BeforeEach
-    public void before() {
-        System.setOut(new PrintStream(output));
-        this.console = Console.getInstance();
-    }
 
     @Test
     public void testGivenNewMessageWhenToString() {
@@ -27,23 +23,42 @@ public class MessageTest {
     }
 
     @Test
-    public void testGivenNewMessageWhenWrite(){
-        Message.PROPOSED_COMBINATION.write();
-        assertThat(Message.PROPOSED_COMBINATION.toString(), is(output.toString()));
+    public void testGivenNewMessageWhenWriteThenWriteMessage(){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            Message.PROPOSED_COMBINATION.write();
+            verify(this.console, times(1)).write(Message.PROPOSED_COMBINATION.toString());
+        }
+    }
+
+
+    @Test
+    public void testGivenNewMessageWhenWritelnWithoutParamsThenWriteMessage(){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            Message.PROPOSED_COMBINATION.writeln();
+            verify(this.console, times(1)).writeln(Message.PROPOSED_COMBINATION.toString());
+        }
     }
 
     @Test
-    public void testGivenNewMessageWhenWritelnWithoutParams(){
-        String newLine = System.getProperty("line.separator");
-        Message.PROPOSED_COMBINATION.writeln();
-        assertThat(Message.PROPOSED_COMBINATION.toString()+newLine, is(output.toString()));
+    public void testGivenNewMessageWhenWritelnWithAttemptsThenWriteAttemptsMessage(){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            int attempts = 5;
+            console.when(Console::getInstance).thenReturn(this.console);
+            Message.ATTEMPTS.writeln(attempts);
+            verify(this.console, times(1)).writeln(Message.ATTEMPTS.toString().replaceAll("#attempts", "" + attempts));
+        }
     }
 
     @Test
-    public void testGivenNewMessageWhenWritelnWithParams(){
-        int attempts = 5;
-        String newLine = System.getProperty("line.separator");
-        Message.ATTEMPTS.writeln(attempts);
-        assertThat(Message.ATTEMPTS.toString().replaceAll("#attempts", "" + attempts)+newLine, is(output.toString()));
+    public void testGivenNewMessageWhenWritelnWithBlacksAndWhitesThenWriteResultMessage(){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            int blacks = 2;
+            int whites = 2;
+            console.when(Console::getInstance).thenReturn(this.console);
+            Message.RESULT.writeln(blacks,whites);
+            verify(this.console, times(1)).writeln(Message.RESULT.toString().replaceFirst("#blacks", "" + blacks).replaceFirst("#whites", "" + whites));
+        }
     }
 }
