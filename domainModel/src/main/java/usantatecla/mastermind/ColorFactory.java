@@ -1,7 +1,6 @@
 package usantatecla.mastermind;
 
 import usantatecla.utils.ColorCode;
-import usantatecla.utils.Console;
 
 import java.util.ArrayList;
 import java.util.Arrays;
