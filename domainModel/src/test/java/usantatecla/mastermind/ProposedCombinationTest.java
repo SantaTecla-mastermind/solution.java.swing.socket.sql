@@ -26,7 +26,7 @@ public class ProposedCombinationTest {
     Console console;
 
     @BeforeEach
-    void before() {
+    void beforeEach() {
         this.proposedCombination = new ProposedCombination();
     }
 
@@ -36,10 +36,10 @@ public class ProposedCombinationTest {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString()).thenReturn("rgby");
             this.proposedCombination.read();
-            assertThat(this.proposedCombination.contains(ColorCode.RED),is(true));
-            assertThat(this.proposedCombination.contains(ColorCode.GREEN),is(true));
-            assertThat(this.proposedCombination.contains(ColorCode.BLUE),is(true));
-            assertThat(this.proposedCombination.contains(ColorCode.YELLOW),is(true));
+            ColorCode[] colorCodes = {ColorCode.RED,ColorCode.GREEN,ColorCode.BLUE,ColorCode.YELLOW};
+            for(int i=0;i<colorCodes.length;i++){
+                assertThat(this.proposedCombination.contains(colorCodes[i],i),is(true));
+            }
         }
     }
 
@@ -67,12 +67,13 @@ public class ProposedCombinationTest {
     void testGivenEmptyProposedCombinationWhenReadRepeatCombinationThenRequestCombination(){
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            when(this.console.readString()).thenReturn("rrrr","rgby");
+            when(this.console.readString()).thenReturn("rbry","rgby");
             this.proposedCombination.read();
             verify(this.console,times(2)).readString();
         }
     }
 
+    //TODO con un for
     @Test
     void testGivenEmptyProposedCombinationWhenGetColorsLengthThenReturns0() {
         assertThat(this.proposedCombination.colorCodes.size(), is(0));
@@ -88,12 +89,6 @@ public class ProposedCombinationTest {
     void testGivenColorsInProposedCombinationWhenColorIsContainedThenIsTrue() {
         this.proposedCombination.colorCodes = new ArrayList<>(Arrays.asList(ColorCode.RED,ColorCode.GREEN,ColorCode.YELLOW,ColorCode.CYAN));
         assertThat(this.proposedCombination.contains(ColorCode.RED), is(true));
-    }
-
-    @Test
-    void testGivenColorsInProposedCombinationWhenColorIsContainedByPositionThenIsTrue() {
-        this.proposedCombination.colorCodes = new ArrayList<>(Arrays.asList(ColorCode.RED,ColorCode.GREEN,ColorCode.YELLOW,ColorCode.CYAN));
-        assertThat(this.proposedCombination.contains(ColorCode.RED,0),is(true));
     }
 
     @Test
