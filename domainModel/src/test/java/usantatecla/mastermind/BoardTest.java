@@ -50,6 +50,8 @@ public class BoardTest {
         return initials;
     }
 
+    //TODO test isFinished
+
     @Test
     public void testGivenBoardWhenWriteThenPrint() {
         ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};

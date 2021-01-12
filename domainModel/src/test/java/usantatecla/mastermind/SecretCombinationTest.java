@@ -30,7 +30,7 @@ public class SecretCombinationTest {
     }
 
     @Test
-    //TODO Mock de proposedCombination o hacerlo con colores reales??
+    //Mock de proposedCombination o hacerlo con colores reales??
     void testGivenNewSecretCombinationAndValidProposedCombinationWhenGetResultThenReturnTrue() {
         ProposedCombination proposedCombination = mock(ProposedCombination.class);
         when(proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(true);

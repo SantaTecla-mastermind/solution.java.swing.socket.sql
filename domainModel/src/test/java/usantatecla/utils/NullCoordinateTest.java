@@ -35,7 +35,6 @@ public class NullCoordinateTest {
         assertThat(Coordinate.NULL.inMainDiagonal(), is(false));
     }
 
-    // TODO equals no está sobreescrito en la coordenada nula. ¿Se queda este caso de prueba?
     @Test
     public void testGivenNullCoordinateWhenIsEqualsToAnotherCoordinateThenFalse() {
         assertThat(Coordinate.NULL.equals(this.concreteCoordinate), is(false));

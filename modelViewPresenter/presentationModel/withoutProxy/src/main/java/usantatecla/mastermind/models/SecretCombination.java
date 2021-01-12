@@ -8,7 +8,6 @@ import usantatecla.mastermind.types.Color;
 class SecretCombination extends Combination {
 
 	SecretCombination() {
-		//TODO ????
 		Collections.addAll(this.colors, Color.values());
 		/*for(Color color: Color.values()) {
 			this.colors.add(color);

@@ -23,8 +23,12 @@ public class Board {
 
     void add(ProposedCombination proposedCombination) {
         this.proposedCombinations[this.attempts] = proposedCombination;
-        this.results[this.attempts] = this.secretCombination.getResult(proposedCombination);
+        this.results[this.attempts] = this.getResult(proposedCombination);
         this.attempts++;
+    }
+
+    Result getResult(ProposedCombination proposedCombination) {
+        return this.secretCombination.getResult(proposedCombination);
     }
 
     boolean isFinished() {

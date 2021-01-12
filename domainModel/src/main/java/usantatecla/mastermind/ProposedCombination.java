@@ -19,6 +19,7 @@ class ProposedCombination extends Combination {
         } while (!error.isNull());
     }
 
+    //TODO COLOR A COLORCODE
     private Error getColorsError(String characters) {
         if (characters.length() != Result.WIDTH) {
             return Error.WRONG_LENGTH;

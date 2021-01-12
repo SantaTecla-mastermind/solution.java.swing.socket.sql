@@ -1,7 +1,7 @@
 package usantatecla.utils;
 
 public class BoundedIntDialog {
-
+//TODO Revisar utils y sus test en ambas versiones y igualarlo
 	private final ClosedInterval LIMITS;
 	private static final String ERROR_MESSAGE = "Invalid number";
 

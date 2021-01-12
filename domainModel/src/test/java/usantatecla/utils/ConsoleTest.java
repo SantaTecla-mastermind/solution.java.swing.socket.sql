@@ -22,7 +22,7 @@ public class ConsoleTest {
   @InjectMocks
   Console console;
 
-  // TODO El espia del out habría que hacerlo como Console (ver comentario debajo), ¿vale la pena?
+  //  El espia del out habría que hacerlo como Console (ver comentario debajo), ¿vale la pena?
   /* System.setOut(); !!!!
   @Spy
   private PrintStream outputStream = spy(System.out);
