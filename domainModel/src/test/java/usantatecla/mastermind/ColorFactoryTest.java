@@ -21,7 +21,7 @@ public class ColorFactoryTest {
 
     @Test
     public void testGivenColorFactoryWhenGetInitialsThenAllInitials() {
-        assertThat(this.colorFactory.getInitials(), is("rbygcm"));
+        assertThat(this.colorFactory.getInitials(), is("rgybmc"));
     }
 
     @Test
@@ -37,11 +37,11 @@ public class ColorFactoryTest {
     @Test
     public void testGivenColorFactoryWhenGetAllColorsThenReturn() {
         List<ColorCode> colorCodes = Arrays.asList(ColorCode.RED,
-                ColorCode.BLUE,
-                ColorCode.YELLOW,
                 ColorCode.GREEN,
-                ColorCode.CYAN,
-                ColorCode.MAGENTA);
+                ColorCode.YELLOW,
+                ColorCode.BLUE,
+                ColorCode.MAGENTA,
+                ColorCode.CYAN);
         assertThat(this.colorFactory.getAllColors(), is(colorCodes));
     }
 

@@ -25,7 +25,7 @@ public class BoundedIntDialogTest {
   Console console;
 
   @BeforeEach
-  void before() {
+  void beforeEach() {
     this.boundedIntDialog = new BoundedIntDialog(MIN, MAX);
     this.limits = new ClosedInterval(MIN, MAX);
   }

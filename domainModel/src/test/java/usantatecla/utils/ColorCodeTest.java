@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+// TODO Completar tests de ColorCode (añadir más)
 public class ColorCodeTest {
 
     @Test

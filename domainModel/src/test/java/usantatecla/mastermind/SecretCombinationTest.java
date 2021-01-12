@@ -25,7 +25,7 @@ public class SecretCombinationTest {
     Console console;
 
     @BeforeEach
-    void before() {
+    void beforeEach() {
         this.secretCombination = new SecretCombination();
     }
 
@@ -39,6 +39,7 @@ public class SecretCombinationTest {
         assertThat(result.isWinner(),is(true));
     }
 
+    // TODO Nombre del test
     @Test
     void testWriteln(){
         try (MockedStatic<Console> console = mockStatic(Console.class)) {

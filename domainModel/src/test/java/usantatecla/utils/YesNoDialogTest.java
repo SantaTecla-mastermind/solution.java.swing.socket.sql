@@ -21,7 +21,7 @@ public class YesNoDialogTest {
   private Console console;
 
   @BeforeEach
-  void before() {
+  void beforeEach() {
     this.yesNoDialog = new YesNoDialog();
   }
 

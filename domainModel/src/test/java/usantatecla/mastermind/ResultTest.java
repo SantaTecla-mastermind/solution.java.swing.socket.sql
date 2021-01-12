@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+// TODO Añadir mas tests y arreglar nombre
 public class ResultTest {
 
     @Test
