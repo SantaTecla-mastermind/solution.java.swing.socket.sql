@@ -11,6 +11,8 @@ import static org.mockito.Mockito.*;
 
 public class BoardBuilder {
 
+    private Board board;
+
     private List<String> proposedCombinationsStrings;
 
     public BoardBuilder() {
@@ -20,14 +22,15 @@ public class BoardBuilder {
     public BoardBuilder proposedCombinations(String... proposedCombinations) {
         assert proposedCombinations.length <= 10;
         for (String proposedCombination : proposedCombinations) {
-            assert Pattern.matches("[rgbyop]{4}", proposedCombination);
+            assert Pattern.matches("[rgybmc]{4}", proposedCombination);
             this.proposedCombinationsStrings.add(proposedCombination);
         }
         return this;
     }
 
+
     public BoardBuilder proposedCombinations(int times, String proposedCombination) {
-        assert Pattern.matches("[rgbyop]{4}", proposedCombination);
+        assert Pattern.matches("[rgybmc]{4}", proposedCombination);
         for (int i = 0; i < times; i++) {
             this.proposedCombinationsStrings.add(proposedCombination);
         }
@@ -35,23 +38,47 @@ public class BoardBuilder {
     }
 
     public Board build() {
-        Board board = new Board();
-        if (this.proposedCombinationsStrings.isEmpty())
-            return board;
-        for (String proposedCombinationsString : this.proposedCombinationsStrings) {
-            this.setProposedCombination(board, proposedCombinationsString);
+        this.board = spy(new Board());
+        if (this.proposedCombinationsStrings.isEmpty()){
+            return this.board;
         }
-        return board;
+        for (String proposedCombinationsString : this.proposedCombinationsStrings) {
+            this.setProposedCombination(proposedCombinationsString);
+        }
+        return this.board;
     }
 
-    private void setProposedCombination(Board board, String proposedCombinationString) {
+    public Board build(Result result) {
+        this.board = spy(new Board());
+        if (this.proposedCombinationsStrings.isEmpty()){
+            return this.board;
+        }
+        for (String proposedCombinationsString : this.proposedCombinationsStrings) {
+            this.setProposedCombination(proposedCombinationsString,result);
+        }
+        return this.board;
+    }
+
+    private void setProposedCombination(String proposedCombinationString) {
         Console console = mock(Console.class);
         try (MockedStatic<Console> staticConsole = mockStatic(Console.class)) {
             staticConsole.when(Console::getInstance).thenReturn(console);
             when(console.readString()).thenReturn(proposedCombinationString);
             ProposedCombination proposedCombination = new ProposedCombination();
             proposedCombination.read();
-            board.add(proposedCombination);
+            this.board.add(proposedCombination);
+        }
+    }
+
+    private void setProposedCombination(String proposedCombinationString,Result result) {
+        Console console = mock(Console.class);
+        try (MockedStatic<Console> staticConsole = mockStatic(Console.class)) {
+            staticConsole.when(Console::getInstance).thenReturn(console);
+            when(console.readString()).thenReturn(proposedCombinationString);
+            ProposedCombination proposedCombination = new ProposedCombination();
+            proposedCombination.read();
+            when(this.board.getResult(proposedCombination)).thenReturn(result);
+            this.board.add(proposedCombination);
         }
     }
 

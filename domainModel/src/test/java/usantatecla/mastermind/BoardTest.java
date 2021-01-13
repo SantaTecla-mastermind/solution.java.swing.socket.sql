@@ -9,6 +9,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -50,7 +53,71 @@ public class BoardTest {
         return initials;
     }
 
-    //TODO test isFinished
+    @Test
+    public void testGivenBoardWhenIsWinnerThenTrue(){
+        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
+        String initials = getCombinationString(colorCodes);
+        Board board = new BoardBuilder()
+                .proposedCombinations(initials)
+                .build(new Result(4,4));
+
+        assertThat(board.isWinner(),is(true));
+    }
+
+    @Test
+    public void testGivenBoardWhenIsWinnerThenFalse(){
+        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
+        String initials = getCombinationString(colorCodes);
+        Board board = new BoardBuilder()
+                .proposedCombinations(initials)
+                .build(new Result(2,2));
+
+        assertThat(board.isWinner(),is(false));
+    }
+
+    @Test
+    public void testGivenBoardWhenIsFinishedThenTrue(){
+        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
+        String initials = getCombinationString(colorCodes);
+        Board board = new BoardBuilder()
+                .proposedCombinations(initials)
+                .build(new Result(4,4));
+
+        assertThat(board.isFinished(),is(true));
+    }
+
+    @Test
+    public void testGivenBoardWhenIsFinishedThenFalse(){
+        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
+        String initials = getCombinationString(colorCodes);
+        Board board = new BoardBuilder()
+                .proposedCombinations(initials)
+                .build(new Result(2,2));
+
+        assertThat(board.isFinished(),is(false));
+    }
+
+    @Test
+    public void testGivenBoardAndPut10TokensWhenIsFinishedThenTrue(){
+        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
+        String initials = getCombinationString(colorCodes);
+        Board board = new BoardBuilder()
+                .proposedCombinations(10,initials)
+                .build();
+
+        assertThat(board.isFinished(),is(true));
+    }
+
+    @Test
+    public void testGivenBoardAndPut5TokensWhenIsFinishedThenTrue(){
+        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
+        String initials = getCombinationString(colorCodes);
+        Board board = new BoardBuilder()
+                .proposedCombinations(5,initials)
+                .build();
+
+        assertThat(board.isFinished(),is(false));
+    }
 
     @Test
     public void testGivenBoardWhenWriteThenPrint() {
