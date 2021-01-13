@@ -9,6 +9,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -33,9 +36,8 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardWhenAddThenCorrect() {
-        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
-        String initials = getCombinationString(colorCodes);
-        Board board = new BoardBuilder().proposedCombinations(initials).build();
+        List<ColorCode> colorCodes = ColorFactory.getInstance().getColors("rgby");
+        Board board = new BoardBuilder().proposedCombinations("rgby").build();
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             board.write();
@@ -55,10 +57,8 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardWhenIsWinnerThenTrue(){
-        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
-        String initials = getCombinationString(colorCodes);
         Board board = new BoardBuilder()
-                .proposedCombinations(initials)
+                .proposedCombinations("rgby")
                 .result(new Result(4,4))
                 .build();
 
@@ -67,10 +67,8 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardWhenIsWinnerThenFalse(){
-        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
-        String initials = getCombinationString(colorCodes);
         Board board = new BoardBuilder()
-                .proposedCombinations(initials)
+                .proposedCombinations("rgby")
                 .result(new Result(2,2))
                 .build();
 
@@ -79,10 +77,8 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardWhenIsFinishedThenTrue(){
-        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
-        String initials = getCombinationString(colorCodes);
         Board board = new BoardBuilder()
-                .proposedCombinations(initials)
+                .proposedCombinations("rgby")
                 .result(new Result(4,4))
                 .build();
 
@@ -91,10 +87,8 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardWhenIsFinishedThenFalse(){
-        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
-        String initials = getCombinationString(colorCodes);
         Board board = new BoardBuilder()
-                .proposedCombinations(initials)
+                .proposedCombinations("rgby")
                 .result(new Result(2,2))
                 .build();
 
@@ -103,8 +97,6 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardAndPut10TokensWhenIsFinishedThenTrue(){
-        //ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
-        //String initials = getCombinationString(colorCodes);
         Board board = new BoardBuilder()
                 .proposedCombinations(10,"rgby")
                 .build();
@@ -114,10 +106,8 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardAndPut5TokensWhenIsFinishedThenTrue(){
-        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
-        String initials = getCombinationString(colorCodes);
         Board board = new BoardBuilder()
-                .proposedCombinations(5,initials)
+                .proposedCombinations(5,"rgby")
                 .build();
 
         assertThat(board.isFinished(),is(false));
@@ -125,9 +115,8 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardWhenWriteThenPrint() {
-        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
-        String initials = getCombinationString(colorCodes);
-        Board board = new BoardBuilder().proposedCombinations(2, initials).build();
+        List<ColorCode> colorCodes = ColorFactory.getInstance().getColors("rgby");
+        Board board = new BoardBuilder().proposedCombinations(2, "rgby").build();
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             board.write();
