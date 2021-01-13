@@ -35,7 +35,7 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardWhenAddThenCorrect() {
-        List<ColorCode> colorCodes = ColorFactory.getInstance().getColors("rgby");
+        List<ColorCode> colorCodes = ColorFactory.getInstance().getColorCodes("rgby");
         Board board = new BoardBuilder().proposedCombinations("rgby").build();
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
@@ -114,7 +114,7 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardWhenWriteThenPrint() {
-        List<ColorCode> colorCodes = ColorFactory.getInstance().getColors("rgby");
+        List<ColorCode> colorCodes = ColorFactory.getInstance().getColorCodes("rgby");
         Board board = new BoardBuilder().proposedCombinations(2, "rgby").build();
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);

@@ -42,7 +42,7 @@ public class ColorFactoryTest {
                 ColorCode.BLUE,
                 ColorCode.MAGENTA,
                 ColorCode.CYAN);
-        assertThat(this.colorFactory.getAllColors(), is(colorCodes));
+        assertThat(this.colorFactory.getAllColorCodes(), is(colorCodes));
     }
 
 }

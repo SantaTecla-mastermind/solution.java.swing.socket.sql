@@ -40,7 +40,7 @@ public class ColorFactory {
         return ColorCode.NULL;
     }
 
-    List<ColorCode> getColors(String initials) {
+    List<ColorCode> getColorCodes(String initials) {
         List<ColorCode> colorCodes = new ArrayList<>();
         for(ColorCode color: COLORS){
             if(initials.contains(String.valueOf(color.getInitial()))){
@@ -50,7 +50,7 @@ public class ColorFactory {
         return colorCodes;
     }
 
-    List<ColorCode> getAllColors() {
+    List<ColorCode> getAllColorCodes() {
         return new ArrayList<>(Arrays.asList(COLORS));
     }
 

@@ -73,7 +73,7 @@ public class ProposedCombinationTest {
 
     @Test
     void testGivenEmptyProposedCombinationThenNotContainAnyColor() {
-            List<ColorCode> colorCodes = ColorFactory.getInstance().getAllColors();
+            List<ColorCode> colorCodes = ColorFactory.getInstance().getAllColorCodes();
             for(ColorCode colorCode : colorCodes){
                 assertThat(this.proposedCombination.contains(colorCode),is(false));
             }
