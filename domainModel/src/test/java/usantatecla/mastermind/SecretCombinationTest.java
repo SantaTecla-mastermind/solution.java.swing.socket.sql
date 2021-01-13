@@ -22,7 +22,7 @@ public class SecretCombinationTest {
     private SecretCombination secretCombination;
 
     @Mock
-    Console console;
+    ProposedCombination proposedCombination;
 
     @BeforeEach
     void beforeEach() {
@@ -30,22 +30,36 @@ public class SecretCombinationTest {
     }
 
     @Test
-    //Mock de proposedCombination o hacerlo con colores reales??
-    void testGivenNewSecretCombinationAndValidProposedCombinationWhenGetResultThenReturnTrue() {
-        ProposedCombination proposedCombination = mock(ProposedCombination.class);
-        when(proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(true);
-        when(proposedCombination.contains(any(ColorCode.class))).thenReturn(true);
-        Result result = secretCombination.getResult(proposedCombination);
+    void testGivenSecretCombinationAndWinnerProposedCombinationWhenGetResultThenIsWinner() {
+        when(this.proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(true);
+        when(this.proposedCombination.contains(any(ColorCode.class))).thenReturn(true);
+        Result result = secretCombination.getResult(this.proposedCombination);
         assertThat(result.isWinner(),is(true));
     }
 
-    // TODO Nombre del test
     @Test
-    void testWriteln(){
-        try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            console.when(Console::getInstance).thenReturn(this.console);
-            Message.SECRET_COMBINATION.write();
-            verify(this.console, times(1)).write(Message.SECRET_COMBINATION.toString());
+    void testGivenSecretCombinationAndProposedCombinationWhenGetResultThen0blacksAnd0Whites() {
+        when(this.proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(false);
+        when(this.proposedCombination.contains(any(ColorCode.class))).thenReturn(false);
+        Result result = secretCombination.getResult(this.proposedCombination);
+        assertThat(result ,is(new Result(0,0)));
+    }
+
+    @Test
+    void testGivenSecretCombinationAndProposedCombinationWhenGetResultThen2blacksAnd2Whites() {
+        when(this.proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(true, true, false);
+        when(this.proposedCombination.contains(any(ColorCode.class))).thenReturn(true);
+        Result result = secretCombination.getResult(this.proposedCombination);
+        assertThat(result ,is(new Result(2,2)));
+    }
+
+    @Test
+    void testGivenSecretCombinationWhenWritelnThenPrint(){
+        Console console = mock(Console.class);
+        try (MockedStatic<Console> staticConsole = mockStatic(Console.class)) {
+            staticConsole.when(Console::getInstance).thenReturn(console);
+            this.secretCombination.writeln();
+            verify(console).writeln(Message.SECRET_COMBINATION.toString());
         }
     }
 

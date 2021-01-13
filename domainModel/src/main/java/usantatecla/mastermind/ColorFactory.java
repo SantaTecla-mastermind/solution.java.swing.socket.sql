@@ -31,6 +31,7 @@ public class ColorFactory {
         return result;
     }
 
+    // TODO Nombre quitar ByCharacter
     ColorCode getColorByCharacter(char character) {
         for (ColorCode color : COLORS) {
             if (color.getInitial() == character) {

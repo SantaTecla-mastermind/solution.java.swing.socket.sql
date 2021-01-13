@@ -22,11 +22,17 @@ public enum ColorCode {
         this.color = color;
     }
 
+    // TODO Quitar Color del nombre
     public String getColor() {
+        assert !this.isNull();
+
         return color;
     }
 
+    // TODO Nombre (quitar ColorByIndex)
     public static String getColorByIndex(int index) {
+        assert index >= 0 &&  index < ColorCode.NULL.ordinal();
+
         return ColorCode.values()[index].getColor();
     }
 
