@@ -59,7 +59,8 @@ public class BoardTest {
         String initials = getCombinationString(colorCodes);
         Board board = new BoardBuilder()
                 .proposedCombinations(initials)
-                .build(new Result(4,4));
+                .result(new Result(4,4))
+                .build();
 
         assertThat(board.isWinner(),is(true));
     }
@@ -70,7 +71,8 @@ public class BoardTest {
         String initials = getCombinationString(colorCodes);
         Board board = new BoardBuilder()
                 .proposedCombinations(initials)
-                .build(new Result(2,2));
+                .result(new Result(2,2))
+                .build();
 
         assertThat(board.isWinner(),is(false));
     }
@@ -81,7 +83,8 @@ public class BoardTest {
         String initials = getCombinationString(colorCodes);
         Board board = new BoardBuilder()
                 .proposedCombinations(initials)
-                .build(new Result(4,4));
+                .result(new Result(4,4))
+                .build();
 
         assertThat(board.isFinished(),is(true));
     }
@@ -92,17 +95,18 @@ public class BoardTest {
         String initials = getCombinationString(colorCodes);
         Board board = new BoardBuilder()
                 .proposedCombinations(initials)
-                .build(new Result(2,2));
+                .result(new Result(2,2))
+                .build();
 
         assertThat(board.isFinished(),is(false));
     }
 
     @Test
     public void testGivenBoardAndPut10TokensWhenIsFinishedThenTrue(){
-        ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
-        String initials = getCombinationString(colorCodes);
+        //ColorCode[] colorCodes = {ColorCode.RED, ColorCode.GREEN, ColorCode.BLUE, ColorCode.YELLOW};
+        //String initials = getCombinationString(colorCodes);
         Board board = new BoardBuilder()
-                .proposedCombinations(10,initials)
+                .proposedCombinations(10,"rgby")
                 .build();
 
         assertThat(board.isFinished(),is(true));
