@@ -109,10 +109,10 @@ public class ProposedCombinationTest {
             when(this.console.readString()).thenReturn("rgby");
             this.proposedCombination.read();
             this.proposedCombination.write();
-            verify(this.console, times(1)).write(ColorCode.RED.getColor()+"r"+ColorCode.RESET_COLOR.getColor());
-            verify(this.console, times(1)).write(ColorCode.GREEN.getColor()+"g"+ColorCode.RESET_COLOR.getColor());
-            verify(this.console, times(1)).write(ColorCode.BLUE.getColor()+"b"+ColorCode.RESET_COLOR.getColor());
-            verify(this.console, times(1)).write(ColorCode.YELLOW.getColor()+"y"+ColorCode.RESET_COLOR.getColor());
+            verify(this.console, times(1)).write(ColorCode.RED.get()+"r"+ColorCode.RESET_COLOR.get());
+            verify(this.console, times(1)).write(ColorCode.GREEN.get()+"g"+ColorCode.RESET_COLOR.get());
+            verify(this.console, times(1)).write(ColorCode.BLUE.get()+"b"+ColorCode.RESET_COLOR.get());
+            verify(this.console, times(1)).write(ColorCode.YELLOW.get()+"y"+ColorCode.RESET_COLOR.get());
         }
     }
 

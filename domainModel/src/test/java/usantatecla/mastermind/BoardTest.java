@@ -9,7 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -42,7 +41,7 @@ public class BoardTest {
             console.when(Console::getInstance).thenReturn(this.console);
             board.write();
             for (ColorCode colorCode : colorCodes) {
-                verify(this.console).write(colorCode.getColor() + colorCode.getInitial() + ColorCode.RESET_COLOR.getColor());
+                verify(this.console).write(colorCode.get() + colorCode.getInitial() + ColorCode.RESET_COLOR.get());
             }
         }
     }
@@ -123,7 +122,7 @@ public class BoardTest {
             for (ColorCode colorCode : colorCodes) {
                 verify(this.console).writeln("2 attempt(s): ");
                 verify(this.console).writeln("****");
-                verify(this.console, times(2)).write(colorCode.getColor() + colorCode.getInitial() + ColorCode.RESET_COLOR.getColor());
+                verify(this.console, times(2)).write(colorCode.get() + colorCode.getInitial() + ColorCode.RESET_COLOR.get());
             }
         }
     }

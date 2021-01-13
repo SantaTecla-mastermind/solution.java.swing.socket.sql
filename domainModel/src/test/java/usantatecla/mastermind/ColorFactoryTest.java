@@ -26,12 +26,12 @@ public class ColorFactoryTest {
 
     @Test
     public void testGivenColorFactoryWhenGetColorByCharacterThenColorCode() {
-        assertThat(this.colorFactory.getColorByCharacter('r'), is(ColorCode.RED));
+        assertThat(this.colorFactory.getColorCode('r'), is(ColorCode.RED));
     }
 
     @Test
     public void testGivenColorFactoryWhenGetColorByCharacterThenColorCodeNull() {
-        assertThat(this.colorFactory.getColorByCharacter('l'), is(ColorCode.NULL));
+        assertThat(this.colorFactory.getColorCode('l'), is(ColorCode.NULL));
     }
 
     @Test

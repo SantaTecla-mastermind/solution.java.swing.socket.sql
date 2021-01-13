@@ -27,23 +27,23 @@ public class ColorCodeTest {
 
     @Test
     public void testGivenColorCodeWhenCallGetColorThenReturnCorrectStringColor() {
-        assertThat(this.colorCode.getColor(), is("\u001B[34m"));
+        assertThat(this.colorCode.get(), is("\u001B[34m"));
     }
 
     @Test
     public void testGivenNullColorCodeWhenCallGetColorThenAssertError() {
-        Assertions.assertThrows(AssertionError.class, () -> ColorCode.NULL.getColor());
+        Assertions.assertThrows(AssertionError.class, () -> ColorCode.NULL.get());
     }
 
     @Test
     public void testGivenIndexWhenCallGetColorByIndexThenReturnCorrectStringColor() {
-        assertThat(ColorCode.getColorByIndex(0), is("\u001B[30m"));
+        assertThat(ColorCode.get(0), is("\u001B[30m"));
     }
 
     @Test
     public void testGivenOutOfBoundsIndexWhenCallGetColorByIndexThenAssertionError() {
-        Assertions.assertThrows(AssertionError.class, () -> ColorCode.getColorByIndex(-1));
-        Assertions.assertThrows(AssertionError.class, () -> ColorCode.getColorByIndex(ColorCode.NULL.ordinal()));
+        Assertions.assertThrows(AssertionError.class, () -> ColorCode.get(-1));
+        Assertions.assertThrows(AssertionError.class, () -> ColorCode.get(ColorCode.NULL.ordinal()));
     }
 
     @Test
@@ -66,7 +66,7 @@ public class ColorCodeTest {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             this.colorCode.write();
-            verify(this.console).write(this.colorCode.getColor() + this.colorCode.getInitial() + ColorCode.RESET_COLOR.getColor());
+            verify(this.console).write(this.colorCode.get() + this.colorCode.getInitial() + ColorCode.RESET_COLOR.get());
         }
     }
 

@@ -25,7 +25,7 @@ class ProposedCombination extends Combination {
             return Error.WRONG_LENGTH;
         }
         for (int i = 0; i < characters.length(); i++) {
-            ColorCode colorCode = ColorFactory.getInstance().getColorByCharacter(characters.charAt(i));
+            ColorCode colorCode = ColorFactory.getInstance().getColorCode(characters.charAt(i));
             if (colorCode.isNull()) {
                 return Error.WRONG_CHARACTERS;
             }

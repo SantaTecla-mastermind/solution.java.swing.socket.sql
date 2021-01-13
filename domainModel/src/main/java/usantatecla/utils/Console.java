@@ -55,10 +55,6 @@ public class Console {
 		return charValue;
 	}
 
-	public void writeln() {
-		System.out.println();
-	}
-
 	public void write(String string) {
 		System.out.print(string);
 	}
@@ -67,16 +63,20 @@ public class Console {
 		System.out.print(integer);
 	}
 
+	public void write(char character) {
+		System.out.print(character);
+	}
+
+	public void writeln() {
+		System.out.println();
+	}
+
 	public void writeln(String string) {
 		System.out.println(string);
 	}
 
 	public void writeln(int integer) {
 		System.out.println(integer);
-	}
-
-	public void write(char character) {
-		System.out.print(character);
 	}
 
 	public void writeError(String format) {

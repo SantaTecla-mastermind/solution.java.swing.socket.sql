@@ -1,5 +1,6 @@
 package usantatecla.utils;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -18,7 +19,12 @@ public class ConcreteCoordinateTest {
   @Mock
   Console console;
 
-  private final Coordinate coordinate = new ConcreteCoordinate(1, 1);
+  private Coordinate coordinate;
+
+  @BeforeEach
+  public void beforeEach() {
+    this.coordinate = new ConcreteCoordinate(1, 1);
+  }
 
   @Test
   public void testGivenCoordinateWhenIsNullThenIsFalse() {
@@ -56,39 +62,31 @@ public class ConcreteCoordinateTest {
   }
 
   @Test
-  public void testGivenEmptyCoordinateWhenReadThenCorrectAttributes() {
+  public void testGivenEmptyCoordinatesWhenReadThenCorrectValues() {
     try (MockedStatic<Console> console = mockStatic(Console.class)) {
       console.when(Console::getInstance).thenReturn(this.console);
 
-      final int[] coordinates = new int[]{1, 2, 0, 3};
-      for(int i = 0; i < coordinates.length; i += 2) {
-        when(this.console.readInt(anyString())).thenReturn(coordinates[i], coordinates[i+1]);
-        ConcreteCoordinate newCoordinate = new ConcreteCoordinate();
-        newCoordinate.read("TITLE");
+      final ConcreteCoordinate[] coordinates = {  new ConcreteCoordinate(1, 2), new ConcreteCoordinate(0, 3) };
+      for(int i = 0; i < coordinates.length; i++) {
+        when(this.console.readInt(anyString())).thenReturn(coordinates[i].getRow() + 1, coordinates[i].getColumn() + 1);
+        ConcreteCoordinate coordinate = new ConcreteCoordinate();
+        coordinate.read("TITLE");
 
-        assertThat(newCoordinate.getRow(), is(coordinates[i] - 1));
-        assertThat(newCoordinate.getColumn(), is(coordinates[i+1] - 1));
+        assertThat(coordinate, is(coordinates[i]));
       }
     }
   }
 
   @Test
-  public void testGivenCoordinateWhenIsEqualsTrue() {
+  public void testGivenCoordinateWhenIsEqualsThenReturn() {
     assertThat(this.coordinate.equals(new ConcreteCoordinate(1, 1)), is(true));
     assertThat(this.coordinate.equals(new ConcreteCoordinate(0, 1)), is(false));
     assertThat(this.coordinate.equals(Coordinate.NULL), is(false));
   }
 
   @Test
-  public void testGivenCoordinateWhenToString() {
+  public void testGivenCoordinateWhenToStringThenReturn() {
     assertThat(this.coordinate.toString(), is("Coordinate (1, 1)"));
-    assertThat(Coordinate.NULL.toString(), is("Coordinate (NULL)"));
-  }
-
-  @Test
-  public void testHashCodeGivenNewConcreteCoordinate() {
-    ConcreteCoordinate coordinate1 = new ConcreteCoordinate(1,1);
-    assertThat(this.coordinate.hashCode(), is(993));
   }
 
 }

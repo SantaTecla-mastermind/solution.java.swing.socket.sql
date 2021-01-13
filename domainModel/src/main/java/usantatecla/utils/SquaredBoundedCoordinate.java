@@ -24,16 +24,18 @@ public abstract class SquaredBoundedCoordinate {
 		assert !this.adaptee.isNull();
 
 		ConcreteCoordinate concreteCoordinate = (ConcreteCoordinate) this.adaptee;
-		return this.getLimits().isIncluded(concreteCoordinate.getRow()) 
-			&& this.getLimits().isIncluded(concreteCoordinate.getColumn());
+		return this.getLimits().isIncluded(concreteCoordinate.getRow())
+				&& this.getLimits().isIncluded(concreteCoordinate.getColumn());
 	}
 
-	protected ClosedInterval getLimits(){
+	protected ClosedInterval getLimits() {
 		return new ClosedInterval(0, this.getDimension() - 1);
-	};
+	}
+
+	protected abstract int getDimension();
 
 	public Direction getDirection(SquaredBoundedCoordinate coordinate) {
-		if (this.equals(coordinate) || this.isNull() || coordinate.isNull()){
+		if (this.equals(coordinate) || this.isNull() || coordinate.isNull()) {
 			return Direction.NULL;
 		}
 		if (this.inInverseDiagonal() && coordinate.inInverseDiagonal()) {
@@ -47,12 +49,12 @@ public abstract class SquaredBoundedCoordinate {
 		return coordinate.getRow() + coordinate.getColumn() == this.getDimension() - 1;
 	}
 
-	protected abstract int getDimension();
 
 	public void read(String message) {
 		assert message != null;
 
-		ConcreteCoordinate coordinate = new ConcreteCoordinate();
+		this.adaptee = new ConcreteCoordinate();
+		ConcreteCoordinate coordinate = (ConcreteCoordinate) this.adaptee;
 		boolean error;
 		do {
 			coordinate.read(message);
@@ -61,7 +63,6 @@ public abstract class SquaredBoundedCoordinate {
 				Console.getInstance().writeln(this.getErrorMessage());
 			}
 		} while (error);
-		this.adaptee = coordinate;
 	}
 
 	protected abstract String getErrorMessage();

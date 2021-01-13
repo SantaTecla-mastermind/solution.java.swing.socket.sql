@@ -22,18 +22,16 @@ public enum ColorCode {
         this.color = color;
     }
 
-    // TODO Quitar Color del nombre
-    public String getColor() {
+    public String get() {
         assert !this.isNull();
 
         return color;
     }
 
-    // TODO Nombre (quitar ColorByIndex)
-    public static String getColorByIndex(int index) {
+    public static String get(int index) {
         assert index >= 0 &&  index < ColorCode.NULL.ordinal();
 
-        return ColorCode.values()[index].getColor();
+        return ColorCode.values()[index].get();
     }
 
     public char getInitial() {
@@ -47,9 +45,9 @@ public enum ColorCode {
     public void write() {
         if (!this.isNull()) {
             Console.getInstance().write(
-                    this.getColor()
+                    this.get()
                             + this.getInitial()
-                            + ColorCode.RESET_COLOR.getColor()
+                            + ColorCode.RESET_COLOR.get()
             );
         }
     }

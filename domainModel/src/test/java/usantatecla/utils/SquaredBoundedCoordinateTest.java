@@ -3,106 +3,107 @@ package usantatecla.utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
 
 public class SquaredBoundedCoordinateTest {
 
-  private SquaredBoundedCoordinate coordinate;
+  private static final int DIMENSION = 7;
+  private static final String ERROR = "error";
 
-  @BeforeEach
-  public void beforeEach() {
-    this.coordinate = this.getCoordinate(1, 1);
+  public SquaredBoundedCoordinate getNullCoordinate() {
+    return new SquaredBoundedCoordinate() {
+      @Override
+      protected int getDimension() {
+        return SquaredBoundedCoordinateTest.DIMENSION;
+      }
+
+      @Override
+      protected String getErrorMessage() {
+        return SquaredBoundedCoordinateTest.ERROR;
+      }
+    };
+  }
+
+  public int getDimension() {
+    return SquaredBoundedCoordinateTest.DIMENSION;
+  }
+
+  public SquaredBoundedCoordinate getCoordinate(int row, int column) {
+    return new SquaredBoundedCoordinate(row, column) {
+      @Override
+      protected int getDimension() {
+        return SquaredBoundedCoordinateTest.DIMENSION;
+      }
+
+      @Override
+      protected String getErrorMessage() {
+        return SquaredBoundedCoordinateTest.ERROR;
+      }
+    };
   }
 
   @Test
-  public void testGivenCoordinateWhenIsNullThenValues() {
-    assertThat(this.coordinate.isNull(), is(false));
+  public void testGivenSquaredBoundedCoordinateWhenNewThenNull() {
     assertThat(this.getNullCoordinate().isNull(), is(true));
   }
 
   @Test
-  public void testGivenCoordinateWhenNewThenValues() {
-    assertThat(this.coordinate.getRow(), is(1));
-    assertThat(this.coordinate.getColumn(), is(1));
+  public void testGivenSquaredBoundedCoordinateWhenWithCorrectValuesThenValid() {
+    int row = 0;
+    int column = this.getDimension() - 1;
+    SquaredBoundedCoordinate coordinate = this.getCoordinate(row, column);
+    assertThat(coordinate.getRow(), is(row));
+    assertThat(coordinate.getColumn(), is(column));
   }
 
   @Test
-  public void testGivenCoordinateWhenLessWrongNewThenException() {
-    Assertions.assertThrows(AssertionError.class, () -> this.getCoordinate(-1, -1));
+  public void testGivenSquaredBoundedCoordinateWhenGetLimitsThenCorrect() {
+    int row = 0;
+    int column = this.getDimension() - 1;
+    SquaredBoundedCoordinate coordinate = this.getCoordinate(row + 1, column - 1);
+    assertThat(coordinate.getLimits(), is(new ClosedInterval(row, column)));
   }
 
   @Test
-  public void testGivenCoordinateWhenGreaterWrongNewThenException() {
-    Assertions.assertThrows(AssertionError.class, () -> this.getCoordinate(4, 4));
+  public void testGivenSquaredBoundedCoordinateWhenGetDirectionThenNullDirection() {
+    int position = this.getDimension() / 2;
+    SquaredBoundedCoordinate coordinate = this.getCoordinate(position, position);
+    assertThat(coordinate.getDirection(this.getCoordinate(position, 2)), is(Direction.HORIZONTAL));
+    assertThat(coordinate.getDirection(this.getCoordinate(2, position)), is(Direction.VERTICAL));
+    assertThat(coordinate.getDirection(this.getCoordinate(0, 0)), is(Direction.MAIN_DIAGONAL));
+    assertThat(coordinate.getDirection(this.getCoordinate(0, this.getDimension() - 1)), is(Direction.INVERSE_DIAGONAL));
+    assertThat(coordinate.getDirection(coordinate), is(Direction.NULL));
+    assertThat(coordinate.getDirection(this.getNullCoordinate()), is(Direction.NULL));
   }
 
   @Test
-  public void testGivenCoordinateWhenGetDirectionThenValues() {
-    assertThat(this.coordinate.getDirection(this.getCoordinate(0,0)), is(Direction.MAIN_DIAGONAL));
-    assertThat(this.coordinate.getDirection(this.getCoordinate(0,1)), is(Direction.VERTICAL));
-    assertThat(this.coordinate.getDirection(this.getCoordinate(0,2)), is(Direction.INVERSE_DIAGONAL));
-    assertThat(this.coordinate.getDirection(this.getCoordinate(1,0)), is(Direction.HORIZONTAL));
-    assertThat(this.coordinate.getDirection(this.coordinate), is(Direction.NULL));
-    assertThat(this.coordinate.getDirection(this.getNullCoordinate()), is(Direction.NULL));
-    assertThat(this.getNullCoordinate().getDirection(this.getNullCoordinate()), is(Direction.NULL));
-    assertThat(this.getNullCoordinate().getDirection(this.coordinate), is(Direction.NULL));
+  public void testGivenSquareBoundedCoordinateWhenReadThenCorrect() {
+    Console console = mock(Console.class);
+    try (MockedStatic<Console> staticConsole = mockStatic(Console.class)) {
+      staticConsole.when(Console::getInstance).thenReturn(console);
+      when(console.readInt(anyString())).thenReturn(this.getDimension());
+      SquaredBoundedCoordinate coordinate = this.getNullCoordinate();
+      coordinate.read("");
+      assertThat(coordinate.getRow(), is(this.getDimension() - 1));
+      assertThat(coordinate.getColumn(), is(this.getDimension() - 1));
+    }
   }
 
-  protected static final int BOUND = 3;
-  protected static final String ERROR = "ERROR";
-
-  protected SquaredBoundedCoordinate getCoordinate(int row, int column) {
-    return new SquaredBoundedCoordinate(row, column) {
-      @Override
-      public int getDimension() {
-        return SquaredBoundedCoordinateTest.BOUND;
-      }
-
-      @Override
-      protected String getErrorMessage() {
-        return SquaredBoundedCoordinateTest.ERROR;
-      }
-    };
+  @Test
+  public void testGivenSquareBoundedCoordinateWhenReadThenIncorrect() {
+    Console console = mock(Console.class);
+    try (MockedStatic<Console> staticConsole = mockStatic(Console.class)) {
+      staticConsole.when(Console::getInstance).thenReturn(console);
+      when(console.readInt(anyString())).thenReturn(this.getDimension() + 1, this.getDimension());
+      SquaredBoundedCoordinate coordinate = this.getNullCoordinate();
+      coordinate.read("");
+      verify(console).writeln(coordinate.getErrorMessage());
+    }
   }
-
-  protected SquaredBoundedCoordinate getNullCoordinate() {
-    return new SquaredBoundedCoordinate() {
-      @Override
-      public int getDimension() {
-        return SquaredBoundedCoordinateTest.BOUND;
-      }
-
-      @Override
-      protected String getErrorMessage() {
-        return SquaredBoundedCoordinateTest.ERROR;
-      }
-    };
-  }
-
-//   @Test
-//   public void testGivenCoordinateWhenReadThenValues(){
-//     int row = 1;
-//     int column = 3;
-//     Console console = mock(Console.class);
-//     when(console.readInt("")).thenReturn(0, row, 4, column);
-//     SquaredBoundedCoordinate coordinate = this.getNullCoordinate();
-//     coordinate.read("TITLE");
-//     assertThat(coordinate.getRow(), is(row - 1));
-//     assertThat(coordinate.getColumn(), is(column - 1));
-//   }
-
-  // @Test
-  // public void testGivenCoordinateWhenRandomThenValues(){
-  //   int row = 2;
-  //   int column = 0;
-  //   Random random = mock(Random.class);
-  //   when(random.nextInt(anyInt())).thenReturn(row, column);
-  //   SquaredBoundedCoordinate coordinate = this.getNullCoordinate();
-  //   coordinate.random();
-  //   assertThat(coordinate.getRow(), is(row));
-  //   assertThat(coordinate.getColumn(), is(column));
-  // }
 
 }
