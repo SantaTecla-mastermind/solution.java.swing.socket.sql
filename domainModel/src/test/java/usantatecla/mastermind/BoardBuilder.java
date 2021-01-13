@@ -15,6 +15,8 @@ public class BoardBuilder {
 
     private List<String> proposedCombinationsStrings;
 
+    private Result result;
+
     public BoardBuilder() {
         this.proposedCombinationsStrings = new ArrayList<>();
     }
@@ -48,17 +50,6 @@ public class BoardBuilder {
         return this.board;
     }
 
-    public Board build(Result result) {
-        this.board = spy(new Board());
-        if (this.proposedCombinationsStrings.isEmpty()){
-            return this.board;
-        }
-        for (String proposedCombinationsString : this.proposedCombinationsStrings) {
-            this.setProposedCombination(proposedCombinationsString,result);
-        }
-        return this.board;
-    }
-
     private void setProposedCombination(String proposedCombinationString) {
         Console console = mock(Console.class);
         try (MockedStatic<Console> staticConsole = mockStatic(Console.class)) {
@@ -66,20 +57,15 @@ public class BoardBuilder {
             when(console.readString()).thenReturn(proposedCombinationString);
             ProposedCombination proposedCombination = new ProposedCombination();
             proposedCombination.read();
+            if(this.result!=null){
+                when(this.board.getResult(proposedCombination)).thenReturn(result);
+            }
             this.board.add(proposedCombination);
         }
     }
-
-    private void setProposedCombination(String proposedCombinationString,Result result) {
-        Console console = mock(Console.class);
-        try (MockedStatic<Console> staticConsole = mockStatic(Console.class)) {
-            staticConsole.when(Console::getInstance).thenReturn(console);
-            when(console.readString()).thenReturn(proposedCombinationString);
-            ProposedCombination proposedCombination = new ProposedCombination();
-            proposedCombination.read();
-            when(this.board.getResult(proposedCombination)).thenReturn(result);
-            this.board.add(proposedCombination);
-        }
+    public BoardBuilder result(Result result){
+        this.result = result;
+        return this;
     }
 
 }
