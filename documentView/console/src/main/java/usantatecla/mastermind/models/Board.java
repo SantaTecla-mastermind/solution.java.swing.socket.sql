@@ -25,8 +25,15 @@ public class Board {
         this.attempts++;
     }
 
+    //TODO El nombre para este método ya no es el más indicado
     Result getResult(ProposedCombination proposedCombination) {
         return this.secretCombination.getResult(proposedCombination);
+    }
+
+    Result getResult(int position) {
+        assert position < this.attempts && position >= 0;
+
+        return this.results[position];
     }
 
     ProposedCombination getProposedCombination(int position) {
@@ -35,11 +42,6 @@ public class Board {
         return this.proposedCombinations[position];
     }
 
-    Result getResult(int position) {
-        assert position < this.attempts && position >= 0;
-
-        return this.results[position];
-    }
 
     public int getAttempts() {
         return this.attempts;

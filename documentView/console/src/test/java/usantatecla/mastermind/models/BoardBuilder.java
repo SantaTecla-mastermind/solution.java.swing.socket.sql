@@ -1,7 +1,5 @@
 package usantatecla.mastermind.models;
 
-import usantatecla.utils.ColorCode;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;

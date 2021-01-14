@@ -1,9 +1,6 @@
 package usantatecla.mastermind.models;
 
 import usantatecla.utils.ColorCode;
-import usantatecla.utils.Console;
-
-import java.util.ArrayList;
 
 public class ProposedCombination extends Combination {
 

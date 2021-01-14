@@ -11,7 +11,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class StartViewTest {
-
+/*
     @Mock
     Console console;
 
@@ -27,4 +27,6 @@ public class StartViewTest {
             verify(this.console, times(4)).write("*");
         }
     }
+
+ */
 }

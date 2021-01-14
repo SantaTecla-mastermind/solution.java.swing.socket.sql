@@ -15,7 +15,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ProposedCombinationViewTest {
-
+/*
     @Mock
     Console console;
 
@@ -59,6 +59,11 @@ public class ProposedCombinationViewTest {
             verify(this.console, times(3)).writeln("Repeated colors");
         }
     }
+*/
+
+
+
+
 
     /*@Test
     void testGivenEmptyProposedCombinationWhenReadValidCombinationThenContainsColors() {

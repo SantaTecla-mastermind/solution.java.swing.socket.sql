@@ -21,4 +21,8 @@ abstract class Combination {
         this.colorCodes = colorCodes;
     }
 
+    public void add(ColorCode colorCode) {
+        this.colorCodes.add(colorCode);
+    }
+
 }

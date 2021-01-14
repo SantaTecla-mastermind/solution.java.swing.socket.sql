@@ -14,15 +14,12 @@ class PlayView extends WithGameView {
             this.game.addProposedCombination(new ProposedCombinationView(new ProposedCombination()).read());
             new BoardView(this.game).write();
         } while (!this.game.isFinished());
-        this.writeWinnerOrLooser();
-    }
 
-    private void writeWinnerOrLooser() {
-        Message message = Message.LOOSER;
-        if (this.game.isWinner()) {
-            message = Message.WINNER;
+        if(this.game.isWinner()){
+            Message.WINNER.writeln();
+        } else {
+            Message.LOOSER.writeln();
         }
-        message.writeln();
     }
 
 }

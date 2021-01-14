@@ -10,7 +10,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.models.Game;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.models.Result;
-import usantatecla.mastermind.types.Color;
 import usantatecla.utils.Console;
 
 import java.util.Arrays;
@@ -22,7 +21,7 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class PlayViewTest {
-
+/*
     @Mock
     Game game;
 
@@ -67,4 +66,5 @@ public class PlayViewTest {
             assertThat(this.playView.interact(), is(false));
         }
     }
+    */
 }

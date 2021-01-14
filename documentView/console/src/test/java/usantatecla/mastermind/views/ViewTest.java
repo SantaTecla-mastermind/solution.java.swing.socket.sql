@@ -14,6 +14,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ViewTest {
+    /*
     @Mock
     Game game;
 
@@ -37,4 +38,6 @@ public class ViewTest {
             verify(this.console, times(10)).write(anyString());
         }
     }
+
+     */
 }

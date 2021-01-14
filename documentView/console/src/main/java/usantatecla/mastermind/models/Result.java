@@ -16,7 +16,6 @@ public class Result {
         assert Result.LIMITS.isIncluded(blacks);
         assert Result.LIMITS.isIncluded(whites);
 
-
         this.blacks = blacks;
         this.whites = whites;
     }

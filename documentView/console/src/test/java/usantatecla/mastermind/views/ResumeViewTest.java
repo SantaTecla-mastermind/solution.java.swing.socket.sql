@@ -1,8 +1,8 @@
 package usantatecla.mastermind.views;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -19,19 +19,20 @@ import static org.mockito.Mockito.when;
 public class ResumeViewTest {
 
     @Mock
-    Game game;
-
-    @Mock
     Console console;
 
-    @InjectMocks
     ResumeView resumeView;
+
+    @BeforeEach
+    public void beforeEach() {
+        this.resumeView = new ResumeView(new Game());
+    }
 
     @Test
     void testGivenNewGameIsFalseWhenInteractThenIsFalse() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            when(this.console.readChar(anyString())).thenReturn('n');
             console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString(anyString())).thenReturn("n");
             assertThat(this.resumeView.interact(), is(false));
         }
 
@@ -40,8 +41,8 @@ public class ResumeViewTest {
     @Test
     void testGivenNewGameIsTrueWhenInteractThenIsTrue() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            when(this.console.readChar(anyString())).thenReturn('y');
             console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString(anyString())).thenReturn("y");
             assertThat(this.resumeView.interact(), is(true));
         }
     }
