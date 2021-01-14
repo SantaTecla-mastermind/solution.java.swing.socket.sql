@@ -35,7 +35,7 @@ public class YesNoDialog {
 		return Character.toLowerCase(this.answer.charAt(0));
 	}
 
-	private boolean isNegative() {
+	public boolean isNegative() {
 		return this.getAnswer() == YesNoDialog.NEGATIVE;
 	}
 

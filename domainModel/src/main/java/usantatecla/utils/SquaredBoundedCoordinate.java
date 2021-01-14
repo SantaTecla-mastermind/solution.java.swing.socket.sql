@@ -44,7 +44,7 @@ public abstract class SquaredBoundedCoordinate {
 		return this.adaptee.getDirection(coordinate.adaptee);
 	}
 
-	private boolean inInverseDiagonal() {
+	public boolean inInverseDiagonal() {
 		ConcreteCoordinate coordinate = (ConcreteCoordinate) this.adaptee;
 		return coordinate.getRow() + coordinate.getColumn() == this.getDimension() - 1;
 	}
