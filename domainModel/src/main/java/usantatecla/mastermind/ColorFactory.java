@@ -14,7 +14,8 @@ public class ColorFactory {
             ColorCode.YELLOW,
             ColorCode.BLUE,
             ColorCode.MAGENTA,
-            ColorCode.CYAN
+            ColorCode.CYAN,
+            //ColorCode.NULL
     };
 
     private static ColorFactory instance = new ColorFactory();

@@ -8,9 +8,9 @@ class SecretCombination extends Combination {
     SecretCombination() {
         super();
         this.colorCodes = ColorFactory.getInstance().getAllColorCodes();
-        int x = this.colorCodes.size() - Result.WIDTH;
+        int removeColors = this.colorCodes.size() - Result.WIDTH;
         Random random = new Random(System.currentTimeMillis());
-        for (int i = 0; i < x; i++) {
+        for (int i = 0; i < removeColors; i++) {
             this.colorCodes.remove(random.nextInt(this.colorCodes.size()));
         }
         Collections.shuffle(this.colorCodes);

@@ -35,23 +35,15 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardWhenAddThenCorrect() {
-        List<ColorCode> colorCodes = ColorFactory.getInstance().getColorCodes("rgby");
-        Board board = new BoardBuilder().proposedCombinations("rgby").build();
+        String colors = "rgby";
+        Board board = new BoardBuilder().proposedCombinations(colors).build();
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             board.write();
-            for (ColorCode colorCode : colorCodes) {
+            for (ColorCode colorCode : ColorFactory.getInstance().getColorCodes(colors)) {
                 verify(this.console).write(colorCode.get() + colorCode.getInitial() + ColorCode.RESET_COLOR.get());
             }
         }
-    }
-
-    private String getCombinationString(ColorCode[] colorCodes) {
-        String initials = "";
-        for (ColorCode colorCode : colorCodes) {
-            initials += colorCode.getInitial();
-        }
-        return initials;
     }
 
     @Test
@@ -96,9 +88,11 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardAndPut10TokensWhenIsFinishedThenTrue(){
-        Board board = new BoardBuilder()
-                .proposedCombinations(10,"rgby")
-                .build();
+        BoardBuilder boardBuilder = new BoardBuilder();
+        for(int i=0;i<10;i++){
+            boardBuilder.proposedCombinations("rgby");
+        }
+        Board board = boardBuilder.build();
 
         assertThat(board.isFinished(),is(true));
     }
@@ -114,14 +108,14 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardWhenWriteThenPrint() {
-        List<ColorCode> colorCodes = ColorFactory.getInstance().getColorCodes("rgby");
-        Board board = new BoardBuilder().proposedCombinations(2, "rgby").build();
+        String colors = "rgby";
+        Board board = new BoardBuilder().proposedCombinations(2, colors).build();
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             board.write();
-            for (ColorCode colorCode : colorCodes) {
-                verify(this.console).writeln("2 attempt(s): ");
-                verify(this.console).writeln("****");
+            verify(this.console).writeln("2 attempt(s): ");
+            verify(this.console).writeln(Message.SECRET_COMBINATION.toString());
+            for (ColorCode colorCode : ColorFactory.getInstance().getColorCodes(colors)) {
                 verify(this.console, times(2)).write(colorCode.get() + colorCode.getInitial() + ColorCode.RESET_COLOR.get());
             }
         }

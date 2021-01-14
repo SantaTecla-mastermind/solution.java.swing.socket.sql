@@ -11,13 +11,13 @@ public class Board {
     private int attempts;
 
     Board() {
+        this.proposedCombinations = new ProposedCombination[Board.MAX_ATTEMPTS];
+        this.results = new Result[Board.MAX_ATTEMPTS];
         this.reset();
     }
 
     void reset() {
         this.secretCombination = new SecretCombination();
-        this.proposedCombinations = new ProposedCombination[Board.MAX_ATTEMPTS];
-        this.results = new Result[Board.MAX_ATTEMPTS];
         this.attempts = 0;
     }
 
