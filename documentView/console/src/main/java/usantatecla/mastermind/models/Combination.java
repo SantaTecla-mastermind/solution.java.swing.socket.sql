@@ -1,22 +1,24 @@
 package usantatecla.mastermind.models;
 
-import usantatecla.mastermind.types.Color;
+import usantatecla.utils.ColorCode;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Combination {
+abstract class Combination {
 
-    private static final int WIDTH = 4;
-
-    List<Color> colors;
+    protected List<ColorCode> colorCodes;
 
     protected Combination() {
-        this.colors = new ArrayList<>();
+        this.colorCodes = new ArrayList<>();
     }
 
-    public static int getWidth() {
-        return Combination.WIDTH;
+    public List<ColorCode> getColorCodes() {
+        return colorCodes;
+    }
+
+    public void setColorCodes(List<ColorCode> colorCodes) {
+        this.colorCodes = colorCodes;
     }
 
 }

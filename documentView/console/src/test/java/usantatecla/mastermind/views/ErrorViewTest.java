@@ -37,4 +37,13 @@ public class ErrorViewTest {
             verify(this.console, never()).writeln(anyString());
         }
     }
+
+    /*@Test
+    public void testGivenErrorWhenWritelnThenWrite() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            Error.DUPLICATED.writeln();
+            verify(this.console).writeln("Repeated colorFactories");
+        }
+    }*/
 }

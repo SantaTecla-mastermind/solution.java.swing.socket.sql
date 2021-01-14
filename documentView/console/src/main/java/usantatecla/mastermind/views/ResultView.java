@@ -12,8 +12,7 @@ class ResultView {
     }
 
     void writeln() {
-        Console.getInstance().writeln(Message.RESULT.getMessage().replaceFirst("#blacks", "" + this.result.getBlacks())
-                .replaceFirst("#whites", "" + this.result.getWhites()));
+        Message.RESULT.writeln(this.result.getBlacks(), this.result.getWhites());
     }
 
 }

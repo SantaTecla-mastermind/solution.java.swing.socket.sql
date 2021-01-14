@@ -59,4 +59,86 @@ public class ProposedCombinationViewTest {
             verify(this.console, times(3)).writeln("Repeated colors");
         }
     }
+
+    /*@Test
+    void testGivenEmptyProposedCombinationWhenReadValidCombinationThenContainsColors() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            String colors = "rgby";
+            when(this.console.readString()).thenReturn(colors);
+            this.proposedCombination.read();
+            List<ColorCode> colorCodes = ColorFactory.getInstance().getColorCodes(colors);
+            for (int i = 0; i < colorCodes.size(); i++) {
+                assertThat(this.proposedCombination.contains(colorCodes.get(i), i), is(true));
+            }
+        }
+    }
+
+    @Test
+    void testGivenEmptyProposedCombinationWhenReadNotValidCombinationThenRequestCombination() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString()).thenReturn("rgbl", "rgby");
+            this.proposedCombination.read();
+            verify(this.console, times(2)).readString();
+        }
+    }
+
+    @Test
+    void testGivenEmptyProposedCombinationWhenReadNotValidSizeCombinationThenRequestCombination() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString()).thenReturn("rgbym", "rgby");
+            this.proposedCombination.read();
+            verify(this.console, times(2)).readString();
+        }
+    }
+
+    @Test
+    void testGivenEmptyProposedCombinationWhenReadRepeatCombinationThenRequestCombination() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString()).thenReturn("rbry", "rgby");
+            this.proposedCombination.read();
+            verify(this.console, times(2)).readString();
+        }
+    }*/
+
+    /*@Test
+    void testGivenColorsInProposedCombinationWhenColorIsContainedThenIsTrue() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            String colors = "rgby";
+            when(this.console.readString()).thenReturn(colors);
+            this.proposedCombination.read();
+            for (ColorCode colorCode : ColorFactory.getInstance().getColorCodes(colors)) {
+                assertThat(this.proposedCombination.contains(colorCode), is(true));
+            }
+        }
+    }
+
+    @Test
+    void testGivenColorsInProposedCombinationWhenColorIsContainedByPositionOutOfSizeThenIsAssert() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString()).thenReturn("rgby");
+            this.proposedCombination.read();
+            Assertions.assertThrows(AssertionError.class, () -> this.proposedCombination.contains(ColorCode.RED, 10));
+        }
+    }
+
+    @Test
+    void testGivenProposedCombinationWhenWriteThenWriteColors() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            String colors = "rgby";
+            when(this.console.readString()).thenReturn(colors);
+            this.proposedCombination.read();
+            this.proposedCombination.write();
+            for (ColorCode colorCode : ColorFactory.getInstance().getColorCodes(colors)) {
+                verify(this.console, times(1)).write(colorCode.get() + colorCode.getInitial() + ColorCode.RESET_COLOR.get());
+            }
+        }
+
+    }*/
 }

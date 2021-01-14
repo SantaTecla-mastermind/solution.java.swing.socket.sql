@@ -7,22 +7,21 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.models.Game;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.models.Result;
+import usantatecla.mastermind.types.Color;
 import usantatecla.utils.Console;
 
 import java.util.Arrays;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class ProposalViewTest {
+public class PlayViewTest {
 
     @Mock
     Game game;
@@ -37,7 +36,7 @@ public class ProposalViewTest {
     Result result;
 
     @InjectMocks
-    ProposalView proposalView;
+    PlayView playView;
 
     @BeforeEach
     void before() {
@@ -55,7 +54,7 @@ public class ProposalViewTest {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             when(this.game.isWinner()).thenReturn(true);
             console.when(Console::getInstance).thenReturn(this.console);
-            assertThat(this.proposalView.interact(), is(true));
+            assertThat(this.playView.interact(), is(true));
         }
     }
 
@@ -65,7 +64,7 @@ public class ProposalViewTest {
             when(this.game.isWinner()).thenReturn(false);
             when(this.game.isLooser()).thenReturn(false);
             console.when(Console::getInstance).thenReturn(this.console);
-            assertThat(this.proposalView.interact(), is(false));
+            assertThat(this.playView.interact(), is(false));
         }
     }
 }

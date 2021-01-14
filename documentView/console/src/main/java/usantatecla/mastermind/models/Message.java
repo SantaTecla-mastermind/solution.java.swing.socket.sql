@@ -1,4 +1,4 @@
-package usantatecla.mastermind.views;
+package usantatecla.mastermind.models;
 
 import usantatecla.utils.Console;
 
@@ -39,7 +39,7 @@ enum Message {
     }
 
     @Override
-    public String toString() {
+    public String toString(){
         return this.message;
     }
 

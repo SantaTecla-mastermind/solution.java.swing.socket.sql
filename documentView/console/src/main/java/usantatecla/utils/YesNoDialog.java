@@ -2,36 +2,41 @@ package usantatecla.utils;
 
 public class YesNoDialog {
 
-	private static final char AFIRMATIVE = 'y';
+	private static final char AFFIRMATIVE = 'y';
 	private static final char NEGATIVE = 'n';
-	private static final String QUESTION = "? ("+YesNoDialog.AFIRMATIVE+"/"+YesNoDialog.NEGATIVE+"): ";
-	private static final String MESSAGE = "The value must be '" + YesNoDialog.AFIRMATIVE + "' or '"
-			+ YesNoDialog.NEGATIVE + "'";
+	private static final String SUFFIX = "? (" +
+			YesNoDialog.AFFIRMATIVE+"/" +
+			YesNoDialog.NEGATIVE+"): ";
+	private static final String MESSAGE = "The value must be '" +
+			YesNoDialog.AFFIRMATIVE + "' or '" +
+			YesNoDialog.NEGATIVE + "'";
+	private String answer;
 
-	boolean read(String title) {
-		assert title != null;
-		char answer;
+	public void read(String message) {
+		assert message != null;
+
+		Console console = Console.getInstance();
 		boolean ok;
 		do {
-			answer = Console.getInstance().readChar(title + YesNoDialog.QUESTION);
-			ok = YesNoDialog.isAfirmative(answer) || YesNoDialog.isNegative(answer);
+			console.write(message);
+			this.answer = console.readString(YesNoDialog.SUFFIX);
+			ok = this.isAffirmative() || this.isNegative();
 			if (!ok) {
-				Console.getInstance().writeln(YesNoDialog.MESSAGE);
+				console.writeln(YesNoDialog.MESSAGE);
 			}
 		} while (!ok);
-		return YesNoDialog.isAfirmative(answer);
 	}
 
-	public boolean read() {
-		return this.read("");
+	public boolean isAffirmative() {
+		return this.getAnswer() == YesNoDialog.AFFIRMATIVE;
 	}
 
-	private static boolean isAfirmative(char answer) {
-		return Character.toLowerCase(answer) == YesNoDialog.AFIRMATIVE;
+	private char getAnswer(){
+		return Character.toLowerCase(this.answer.charAt(0));
 	}
 
-	private static boolean isNegative(char answer) {
-		return Character.toLowerCase(answer) == YesNoDialog.NEGATIVE;
+	public boolean isNegative() {
+		return this.getAnswer() == YesNoDialog.NEGATIVE;
 	}
 
 }

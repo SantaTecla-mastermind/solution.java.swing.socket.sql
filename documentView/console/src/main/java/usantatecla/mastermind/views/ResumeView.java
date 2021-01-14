@@ -11,12 +11,12 @@ class ResumeView extends WithGameView {
     }
 
     boolean interact() {
-        Console.getInstance().write(Message.RESUME.getMessage());
-        boolean newGame = new YesNoDialog().read();
-        if (newGame) {
+        YesNoDialog yesNoDialog = new YesNoDialog();
+        yesNoDialog.read(Message.RESUME.toString());
+        if (yesNoDialog.isAffirmative()) {
             this.game.reset();
         }
-        return newGame;
+        return yesNoDialog.isAffirmative();
     }
 
 }

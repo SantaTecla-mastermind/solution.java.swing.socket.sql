@@ -1,16 +1,15 @@
 package usantatecla.utils;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Console {
 
-	private static Console console = new Console();
-
+	private static Console instance = new Console();
+	
 	public static Console getInstance() {
-		return console;
+		return instance;
 	}
-
+	
 	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
 	public String readString(String title) {
@@ -37,7 +36,6 @@ public class Console {
 			} catch (Exception ex) {
 				this.writeError("integer");
 			}
-			assert ok;
 		} while (!ok);
 		return input;
 	}
@@ -53,13 +51,8 @@ public class Console {
 				charValue = input.charAt(0);
 				ok = true;
 			}
-			assert ok;
 		} while (!ok);
 		return charValue;
-	}
-
-	public void writeln() {
-		System.out.println();
 	}
 
 	public void write(String string) {
@@ -70,16 +63,20 @@ public class Console {
 		System.out.print(integer);
 	}
 
+	public void write(char character) {
+		System.out.print(character);
+	}
+
+	public void writeln() {
+		System.out.println();
+	}
+
 	public void writeln(String string) {
 		System.out.println(string);
 	}
 
 	public void writeln(int integer) {
 		System.out.println(integer);
-	}
-
-	public void write(char character) {
-		System.out.print(character);
 	}
 
 	public void writeError(String format) {

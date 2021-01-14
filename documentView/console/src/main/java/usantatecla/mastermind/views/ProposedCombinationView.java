@@ -1,10 +1,13 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.mastermind.types.Color;
-import usantatecla.mastermind.types.Error;
-import usantatecla.mastermind.models.Combination;
+import usantatecla.mastermind.models.ColorFactory;
 import usantatecla.mastermind.models.ProposedCombination;
+import usantatecla.mastermind.models.Result;
+import usantatecla.utils.ColorCode;
+import usantatecla.mastermind.types.Error;
 import usantatecla.utils.Console;
+
+import java.util.ArrayList;
 
 class ProposedCombinationView {
 
@@ -14,40 +17,43 @@ class ProposedCombinationView {
         this.proposedCombination = proposedCombination;
     }
 
-    void write() {
-        for (Color color : this.proposedCombination.getColors()) {
-            new ColorView(color).write();
-        }
-    }
-
-    void read() {
+    ProposedCombination read() {
         Error error;
         do {
-            error = Error.NULL;
-            Console.getInstance().write(Message.PROPOSED_COMBINATION.getMessage());
-            String characters = Console.getInstance().readString();
-
-            if (characters.length() > Combination.getWidth() || characters.length() < Combination.getWidth()) {
-                error = Error.WRONG_LENGTH;
-            } else {
-                for (int i = 0; i < characters.length(); i++) {
-                    Color color = ColorView.getInstance(characters.charAt(i));
-                    if (color.isNull()) {
-                        error = Error.WRONG_CHARACTERS;
-                    } else {
-                        if (this.proposedCombination.getColors().contains(color)) {
-                            error = Error.DUPLICATED;
-                        } else {
-                            this.proposedCombination.getColors().add(color);
-                        }
-                    }
-                }
-            }
+            Message.PROPOSED_COMBINATION.write();
+            error = this.getColorCodesError();
+            new ErrorView(error).writeln();
             if (!error.isNull()) {
-                new ErrorView(error).writeln();
-                this.proposedCombination.getColors().clear();
+                this.proposedCombination.setColorCodes(new ArrayList<>());
             }
         } while (!error.isNull());
+        return this.proposedCombination;
+    }
+
+    private Error getColorCodesError() {
+        String characters = Console.getInstance().readString().toLowerCase();
+        if (characters.length() != Result.WIDTH) {
+            return Error.WRONG_LENGTH;
+        }
+        for (int i = 0; i < characters.length(); i++) {
+            ColorCode colorCode = ColorFactory.getInstance().getColorCode(characters.charAt(i));
+            if (colorCode.isNull()) {
+                return Error.WRONG_CHARACTERS;
+            }
+            for (int j = 0; j < i; j++) {
+                if (this.proposedCombination.getColorCodes().get(j) == colorCode) {
+                    return Error.DUPLICATED;
+                }
+            }
+            this.proposedCombination.getColorCodes().add(colorCode);
+        }
+        return Error.NULL;
+    }
+
+    void write() {
+        for (ColorCode colorCode : this.proposedCombination.getColorCodes()) {
+            colorCode.write();
+        }
     }
 
 }

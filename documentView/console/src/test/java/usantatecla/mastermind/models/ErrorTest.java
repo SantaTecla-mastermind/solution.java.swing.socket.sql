@@ -1,24 +1,26 @@
 package usantatecla.mastermind.models;
 
 import org.junit.jupiter.api.Test;
-import usantatecla.mastermind.types.Error;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.MockedStatic;
+import org.mockito.junit.jupiter.MockitoExtension;
+import usantatecla.utils.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.verify;
 
+@ExtendWith(MockitoExtension.class)
 public class ErrorTest {
 
-    Error error;
+    @Mock
+    Console console;
 
     @Test
-    void testGivenNullErrorWhenIsNullThenReturnsTrue() {
-        this.error = Error.NULL;
-        assertThat(this.error.isNull(), is(true));
+    public void testGivenNullErrorWhenIsNullThenTrue() {
+        assertThat(Error.NULL.isNull(), is(true));
     }
 
-    @Test
-    void testGivenNotNullErrorWhenIsNullThenReturnsFalse() {
-        this.error = Error.DUPLICATED;
-        assertThat(this.error.isNull(), is(false));
-    }
 }

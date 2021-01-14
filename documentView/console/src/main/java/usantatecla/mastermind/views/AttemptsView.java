@@ -1,7 +1,6 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.utils.Console;
-
+//TODO Eliminar?
 class AttemptsView {
 
     private int attempts;
@@ -11,6 +10,6 @@ class AttemptsView {
     }
 
     void writeln() {
-        Console.getInstance().writeln(Message.ATTEMPTS.getMessage().replace("#attempts", "" + this.attempts));
+        Message.ATTEMPTS.writeln(this.attempts);
     }
 }
