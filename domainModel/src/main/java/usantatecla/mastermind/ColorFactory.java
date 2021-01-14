@@ -43,9 +43,9 @@ public class ColorFactory {
 
     List<ColorCode> getColorCodes(String initials) {
         List<ColorCode> colorCodes = new ArrayList<>();
-        for (char c : initials.toCharArray()){
-            if(getColorCode(c)!=ColorCode.NULL){
-                colorCodes.add(getColorCode(c));
+        for (char initial : initials.toCharArray()){
+            if(!this.getColorCode(initial).isNull()){
+                colorCodes.add(getColorCode(initial));
             }
         }
         return colorCodes;
