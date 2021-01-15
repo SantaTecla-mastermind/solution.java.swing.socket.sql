@@ -8,18 +8,18 @@ public class Board {
     private Result[] results;
     private int attempts;
 
-    Board() {
+    public Board() {
         this.proposedCombinations = new ProposedCombination[Board.MAX_ATTEMPTS];
         this.results = new Result[Board.MAX_ATTEMPTS];
         this.reset();
     }
 
-    void reset() {
+    public void reset() {
         this.secretCombination = new SecretCombination();
         this.attempts = 0;
     }
 
-    void add(ProposedCombination proposedCombination) {
+    public void add(ProposedCombination proposedCombination) {
         this.proposedCombinations[this.attempts] = proposedCombination;
         this.results[this.attempts] = this.getResult(proposedCombination);
         this.attempts++;
@@ -29,13 +29,13 @@ public class Board {
         return this.secretCombination.getResult(proposedCombination);
     }
 
-    Result getResult(int position) {
+    public Result getResult(int position) {
         assert position < this.attempts && position >= 0;
 
         return this.results[position];
     }
 
-    ProposedCombination getProposedCombination(int position) {
+    public ProposedCombination getProposedCombination(int position) {
         assert position < this.attempts && position >= 0;
 
         return this.proposedCombinations[position];
@@ -46,11 +46,11 @@ public class Board {
         return this.attempts;
     }
 
-    boolean isFinished() {
+    public boolean isFinished() {
         return this.isWinner() || this.isLooser();
     }
 
-    boolean isWinner() {
+    public boolean isWinner() {
         return this.results[this.attempts - 1].isWinner();
     }
 

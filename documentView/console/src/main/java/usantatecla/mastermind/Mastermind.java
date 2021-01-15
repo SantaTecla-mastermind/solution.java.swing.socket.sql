@@ -1,6 +1,6 @@
 package usantatecla.mastermind;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.View;
 
 public class Mastermind {
@@ -8,7 +8,7 @@ public class Mastermind {
 	private final View view;
 
 	private Mastermind() {
-		this.view = new View(new Game());
+		this.view = new View(new Board());
 	}
 
 	private void play() {

@@ -1,16 +1,16 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
 
-class StartView extends WithGameView {
+class StartView extends WithBoardView {
 
-    StartView(Game game) {
-        super(game);
+    StartView(Board board) {
+        super(board);
     }
 
     void interact() {
         Message.TITLE.writeln();
-        new BoardView(this.game).write();
+        new BoardView(this.board).write();
     }
 
 }

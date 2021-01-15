@@ -1,23 +1,10 @@
 package usantatecla.mastermind.views;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.models.Game;
-import usantatecla.mastermind.models.ProposedCombination;
-import usantatecla.mastermind.models.Result;
-import usantatecla.utils.Console;
-
-import java.util.Arrays;
 
 import static org.hamcrest.Matchers.is;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class PlayViewTest {
