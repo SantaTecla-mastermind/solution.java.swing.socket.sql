@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
 import usantatecla.utils.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -25,7 +25,7 @@ public class ResumeViewTest {
 
     @BeforeEach
     public void beforeEach() {
-        this.resumeView = new ResumeView(new Game());
+        this.resumeView = new ResumeView(new Board());
     }
 
     @Test

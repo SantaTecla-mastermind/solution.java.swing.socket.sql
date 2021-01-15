@@ -1,21 +1,21 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.models.ProposedCombination;
 
-class PlayView extends WithGameView {
+class PlayView extends WithBoardView {
 
-    PlayView(Game game) {
-        super(game);
+    PlayView(Board board) {
+        super(board);
     }
 
     void interact() {
         do {
-            this.game.addProposedCombination(new ProposedCombinationView(new ProposedCombination()).read());
-            new BoardView(this.game).write();
-        } while (!this.game.isFinished());
+            this.board.add(new ProposedCombinationView(new ProposedCombination()).read());
+            new BoardView(this.board).write();
+        } while (!this.board.isFinished());
 
-        if(this.game.isWinner()){
+        if(this.board.isWinner()){
             Message.WINNER.writeln();
         } else {
             Message.LOOSER.writeln();

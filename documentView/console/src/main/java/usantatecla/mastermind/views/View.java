@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
 
 public class View {
 
@@ -8,10 +8,10 @@ public class View {
 	private PlayView playView;
 	private ResumeView resumeView;
 
-	public View(Game game) {
-		this.startView = new StartView(game);
-		this.playView = new PlayView(game);
-		this.resumeView = new ResumeView(game);
+	public View(Board board) {
+		this.startView = new StartView(board);
+		this.playView = new PlayView(board);
+		this.resumeView = new ResumeView(board);
 	}
 
 	public void interact() {

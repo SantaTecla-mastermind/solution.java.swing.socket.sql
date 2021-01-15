@@ -1,19 +1,19 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
 import usantatecla.utils.YesNoDialog;
 
-class ResumeView extends WithGameView {
+class ResumeView extends WithBoardView {
 
-    ResumeView(Game game) {
-        super(game);
+    ResumeView(Board board) {
+        super(board);
     }
 
     boolean interact() {
         YesNoDialog yesNoDialog = new YesNoDialog();
         yesNoDialog.read(Message.RESUME.toString());
         if (yesNoDialog.isAffirmative()) {
-            this.game.reset();
+            this.board.reset();
         }
         return yesNoDialog.isAffirmative();
     }
