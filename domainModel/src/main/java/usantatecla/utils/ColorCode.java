@@ -29,7 +29,7 @@ public enum ColorCode {
     }
 
     public static String get(int index) {
-        assert index >= 0 &&  index < ColorCode.NULL.ordinal();
+        assert index >= 0 &&  index <= ColorCode.NULL.ordinal();
 
         return ColorCode.values()[index].get();
     }

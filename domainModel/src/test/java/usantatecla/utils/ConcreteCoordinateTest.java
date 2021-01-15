@@ -26,7 +26,7 @@ public class ConcreteCoordinateTest {
     @BeforeEach
     public void beforeEach() {
         this.row = 270;
-        this.column = -167;
+        this.column = 270;
         this.coordinate = new ConcreteCoordinate(row, column);
     }
 
@@ -45,18 +45,17 @@ public class ConcreteCoordinateTest {
         assertThat(this.coordinate.getDirection(Coordinate.NULL), is(Direction.NULL));
     }
 
-    //TODO cambiar con row y column
     @Test
     public void testGivenCoordinateWhenInHorizontalThenValue() {
-        assertThat(this.coordinate.inHorizontal(new ConcreteCoordinate(1, 2)), is(true));
-        assertThat(this.coordinate.inHorizontal(new ConcreteCoordinate(0, 0)), is(false));
+        assertThat(this.coordinate.inHorizontal(new ConcreteCoordinate(row, column+1)), is(true));
+        assertThat(this.coordinate.inHorizontal(new ConcreteCoordinate(row-1, column-1)), is(false));
         assertThat(this.coordinate.inHorizontal(Coordinate.NULL), is(false));
     }
 
     @Test
     public void testGivenCoordinateWhenInVerticalThenValue() {
-        assertThat(this.coordinate.inVertical(new ConcreteCoordinate(1, 0)), is(false));
-        assertThat(this.coordinate.inVertical(new ConcreteCoordinate(2, 1)), is(true));
+        assertThat(this.coordinate.inVertical(new ConcreteCoordinate(row, column-1)), is(false));
+        assertThat(this.coordinate.inVertical(new ConcreteCoordinate(row+1, column)), is(true));
         assertThat(this.coordinate.inVertical(Coordinate.NULL), is(false));
     }
 
@@ -82,14 +81,14 @@ public class ConcreteCoordinateTest {
 
     @Test
     public void testGivenCoordinateWhenIsEqualsThenReturn() {
-        assertThat(this.coordinate.equals(new ConcreteCoordinate(1, 1)), is(true));
-        assertThat(this.coordinate.equals(new ConcreteCoordinate(0, 1)), is(false));
+        assertThat(this.coordinate.equals(new ConcreteCoordinate(row, column)), is(true));
+        assertThat(this.coordinate.equals(new ConcreteCoordinate(row-1, column)), is(false));
         assertThat(this.coordinate.equals(Coordinate.NULL), is(false));
     }
 
     @Test
     public void testGivenCoordinateWhenToStringThenReturn() {
-        assertThat(this.coordinate.toString(), is("Coordinate (1, 1)"));
+        assertThat(this.coordinate.toString(), is("Coordinate ("+row+", "+column+")"));
     }
 
 }
