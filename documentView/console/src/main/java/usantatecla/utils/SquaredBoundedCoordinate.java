@@ -49,7 +49,7 @@ public abstract class SquaredBoundedCoordinate {
 		return coordinate.getRow() + coordinate.getColumn() == this.getDimension() - 1;
 	}
 
-	//TODO Read por consola e imprimir el mensaje de error, ¿abstracción para diferentes implementaciones de vistas?
+	//TODO SquaredBoundedCoordinateView
 	public void read(String message) {
 		assert message != null;
 

@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views;
 
-//TODO Eliminar?
+//TODO Eliminar
 class AttemptsView {
 
     private int attempts;

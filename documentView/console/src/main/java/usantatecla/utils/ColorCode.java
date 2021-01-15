@@ -42,6 +42,7 @@ public enum ColorCode {
         return this == ColorCode.NULL;
     }
 
+    //TODO ColorCodeView
     public void write() {
         if (!this.isNull()) {
             Console.getInstance().write(

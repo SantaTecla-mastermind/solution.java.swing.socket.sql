@@ -3,6 +3,7 @@ package usantatecla.mastermind.views;
 import usantatecla.mastermind.models.Result;
 import usantatecla.utils.Console;
 
+//TODO Eliminar
 class ResultView {
 
     private Result result;

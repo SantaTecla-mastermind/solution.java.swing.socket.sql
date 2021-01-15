@@ -1,6 +1,6 @@
 package usantatecla.mastermind.models;
 
-//TODO Game únicamente actúa de fachada, ¿está bien así? ¿Tests?
+//TODO Eliminar Game
 public class Game {
 
     private Board board;

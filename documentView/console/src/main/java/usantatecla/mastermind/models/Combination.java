@@ -13,16 +13,4 @@ abstract class Combination {
         this.colorCodes = new ArrayList<>();
     }
 
-    public List<ColorCode> getColorCodes() {
-        return colorCodes;
-    }
-
-    public void setColorCodes(List<ColorCode> colorCodes) {
-        this.colorCodes = colorCodes;
-    }
-
-    public void add(ColorCode colorCode) {
-        this.colorCodes.add(colorCode);
-    }
-
 }

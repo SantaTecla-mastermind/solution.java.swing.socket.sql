@@ -18,7 +18,6 @@ enum Message {
         this.message = message;
     }
 
-    //TODO ¿Debería tener métodos para escribirse a sí mismo por consola?
     void write() {
         Console.getInstance().write(this.message);
     }

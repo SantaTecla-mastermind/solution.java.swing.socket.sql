@@ -9,7 +9,7 @@ public class View {
 	private ResumeView resumeView;
 
 	public View(Game game) {
-		this.startView = new StartView();
+		this.startView = new StartView(game);
 		this.playView = new PlayView(game);
 		this.resumeView = new ResumeView(game);
 	}

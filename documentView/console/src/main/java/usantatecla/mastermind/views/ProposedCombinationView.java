@@ -24,7 +24,7 @@ class ProposedCombinationView {
             error = this.getColorCodesError();
             new ErrorView(error).writeln();
             if (!error.isNull()) {
-                this.proposedCombination.setColorCodes(new ArrayList<>()); // TODO ¿setColorCodes o reset?
+                this.proposedCombination.reset();
             }
         } while (!error.isNull());
         return this.proposedCombination;
@@ -45,7 +45,7 @@ class ProposedCombinationView {
                     return Error.DUPLICATED;
                 }
             }
-            this.proposedCombination.add(colorCode); //TODO Bajo demanda se ha añadido metodo add en Combination
+            this.proposedCombination.add(colorCode);
         }
         return Error.NULL;
     }

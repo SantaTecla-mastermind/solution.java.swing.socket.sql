@@ -25,7 +25,6 @@ public class Board {
         this.attempts++;
     }
 
-    //TODO El nombre para este método ya no es el más indicado
     Result getResult(ProposedCombination proposedCombination) {
         return this.secretCombination.getResult(proposedCombination);
     }
