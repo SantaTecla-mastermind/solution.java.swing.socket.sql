@@ -37,7 +37,8 @@ public class ColorCodeTest {
 
     @Test
     public void testGivenIndexWhenCallGetColorByIndexThenReturnCorrectStringColor() {
-        assertThat(ColorCode.get(0), is("\u001B[30m"));
+        assertThat(ColorCode.get(0), is(ColorCode.BLACK.get()));
+        assertThat(ColorCode.values().length, is(ColorCode.NULL.get()));
     }
 
     @Test

@@ -80,7 +80,7 @@ public class Console {
 	}
 
 	public void writeError(String format) {
-		System.out.println("FORMAT ERROR! " + "Enter a " + format + " formatted value.");
+		System.out.println("FORMAT ERROR! Enter a " + format + " formatted value.");
 	}
 
 }
