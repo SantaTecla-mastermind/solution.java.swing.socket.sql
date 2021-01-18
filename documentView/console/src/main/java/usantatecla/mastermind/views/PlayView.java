@@ -1,7 +1,6 @@
 package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.ProposedCombination;
 
 class PlayView extends WithBoardView {
 
@@ -11,8 +10,8 @@ class PlayView extends WithBoardView {
 
     void interact() {
         do {
-            this.board.add(new ProposedCombinationView(new ProposedCombination()).read());
-            new BoardView(this.board).write();
+            this.board.add(new ProposedCombinationView().read());
+            new BoardView().write(this.board);
         } while (!this.board.isFinished());
 
         if(this.board.isWinner()){

@@ -3,20 +3,16 @@ package usantatecla.mastermind.views;
 import usantatecla.mastermind.models.Board;
 import usantatecla.utils.Console;
 
-class BoardView extends WithBoardView {
+class BoardView {
 
-    BoardView(Board board) {
-        super(board);
-    }
-
-    void write() {
+    void write(Board board) {
         Console.getInstance().writeln();
-        int attempts = this.board.getAttempts();
+        int attempts = board.getAttempts();
         Message.ATTEMPTS.writeln(attempts);
         Message.SECRET_COMBINATION.writeln();
         for (int i = 0; i < attempts; i++) {
-            new ProposedCombinationView(this.board.getProposedCombination(i)).write();
-            Message.RESULT.writeln(this.board.getResult(i).getBlacks(), this.board.getResult(i).getWhites());
+            new ProposedCombinationView().write(board.getProposedCombination(i));
+            Message.RESULT.writeln(board.getResult(i).getBlacks(), board.getResult(i).getWhites());
         }
     }
 

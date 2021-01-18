@@ -1,57 +1,28 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.mastermind.models.ColorFactory;
 import usantatecla.mastermind.models.ProposedCombination;
-import usantatecla.mastermind.models.Result;
-import usantatecla.utils.ColorCode;
 import usantatecla.mastermind.types.Error;
+import usantatecla.utils.ColorCode;
 import usantatecla.utils.Console;
-
-import java.util.ArrayList;
 
 class ProposedCombinationView {
 
-    private ProposedCombination proposedCombination;
-
-    ProposedCombinationView(ProposedCombination proposedCombination) {
-        this.proposedCombination = proposedCombination;
-    }
-
     ProposedCombination read() {
         Error error;
+        ProposedCombination proposedCombination = new ProposedCombination();
         do {
-            Message.PROPOSED_COMBINATION.write();
-            error = this.getColorCodesError();
-            new ErrorView(error).writeln();
+            String characters = Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase();
+            error = proposedCombination.getColorCodesError(characters);
+            new ErrorView().writeln(error);
             if (!error.isNull()) {
-                this.proposedCombination.reset();
+                proposedCombination.reset();
             }
         } while (!error.isNull());
-        return this.proposedCombination;
+        return proposedCombination;
     }
 
-    private Error getColorCodesError() {
-        String characters = Console.getInstance().readString().toLowerCase();
-        if (characters.length() != Result.WIDTH) {
-            return Error.WRONG_LENGTH;
-        }
-        for (int i = 0; i < characters.length(); i++) {
-            ColorCode colorCode = ColorFactory.getInstance().getColorCode(characters.charAt(i));
-            if (colorCode.isNull()) {
-                return Error.WRONG_CHARACTERS;
-            }
-            for (int j = 0; j < i; j++) {
-                if (this.proposedCombination.getColorCodes().get(j) == colorCode) {
-                    return Error.DUPLICATED;
-                }
-            }
-            this.proposedCombination.add(colorCode);
-        }
-        return Error.NULL;
-    }
-
-    void write() {
-        for (ColorCode colorCode : this.proposedCombination.getColorCodes()) {
+    void write(ProposedCombination proposedCombination) {
+        for (ColorCode colorCode : proposedCombination.getColorCodes()) {
             colorCode.write();
         }
     }

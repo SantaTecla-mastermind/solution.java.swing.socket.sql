@@ -5,14 +5,8 @@ import usantatecla.utils.Console;
 
 class ErrorView {
 
-    private Error error;
-
-    ErrorView(Error error) {
-        this.error = error;
-    }
-
-    void writeln() {
-        if (!this.error.isNull()) {
+    void writeln(Error error) {
+        if (!error.isNull()) {
             Console.getInstance().writeln(error.toString());
         }
     }
