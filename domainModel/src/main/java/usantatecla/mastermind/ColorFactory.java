@@ -14,8 +14,7 @@ public class ColorFactory {
             ColorCode.YELLOW,
             ColorCode.BLUE,
             ColorCode.MAGENTA,
-            ColorCode.CYAN,
-            //ColorCode.NULL
+            ColorCode.CYAN
     };
 
     private static ColorFactory instance = new ColorFactory();
@@ -26,14 +25,14 @@ public class ColorFactory {
 
     String getInitials() {
         String result = "";
-        for (ColorCode color : COLORS) {
+        for (ColorCode color : ColorFactory.COLORS) {
             result += color.getInitial();
         }
         return result;
     }
 
     ColorCode getColorCode(char character) {
-        for (ColorCode color : COLORS) {
+        for (ColorCode color : ColorFactory.COLORS) {
             if (color.getInitial() == character) {
                 return color;
             }
@@ -52,7 +51,7 @@ public class ColorFactory {
     }
 
     List<ColorCode> getAllColorCodes() {
-        return new ArrayList<>(Arrays.asList(COLORS));
+        return new ArrayList<>(Arrays.asList(ColorFactory.COLORS));
     }
 
 }

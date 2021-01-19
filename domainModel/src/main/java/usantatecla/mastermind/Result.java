@@ -10,12 +10,8 @@ class Result {
     private int whites;
 
     Result(int blacks, int whites) {
-
-        assert blacks >= 0 && blacks <= Result.WIDTH;
-        assert whites >= 0 && whites <= Result.WIDTH;
         assert Result.LIMITS.isIncluded(blacks);
         assert Result.LIMITS.isIncluded(whites);
-
 
         this.blacks = blacks;
         this.whites = whites;
