@@ -29,7 +29,15 @@ public class Board {
         return this.secretCombination.getResult(proposedCombination);
     }
 
-    public Result getResult(int position) {
+    public int getBlacks(int position) {
+        return this.getResult(position).getBlacks();
+    }
+
+    public int getWhites(int position) {
+        return this.getResult(position).getWhites();
+    }
+
+    private Result getResult(int position) {
         assert position < this.attempts && position >= 0;
 
         return this.results[position];
@@ -40,7 +48,6 @@ public class Board {
 
         return this.proposedCombinations[position];
     }
-
 
     public int getAttempts() {
         return this.attempts;

@@ -1,4 +1,4 @@
-package usantatecla.utils;
+package usantatecla.utils.views;
 
 public enum ColorCode {
 
@@ -29,7 +29,7 @@ public enum ColorCode {
     }
 
     public static String get(int index) {
-        assert index >= 0 &&  index < ColorCode.NULL.ordinal();
+        assert index >= 0 && index < ColorCode.NULL.ordinal();
 
         return ColorCode.values()[index].get();
     }
@@ -42,7 +42,6 @@ public enum ColorCode {
         return this == ColorCode.NULL;
     }
 
-    //TODO ColorCodeView
     public void write() {
         if (!this.isNull()) {
             Console.getInstance().write(

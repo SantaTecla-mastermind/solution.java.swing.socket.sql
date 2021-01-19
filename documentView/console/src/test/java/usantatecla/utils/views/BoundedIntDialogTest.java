@@ -1,4 +1,4 @@
-package usantatecla.utils;
+package usantatecla.utils.views;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -6,6 +6,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
+import usantatecla.utils.models.ClosedInterval;
+import usantatecla.utils.views.BoundedIntDialog;
+import usantatecla.utils.views.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

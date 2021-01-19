@@ -1,6 +1,6 @@
 package usantatecla.mastermind.models;
 
-import usantatecla.utils.ColorCode;
+import usantatecla.utils.views.ColorCode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,8 +14,7 @@ public class ColorFactory {
             ColorCode.YELLOW,
             ColorCode.BLUE,
             ColorCode.MAGENTA,
-            ColorCode.CYAN,
-            //ColorCode.NULL
+            ColorCode.CYAN
     };
 
     private static ColorFactory instance = new ColorFactory();
@@ -24,16 +23,16 @@ public class ColorFactory {
         return instance;
     }
 
-    public String getInitials() {
+    public String getInitials() { //TODO ¿Vista de ColorFactory?
         String result = "";
-        for (ColorCode color : COLORS) {
+        for (ColorCode color : ColorFactory.COLORS) {
             result += color.getInitial();
         }
         return result;
     }
 
-    public ColorCode getColorCode(char character) {
-        for (ColorCode color : COLORS) {
+    ColorCode getColorCode(char character) {
+        for (ColorCode color : ColorFactory.COLORS) {
             if (color.getInitial() == character) {
                 return color;
             }
@@ -52,7 +51,7 @@ public class ColorFactory {
     }
 
     List<ColorCode> getAllColorCodes() {
-        return new ArrayList<>(Arrays.asList(COLORS));
+        return new ArrayList<>(Arrays.asList(ColorFactory.COLORS));
     }
 
 }

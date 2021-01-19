@@ -1,7 +1,7 @@
 package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.models.Board;
-import usantatecla.utils.YesNoDialog;
+import usantatecla.utils.views.YesNoDialog;
 
 class ResumeView extends WithBoardView {
 

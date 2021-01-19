@@ -1,4 +1,4 @@
-package usantatecla.utils;
+package usantatecla.utils.models;
 
 public class ClosedInterval {
 

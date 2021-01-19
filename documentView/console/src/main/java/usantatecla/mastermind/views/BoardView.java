@@ -1,7 +1,7 @@
 package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.models.Board;
-import usantatecla.utils.Console;
+import usantatecla.utils.views.Console;
 
 class BoardView {
 
@@ -12,7 +12,7 @@ class BoardView {
         Message.SECRET_COMBINATION.writeln();
         for (int i = 0; i < attempts; i++) {
             new ProposedCombinationView().write(board.getProposedCombination(i));
-            Message.RESULT.writeln(board.getResult(i).getBlacks(), board.getResult(i).getWhites());
+            Message.RESULT.writeln(board.getBlacks(i), board.getWhites(i));
         }
     }
 

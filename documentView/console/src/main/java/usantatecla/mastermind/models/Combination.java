@@ -1,6 +1,6 @@
 package usantatecla.mastermind.models;
 
-import usantatecla.utils.ColorCode;
+import usantatecla.utils.views.ColorCode;
 
 import java.util.ArrayList;
 import java.util.List;

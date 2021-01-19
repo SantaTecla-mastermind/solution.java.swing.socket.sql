@@ -2,8 +2,8 @@ package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Error;
-import usantatecla.utils.ColorCode;
-import usantatecla.utils.Console;
+import usantatecla.utils.views.ColorCode;
+import usantatecla.utils.views.Console;
 
 class ProposedCombinationView {
 

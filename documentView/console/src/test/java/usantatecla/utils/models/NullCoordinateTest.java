@@ -1,7 +1,10 @@
-package usantatecla.utils;
+package usantatecla.utils.models;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import usantatecla.utils.models.ConcreteCoordinate;
+import usantatecla.utils.models.Coordinate;
+import usantatecla.utils.models.Direction;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

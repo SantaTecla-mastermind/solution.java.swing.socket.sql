@@ -1,16 +1,16 @@
-package usantatecla.utils;
+package usantatecla.utils.models;
 
 public class ConcreteCoordinate implements Coordinate {
 	
-	static final String ROW = "Row: ";
-	static final String COLUMN = "Column: ";
+	public static final String ROW = "Row: ";
+	public static final String COLUMN = "Column: ";
 	protected int row;
 	protected int column;
 
 	protected ConcreteCoordinate() {
 	}
 
-	protected ConcreteCoordinate(int row, int column) {
+	public ConcreteCoordinate(int row, int column) {
 		this.row = row;
 		this.column = column;
 	}
@@ -56,13 +56,6 @@ public class ConcreteCoordinate implements Coordinate {
 	@Override
 	public boolean inMainDiagonal() {
 		return this.row - this.column == 0;
-	}
-
-	protected void read(String title) {
-		Console console = Console.getInstance();
-		console.writeln(title);
-		this.row = console.readInt(ConcreteCoordinate.ROW) - 1;
-		this.column = console.readInt(ConcreteCoordinate.COLUMN) - 1;
 	}
 
 	public int getRow() {

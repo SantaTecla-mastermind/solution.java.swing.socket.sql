@@ -1,9 +1,8 @@
-package usantatecla.utils;
+package usantatecla.utils.models;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
+import usantatecla.utils.views.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

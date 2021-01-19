@@ -19,6 +19,16 @@ public class ResultTest {
     }
 
     @Test
+    public void testGivenResultWhenGetBlacksThenReturn() {
+        assertThat(new Result(Result.WIDTH, ResultTest.MIN_VALUE).getBlacks(), is(Result.WIDTH));
+    }
+
+    @Test
+    public void testGivenResultWhenGetWhitesThenReturn() {
+        assertThat(new Result(Result.WIDTH - 1, ResultTest.MIN_VALUE + 1).getWhites(), is(ResultTest.MIN_VALUE + 1));
+    }
+
+    @Test
     public void testGivenWinnerResultWhenIsWinnerThenTrue() {
         assertThat(new Result(Result.WIDTH, ResultTest.MIN_VALUE).isWinner(), is(true));
     }

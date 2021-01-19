@@ -1,7 +1,7 @@
 package usantatecla.mastermind.models;
 
 import usantatecla.mastermind.types.Error;
-import usantatecla.utils.ColorCode;
+import usantatecla.utils.views.ColorCode;
 
 import java.util.List;
 
@@ -11,15 +11,15 @@ public class ProposedCombination extends Combination {
         return colorCodes;
     }
 
-    public void reset() {
-        this.colorCodes.clear();
-    }
-
     public void add(ColorCode colorCode) {
         this.colorCodes.add(colorCode);
     }
 
-    public Error getColorCodesError(String characters) {
+    public void reset() {
+        this.colorCodes.clear();
+    }
+
+    public Error getColorCodesError(String characters) { //TODO Método con dos responsabilidades, el nombre no indica que se añade el color
         if (characters.length() != Result.WIDTH) {
             return Error.WRONG_LENGTH;
         }

@@ -1,24 +1,25 @@
 package usantatecla.mastermind.models;
 
+import usantatecla.utils.views.ColorCode;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 public class BoardBuilder {
 
     private Board board;
-
     private List<String> proposedCombinationsStrings;
-
     private Result result;
 
     public BoardBuilder() {
         this.proposedCombinationsStrings = new ArrayList<>();
     }
 
+    /*
     public BoardBuilder proposedCombinations(String... proposedCombinations) {
         assert proposedCombinations.length <= 10;
         for (String proposedCombination : proposedCombinations) {
@@ -26,7 +27,7 @@ public class BoardBuilder {
             this.proposedCombinationsStrings.add(proposedCombination);
         }
         return this;
-    }
+    }*/
 
 
     public BoardBuilder proposedCombinations(int times, String proposedCombination) {
@@ -37,29 +38,30 @@ public class BoardBuilder {
         return this;
     }
 
+    public BoardBuilder result(Result result) {
+        this.result = result;
+        return this;
+    }
+
     public Board build() {
         this.board = spy(new Board());
-        if (this.proposedCombinationsStrings.isEmpty()) {
-            return this.board;
+        if (this.result != null) {
+            doReturn(this.result).when(this.board).getResult(any());
         }
-        for (String proposedCombinationsString : this.proposedCombinationsStrings) {
-            this.setProposedCombination(proposedCombinationsString);
+        if (!this.proposedCombinationsStrings.isEmpty()) {
+            for (String proposedCombinationsString : this.proposedCombinationsStrings) {
+                this.setProposedCombination(proposedCombinationsString);
+            }
         }
         return this.board;
     }
 
     private void setProposedCombination(String proposedCombinationString) {
         ProposedCombination proposedCombination = new ProposedCombination();
-        proposedCombination.colorCodes = ColorFactory.getInstance().getColorCodes(proposedCombinationString);
-        if (this.result != null) {
-            when(this.board.getResult(proposedCombination)).thenReturn(result);
+        for(ColorCode colorcode : ColorFactory.getInstance().getColorCodes(proposedCombinationString)){
+            proposedCombination.add(colorcode);
         }
         this.board.add(proposedCombination);
-    }
-
-    public BoardBuilder result(Result result) {
-        this.result = result;
-        return this;
     }
 
 }

@@ -345,7 +345,7 @@ enum usantatecla.mastermind.types.Error {
 
 class BufferedReader as "java.io.BufferedReader"{}
 
-enum usantatecla.utils.ColorCode{
+enum usantatecla.utils.views.ColorCode{
     + RED
     + BLUE
     + YELLOW
@@ -359,7 +359,7 @@ enum usantatecla.utils.ColorCode{
     + {static} getColorByIndex(int): String
 }
 
-class usantatecla.utils.Console{
+class usantatecla.utils.views.Console{
     - {static} console: Console
     + {static} getInstance(): Console
     + readString(String): String
@@ -372,9 +372,9 @@ class usantatecla.utils.Console{
     + write(char)
     - writeError(String)
 }
-usantatecla.utils.Console *-down-> BufferedReader
+usantatecla.utils.views.Console *-down-> BufferedReader
 
-class  usantatecla.utils.YesNoDialog{
+class  usantatecla.utils.views.YesNoDialog{
     - {static} AFIRMATIVE: char
     - {static} NEGATIVE: char
     - {static} QUESTION: String
@@ -384,6 +384,6 @@ class  usantatecla.utils.YesNoDialog{
     - {static} isAfirmative(char): boolean
     - {static} isNegative(char): boolean
 }
-usantatecla.utils.YesNoDialog ..> usantatecla.utils.Console
+usantatecla.utils.views.YesNoDialog ..> usantatecla.utils.views.Console
 
 @enduml

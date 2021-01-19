@@ -32,4 +32,9 @@ public class ErrorTest {
         assertThat(Error.NULL.isNull(), is(true));
     }
 
+    @Test
+    public void testGivenNotNullErrorWhenIsNullThenFalse() {
+        assertThat(Error.DUPLICATED.isNull(), is(false));
+    }
+
 }

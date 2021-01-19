@@ -2,7 +2,7 @@ package usantatecla.mastermind.models;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import usantatecla.utils.ColorCode;
+import usantatecla.utils.views.ColorCode;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,6 +32,16 @@ public class ColorFactoryTest {
     @Test
     public void testGivenColorFactoryWhenGetColorByCharacterThenColorCodeNull() {
         assertThat(this.colorFactory.getColorCode('l'), is(ColorCode.NULL));
+    }
+
+    @Test
+    public void testGivenColorFactoryWhenGetColorCodesWithSomeWrongCharactersThenReturnOnlyMatchingColors(){
+        List<ColorCode> colorCodes = Arrays.asList(
+                ColorCode.GREEN,
+                ColorCode.BLUE,
+                ColorCode.YELLOW,
+                ColorCode.CYAN);
+        assertThat(this.colorFactory.getColorCodes("tgbych"), is(colorCodes));
     }
 
     @Test

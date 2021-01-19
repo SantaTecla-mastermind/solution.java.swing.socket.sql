@@ -1,6 +1,6 @@
 package usantatecla.mastermind.models;
 
-import usantatecla.utils.ClosedInterval;
+import usantatecla.utils.models.ClosedInterval;
 
 public class Result {
 
@@ -11,8 +11,6 @@ public class Result {
 
     Result(int blacks, int whites) {
 
-        assert blacks >= 0 && blacks <= Result.WIDTH;
-        assert whites >= 0 && whites <= Result.WIDTH;
         assert Result.LIMITS.isIncluded(blacks);
         assert Result.LIMITS.isIncluded(whites);
 
@@ -20,11 +18,11 @@ public class Result {
         this.whites = whites;
     }
 
-    public int getBlacks() {
+    int getBlacks() {
         return blacks;
     }
 
-    public int getWhites() {
+    int getWhites() {
         return whites;
     }
 

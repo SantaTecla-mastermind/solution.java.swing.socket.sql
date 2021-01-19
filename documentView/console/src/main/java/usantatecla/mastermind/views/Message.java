@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.utils.Console;
+import usantatecla.utils.views.Console;
 
 enum Message {
     ATTEMPTS("#attempts attempt(s): "),

@@ -1,4 +1,4 @@
-package usantatecla.utils;
+package usantatecla.utils.models;
 
 class NullCoordinate implements Coordinate {
 

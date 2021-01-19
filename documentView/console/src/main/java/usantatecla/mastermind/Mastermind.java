@@ -5,10 +5,12 @@ import usantatecla.mastermind.views.View;
 
 public class Mastermind {
 
-	private final View view;
+	private Board board; //TODO ¿Quitar board y dejarlo como new Board dentro de View?
+	private View view;
 
 	private Mastermind() {
-		this.view = new View(new Board());
+		this.board = new Board();
+		this.view = new View(this.board);
 	}
 
 	private void play() {

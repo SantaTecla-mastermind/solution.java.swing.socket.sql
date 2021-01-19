@@ -1,13 +1,7 @@
 package usantatecla.mastermind.views;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.utils.Console;
-
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class StartViewTest {
