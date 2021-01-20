@@ -2,6 +2,7 @@ package usantatecla.mastermind.models;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import usantatecla.mastermind.types.Color;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -31,8 +32,8 @@ public class BoardTest {
     @Test
     public void testGivenBoardWhenAddThenCorrect() {
         this.setBoard(1);
-        assertThat(this.board.getProposedCombination(0).getColorCodes(),
-                is(ColorFactory.getInstance().getColorCodes(BoardTest.PROPOSED_COMBINATION)));
+        assertThat(this.board.getProposedCombination(0).getColors(),
+                is(Color.get(BoardTest.PROPOSED_COMBINATION)));
     }
 
     @Test

@@ -1,16 +1,16 @@
 package usantatecla.mastermind.models;
 
-import usantatecla.utils.views.ColorCode;
+import usantatecla.mastermind.types.Color;
 
 import java.util.ArrayList;
 import java.util.List;
 
 abstract class Combination {
 
-    protected List<ColorCode> colorCodes; // TODO Factoria de color + colorView
+    protected List<Color> colors;
 
     protected Combination() {
-        this.colorCodes = new ArrayList<>();
+        this.colors = new ArrayList<>();
     }
 
 }

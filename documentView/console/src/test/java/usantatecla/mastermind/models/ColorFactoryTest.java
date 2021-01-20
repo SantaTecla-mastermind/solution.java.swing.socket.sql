@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.is;
 
 public class ColorFactoryTest {
 
-    ColorFactory colorFactory;
+    /*ColorFactory colorFactory;
 
     @BeforeEach
     public void beforeEach() {
@@ -53,6 +53,6 @@ public class ColorFactoryTest {
                 ColorCode.MAGENTA,
                 ColorCode.CYAN);
         assertThat(this.colorFactory.getAllColorCodes(), is(colorCodes));
-    }
+    }*/
 
 }

@@ -1,13 +1,14 @@
 package usantatecla.mastermind.models;
 
-import usantatecla.utils.views.ColorCode;
+import usantatecla.mastermind.types.Color;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
 
 public class BoardBuilder {
 
@@ -19,19 +20,8 @@ public class BoardBuilder {
         this.proposedCombinationsStrings = new ArrayList<>();
     }
 
-    /*
-    public BoardBuilder proposedCombinations(String... proposedCombinations) {
-        assert proposedCombinations.length <= 10;
-        for (String proposedCombination : proposedCombinations) {
-            assert Pattern.matches("[" + ColorFactory.getInstance().getInitials() + "]{4}", proposedCombination);
-            this.proposedCombinationsStrings.add(proposedCombination);
-        }
-        return this;
-    }*/
-
-
     public BoardBuilder proposedCombinations(int times, String proposedCombination) {
-        assert Pattern.matches("[" + ColorFactory.getInstance().getInitials() + "]{4}", proposedCombination);
+        assert Pattern.matches("[" + Color.getAllInitials() + "]{4}", proposedCombination);
         for (int i = 0; i < times; i++) {
             this.proposedCombinationsStrings.add(proposedCombination);
         }
@@ -57,10 +47,8 @@ public class BoardBuilder {
     }
 
     private void setProposedCombination(String proposedCombinationString) {
-        ProposedCombination proposedCombination = new ProposedCombination();
-        for(ColorCode colorcode : ColorFactory.getInstance().getColorCodes(proposedCombinationString)){
-            proposedCombination.add(colorcode);
-        }
+        ProposedCombination proposedCombination = new ProposedCombination();//TODO Constructor con colores
+        proposedCombination.add(Color.get(proposedCombinationString));
         this.board.add(proposedCombination);
     }
 

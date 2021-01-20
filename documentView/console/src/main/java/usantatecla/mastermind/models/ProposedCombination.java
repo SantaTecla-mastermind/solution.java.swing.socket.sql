@@ -1,51 +1,49 @@
 package usantatecla.mastermind.models;
 
+import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 import usantatecla.utils.views.ColorCode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProposedCombination extends Combination {
 
-    public List<ColorCode> getColorCodes() {
-        return colorCodes;
+    public List<Color> getColors() {
+        return colors;
     }
 
-    public void add(ColorCode colorCode) {
-        this.colorCodes.add(colorCode);
-    }
+    public Error add(List<Color> colors) {//TODO Assert y reset ?
+        assert this.colors.isEmpty();
 
-    public void reset() {
-        this.colorCodes.clear();
-    }
-
-    public Error getColorCodesError(String characters) { //TODO Método con dos responsabilidades, el nombre no indica que se añade el color
-        if (characters.length() != Result.WIDTH) {
+        List<Color> correctColors = new ArrayList<>();
+        if (colors.size() != Result.WIDTH) {
             return Error.WRONG_LENGTH;
         }
-        for (int i = 0; i < characters.length(); i++) {
-            ColorCode colorCode = ColorFactory.getInstance().getColorCode(characters.charAt(i));
-            if (colorCode.isNull()) {
+        for (int i = 0; i < colors.size(); i++) {
+            Color color = colors.get(i);
+            if (color.isNull()) {
                 return Error.WRONG_CHARACTERS;
             }
             for (int j = 0; j < i; j++) {
-                if (this.getColorCodes().get(j) == colorCode) {
+                if (correctColors.get(j) == color) {
                     return Error.DUPLICATED;
                 }
             }
-            this.add(colorCode);
+            correctColors.add(color);
         }
+        this.colors = correctColors;
         return Error.NULL;
     }
 
-    boolean contains(ColorCode colorCode, int position) {
-        assert position < this.colorCodes.size();
+    boolean contains(Color color, int position) {
+        assert position < this.colors.size();
 
-        return this.colorCodes.get(position) == colorCode;
+        return this.colors.get(position) == color;
     }
 
-    boolean contains(ColorCode colorCode) {
-        return this.colorCodes.contains(colorCode);
+    boolean contains(Color color) {
+        return this.colors.contains(color);
     }
 
 }
