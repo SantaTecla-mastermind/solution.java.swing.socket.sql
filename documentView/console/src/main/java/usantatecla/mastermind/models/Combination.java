@@ -7,7 +7,7 @@ import java.util.List;
 
 abstract class Combination {
 
-    protected List<ColorCode> colorCodes;
+    protected List<ColorCode> colorCodes; // TODO Factoria de color + colorView
 
     protected Combination() {
         this.colorCodes = new ArrayList<>();

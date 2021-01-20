@@ -11,7 +11,8 @@ class ProposedCombination extends Combination {
         Error error;
         do {
             Message.PROPOSED_COMBINATION.write();
-            error = this.getColorCodesError();
+            String characters = Console.getInstance().readString().toLowerCase();
+            error = this.add(characters);
             error.writeln();
             if (!error.isNull()) {
                 this.colorCodes = new ArrayList<>();
@@ -19,8 +20,7 @@ class ProposedCombination extends Combination {
         } while (!error.isNull());
     }
 
-    private Error getColorCodesError() {
-        String characters = Console.getInstance().readString().toLowerCase();
+    private Error add(String characters) {
         if (characters.length() != Result.WIDTH) {
             return Error.WRONG_LENGTH;
         }

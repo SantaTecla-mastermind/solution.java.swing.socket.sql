@@ -5,7 +5,7 @@ import usantatecla.mastermind.views.View;
 
 public class Mastermind {
 
-	private Board board; //TODO ¿Quitar board y dejarlo como new Board dentro de View?
+	private Board board;
 	private View view;
 
 	private Mastermind() {
