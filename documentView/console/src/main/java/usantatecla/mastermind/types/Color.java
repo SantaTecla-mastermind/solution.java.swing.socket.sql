@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public enum Color {//TODO Sacar Color de ColorCode?
+public enum Color {
 
     RED,
     GREEN,

@@ -6,9 +6,12 @@ import usantatecla.mastermind.types.Error;
 import usantatecla.utils.views.ColorCode;
 import usantatecla.utils.views.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class ProposedCombinationView {
 
-    ProposedCombination read() {//TODO ColorView??
+    ProposedCombination read() {
         Error error;
         ProposedCombination proposedCombination = new ProposedCombination();
         do {
@@ -20,9 +23,21 @@ class ProposedCombinationView {
     }
 
     void write(ProposedCombination proposedCombination) {
-        for (ColorCode colorCode : ColorFactory.getInstance().getColorCodes(proposedCombination.getColors())) {
+        for (ColorCode colorCode : this.getColorCodes(proposedCombination.getColors())) {
             colorCode.write();
         }
+    }
+
+    private List<ColorCode> getColorCodes(List<Color> colors) {
+        List<ColorCode> colorCodes = new ArrayList<>();
+        for (Color color : colors) {
+            for (ColorCode colorCode : ColorCode.values()) {
+                if (color.name().equals(colorCode.name())) {
+                    colorCodes.add(colorCode);
+                }
+            }
+        }
+        return colorCodes;
     }
 
 }

@@ -13,9 +13,7 @@ public class ProposedCombination extends Combination {
         return colors;
     }
 
-    public Error add(List<Color> colors) {//TODO Assert y reset ?
-        assert this.colors.isEmpty();
-
+    public Error add(List<Color> colors) {
         List<Color> correctColors = new ArrayList<>();
         if (colors.size() != Result.WIDTH) {
             return Error.WRONG_LENGTH;
