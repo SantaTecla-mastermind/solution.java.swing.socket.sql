@@ -1,111 +1,91 @@
 package usantatecla.mastermind.views;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.InOrder;
+import org.mockito.Mock;
+import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
+import usantatecla.mastermind.models.Board;
+import usantatecla.mastermind.models.BoardBuilder;
+import usantatecla.mastermind.models.Result;
+import usantatecla.mastermind.types.Color;
+import usantatecla.utils.views.ColorCode;
+import usantatecla.utils.views.Console;
+
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class BoardViewTest {
-/*
-    @Mock
-    Game game;
 
     @Mock
-    ProposedCombination proposedCombination;
+    private Console console;
 
-    @Mock
-    Result result;
+    private BoardView boardView;
 
-    @Mock
-    Console console;
-
-    @InjectMocks
-    BoardView boardView;
-
-    @Test
-    void testGivenWinGameWhenIsWinnerOrLooserThenReturnsTrue() {
-        when(this.game.isWinner()).thenReturn(true);
-        assertThat(this.boardView.isWinnerOrLooser(), is(true));
+    @BeforeEach
+    public void beforeEach() {
+        this.boardView = new BoardView();
     }
 
     @Test
-    void testGivenLooseGameWhenIsWinnerOrLooserThenReturnsTrue() {
-        when(this.game.isWinner()).thenReturn(false);
-        when(this.game.isLooser()).thenReturn(true);
-        assertThat(this.boardView.isWinnerOrLooser(), is(true));
-    }
-
-    @Test
-    void testGivenNotLooseNorWinGameWhenIsWinnerOrLooserThenReturnsFalse() {
-        when(this.game.isWinner()).thenReturn(false);
-        when(this.game.isLooser()).thenReturn(false);
-        assertThat(this.boardView.isWinnerOrLooser(), is(false));
-    }
-
-    @Test
-    void testGivenEmptyGameStateWhenWriteThenOnlySecretCombinationIsWritten() {
-        try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            when(this.game.getAttempts()).thenReturn(0);
-            console.when(Console::getInstance).thenReturn(this.console);
-            this.boardView.write();
-            verify(this.console, times(2)).writeln();
-            verify(this.console, times(4)).write("*");
-        }
-    }
-
-    @Test
-    void testGiven2AttemptsGameStateWhenWriteThenCorrectArgumentsAreCaptured() {
-        try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            when(this.game.getAttempts()).thenReturn(2);
-            when(this.game.getProposedCombination(anyInt())).thenReturn(this.proposedCombination);
-            when(this.game.getResult(anyInt())).thenReturn(this.result);
-            when(this.proposedCombination.getColors()).thenReturn(Arrays.asList(Color.RED, Color.GREEN, Color.ORANGE, Color.YELLOW));
-            when(this.result.getBlacks()).thenReturn(0);
-            when(this.result.getWhites()).thenReturn(0);
-            ArgumentCaptor<String> secretCombination = ArgumentCaptor.forClass(String.class);
-            ArgumentCaptor<String> proposedCombination = ArgumentCaptor.forClass(String.class);
-            console.when(Console::getInstance).thenReturn(this.console);
-            this.boardView.write();
-            verify(this.console, times(3)).writeln(secretCombination.capture());
-            verify(this.console, times(12)).write(proposedCombination.capture());
-            assertThat(secretCombination.getAllValues().get(0), is("2 attempt(s): "));
-            assertThat(proposedCombination.getAllValues().toString(),
-                    is("[*, *, *, *, " + "\u001B[31m" + "r" + "\u001B[0m, " +
-                            "\u001B[32m" + "g" + "\u001B[0m, " +
-                            "\u001B[37m" + "o" + "\u001B[0m, " +
-                            "\u001B[33m" + "y" + "\u001B[0m, " +
-                            "\u001B[31m" + "r" + "\u001B[0m, " +
-                            "\u001B[32m" + "g" + "\u001B[0m, " +
-                            "\u001B[37m" + "o" + "\u001B[0m, " +
-                            "\u001B[33m" + "y" + "\u001B[0m]"));
-        }
-    }*/
-
-    /*@Test
-    public void testGivenBoardWhenResetThenEmpty() {
+    public void testGivenBoardViewWhenWriteWithEmptyBoardThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            Board board = new BoardBuilder().build();
-            board.reset();
-            board.write();
-            verify(this.console).writeln("0 attempt(s): ");
-        }
-    }*/
-
-    /*@Test
-    public void testGivenBoardWhenWriteThenPrint() {
-        String colors = "rgby";
-        Board board = new BoardBuilder().proposedCombinations(2, colors).build();
-        try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            console.when(Console::getInstance).thenReturn(this.console);
-            board.write();
-            verify(this.console).writeln("2 attempt(s): ");
-            verify(this.console).writeln(Message.SECRET_COMBINATION.toString());
-            for (ColorCode colorCode : ColorFactory.getInstance().getColorCodes(colors)) {
-                verify(this.console, times(2)).write(colorCode.get() + colorCode.getInitial() + ColorCode.RESET_COLOR.get());
+            this.boardView.write(new Board());
+            String[] strings = {
+                    "0 attempt(s): ",
+                    "****"
+            };
+            for (String string : strings) {
+                verify(this.console).writeln(string);
             }
         }
-    }*/
+    }
+
+    @Test
+    public void testGivenBoardViewWhenWriteThenPrint() {//TODO AYUDA!
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            this.boardView.write(new BoardBuilder()
+                    .proposedCombinations(3, "rgby")
+                    .result(new Result(2, 2))
+                    .build());
+            String string = this.arrayToString(new String[]{
+                    "3 attempt(s): ",
+                    "****",
+                    this.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
+                    this.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
+                    this.toColorCodeString("rgby") + " --> 2 blacks and 2 whites"
+            });
+            ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
+            verify(this.console, atLeastOnce()).writeln(argumentCaptor.capture());
+            verify(this.console, atLeastOnce()).write(argumentCaptor.capture());
+            assertThat(string,is(arrayToString(argumentCaptor.getAllValues().toArray())));
+        }
+    }
+
+    private String toColorCodeString(String initials) {
+        List<ColorCode> colorCodes = new ProposedCombinationView().getColorCodes(Color.get(initials));
+        String string = "";
+        for (ColorCode colorCode : colorCodes) {
+            string += colorCode.toString();
+        }
+        return string;
+    }
+
+    private String arrayToString(Object[] stringArray) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < stringArray.length; i++) {
+            stringBuilder.append(stringArray[i]);
+        }
+        return stringBuilder.toString();
+    }
+
 }

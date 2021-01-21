@@ -28,7 +28,7 @@ class ProposedCombinationView {
         }
     }
 
-    private List<ColorCode> getColorCodes(List<Color> colors) {
+    List<ColorCode> getColorCodes(List<Color> colors) {
         List<ColorCode> colorCodes = new ArrayList<>();
         for (Color color : colors) {
             for (ColorCode colorCode : ColorCode.values()) {

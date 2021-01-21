@@ -45,11 +45,16 @@ public enum ColorCode {
     public void write() {
         if (!this.isNull()) {
             Console.getInstance().write(
-                    this.get()
-                            + this.getInitial()
-                            + ColorCode.RESET_COLOR.get()
+                    this.toString()
             );
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.get()
+                + this.getInitial()
+                + ColorCode.RESET_COLOR.get();
     }
 
 }

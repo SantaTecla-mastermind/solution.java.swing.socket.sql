@@ -1,57 +1,54 @@
 package usantatecla.mastermind.views;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockedStatic;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
+import usantatecla.mastermind.models.Board;
+import usantatecla.mastermind.models.ProposedCombination;
+import usantatecla.utils.views.Console;
 
-import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.mockStatic;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class PlayViewTest {
-/*
-    @Mock
-    Game game;
 
     @Mock
-    Console console;
+    private Console console;
 
-    @Mock
-    ProposedCombination proposedCombination;
-
-    @Mock
-    Result result;
+    @Spy
+    private Board board;
 
     @InjectMocks
-    PlayView playView;
-
-    @BeforeEach
-    void before() {
-        when(this.console.readString()).thenReturn("rgby");
-        when(this.proposedCombination.getColors()).thenReturn(Arrays.asList(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW));
-        when(this.game.getAttempts()).thenReturn(1);
-        when(this.game.getProposedCombination(anyInt())).thenReturn(this.proposedCombination);
-        when(this.game.getResult(anyInt())).thenReturn(this.result);
-        when(this.result.getBlacks()).thenReturn(2);
-        when(this.result.getWhites()).thenReturn(2);
-    }
+    private PlayView playView;
 
     @Test
-    void testGiven1AttemptAndIsWinnerGameWhenInteractThenReturnsTrue() {
+    public void testGivenPlayViewWhenInteractThenIsWinner() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            when(this.game.isWinner()).thenReturn(true);
             console.when(Console::getInstance).thenReturn(this.console);
-            assertThat(this.playView.interact(), is(true));
+            when(this.console.readString(anyString())).thenReturn("rgby");
+            doReturn(true).when(this.board).isWinner();
+            this.playView.interact();
+            verify(this.board).add(any(ProposedCombination.class));
+            verify(this.console).writeln("You've won!!! ;-)");
         }
     }
 
     @Test
-    void testGiven1AttemptAndIsNotWinnerNorLooserGameWhenInteractThenReturnsFalse() {
+    public void testGivenPlayViewWhenInteractThenIsLooser() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            when(this.game.isWinner()).thenReturn(false);
-            when(this.game.isLooser()).thenReturn(false);
             console.when(Console::getInstance).thenReturn(this.console);
-            assertThat(this.playView.interact(), is(false));
+            when(this.console.readString(anyString())).thenReturn("rgby");
+            doReturn(true).when(this.board).isFinished();
+            doReturn(false).when(this.board).isWinner();
+            this.playView.interact();
+            verify(this.board).add(any(ProposedCombination.class));
+            verify(this.console).writeln("You've lost!!! :-(");
         }
     }
-    */
+
 }

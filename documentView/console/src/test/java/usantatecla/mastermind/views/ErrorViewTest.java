@@ -1,5 +1,6 @@
 package usantatecla.mastermind.views;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -14,36 +15,31 @@ import static org.mockito.Mockito.*;
 public class ErrorViewTest {
 
     @Mock
-    Console console;
+    private Console console;
 
-    ErrorView errorView;
+    private ErrorView errorView;
+
+    @BeforeEach
+    public void beforeEach() {
+        this.errorView = new ErrorView();
+    }
 
     @Test
-    void testGivenCorrectErrorWhenWritelnThenCapturesCorrectArgument() {
+    public void testGivenCorrectErrorWhenWritelnThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            this.errorView = new ErrorView(Error.WRONG_LENGTH);
             console.when(Console::getInstance).thenReturn(this.console);
-            this.errorView.writeln();
-            verify(this.console).writeln("Wrong proposed combination length");
+            this.errorView.writeln(Error.WRONG_CHARACTERS);
+            verify(this.console).writeln("Wrong colors, they must be: rgybmc");
         }
     }
 
     @Test
-    void testGivenNullErrorWhenWritelnThenConsoleIsNotCalled() {
+    public void testGivenNullErrorWhenWritelnThenConsoleIsNotCalled() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            this.errorView = new ErrorView(Error.NULL);
             console.when(Console::getInstance).thenReturn(this.console);
-            this.errorView.writeln();
+            this.errorView.writeln(Error.NULL);
             verify(this.console, never()).writeln(anyString());
         }
     }
 
-    /*@Test
-    public void testGivenErrorWhenWritelnThenWrite() {
-        try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            console.when(Console::getInstance).thenReturn(this.console);
-            Error.DUPLICATED.writeln();
-            verify(this.console).writeln("Repeated colorFactories");
-        }
-    }*/
 }

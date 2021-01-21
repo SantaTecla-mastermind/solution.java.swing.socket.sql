@@ -19,9 +19,9 @@ import static org.mockito.Mockito.when;
 public class ResumeViewTest {
 
     @Mock
-    Console console;
+    private Console console;
 
-    ResumeView resumeView;
+    private ResumeView resumeView;
 
     @BeforeEach
     public void beforeEach() {
@@ -29,17 +29,16 @@ public class ResumeViewTest {
     }
 
     @Test
-    void testGivenNewGameIsFalseWhenInteractThenIsFalse() {
+    public void testGivenNewGameIsFalseWhenInteractThenIsFalse() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(anyString())).thenReturn("n");
             assertThat(this.resumeView.interact(), is(false));
         }
-
     }
 
     @Test
-    void testGivenNewGameIsTrueWhenInteractThenIsTrue() {
+    public void testGivenNewGameIsTrueWhenInteractThenIsTrue() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(anyString())).thenReturn("y");

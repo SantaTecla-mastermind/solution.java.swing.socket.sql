@@ -40,16 +40,12 @@ public class BoardBuilder {
         }
         if (!this.proposedCombinationsStrings.isEmpty()) {
             for (String proposedCombinationsString : this.proposedCombinationsStrings) {
-                this.setProposedCombination(proposedCombinationsString);
+                ProposedCombination proposedCombination = new ProposedCombination();
+                proposedCombination.add(Color.get(proposedCombinationsString));
+                this.board.add(proposedCombination);
             }
         }
         return this.board;
-    }
-
-    private void setProposedCombination(String proposedCombinationString) {
-        ProposedCombination proposedCombination = new ProposedCombination();//TODO Constructor con colores
-        proposedCombination.add(Color.get(proposedCombinationString));
-        this.board.add(proposedCombination);
     }
 
 }
