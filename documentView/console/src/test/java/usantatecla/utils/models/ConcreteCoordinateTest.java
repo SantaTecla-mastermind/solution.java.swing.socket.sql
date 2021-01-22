@@ -3,24 +3,15 @@ package usantatecla.utils.models;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.utils.views.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class ConcreteCoordinateTest {
 
-  @Mock
-  Console console;
-
-  private Coordinate coordinate;
+  private ConcreteCoordinate coordinate;
 
   @BeforeEach
   public void beforeEach() {
@@ -60,22 +51,6 @@ public class ConcreteCoordinateTest {
   public void testGivenCoordinateWhenInMainDiagonalThenFalse() {
     assertThat(this.coordinate.inMainDiagonal(), is(true));
     assertThat(new ConcreteCoordinate(2, 1).inMainDiagonal(), is(false));
-  }
-
-  @Test
-  public void testGivenEmptyCoordinatesWhenReadThenCorrectValues() {
-    try (MockedStatic<Console> console = mockStatic(Console.class)) {
-      console.when(Console::getInstance).thenReturn(this.console);
-
-      final ConcreteCoordinate[] coordinates = {  new ConcreteCoordinate(1, 2), new ConcreteCoordinate(0, 3) };
-      for(int i = 0; i < coordinates.length; i++) {
-        when(this.console.readInt(anyString())).thenReturn(coordinates[i].getRow() + 1, coordinates[i].getColumn() + 1);
-        ConcreteCoordinate coordinate = new ConcreteCoordinate();
-        coordinate.read("TITLE");
-
-        assertThat(coordinate, is(coordinates[i]));
-      }
-    }
   }
 
   @Test

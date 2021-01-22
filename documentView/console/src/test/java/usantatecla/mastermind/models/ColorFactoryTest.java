@@ -1,15 +1,5 @@
 package usantatecla.mastermind.models;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import usantatecla.utils.views.ColorCode;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-
 public class ColorFactoryTest {
 
     /*ColorFactory colorFactory;

@@ -17,9 +17,9 @@ public class BoardTest {
                 .build();
     }
 
-    private void setBoard(int times, Result result) {
-        this.board = new BoardBuilder().proposedCombinations(times, BoardTest.PROPOSED_COMBINATION)
-                .result(result).build();
+    private void setBoard(int blacks, int whites) {
+        this.board = new BoardBuilder().proposedCombinations(1, BoardTest.PROPOSED_COMBINATION)
+                .blacks(blacks).whites(whites).build();
     }
 
     @Test
@@ -38,13 +38,13 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardWhenGetBlacksThenReturn() {
-        this.setBoard(1, new Result(Result.WIDTH - 1,0));
+        this.setBoard(Result.WIDTH - 1,0);
         assertThat(this.board.getBlacks(0), is(Result.WIDTH - 1));
     }
 
     @Test
     public void testGivenBoardWhenGetWhitesThenReturn() {
-        this.setBoard(1, new Result(0,Result.WIDTH - 1));
+        this.setBoard(0,Result.WIDTH - 1);
         assertThat(this.board.getWhites(0), is(Result.WIDTH - 1));
     }
 
@@ -58,28 +58,28 @@ public class BoardTest {
 
     @Test
     public void testGivenBoardWhenIsWinnerThenTrue(){
-        this.setBoard(1, new Result(Result.WIDTH,0));
+        this.setBoard(Result.WIDTH,0);
 
         assertThat(this.board.isWinner(),is(true));
     }
 
     @Test
     public void testGivenBoardWhenIsWinnerThenFalse(){
-        this.setBoard(1, new Result(Result.WIDTH - 1,0));
+        this.setBoard(Result.WIDTH - 1,0);
 
         assertThat(this.board.isWinner(),is(false));
     }
 
     @Test
     public void testGivenBoardWhenIsFinishedThenTrue(){
-        this.setBoard(1, new Result(Result.WIDTH,0));
+        this.setBoard(Result.WIDTH,0);
 
         assertThat(this.board.isFinished(),is(true));
     }
 
     @Test
     public void testGivenBoardWhenIsFinishedThenFalse(){
-        this.setBoard(1, new Result(0,Result.WIDTH));
+        this.setBoard(0,Result.WIDTH);
 
         assertThat(this.board.isFinished(),is(false));
     }

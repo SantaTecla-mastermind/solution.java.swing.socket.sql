@@ -9,8 +9,7 @@ public class Result {
     private int blacks;
     private int whites;
 
-    //TODO public?
-    public Result(int blacks, int whites) {
+    Result(int blacks, int whites) {
 
         assert Result.LIMITS.isIncluded(blacks);
         assert Result.LIMITS.isIncluded(whites);

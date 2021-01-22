@@ -4,15 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.models.BoardBuilder;
-import usantatecla.mastermind.models.Result;
-import usantatecla.mastermind.types.Color;
-import usantatecla.utils.views.ColorCode;
 import usantatecla.utils.views.Console;
 
 import java.util.List;
@@ -28,10 +24,12 @@ public class BoardViewTest {
     private Console console;
 
     private BoardView boardView;
+    private TestUtils testUtils;
 
     @BeforeEach
     public void beforeEach() {
         this.boardView = new BoardView();
+        this.testUtils = new TestUtils();
     }
 
     @Test
@@ -50,42 +48,41 @@ public class BoardViewTest {
     }
 
     @Test
-    public void testGivenBoardViewWhenWriteThenPrint() {//TODO AYUDA!
+    public void testGivenBoardViewWhenWriteThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             this.boardView.write(new BoardBuilder()
                     .proposedCombinations(3, "rgby")
-                    .result(new Result(2, 2))
+                    .blacks(2).whites(2)
                     .build());
-            String string = this.arrayToString(new String[]{
+            String string = this.testUtils.arrayToString(new String[]{
                     "3 attempt(s): ",
                     "****",
-                    this.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
-                    this.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
-                    this.toColorCodeString("rgby") + " --> 2 blacks and 2 whites"
+                    this.testUtils.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
+                    this.testUtils.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
+                    this.testUtils.toColorCodeString("rgby") + " --> 2 blacks and 2 whites"
             });
             ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
             verify(this.console, atLeastOnce()).writeln(argumentCaptor.capture());
             verify(this.console, atLeastOnce()).write(argumentCaptor.capture());
-            assertThat(string,is(arrayToString(argumentCaptor.getAllValues().toArray())));
+
+            assertThat(string, is(this.reOrder(argumentCaptor.getAllValues())));
         }
     }
 
-    private String toColorCodeString(String initials) {
-        List<ColorCode> colorCodes = new ProposedCombinationView().getColorCodes(Color.get(initials));
-        String string = "";
-        for (ColorCode colorCode : colorCodes) {
-            string += colorCode.toString();
-        }
-        return string;
-    }
+    private String reOrder(List<String> strings) {
+        int proposedCombinationStartIndex = 2;
+        int attempts = 3;
+        int proposedCombinationWidth = 4;
 
-    private String arrayToString(Object[] stringArray) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < stringArray.length; i++) {
-            stringBuilder.append(stringArray[i]);
+        for (int i = proposedCombinationStartIndex; i < proposedCombinationStartIndex + attempts; i++) {
+            String proposedCombination = "";
+            for(int j = proposedCombinationWidth; j > 0; j--) {
+                proposedCombination += strings.remove(strings.size() - j);
+            }
+            strings.set(i, proposedCombination + strings.get(i));
         }
-        return stringBuilder.toString();
+        return this.testUtils.arrayToString(strings.toArray());
     }
 
 }

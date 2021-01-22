@@ -14,7 +14,8 @@ public class BoardBuilder {
 
     private Board board;
     private List<String> proposedCombinationsStrings;
-    private Result result;
+    private Integer blacks;
+    private Integer whites;
 
     public BoardBuilder() {
         this.proposedCombinationsStrings = new ArrayList<>();
@@ -28,15 +29,20 @@ public class BoardBuilder {
         return this;
     }
 
-    public BoardBuilder result(Result result) {
-        this.result = result;
+    public BoardBuilder blacks(int blacks) {
+        this.blacks = blacks;
+        return this;
+    }
+
+    public BoardBuilder whites(int whites) {
+        this.whites = whites;
         return this;
     }
 
     public Board build() {
         this.board = spy(new Board());
-        if (this.result != null) {
-            doReturn(this.result).when(this.board).getResult(any());
+        if (this.blacks != null && this.whites != null) {
+            doReturn(new Result(this.blacks, this.whites)).when(this.board).getResult(any());
         }
         if (!this.proposedCombinationsStrings.isEmpty()) {
             for (String proposedCombinationsString : this.proposedCombinationsStrings) {

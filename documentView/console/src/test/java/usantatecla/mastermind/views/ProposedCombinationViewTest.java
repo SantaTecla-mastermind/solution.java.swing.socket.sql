@@ -1,139 +1,86 @@
 package usantatecla.mastermind.views;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
+import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
+import usantatecla.mastermind.types.Color;
+import usantatecla.utils.views.Console;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ProposedCombinationViewTest {
-/*
-    @Mock
-    Console console;
+
+    private static final String INITIALS = "rgby";
 
     @Mock
-    ProposedCombination proposedCombination;
+    private Console console;
 
-    @InjectMocks
-    ProposedCombinationView proposedCombinationView;
+    private ProposedCombinationView proposedCombinationView;
+    private TestUtils testUtils;
+
+    @BeforeEach
+    public void beforeEach() {
+        this.proposedCombinationView = new ProposedCombinationView();
+        this.testUtils = new TestUtils();
+    }
 
     @Test
     void testGivenWrongWidthProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            when(this.console.readString()).thenReturn("rg", "rgbyo", "rgby");
             console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString(any())).thenReturn("rg", "rgbyo", ProposedCombinationViewTest.INITIALS);
             this.proposedCombinationView.read();
             verify(this.console, times(2)).writeln("Wrong proposed combination length");
         }
     }
 
     @Test
-    void testGivenWrongCharacterProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
+    void testGivenWrongCharactersProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            when(this.console.readString()).thenReturn("rqop", "rpfi", "pñl0", "rgby");
             console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString(any())).thenReturn("rqcp", "rpfi", "p^l0", ProposedCombinationViewTest.INITIALS);
             this.proposedCombinationView.read();
-            verify(this.console, times(3)).writeln("Wrong colors, they must be: " + ColorView.allInitials());
+            verify(this.console, times(3)).writeln("Wrong colors, they must be: rgybmc");
         }
     }
 
     @Test
     void testGivenDuplicatedCharacterProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            when(this.console.readString())
-                    .thenReturn("roog")
-                    .thenReturn("rrrr")
-                    .thenReturn("ygyg")
-                    .thenReturn("rgby");
-            when(this.proposedCombination.getColors()).thenReturn(new ArrayList<>());
             console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString(any())).thenReturn("rmmg", "rrrr", "ygyg", ProposedCombinationViewTest.INITIALS);
             this.proposedCombinationView.read();
             verify(this.console, times(3)).writeln("Repeated colors");
         }
     }
-*/
 
-
-
-
-
-    /*@Test
-    void testGivenEmptyProposedCombinationWhenReadValidCombinationThenContainsColors() {
+    @Test
+    void testGivenProposedCombinationWhenReadThenReturn() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            String colors = "rgby";
-            when(this.console.readString()).thenReturn(colors);
-            this.proposedCombination.read();
-            List<ColorCode> colorCodes = ColorFactory.getInstance().getColorCodes(colors);
-            for (int i = 0; i < colorCodes.size(); i++) {
-                assertThat(this.proposedCombination.contains(colorCodes.get(i), i), is(true));
-            }
+            when(this.console.readString(any())).thenReturn(ProposedCombinationViewTest.INITIALS);
+            assertThat(this.proposedCombinationView.read().getColors(), is(Color.get(ProposedCombinationViewTest.INITIALS)));
         }
     }
 
     @Test
-    void testGivenEmptyProposedCombinationWhenReadNotValidCombinationThenRequestCombination() {
+    void testGivenProposedCombinationWhenWriteThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            when(this.console.readString()).thenReturn("rgbl", "rgby");
-            this.proposedCombination.read();
-            verify(this.console, times(2)).readString();
+            when(this.console.readString(any())).thenReturn(ProposedCombinationViewTest.INITIALS);
+            this.proposedCombinationView.write(this.proposedCombinationView.read());
+            ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
+            verify(this.console, times(4)).write(argumentCaptor.capture());
+            assertThat(this.testUtils.arrayToString(argumentCaptor.getAllValues().toArray()),
+                    is(this.testUtils.toColorCodeString(ProposedCombinationViewTest.INITIALS)));
         }
+
     }
-
-    @Test
-    void testGivenEmptyProposedCombinationWhenReadNotValidSizeCombinationThenRequestCombination() {
-        try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            console.when(Console::getInstance).thenReturn(this.console);
-            when(this.console.readString()).thenReturn("rgbym", "rgby");
-            this.proposedCombination.read();
-            verify(this.console, times(2)).readString();
-        }
-    }
-
-    @Test
-    void testGivenEmptyProposedCombinationWhenReadRepeatCombinationThenRequestCombination() {
-        try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            console.when(Console::getInstance).thenReturn(this.console);
-            when(this.console.readString()).thenReturn("rbry", "rgby");
-            this.proposedCombination.read();
-            verify(this.console, times(2)).readString();
-        }
-    }*/
-
-    /*@Test
-    void testGivenColorsInProposedCombinationWhenColorIsContainedThenIsTrue() {
-        try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            console.when(Console::getInstance).thenReturn(this.console);
-            String colors = "rgby";
-            when(this.console.readString()).thenReturn(colors);
-            this.proposedCombination.read();
-            for (ColorCode colorCode : ColorFactory.getInstance().getColorCodes(colors)) {
-                assertThat(this.proposedCombination.contains(colorCode), is(true));
-            }
-        }
-    }
-
-    @Test
-    void testGivenColorsInProposedCombinationWhenColorIsContainedByPositionOutOfSizeThenIsAssert() {
-        try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            console.when(Console::getInstance).thenReturn(this.console);
-            when(this.console.readString()).thenReturn("rgby");
-            this.proposedCombination.read();
-            Assertions.assertThrows(AssertionError.class, () -> this.proposedCombination.contains(ColorCode.RED, 10));
-        }
-    }
-
-    @Test
-    void testGivenProposedCombinationWhenWriteThenWriteColors() {
-        try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            console.when(Console::getInstance).thenReturn(this.console);
-            String colors = "rgby";
-            when(this.console.readString()).thenReturn(colors);
-            this.proposedCombination.read();
-            this.proposedCombination.write();
-            for (ColorCode colorCode : ColorFactory.getInstance().getColorCodes(colors)) {
-                verify(this.console, times(1)).write(colorCode.get() + colorCode.getInitial() + ColorCode.RESET_COLOR.get());
-            }
-        }
-
-    }*/
 }
