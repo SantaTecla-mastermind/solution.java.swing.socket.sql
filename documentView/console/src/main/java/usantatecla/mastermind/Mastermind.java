@@ -3,12 +3,12 @@ package usantatecla.mastermind;
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.View;
 
-public class Mastermind {
+class Mastermind {
 
 	private Board board;
 	private View view;
 
-	private Mastermind() {
+	Mastermind() {
 		this.board = new Board();
 		this.view = new View(this.board);
 	}

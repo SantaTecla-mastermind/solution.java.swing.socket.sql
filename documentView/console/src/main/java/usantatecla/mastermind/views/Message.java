@@ -3,14 +3,14 @@ package usantatecla.mastermind.views;
 import usantatecla.utils.views.Console;
 
 enum Message {
+    TITLE("----- MASTERMIND -----"),
+    SECRET_COMBINATION("****"),
     ATTEMPTS("#attempts attempt(s): "),
-    RESUME("Do you want to continue"),
     RESULT(" --> #blacks blacks and #whites whites"),
     PROPOSED_COMBINATION("Propose a combination: "),
-    TITLE("----- MASTERMIND -----"),
     WINNER("You've won!!! ;-)"),
     LOOSER("You've lost!!! :-("),
-    SECRET_COMBINATION("****");
+    RESUME("Do you want to continue");
 
     private String message;
 
