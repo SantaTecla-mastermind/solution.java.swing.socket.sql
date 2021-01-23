@@ -21,6 +21,15 @@ public class BoardBuilder {
         this.proposedCombinationsStrings = new ArrayList<>();
     }
 
+    public BoardBuilder proposedCombinations(String... proposedCombinations) {
+        assert proposedCombinations.length <= 10;
+        for (String proposedCombination : proposedCombinations) {
+            assert Pattern.matches("[" + Color.getAllInitials() + "]{4}", proposedCombination);
+            this.proposedCombinationsStrings.add(proposedCombination);
+        }
+        return this;
+    }
+
     public BoardBuilder proposedCombinations(int times, String proposedCombination) {
         assert Pattern.matches("[" + Color.getAllInitials() + "]{4}", proposedCombination);
         for (int i = 0; i < times; i++) {

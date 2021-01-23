@@ -12,10 +12,9 @@ import static org.mockito.Mockito.*;
 public class BoardBuilder {
 
     private Board board;
-
     private List<String> proposedCombinationsStrings;
-
-    private Result result;
+    private Integer blacks;
+    private Integer whites;
 
     public BoardBuilder() {
         this.proposedCombinationsStrings = new ArrayList<>();
@@ -50,6 +49,16 @@ public class BoardBuilder {
         return this.board;
     }
 
+    public BoardBuilder blacks(int blacks) {
+        this.blacks = blacks;
+        return this;
+    }
+
+    public BoardBuilder whites(int whites) {
+        this.whites = whites;
+        return this;
+    }
+
     private void setProposedCombination(String proposedCombinationString) {
         Console console = mock(Console.class);
         try (MockedStatic<Console> staticConsole = mockStatic(Console.class)) {
@@ -57,16 +66,11 @@ public class BoardBuilder {
             when(console.readString()).thenReturn(proposedCombinationString);
             ProposedCombination proposedCombination = new ProposedCombination();
             proposedCombination.read();
-            if (this.result != null) {
-                when(this.board.getResult(proposedCombination)).thenReturn(result);
+            if (this.blacks != null && this.whites != null) {
+                doReturn(new Result(this.blacks, this.whites)).when(this.board).getResult(any());
             }
             this.board.add(proposedCombination);
         }
-    }
-
-    public BoardBuilder result(Result result) {
-        this.result = result;
-        return this;
     }
 
 }

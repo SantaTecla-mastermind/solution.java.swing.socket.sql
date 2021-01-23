@@ -22,15 +22,15 @@ public class SecretCombinationTest {
     private SecretCombination secretCombination;
 
     @Mock
-    ProposedCombination proposedCombination;
+    private ProposedCombination proposedCombination;
 
     @BeforeEach
-    void beforeEach() {
+    public void beforeEach() {
         this.secretCombination = new SecretCombination();
     }
 
     @Test
-    void testGivenSecretCombinationAndWinnerProposedCombinationWhenGetResultThenIsWinner() {
+    public void testGivenSecretCombinationAndWinnerProposedCombinationWhenGetResultThenIsWinner() {
         when(this.proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(true);
         when(this.proposedCombination.contains(any(ColorCode.class))).thenReturn(true);
         Result result = secretCombination.getResult(this.proposedCombination);
@@ -38,7 +38,7 @@ public class SecretCombinationTest {
     }
 
     @Test
-    void testGivenSecretCombinationAndProposedCombinationWhenGetResultThen0blacksAnd0Whites() {
+    public void testGivenSecretCombinationAndProposedCombinationWhenGetResultThen0blacksAnd0Whites() {
         when(this.proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(false);
         when(this.proposedCombination.contains(any(ColorCode.class))).thenReturn(false);
         Result result = secretCombination.getResult(this.proposedCombination);
@@ -46,7 +46,7 @@ public class SecretCombinationTest {
     }
 
     @Test
-    void testGivenSecretCombinationAndProposedCombinationWhenGetResultThen2blacksAnd2Whites() {
+    public void testGivenSecretCombinationAndProposedCombinationWhenGetResultThen2blacksAnd2Whites() {
         when(this.proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(true, true, false);
         when(this.proposedCombination.contains(any(ColorCode.class))).thenReturn(true);
         Result result = secretCombination.getResult(this.proposedCombination);
@@ -54,7 +54,7 @@ public class SecretCombinationTest {
     }
 
     @Test
-    void testGivenSecretCombinationWhenWritelnThenPrint(){
+    public void testGivenSecretCombinationWhenWritelnThenPrint(){
         Console console = mock(Console.class);
         try (MockedStatic<Console> staticConsole = mockStatic(Console.class)) {
             staticConsole.when(Console::getInstance).thenReturn(console);

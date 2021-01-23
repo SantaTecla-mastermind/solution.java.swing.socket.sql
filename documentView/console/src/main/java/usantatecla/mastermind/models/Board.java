@@ -2,7 +2,7 @@ package usantatecla.mastermind.models;
 
 public class Board {
 
-    private static final int MAX_ATTEMPTS = 10;
+    static final int MAX_ATTEMPTS = 10;
     private SecretCombination secretCombination;
     private ProposedCombination[] proposedCombinations;
     private Result[] results;

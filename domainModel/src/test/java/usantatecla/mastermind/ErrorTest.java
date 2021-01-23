@@ -16,7 +16,7 @@ import static org.mockito.Mockito.verify;
 public class ErrorTest {
 
     @Mock
-    Console console;
+    private Console console;
 
     @Test
     public void testGivenErrorWhenWritelnThenWrite() {

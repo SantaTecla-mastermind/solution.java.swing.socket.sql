@@ -10,7 +10,6 @@ public class Result {
     private int whites;
 
     Result(int blacks, int whites) {
-
         assert Result.LIMITS.isIncluded(blacks);
         assert Result.LIMITS.isIncluded(whites);
 

@@ -15,7 +15,7 @@ import static org.mockito.Mockito.*;
 public class MessageTest {
 
     @Mock
-    Console console;
+    private Console console;
 
     @Test
     public void testGivenNewMessageWhenToString() {

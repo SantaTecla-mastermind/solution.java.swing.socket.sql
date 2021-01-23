@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.is;
 
 public class ColorFactoryTest {
 
-    ColorFactory colorFactory;
+    private ColorFactory colorFactory;
 
     @BeforeEach
     public void beforeEach() {
