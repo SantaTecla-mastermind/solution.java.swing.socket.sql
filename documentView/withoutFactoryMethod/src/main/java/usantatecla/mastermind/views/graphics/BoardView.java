@@ -54,11 +54,10 @@ class BoardView extends JFrame {
         this.proposalCombinationView.resetCharacters();
         this.proposedCombinationsView.add();
         this.setVisible(true);
-        this.drawGameOver();
     }
 
-    private void drawGameOver() {
-        if (this.board.isWinner() || this.board.isLooser()) {
+    void drawGameOver() {
+        if (this.board.isFinished()) {
             String message = "";
             if (this.board.isWinner()) {
                 message = Message.WINNER.toString();

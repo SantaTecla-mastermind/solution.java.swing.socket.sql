@@ -19,7 +19,10 @@ public class GraphicsView extends View {
 
     @Override
     protected void play() {
-        this.boardView.play();
+        do {
+            this.boardView.play();
+        }while (!this.board.isFinished());
+        this.boardView.drawGameOver();
     }
 
     @Override
