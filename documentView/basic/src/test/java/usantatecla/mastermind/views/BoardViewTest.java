@@ -24,12 +24,12 @@ public class BoardViewTest {
     private Console console;
 
     private BoardView boardView;
-    private ViewTestUtils viewTestUtils;
+    private Conversor conversor;
 
     @BeforeEach
     public void beforeEach() {
         this.boardView = new BoardView();
-        this.viewTestUtils = new ViewTestUtils();
+        this.conversor = new Conversor();
     }
 
     @Test
@@ -55,12 +55,12 @@ public class BoardViewTest {
                     .proposedCombinations(3, "rgby")
                     .blacks(2).whites(2)
                     .build());
-            String string = this.viewTestUtils.arrayToString(new String[]{
+            String string = this.conversor.arrayToString(new String[]{
                     "3 attempt(s): ",
                     "****",
-                    this.viewTestUtils.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
-                    this.viewTestUtils.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
-                    this.viewTestUtils.toColorCodeString("rgby") + " --> 2 blacks and 2 whites"
+                    this.conversor.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
+                    this.conversor.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
+                    this.conversor.toColorCodeString("rgby") + " --> 2 blacks and 2 whites"
             });
             ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
             verify(this.console, atLeastOnce()).writeln(argumentCaptor.capture());
@@ -82,7 +82,7 @@ public class BoardViewTest {
             }
             strings.set(i, proposedCombination + strings.get(i));
         }
-        return this.viewTestUtils.arrayToString(strings.toArray());
+        return this.conversor.arrayToString(strings.toArray());
     }
 
 }

@@ -5,8 +5,8 @@ import usantatecla.utils.views.ColorCode;
 
 import java.util.List;
 
-// TODO Revisar con Luis
-class ViewTestUtils {
+class Conversor {
+    
     String toColorCodeString(String initials) {
         List<ColorCode> colorCodes = new ProposedCombinationView().getColorCodes(Color.get(initials));
         String string = "";
@@ -16,11 +16,12 @@ class ViewTestUtils {
         return string;
     }
 
-    String arrayToString(Object[] stringArray) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < stringArray.length; i++) {
-            stringBuilder.append(stringArray[i]);
+    String arrayToString(Object[] objects) {
+        String string = "";
+        for (Object object : objects) {
+            string += object;
         }
-        return stringBuilder.toString();
+        return string;
     }
+
 }

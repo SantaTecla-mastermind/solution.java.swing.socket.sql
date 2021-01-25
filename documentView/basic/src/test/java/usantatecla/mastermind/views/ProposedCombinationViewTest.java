@@ -23,12 +23,12 @@ public class ProposedCombinationViewTest {
     private Console console;
 
     private ProposedCombinationView proposedCombinationView;
-    private ViewTestUtils viewTestUtils;
+    private Conversor conversor;
 
     @BeforeEach
     public void beforeEach() {
         this.proposedCombinationView = new ProposedCombinationView();
-        this.viewTestUtils = new ViewTestUtils();
+        this.conversor = new Conversor();
     }
 
     @Test
@@ -78,8 +78,8 @@ public class ProposedCombinationViewTest {
             this.proposedCombinationView.write(this.proposedCombinationView.read());
             ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
             verify(this.console, times(4)).write(argumentCaptor.capture());
-            assertThat(this.viewTestUtils.arrayToString(argumentCaptor.getAllValues().toArray()),
-                    is(this.viewTestUtils.toColorCodeString(ProposedCombinationViewTest.INITIALS)));
+            assertThat(this.conversor.arrayToString(argumentCaptor.getAllValues().toArray()),
+                    is(this.conversor.toColorCodeString(ProposedCombinationViewTest.INITIALS)));
         }
 
     }
