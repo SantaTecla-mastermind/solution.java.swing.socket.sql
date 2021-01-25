@@ -1,5 +1,5 @@
 package usantatecla.mastermind;
-/*
+
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.graphics.GraphicsView;
 
@@ -21,4 +21,3 @@ public class GraphicsMastermind {
         new GraphicsMastermind().play();
     }
 }
-*/

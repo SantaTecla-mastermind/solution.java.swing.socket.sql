@@ -1,5 +1,5 @@
 package usantatecla.mastermind.views.graphics;
-/*
+
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +25,7 @@ class ProposalCombinationView extends JPanel implements ActionListener, KeyListe
 
     ProposalCombinationView(final JRootPane rootPane) {
         this.setLayout(new GridBagLayout());
-        this.label = new JLabel(Message.PROPOSED_COMBINATION.getMessage());
+        this.label = new JLabel(Message.PROPOSED_COMBINATION.toString());
         this.button = new JButton(ProposalCombinationView.ACCEPT);
         this.textField = new JTextField(10);
         this.resetCharacters();
@@ -64,4 +64,3 @@ class ProposalCombinationView extends JPanel implements ActionListener, KeyListe
     }
 
 }
-*/

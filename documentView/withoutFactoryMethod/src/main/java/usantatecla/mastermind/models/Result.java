@@ -17,11 +17,11 @@ public class Result {
         this.whites = whites;
     }
 
-    int getBlacks() {
+    public int getBlacks() {
         return blacks;
     }
 
-    int getWhites() {
+    public int getWhites() {
         return whites;
     }
 

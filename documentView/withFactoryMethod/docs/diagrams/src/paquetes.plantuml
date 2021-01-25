@@ -234,11 +234,11 @@ class usantatecla.mastermind.views.graphics.GraphicsView {
     # isNewGame() : boolean
 }
 usantatecla.mastermind.views.graphics.GraphicsView -up-|> View
-usantatecla.mastermind.views.graphics.GraphicsView *-down-> usantatecla.mastermind.views.graphics.GameView
+usantatecla.mastermind.views.graphics.GraphicsView *-down-> usantatecla.mastermind.views.graphics.BoardView
 usantatecla.mastermind.views.graphics.GraphicsView ..> Game
 usantatecla.mastermind.views.graphics.GraphicsView ..> usantatecla.mastermind.views.graphics.ResumeDialog
 
-class usantatecla.mastermind.views.graphics.GameView {
+class usantatecla.mastermind.views.graphics.BoardView {
     - {static} GAME_OVER : String
     ~ GameView(Game)
     ~ start()
@@ -246,15 +246,15 @@ class usantatecla.mastermind.views.graphics.GameView {
     - drawGameOver() : boolean
     - clear()
 }
-usantatecla.mastermind.views.graphics.GameView -up-|> javax.swing
-usantatecla.mastermind.views.graphics.GameView *-down-> Game
-usantatecla.mastermind.views.graphics.GameView *-down-> usantatecla.mastermind.views.graphics.SecretCombinationView
-usantatecla.mastermind.views.graphics.GameView *-down-> usantatecla.mastermind.views.graphics.ProposedCombinationsView
-usantatecla.mastermind.views.graphics.GameView *-down-> usantatecla.mastermind.views.graphics.ProposalCombinationView
-usantatecla.mastermind.views.graphics.GameView ..> java.awt
-usantatecla.mastermind.views.graphics.GameView ..> Message
-usantatecla.mastermind.views.graphics.GameView ..> usantatecla.mastermind.views.graphics.Constraints
-usantatecla.mastermind.views.graphics.GameView ..> ProposedCombination
+usantatecla.mastermind.views.graphics.BoardView -up-|> javax.swing
+usantatecla.mastermind.views.graphics.BoardView *-down-> Game
+usantatecla.mastermind.views.graphics.BoardView *-down-> usantatecla.mastermind.views.graphics.SecretCombinationView
+usantatecla.mastermind.views.graphics.BoardView *-down-> usantatecla.mastermind.views.graphics.ProposedCombinationsView
+usantatecla.mastermind.views.graphics.BoardView *-down-> usantatecla.mastermind.views.graphics.ProposalCombinationView
+usantatecla.mastermind.views.graphics.BoardView ..> java.awt
+usantatecla.mastermind.views.graphics.BoardView ..> Message
+usantatecla.mastermind.views.graphics.BoardView ..> usantatecla.mastermind.views.graphics.Constraints
+usantatecla.mastermind.views.graphics.BoardView ..> ProposedCombination
 
 class usantatecla.mastermind.views.graphics.ProposalCombinationView {
     - {static} ACCEPT : String

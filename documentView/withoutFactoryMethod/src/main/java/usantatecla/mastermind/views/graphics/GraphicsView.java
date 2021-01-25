@@ -1,41 +1,40 @@
 package usantatecla.mastermind.views.graphics;
-/*
-import usantatecla.mastermind.models.Game;
+
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.View;
 
 public class GraphicsView extends View {
 
-    private GameView gameView;
+    private BoardView boardView;
 
-    public GraphicsView(Game game) {
-        super(game);
-        this.gameView = new GameView(this.game);
+    public GraphicsView(Board board) {
+        super(board);
+        this.boardView = new BoardView(this.board);
     }
 
     @Override
     protected void start() {
-        this.gameView.start();
+        this.boardView.start();
     }
 
     @Override
-    protected boolean propose() {
-        return this.gameView.propose();
+    protected void play() {
+        this.boardView.play();
     }
 
     @Override
-    protected boolean isNewGame() {
+    protected boolean resume() {
         ResumeDialog resumeDialog = new ResumeDialog();
         boolean newGame = resumeDialog.isNewGame();
         if (newGame) {
-            this.game.reset();
-            this.gameView = new GameView(this.game);
+            this.board.reset();
+            this.boardView = new BoardView(this.board);
             return true;
         } else {
-            this.gameView.setVisible(false);
+            this.boardView.setVisible(false);
             System.exit(0);
             return false;
         }
     }
 
 }
-*/

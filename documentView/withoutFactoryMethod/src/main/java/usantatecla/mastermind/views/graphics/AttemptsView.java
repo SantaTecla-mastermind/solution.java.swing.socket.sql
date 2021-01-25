@@ -1,5 +1,5 @@
 package usantatecla.mastermind.views.graphics;
-/*
+
 import javax.swing.JLabel;
 
 import usantatecla.mastermind.views.Message;
@@ -8,8 +8,7 @@ import usantatecla.mastermind.views.Message;
 class AttemptsView extends JLabel {
 
     AttemptsView(int attempts) {
-        this.setText(Message.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + (attempts)));
+        this.setText(Message.ATTEMPTS.toString().replaceFirst("#attempts", "" + (attempts)));
     }
 
 }
-*/
