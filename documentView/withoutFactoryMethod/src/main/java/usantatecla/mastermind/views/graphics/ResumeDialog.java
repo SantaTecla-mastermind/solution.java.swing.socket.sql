@@ -1,5 +1,5 @@
 package usantatecla.mastermind.views.graphics;
-
+/*
 import javax.swing.JOptionPane;
 
 import usantatecla.mastermind.views.Message;
@@ -18,3 +18,4 @@ class ResumeDialog {
     }
 
 }
+*/

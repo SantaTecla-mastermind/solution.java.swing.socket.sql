@@ -1,14 +1,16 @@
 package usantatecla.mastermind;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.console.ConsoleView;
 
 public class ConsoleMastermind {
 
+    private Board board;
     private final ConsoleView consoleView;
 
     private ConsoleMastermind() {
-        this.consoleView = new ConsoleView(new Game());
+        this.board = new Board();
+        this.consoleView = new ConsoleView(this.board);
     }
 
     private void play() {

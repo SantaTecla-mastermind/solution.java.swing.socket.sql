@@ -1,5 +1,5 @@
 package usantatecla.mastermind.views.graphics;
-
+/*
 import usantatecla.mastermind.models.Game;
 import usantatecla.mastermind.views.View;
 
@@ -38,3 +38,4 @@ public class GraphicsView extends View {
     }
 
 }
+*/

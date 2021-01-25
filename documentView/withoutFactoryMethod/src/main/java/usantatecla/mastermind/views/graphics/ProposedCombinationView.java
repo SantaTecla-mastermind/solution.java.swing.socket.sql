@@ -1,5 +1,5 @@
 package usantatecla.mastermind.views.graphics;
-
+/*
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -55,3 +55,4 @@ class ProposedCombinationView extends JLabel {
     }
 
 }
+*/

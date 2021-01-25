@@ -1,5 +1,5 @@
 package usantatecla.mastermind.views.graphics;
-
+/*
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -64,3 +64,4 @@ class ProposalCombinationView extends JPanel implements ActionListener, KeyListe
     }
 
 }
+*/

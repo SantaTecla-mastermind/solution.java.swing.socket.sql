@@ -1,5 +1,5 @@
 package usantatecla.mastermind.views.graphics;
-
+/*
 import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
@@ -22,3 +22,4 @@ class ProposedCombinationsView extends JPanel {
         this.add(new ResultView(this.game.getResult(attempts - 1)), new Constraints(2, attempts, 1, 1));
     }
 }
+*/

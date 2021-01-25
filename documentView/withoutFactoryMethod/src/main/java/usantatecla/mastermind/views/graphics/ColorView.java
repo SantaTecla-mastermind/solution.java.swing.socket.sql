@@ -1,5 +1,5 @@
 package usantatecla.mastermind.views.graphics;
-
+/*
 class ColorView extends usantatecla.mastermind.views.ColorView {
 
     ColorView() {
@@ -10,3 +10,4 @@ class ColorView extends usantatecla.mastermind.views.ColorView {
         return String.valueOf(ColorView.INITIALS[i]);
     }
 }
+*/

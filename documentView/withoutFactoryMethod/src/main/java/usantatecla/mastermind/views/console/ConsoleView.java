@@ -1,19 +1,19 @@
 package usantatecla.mastermind.views.console;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.View;
 
 public class ConsoleView extends View {
 
     private StartView startView;
-    private ProposalView proposalView;
+    private PlayView playView;
     private ResumeView resumeView;
 
-    public ConsoleView(Game game) {
-        super(game);
-        this.startView = new StartView();
-        this.proposalView = new ProposalView(this.game);
-        this.resumeView = new ResumeView(this.game);
+    public ConsoleView(Board board) {
+        super(board);
+        this.startView = new StartView(this.board);
+        this.playView = new PlayView(this.board);
+        this.resumeView = new ResumeView(this.board);
     }
 
     @Override
@@ -22,12 +22,12 @@ public class ConsoleView extends View {
     }
 
     @Override
-    protected boolean propose() {
-        return this.proposalView.interact();
+    protected void play() {
+        this.playView.interact();
     }
 
     @Override
-    protected boolean isNewGame() {
+    protected boolean resume() {
         return this.resumeView.interact();
     }
 

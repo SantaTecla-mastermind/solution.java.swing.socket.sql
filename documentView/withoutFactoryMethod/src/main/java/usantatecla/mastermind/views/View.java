@@ -1,27 +1,23 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
 
-public abstract class View extends WithGameView {
+public abstract class View extends WithBoardView {
 
-    public View(Game game) {
-        super(game);
-    }
+	public View(Board board) {
+		super(board);
+	}
 
-    public void interact() {
-        do {
-            this.start();
-            boolean finished;
-            do {
-                finished = this.propose();
-            } while (!finished);
-        } while (this.isNewGame());
-    }
+	public void interact() {
+		do {
+			this.start();
+			this.play();
+		} while (this.resume());
+	}
 
-    protected abstract void start();
+	protected abstract void start();
 
-    protected abstract boolean propose();
+	protected abstract void play();
 
-    protected abstract boolean isNewGame();
-
+	protected abstract boolean resume();
 }

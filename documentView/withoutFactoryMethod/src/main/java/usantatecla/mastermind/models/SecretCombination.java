@@ -5,14 +5,14 @@ import usantatecla.mastermind.types.Color;
 import java.util.Collections;
 import java.util.Random;
 
-public class SecretCombination extends Combination {
+class SecretCombination extends Combination {
 
     SecretCombination() {
-        for (Color color : Color.values()) {
-            if (!color.isNull()) this.colors.add(color);
-        }
+        super();
+        this.colors = Color.getAll();
+        int numberColorsToRemove = this.colors.size() - Result.WIDTH;
         Random random = new Random(System.currentTimeMillis());
-        for (int i = 0; i < (Color.length() - 1) - Combination.getWidth(); i++) {
+        for (int i = 0; i < numberColorsToRemove; i++) {
             this.colors.remove(random.nextInt(this.colors.size()));
         }
         Collections.shuffle(this.colors);

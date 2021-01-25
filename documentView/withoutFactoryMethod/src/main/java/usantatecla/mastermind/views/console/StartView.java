@@ -1,13 +1,18 @@
 package usantatecla.mastermind.views.console;
 
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.Message;
-import usantatecla.utils.Console;
+import usantatecla.mastermind.views.WithBoardView;
 
-class StartView {
+public class StartView extends WithBoardView {
+
+    StartView(Board board) {
+        super(board);
+    }
 
     void interact() {
-        Console.getInstance().writeln(Message.TITLE.getMessage());
-        new SecretCombinationView().writeln();
+        Message.TITLE.writeln();
+        new BoardView().write(this.board);
     }
 
 }

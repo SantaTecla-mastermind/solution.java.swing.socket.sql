@@ -1,22 +1,23 @@
 package usantatecla.mastermind.views.console;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.Message;
-import usantatecla.mastermind.views.WithGameView;
-import usantatecla.utils.YesNoDialog;
+import usantatecla.mastermind.views.WithBoardView;
+import usantatecla.utils.views.YesNoDialog;
 
-class ResumeView extends WithGameView {
+public class ResumeView extends WithBoardView {
 
-    ResumeView(Game game) {
-        super(game);
+    public ResumeView(Board board) {
+        super(board);
     }
 
-    boolean interact() {
-        boolean newGame = new YesNoDialog().read(Message.RESUME.getMessage());
-        if (newGame) {
-            this.game.reset();
+    public boolean interact() {
+        YesNoDialog yesNoDialog = new YesNoDialog();
+        yesNoDialog.read(Message.RESUME.toString());
+        if (yesNoDialog.isAffirmative()) {
+            this.board.reset();
         }
-        return newGame;
+        return yesNoDialog.isAffirmative();
     }
 
 }

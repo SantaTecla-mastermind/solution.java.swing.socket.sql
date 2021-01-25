@@ -1,14 +1,16 @@
 package usantatecla.mastermind;
-
-import usantatecla.mastermind.models.Game;
+/*
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.graphics.GraphicsView;
 
 public class GraphicsMastermind {
 
+    private Board board;
     private final GraphicsView graphicsView;
 
     private GraphicsMastermind() {
-        this.graphicsView = new GraphicsView(new Game());
+        this.board = new Board();
+        this.graphicsView = new GraphicsView(this.board);
     }
 
     private void play() {
@@ -19,3 +21,4 @@ public class GraphicsMastermind {
         new GraphicsMastermind().play();
     }
 }
+*/

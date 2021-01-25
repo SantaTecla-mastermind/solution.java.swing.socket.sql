@@ -1,5 +1,5 @@
 package usantatecla.mastermind.views.graphics;
-
+/*
 class ErrorView extends usantatecla.mastermind.views.ErrorView {
 
     ErrorView() {
@@ -10,3 +10,4 @@ class ErrorView extends usantatecla.mastermind.views.ErrorView {
         return new ColorView().allInitials();
     }
 }
+*/

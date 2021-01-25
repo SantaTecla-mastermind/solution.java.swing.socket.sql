@@ -1,54 +1,44 @@
 package usantatecla.mastermind.views.console;
 
+import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
-import usantatecla.mastermind.models.Combination;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.views.Message;
-import usantatecla.utils.Console;
+import usantatecla.utils.views.ColorCode;
+import usantatecla.utils.views.Console;
 
-class ProposedCombinationView {
+import java.util.ArrayList;
+import java.util.List;
 
-    private ProposedCombination proposedCombination;
+public class ProposedCombinationView {
 
-    ProposedCombinationView(ProposedCombination proposedCombination) {
-        this.proposedCombination = proposedCombination;
+    ProposedCombination read() {
+        Error error;
+        ProposedCombination proposedCombination = new ProposedCombination();
+        do {
+            String characters = Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase();
+            error = proposedCombination.add(Color.get(characters));
+            new ErrorView().writeln(error);
+        } while (!error.isNull());
+        return proposedCombination;
     }
 
-    void write() {
-        for (Color color : this.proposedCombination.getColors()) {
-            new ColorView(color).write();
+    void write(ProposedCombination proposedCombination) {
+        for (ColorCode colorCode : this.getColorCodes(proposedCombination.getColors())) {
+            colorCode.write();
         }
     }
 
-    void read() {
-        Error error;
-        do {
-            error = Error.NULL;
-            Console.getInstance().write(Message.PROPOSED_COMBINATION.getMessage());
-            String characters = Console.getInstance().readString();
-
-            if (characters.length() != Combination.getWidth()) {
-                error = Error.WRONG_LENGTH;
-            } else {
-                for (int i = 0; i < characters.length(); i++) {
-                    Color color = ColorView.getInstance(characters.charAt(i));
-                    if (color.isNull()) {
-                        error = Error.WRONG_CHARACTERS;
-                    } else {
-                        if (this.proposedCombination.getColors().contains(color)) {
-                            error = Error.DUPLICATED;
-                        } else {
-                            this.proposedCombination.getColors().add(color);
-                        }
-                    }
+    List<ColorCode> getColorCodes(List<Color> colors) {
+        List<ColorCode> colorCodes = new ArrayList<>();
+        for (Color color : colors) {
+            for (ColorCode colorCode : ColorCode.values()) {
+                if (color.name().equals(colorCode.name())) {
+                    colorCodes.add(colorCode);
                 }
             }
-            if (!error.isNull()) {
-                new ErrorView(error).writeln();
-                this.proposedCombination.getColors().clear();
-            }
-        } while (!error.isNull());
+        }
+        return colorCodes;
     }
 
 }

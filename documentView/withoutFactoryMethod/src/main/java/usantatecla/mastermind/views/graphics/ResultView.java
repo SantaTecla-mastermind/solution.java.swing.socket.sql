@@ -1,5 +1,5 @@
 package usantatecla.mastermind.views.graphics;
-
+/*
 import javax.swing.JLabel;
 
 import usantatecla.mastermind.models.Result;
@@ -17,3 +17,4 @@ class ResultView extends JLabel {
     }
 
 }
+*/

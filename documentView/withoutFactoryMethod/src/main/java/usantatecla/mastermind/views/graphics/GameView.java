@@ -1,5 +1,5 @@
 package usantatecla.mastermind.views.graphics;
-
+/*
 import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -80,4 +80,4 @@ class GameView extends JFrame {
         }
     }
 
-}
+}*/
