@@ -9,10 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>documentView</groupId>
     <artifactId>documentView</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>console</module>
+        <module>basic</module>
         <module>withFactoryMethod</module>
         <module>withoutFactoryMethod</module>
     </modules>
