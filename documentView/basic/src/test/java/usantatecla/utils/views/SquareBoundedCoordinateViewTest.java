@@ -6,7 +6,7 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.utils.models.ConcreteCoordinate;
-import usantatecla.utils.models.SquaredBoundedCoordinate;
+import usantatecla.utils.models.SquareBoundedCoordinate;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -14,7 +14,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class SquaredBoundedCoordinateViewTest {
+public class SquareBoundedCoordinateViewTest {
 
     @Mock
     Console console;
@@ -23,25 +23,25 @@ public class SquaredBoundedCoordinateViewTest {
     private static final String ERROR = "error";
 
     public int getDimension() {
-        return SquaredBoundedCoordinateViewTest.DIMENSION;
+        return SquareBoundedCoordinateViewTest.DIMENSION;
     }
 
     public SquareBoundedCoordinateView getCoordinateView() {
         return new SquareBoundedCoordinateView() {
 
             @Override
-            public SquaredBoundedCoordinate createCoordinate(ConcreteCoordinate concreteCoordinate) {
-                return new SquaredBoundedCoordinate(concreteCoordinate) {
+            public SquareBoundedCoordinate createCoordinate(ConcreteCoordinate concreteCoordinate) {
+                return new SquareBoundedCoordinate(concreteCoordinate) {
                     @Override
                     protected int getDimension() {
-                        return SquaredBoundedCoordinateViewTest.DIMENSION;
+                        return SquareBoundedCoordinateViewTest.DIMENSION;
                     }
                 };
             }
 
             @Override
             public String getErrorMessage() {
-                return SquaredBoundedCoordinateViewTest.ERROR;
+                return SquareBoundedCoordinateViewTest.ERROR;
             }
 
         };
@@ -52,10 +52,10 @@ public class SquaredBoundedCoordinateViewTest {
         try (MockedStatic<Console> staticConsole = mockStatic(Console.class)) {
             staticConsole.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readInt(anyString())).thenReturn(this.getDimension());
-            SquaredBoundedCoordinate coordinate = this.getCoordinateView().read("");
+            SquareBoundedCoordinate coordinate = this.getCoordinateView().read("");
 
-            assertThat(coordinate.getRow(), is(this.getDimension() - 1));
-            assertThat(coordinate.getColumn(), is(this.getDimension() - 1));
+            assertThat(coordinate.getRow(), is(this.getDimension()-1));
+            assertThat(coordinate.getColumn(), is(this.getDimension()-1));
         }
     }
 

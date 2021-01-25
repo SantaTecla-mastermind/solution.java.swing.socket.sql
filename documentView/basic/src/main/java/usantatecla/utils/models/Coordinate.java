@@ -1,6 +1,6 @@
 package usantatecla.utils.models;
 
-interface Coordinate {
+public interface Coordinate {
   
   Coordinate NULL = NullCoordinate.getInstance();
   boolean isNull();

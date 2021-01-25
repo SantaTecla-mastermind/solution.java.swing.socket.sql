@@ -2,15 +2,15 @@ package usantatecla.utils.models;
 
 import java.util.Random;
 
-public abstract class SquaredBoundedCoordinate {
+public abstract class SquareBoundedCoordinate {
 
     private Coordinate adaptee;
 
-    public SquaredBoundedCoordinate() {
+    public SquareBoundedCoordinate() {
         this(NullCoordinate.getInstance());
     }
 
-    public SquaredBoundedCoordinate(Coordinate coordinate) {
+    public SquareBoundedCoordinate(Coordinate coordinate) {
         this.adaptee = coordinate;
     }
 
@@ -18,7 +18,7 @@ public abstract class SquaredBoundedCoordinate {
         return this.adaptee.isNull();
     }
 
-    public SquaredBoundedCoordinate(int row, int column) {
+    public SquareBoundedCoordinate(int row, int column) {
         this.adaptee = new ConcreteCoordinate(row, column);
 
         assert this.isValid();
@@ -32,13 +32,13 @@ public abstract class SquaredBoundedCoordinate {
                 && this.getLimits().isIncluded(concreteCoordinate.getColumn());
     }
 
-    protected ClosedInterval getLimits() {
+    public ClosedInterval getLimits() {
         return new ClosedInterval(0, this.getDimension() - 1);
     }
 
     protected abstract int getDimension();
 
-    public Direction getDirection(SquaredBoundedCoordinate coordinate) {
+    public Direction getDirection(SquareBoundedCoordinate coordinate) {
         if (this.equals(coordinate) || this.isNull() || coordinate.isNull()) {
             return Direction.NULL;
         }
@@ -70,11 +70,4 @@ public abstract class SquaredBoundedCoordinate {
         return ((ConcreteCoordinate) this.adaptee).getColumn();
     }
 
-    Coordinate getAdaptee() {
-        return adaptee;
-    }
-
-    void setAdaptee(Coordinate adaptee) {
-        this.adaptee = adaptee;
-    }
 }

@@ -7,7 +7,7 @@ public class ConcreteCoordinate implements Coordinate {
 	protected int row;
 	protected int column;
 
-	protected ConcreteCoordinate() {
+	public ConcreteCoordinate() {
 	}
 
 	public ConcreteCoordinate(int row, int column) {
