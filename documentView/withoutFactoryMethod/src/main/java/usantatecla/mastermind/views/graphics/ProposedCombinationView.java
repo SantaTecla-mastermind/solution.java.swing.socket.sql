@@ -21,7 +21,7 @@ class ProposedCombinationView extends JLabel {
         this.proposedCombination = proposedCombination;
         String initials = "";
         for (Color color : proposedCombination.getColors()) {
-            initials += ColorCode.get(color.ordinal());
+            initials += color.getInitial();
         }
         this.setText(initials);
     }
