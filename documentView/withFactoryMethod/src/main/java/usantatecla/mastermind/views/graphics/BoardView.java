@@ -1,24 +1,25 @@
 package usantatecla.mastermind.views.graphics;
 
-import usantatecla.mastermind.models.Game;
+import java.awt.GridBagLayout;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.views.Message;
 
-import javax.swing.*;
-import java.awt.*;
-
 @SuppressWarnings("serial")
-class GameView extends JFrame {
+class BoardView extends JFrame {
 
     private static final String GAME_OVER = "Game Over";
-    private Game game;
+    private Board board;
     private SecretCombinationView secretCombinationView;
     private ProposedCombinationsView proposedCombinationsView;
     private ProposalCombinationView proposalCombinationView;
 
-    GameView(Game game) {
-        super(Message.TITLE.getMessage());
-        this.game = game;
+    BoardView(Board board) {
+        super(Message.TITLE.toString());
+        this.board = board;
         this.getContentPane().setLayout(new GridBagLayout());
         this.setSize(400, 500);
         this.setLocationRelativeTo(null);
@@ -30,14 +31,14 @@ class GameView extends JFrame {
         this.clear();
         this.secretCombinationView = new SecretCombinationView();
         this.getContentPane().add(this.secretCombinationView, new Constraints(0, 0, 3, 1));
-        this.proposedCombinationsView = new ProposedCombinationsView(this.game);
+        this.proposedCombinationsView = new ProposedCombinationsView(this.board);
         this.getContentPane().add(this.proposedCombinationsView, new Constraints(0, 1, 3, 10));
         this.proposalCombinationView = new ProposalCombinationView(this.getRootPane());
         this.getContentPane().add(this.proposalCombinationView, new Constraints(0, 11, 3, 1));
         this.setVisible(true);
     }
 
-    boolean propose() {
+    void play() {
         ProposedCombination proposedCombination = new ProposedCombination();
         ProposedCombinationView proposedCombinationView = new ProposedCombinationView(proposedCombination);
         do {
@@ -49,25 +50,22 @@ class GameView extends JFrame {
                 }
             }
         } while (this.proposalCombinationView.getCharacters() == null);
-        this.game.addProposedCombination(proposedCombination);
+        this.board.add(proposedCombination);
         this.proposalCombinationView.resetCharacters();
         this.proposedCombinationsView.add();
         this.setVisible(true);
-        return this.drawGameOver();
     }
 
-    private boolean drawGameOver() {
-        if (this.game.isWinner() || this.game.isLooser()) {
+    void drawGameOver() {
+        if (this.board.isFinished()) {
             String message = "";
-            if (this.game.isWinner()) {
-                message = Message.WINNER.getMessage();
+            if (this.board.isWinner()) {
+                message = Message.WINNER.toString();
             } else {
-                message = Message.LOOSER.getMessage();
+                message = Message.LOOSER.toString();
             }
-            JOptionPane.showMessageDialog(null, message, GameView.GAME_OVER, JOptionPane.WARNING_MESSAGE);
-            return true;
+            JOptionPane.showMessageDialog(null, message, BoardView.GAME_OVER, JOptionPane.WARNING_MESSAGE);
         }
-        return false;
     }
 
     private void clear() {

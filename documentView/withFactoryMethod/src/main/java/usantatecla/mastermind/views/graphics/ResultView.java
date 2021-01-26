@@ -1,9 +1,9 @@
 package usantatecla.mastermind.views.graphics;
 
+import javax.swing.JLabel;
+
 import usantatecla.mastermind.models.Result;
 import usantatecla.mastermind.views.Message;
-
-import javax.swing.*;
 
 @SuppressWarnings("serial")
 class ResultView extends JLabel {
@@ -12,7 +12,7 @@ class ResultView extends JLabel {
 
     ResultView(Result result) {
         this.result = result;
-        this.setText(Message.RESULT.getMessage().replaceFirst("#blacks", "" + this.result.getBlacks())
+        this.setText(Message.RESULT.toString().replaceFirst("#blacks", "" + this.result.getBlacks())
                 .replaceFirst("#whites", "" + this.result.getWhites()));
     }
 

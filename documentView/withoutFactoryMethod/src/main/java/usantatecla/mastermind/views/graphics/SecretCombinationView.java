@@ -20,10 +20,7 @@ class SecretCombinationView extends JPanel {
         this.setLayout(new GridBagLayout());
         this.title = new JLabel(SecretCombinationView.TITLE);
         this.add(this.title, new Constraints(0, 0, 3, 1));
-        String text = "";
-        for (int i = 0; i < Result.WIDTH; i++) {
-            text += Message.SECRET_COMBINATION.toString();
-        }
+        String text = Message.SECRET_COMBINATION.toString();
         this.secretCombination = new JLabel(text);
         this.add(this.secretCombination, new Constraints(0, 1, 3, 1));
         this.setVisible(true);
