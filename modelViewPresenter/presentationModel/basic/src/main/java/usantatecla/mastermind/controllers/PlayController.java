@@ -6,15 +6,15 @@ import usantatecla.mastermind.types.Error;
 
 import java.util.List;
 
-public class ProposalController extends Controller {
+public class PlayController extends Controller {
 
-    public ProposalController(Game game) {
-        super(game);
+    public PlayController(Board board) {
+        super(board);
     }
 
-    public Error addProposedCombination(List<Color> colors) {
+    public Error add(List<Color> colors) {
         Error error = Error.NULL;
-        if (colors.size() != Combination.getWidth()) {
+        if (colors.size() != Result.WIDTH) {
             error = Error.WRONG_LENGTH;
         } else {
             for (int i = 0; i < colors.size(); i++) {
@@ -32,29 +32,33 @@ public class ProposalController extends Controller {
         if (error.isNull()) {
             ProposedCombination proposedCombination = new ProposedCombination();
             proposedCombination.getColors().addAll(colors);
-            this.game.addProposedCombination(proposedCombination);
+            this.board.add(proposedCombination);
         }
         return error;
     }
 
-    public boolean isWinner() {
-        return this.game.isWinner();
+    public boolean isFinished() {
+        return this.board.isFinished();
     }
 
-    public boolean isLooser() {
-        return this.game.isLooser();
+    public boolean isWinner() {
+        return this.board.isWinner();
     }
 
     public int getAttempts() {
-        return this.game.getAttempts();
+        return this.board.getAttempts();
     }
 
     public ProposedCombination getProposedCombination(int position) {
-        return this.game.getProposedCombination(position);
+        return this.board.getProposedCombination(position);
     }
 
-    public Result getResult(int position) {
-        return this.game.getResult(position);
+    public int getBlacks(int position) {
+        return this.board.getBlacks(position);
+    }
+
+    public int getWhites(int position) {
+        return this.board.getWhites(position);
     }
 
 }

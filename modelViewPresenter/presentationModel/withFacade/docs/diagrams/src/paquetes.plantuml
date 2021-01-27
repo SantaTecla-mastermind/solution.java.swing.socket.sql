@@ -242,12 +242,12 @@ class  usantatecla.mastermind.controllers.Logic{
 }
 usantatecla.mastermind.controllers.Logic *-down-> usantatecla.mastermind.controllers.ResumeController
 usantatecla.mastermind.controllers.Logic *-down-> usantatecla.mastermind.controllers.StartController
-usantatecla.mastermind.controllers.Logic *-down-> usantatecla.mastermind.controllers.ProposalController
+usantatecla.mastermind.controllers.Logic *-down-> usantatecla.mastermind.controllers.PlayController
 usantatecla.mastermind.controllers.Logic *-down-> Game
 usantatecla.mastermind.controllers.Logic .down.> Color
 usantatecla.mastermind.controllers.Logic .down.> Error
 
-class  usantatecla.mastermind.controllers.ProposalController{
+class  usantatecla.mastermind.controllers.PlayController{
     + ProposalController(Game)
     + addProposedCombination(List<Color>): Error
     + isWinner(): boolean
@@ -257,11 +257,11 @@ class  usantatecla.mastermind.controllers.ProposalController{
     + getBlacks(int): int
     + getWhites(int): int
 }
-usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.ProposalController
-usantatecla.mastermind.controllers.ProposalController .down.> Game
-usantatecla.mastermind.controllers.ProposalController .down.> ProposedCombination
-usantatecla.mastermind.controllers.ProposalController .down.> Color
-usantatecla.mastermind.controllers.ProposalController .down.> Error
+usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.PlayController
+usantatecla.mastermind.controllers.PlayController .down.> Game
+usantatecla.mastermind.controllers.PlayController .down.> ProposedCombination
+usantatecla.mastermind.controllers.PlayController .down.> Color
+usantatecla.mastermind.controllers.PlayController .down.> Error
 
 class  usantatecla.mastermind.controllers.ResumeController{
     + ResumeController(Game)

@@ -226,9 +226,9 @@ usantatecla.mastermind.controllers.Logic *-down-> State
 usantatecla.mastermind.controllers.Logic *-down-> StateValue
 usantatecla.mastermind.controllers.Logic .down.> usantatecla.mastermind.controllers.ResumeController
 usantatecla.mastermind.controllers.Logic .down.> usantatecla.mastermind.controllers.StartController
-usantatecla.mastermind.controllers.Logic .down.> usantatecla.mastermind.controllers.ProposalController
+usantatecla.mastermind.controllers.Logic .down.> usantatecla.mastermind.controllers.PlayController
 
-class  usantatecla.mastermind.controllers.ProposalController{
+class  usantatecla.mastermind.controllers.PlayController{
     + ProposalController(Game, State)
     + addProposedCombination(List<Color>): Error
     + isWinner(): boolean
@@ -238,13 +238,13 @@ class  usantatecla.mastermind.controllers.ProposalController{
     + getBlacks(int): int
     + getWhites(int): int
 }
-usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.ProposalController
-usantatecla.mastermind.controllers.ProposalController .down.> Combination
-usantatecla.mastermind.controllers.ProposalController .down.> Game
-usantatecla.mastermind.controllers.ProposalController .down.> State
-usantatecla.mastermind.controllers.ProposalController .down.> ProposedCombination
-usantatecla.mastermind.controllers.ProposalController .down.> Error
-usantatecla.mastermind.controllers.ProposalController .down.> Color
+usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.PlayController
+usantatecla.mastermind.controllers.PlayController .down.> Combination
+usantatecla.mastermind.controllers.PlayController .down.> Game
+usantatecla.mastermind.controllers.PlayController .down.> State
+usantatecla.mastermind.controllers.PlayController .down.> ProposedCombination
+usantatecla.mastermind.controllers.PlayController .down.> Error
+usantatecla.mastermind.controllers.PlayController .down.> Color
 
 class  usantatecla.mastermind.controllers.ResumeController{
     + ResumeController(Game, State)

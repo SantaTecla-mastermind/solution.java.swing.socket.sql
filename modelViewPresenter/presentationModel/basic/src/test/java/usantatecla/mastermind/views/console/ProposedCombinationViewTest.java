@@ -1,61 +1,86 @@
 package usantatecla.mastermind.views.console;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.controllers.ProposalController;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
-import usantatecla.utils.Console;
-
-import java.util.Arrays;
+import usantatecla.utils.views.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ProposedCombinationViewTest {
-    @Mock
-    Console console;
+
+    private static final String INITIALS = "rgby";
 
     @Mock
-    ProposedCombination proposedCombination;
+    private Console console;
 
-    @Mock
-    ProposalController proposalController;
+    private ProposedCombinationView proposedCombinationView;
+    private Conversor conversor;
 
-    @InjectMocks
-    ProposedCombinationView proposedCombinationView;
+    @BeforeEach
+    public void beforeEach() {
+        this.proposedCombinationView = new ProposedCombinationView();
+        this.conversor = new Conversor();
+    }
 
     @Test
-    void testGivenColorsOfProposedCombinationWhenWriteThenCorrectColorsAreCaptured() {
+    void testGivenWrongWidthProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            ArgumentCaptor<String> colorCaptor = ArgumentCaptor.forClass(String.class);
-            when(this.proposalController.getProposedCombination(anyInt())).thenReturn(this.proposedCombination);
-            when(this.proposedCombination.getColors()).thenReturn(Arrays.asList(Color.BLUE, Color.ORANGE, Color.PURPLE, Color.GREEN));
             console.when(Console::getInstance).thenReturn(this.console);
-            this.proposedCombinationView.write(0);
-            verify(this.console, times(4)).write(colorCaptor.capture());
-            String reset_color = "\u001B[0m";
-            assertThat(colorCaptor.getAllValues().get(0), is("\u001B[34mb" + reset_color));
-            assertThat(colorCaptor.getAllValues().get(1), is("\u001B[37mo" + reset_color));
-            assertThat(colorCaptor.getAllValues().get(2), is("\u001B[35mp" + reset_color));
-            assertThat(colorCaptor.getAllValues().get(3), is("\u001B[32mg" + reset_color));
+            when(this.console.readString(any())).thenReturn("rg", "rgbyo", ProposedCombinationViewTest.INITIALS);
+            this.proposedCombinationView.read();
+            verify(this.console, times(2)).writeln("Wrong proposed combination length");
         }
     }
 
     @Test
-    void testGivenInputColorsWhenReadThenCorrectColorsAreReturned() {
+    void testGivenWrongCharactersProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            when(this.console.readString("Propose a combination: ")).thenReturn("rgby");
-            assertThat(this.proposedCombinationView.read(), is(Arrays.asList(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW)));
+            when(this.console.readString(any())).thenReturn("rqcp", "rpfi", "p^l0", ProposedCombinationViewTest.INITIALS);
+            this.proposedCombinationView.read();
+            verify(this.console, times(3)).writeln("Wrong colors, they must be: rgybmc");
         }
+    }
+
+    @Test
+    void testGivenDuplicatedCharacterProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString(any())).thenReturn("rmmg", "rrrr", "ygyg", ProposedCombinationViewTest.INITIALS);
+            this.proposedCombinationView.read();
+            verify(this.console, times(3)).writeln("Repeated colors");
+        }
+    }
+
+    @Test
+    void testGivenProposedCombinationWhenReadThenReturn() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString(any())).thenReturn(ProposedCombinationViewTest.INITIALS);
+            assertThat(this.proposedCombinationView.read().getColors(), is(Color.get(ProposedCombinationViewTest.INITIALS)));
+        }
+    }
+
+    @Test
+    void testGivenProposedCombinationWhenWriteThenPrint() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readString(any())).thenReturn(ProposedCombinationViewTest.INITIALS);
+            this.proposedCombinationView.write(this.proposedCombinationView.read());
+            ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
+            verify(this.console, times(4)).write(argumentCaptor.capture());
+            assertThat(this.conversor.arrayToString(argumentCaptor.getAllValues().toArray()),
+                    is(this.conversor.toColorCodeString(ProposedCombinationViewTest.INITIALS)));
+        }
+
     }
 }

@@ -1,16 +1,15 @@
 package usantatecla.mastermind.views.graphics;
 
-import usantatecla.mastermind.controllers.ProposalController;
+import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.controllers.ResumeController;
 import usantatecla.mastermind.controllers.StartController;
 import usantatecla.mastermind.views.View;
 
 public class GraphicsView extends View {
 
-    public GraphicsView(StartController startController, ProposalController proposalController,
+    public GraphicsView(StartController startController, PlayController playController,
                         ResumeController resumeController) {
-        super(startController, proposalController, resumeController);
-        //TODO Graphics
+        super(startController, playController, resumeController);
     }
 
     @Override
@@ -18,12 +17,11 @@ public class GraphicsView extends View {
     }
 
     @Override
-    protected boolean propose() {
-        return true;
+    protected void play() {
     }
 
     @Override
-    protected boolean isNewGame() {
+    protected boolean resume() {
         return true;
     }
 

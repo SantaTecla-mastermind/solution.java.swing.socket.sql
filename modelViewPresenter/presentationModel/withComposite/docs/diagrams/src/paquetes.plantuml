@@ -252,7 +252,7 @@ class  usantatecla.mastermind.controllers.PlayController{
     + accept(ControllersVisitor)
 }
 usantatecla.mastermind.controllers.AcceptorController <|-down- usantatecla.mastermind.controllers.PlayController
-usantatecla.mastermind.controllers.PlayController *-down-> usantatecla.mastermind.controllers.ProposalController
+usantatecla.mastermind.controllers.PlayController *-down-> usantatecla.mastermind.controllers.PlayController
 usantatecla.mastermind.controllers.PlayController *-down-> usantatecla.mastermind.controllers.UndoController
 usantatecla.mastermind.controllers.PlayController *-down-> usantatecla.mastermind.controllers.RedoController
 usantatecla.mastermind.controllers.PlayController .down.> usantatecla.mastermind.controllers.ControllersVisitor
@@ -260,7 +260,7 @@ usantatecla.mastermind.controllers.PlayController .down.> Session
 usantatecla.mastermind.controllers.PlayController .down.> Color
 usantatecla.mastermind.controllers.PlayController .down.> Error
 
-class  usantatecla.mastermind.controllers.ProposalController{
+class  usantatecla.mastermind.controllers.PlayController{
     ~ ProposalController(Session)
     ~ addProposeCombination(List<Color>): Error
     ~ isWinner(): boolean
@@ -270,11 +270,11 @@ class  usantatecla.mastermind.controllers.ProposalController{
     ~ getBlacks(int): int
     ~ getWhites(int): int
 }
-usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.ProposalController
-usantatecla.mastermind.controllers.ProposalController .down.> Session
-usantatecla.mastermind.controllers.ProposalController .down.> Combination
-usantatecla.mastermind.controllers.ProposalController .down.> Color
-usantatecla.mastermind.controllers.ProposalController .down.> Error
+usantatecla.mastermind.controllers.Controller <|-down- usantatecla.mastermind.controllers.PlayController
+usantatecla.mastermind.controllers.PlayController .down.> Session
+usantatecla.mastermind.controllers.PlayController .down.> Combination
+usantatecla.mastermind.controllers.PlayController .down.> Color
+usantatecla.mastermind.controllers.PlayController .down.> Error
 
 class  usantatecla.mastermind.controllers.RedoController{
     ~ RedoController(Session)
