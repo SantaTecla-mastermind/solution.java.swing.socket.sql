@@ -19,6 +19,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class BoardViewTest {
+    /*
 
     @Mock
     private Console console;
@@ -83,6 +84,6 @@ public class BoardViewTest {
             strings.set(i, proposedCombination + strings.get(i));
         }
         return this.conversor.arrayToString(strings.toArray());
-    }
+    }*/
 
 }
