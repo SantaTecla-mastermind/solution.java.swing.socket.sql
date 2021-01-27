@@ -1,4 +1,5 @@
 package usantatecla.utils;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -72,15 +73,18 @@ public class Console {
 	}
 
 	public void writeln(String string) {
-		System.out.println(string);
+		this.write(string);
+		this.writeln();
 	}
 
 	public void writeln(int integer) {
-		System.out.println(integer);
+		this.write(integer);
+		this.writeln();
 	}
 
 	public void writeError(String format) {
-		System.out.println("FORMAT ERROR! Enter a " + format + " formatted value.");
+		this.write("FORMAT ERROR! Enter a " + format + " formatted value.");
+		this.writeln();
 	}
 
 }

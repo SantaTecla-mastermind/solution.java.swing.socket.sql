@@ -29,7 +29,7 @@ public enum ColorCode {
     }
 
     public static String get(int index) {
-        assert index >= 0 &&  index <= ColorCode.NULL.ordinal();
+        assert index >= 0 && index < ColorCode.NULL.ordinal();
 
         return ColorCode.values()[index].get();
     }
@@ -45,11 +45,16 @@ public enum ColorCode {
     public void write() {
         if (!this.isNull()) {
             Console.getInstance().write(
-                    this.get()
-                            + this.getInitial()
-                            + ColorCode.RESET_COLOR.get()
+                    this.toString()
             );
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.get()
+                + this.getInitial()
+                + ColorCode.RESET_COLOR.get();
     }
 
 }

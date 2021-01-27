@@ -1,39 +1,36 @@
 package usantatecla.utils;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 public class ClosedIntervalTest {
 
-    private final int MIN = -1;
-    private final int MAX = 1;
     private ClosedInterval closedInterval;
 
-
     @BeforeEach
-    void beforeEach() {
-        this.closedInterval = new ClosedInterval(MIN, MAX);
+    public void beforeEach() {
+        this.closedInterval = new ClosedInterval(-1, 1);
     }
 
     @Test
     public void testGivenClosedIntervalWhenIsIncludeThenOk() {
-        assertThat(this.closedInterval.isIncluded(MIN), is(true));
-        assertThat(this.closedInterval.isIncluded(MIN + 1), is(true));
-        assertThat(this.closedInterval.isIncluded(MAX), is(true));
+        assertThat(this.closedInterval.isIncluded(-1), is(true));
+        assertThat(this.closedInterval.isIncluded(0), is(true));
+        assertThat(this.closedInterval.isIncluded(1), is(true));
     }
 
     @Test
     public void testGivenClosedIntervalWhenIsIncludeThenNotOk() {
-        assertThat(this.closedInterval.isIncluded(MIN - 1), is(false));
-        assertThat(this.closedInterval.isIncluded(MAX + 1), is(false));
+        assertThat(this.closedInterval.isIncluded(-666), is(false));
+        assertThat(this.closedInterval.isIncluded(666), is(false));
     }
 
     @Test
     public void testGivenClosedIntervalWhenToStringThenOk() {
-        assertThat(this.closedInterval.toString(), is("[" + MIN + ", " + MAX + "]"));
+        assertThat(this.closedInterval.toString(), is("[-1, 1]"));
     }
 
 }

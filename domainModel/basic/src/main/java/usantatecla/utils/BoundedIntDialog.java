@@ -2,7 +2,7 @@ package usantatecla.utils;
 
 public class BoundedIntDialog {
 
-	private final ClosedInterval LIMITS;
+	private ClosedInterval LIMITS;
 	private static final String ERROR_MESSAGE = "Invalid number";
 
 	public BoundedIntDialog(int min, int max){

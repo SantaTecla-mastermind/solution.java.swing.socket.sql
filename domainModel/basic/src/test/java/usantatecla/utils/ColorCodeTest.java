@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 public class ColorCodeTest {
 
     @Mock
-    Console console;
+    private Console console;
 
     private ColorCode colorCode;
 
@@ -37,8 +37,7 @@ public class ColorCodeTest {
 
     @Test
     public void testGivenIndexWhenCallGetColorByIndexThenReturnCorrectStringColor() {
-        assertThat(ColorCode.get(0), is(ColorCode.BLACK.get()));
-        assertThat(ColorCode.get(ColorCode.RESET_COLOR.ordinal()), is(ColorCode.RESET_COLOR.get()));
+        assertThat(ColorCode.get(0), is("\u001B[30m"));
     }
 
     @Test

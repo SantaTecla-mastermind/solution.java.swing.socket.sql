@@ -50,4 +50,5 @@ public class NullCoordinateTest {
     public void testGivenNullCoordinateWhenToStringThenValue() {
         assertThat(Coordinate.NULL.toString(), is("Coordinate (NULL)"));
     }
+
 }
