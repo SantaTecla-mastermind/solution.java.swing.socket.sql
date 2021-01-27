@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class ConsoleTest {
 
- @Mock
+  @Mock
   private BufferedReader bufferedReader;
 
   @InjectMocks
@@ -105,4 +105,5 @@ public class ConsoleTest {
     verify(this.outputStream).print("FORMAT ERROR! " + "Enter a " + format + " formatted value.");
     verify(this.outputStream).println();
   }
+  
 }

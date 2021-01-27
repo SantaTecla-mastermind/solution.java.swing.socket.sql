@@ -64,4 +64,5 @@ public class YesNoDialogTest {
       assertThat(this.yesNoDialog.isAffirmative(), is(true));
     }
   }
+  
 }
