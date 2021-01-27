@@ -11,4 +11,5 @@ public class ConcreteCoordinateView {
         int column = console.readInt(ConcreteCoordinate.COLUMN) - 1;
         return new ConcreteCoordinate(row, column);
     }
+
 }

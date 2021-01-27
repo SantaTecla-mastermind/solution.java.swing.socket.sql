@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 public class SquareBoundedCoordinateViewTest {
 
     @Mock
-    Console console;
+    private Console console;
 
     private static final int DIMENSION = 7;
     private static final String ERROR = "error";

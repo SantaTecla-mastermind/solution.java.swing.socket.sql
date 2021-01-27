@@ -11,7 +11,7 @@ public class ClosedIntervalTest {
     private ClosedInterval closedInterval;
 
     @BeforeEach
-    void beforeEach() {
+    public void beforeEach() {
         this.closedInterval = new ClosedInterval(-1, 1);
     }
 

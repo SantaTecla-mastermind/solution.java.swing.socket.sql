@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 public class ConcreteCoordinateViewTest {
 
   @Mock
-  Console console;
+  private Console console;
 
   @Test
   public void testGivenEmptyCoordinatesWhenReadThenCorrectValues() {

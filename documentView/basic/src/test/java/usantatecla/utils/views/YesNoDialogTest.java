@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class YesNoDialogTest {
 
- private YesNoDialog yesNoDialog;
+  private YesNoDialog yesNoDialog;
   private String title = "TITLE";
 
   @Mock

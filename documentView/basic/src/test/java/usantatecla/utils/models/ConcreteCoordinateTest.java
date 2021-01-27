@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.is;
 @ExtendWith(MockitoExtension.class)
 public class ConcreteCoordinateTest {
 
-  private ConcreteCoordinate coordinate;
+  private Coordinate coordinate;
 
   @BeforeEach
   public void beforeEach() {

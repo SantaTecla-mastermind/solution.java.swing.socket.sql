@@ -23,10 +23,10 @@ public class BoundedIntDialogTest {
     private String title = "TITLE";
 
     @Mock
-    Console console;
+    private Console console;
 
     @BeforeEach
-    void beforeEach() {
+    public void beforeEach() {
         this.boundedIntDialog = new BoundedIntDialog(MIN, MAX);
         this.limits = new ClosedInterval(MIN, MAX);
     }

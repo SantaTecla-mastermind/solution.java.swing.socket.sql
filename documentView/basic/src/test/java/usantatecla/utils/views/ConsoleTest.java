@@ -23,7 +23,7 @@ public class ConsoleTest {
   private BufferedReader bufferedReader;
 
   @InjectMocks
-  Console console;
+  private Console console;
 
   @Mock
   private PrintStream outputStream;
@@ -86,20 +86,23 @@ public class ConsoleTest {
   public void testGivenConsoleWhenWritelnStringThenDisplay(){
     String string = "***";
     Console.getInstance().writeln(string);
-    verify(this.outputStream).println(string);
+    verify(this.outputStream).print(string);
+    verify(this.outputStream).println();
   }
 
   @Test
   public void testGivenConsoleWhenWritelnIntegerThenDisplay(){
     int integer = 123;
     Console.getInstance().writeln(integer);
-    verify(this.outputStream).println(integer);
+    verify(this.outputStream).print(integer);
+    verify(this.outputStream).println();
   }
 
   @Test
   public void testGivenConsoleWhenWriteErrorThenDisplay(){
     String format = "(a | b)";
     Console.getInstance().writeError(format);
-    verify(this.outputStream).println("FORMAT ERROR! " + "Enter a " + format + " formatted value.");
+    verify(this.outputStream).print("FORMAT ERROR! " + "Enter a " + format + " formatted value.");
+    verify(this.outputStream).println();
   }
 }
