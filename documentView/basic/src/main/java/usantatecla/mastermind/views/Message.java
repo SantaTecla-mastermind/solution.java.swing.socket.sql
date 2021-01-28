@@ -12,7 +12,7 @@ enum Message {
     LOOSER("You've lost!!! :-("),
     RESUME("Do you want to continue");
 
-    private String message;
+    private final String message;
 
     Message(String message) {
         this.message = message;

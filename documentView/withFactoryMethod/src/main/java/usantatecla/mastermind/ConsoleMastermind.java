@@ -4,7 +4,7 @@ import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.View;
 import usantatecla.mastermind.views.console.ConsoleView;
 
-public class ConsoleMastermind extends Mastermind{
+public class ConsoleMastermind extends Mastermind {
 
     @Override
     protected View createView(Board board) {

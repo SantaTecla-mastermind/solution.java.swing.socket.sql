@@ -49,7 +49,7 @@ public enum Color {
         return this.name().toLowerCase().charAt(0);
     }
 
-    public boolean isNull(){
+    public boolean isNull() {
         return this == Color.NULL;
     }
 

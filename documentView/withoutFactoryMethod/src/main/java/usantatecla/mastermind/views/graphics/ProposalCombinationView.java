@@ -1,18 +1,13 @@
 package usantatecla.mastermind.views.graphics;
 
-import java.awt.GridBagLayout;
+import usantatecla.mastermind.views.Message;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRootPane;
-import javax.swing.JTextField;
-
-import usantatecla.mastermind.views.Message;
 
 @SuppressWarnings("serial")
 class ProposalCombinationView extends JPanel implements ActionListener, KeyListener {

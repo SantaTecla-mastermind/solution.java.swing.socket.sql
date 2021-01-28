@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views.graphics;
 
-import java.awt.GridBagConstraints;
+import java.awt.*;
 
 @SuppressWarnings("serial")
 class Constraints extends GridBagConstraints {

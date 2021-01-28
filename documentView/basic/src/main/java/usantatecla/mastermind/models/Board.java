@@ -4,8 +4,8 @@ public class Board {
 
     static final int MAX_ATTEMPTS = 10;
     private SecretCombination secretCombination;
-    private ProposedCombination[] proposedCombinations;
-    private Result[] results;
+    private final ProposedCombination[] proposedCombinations;
+    private final Result[] results;
     private int attempts;
 
     public Board() {

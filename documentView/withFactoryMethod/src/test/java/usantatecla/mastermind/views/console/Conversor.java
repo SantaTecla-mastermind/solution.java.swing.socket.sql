@@ -6,7 +6,7 @@ import usantatecla.utils.views.ColorCode;
 import java.util.List;
 
 class Conversor {
-    
+
     String toColorCodeString(String initials) {
         List<ColorCode> colorCodes = new ProposedCombinationView().getColorCodes(Color.get(initials));
         String string = "";

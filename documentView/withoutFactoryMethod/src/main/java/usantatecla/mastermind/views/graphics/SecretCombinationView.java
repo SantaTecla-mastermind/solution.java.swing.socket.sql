@@ -1,18 +1,16 @@
 package usantatecla.mastermind.views.graphics;
 
-import java.awt.GridBagLayout;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import usantatecla.mastermind.views.Message;
+
+import javax.swing.*;
+import java.awt.*;
 
 @SuppressWarnings("serial")
 class SecretCombinationView extends JPanel {
 
     private static final String TITLE = "SECRET COMBINATION:";
-    private JLabel title;
-    private JLabel secretCombination;
+    private final JLabel title;
+    private final JLabel secretCombination;
 
     SecretCombinationView() {
         super();

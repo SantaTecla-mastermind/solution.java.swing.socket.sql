@@ -5,7 +5,7 @@ import usantatecla.mastermind.views.graphics.GraphicsView;
 
 public class GraphicsMastermind { // TODO Quitar public
 
-    private Board board;
+    private final Board board;
     private final GraphicsView graphicsView; // TODO Quitar final
 
     private GraphicsMastermind() {
@@ -20,5 +20,5 @@ public class GraphicsMastermind { // TODO Quitar public
     public static void main(String[] args) {
         new GraphicsMastermind().play();
     }
-    
+
 }

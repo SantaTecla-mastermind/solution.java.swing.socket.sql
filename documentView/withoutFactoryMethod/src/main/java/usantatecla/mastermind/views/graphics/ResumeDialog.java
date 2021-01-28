@@ -1,12 +1,12 @@
 package usantatecla.mastermind.views.graphics;
 
-import javax.swing.JOptionPane;
-
 import usantatecla.mastermind.views.Message;
+
+import javax.swing.*;
 
 class ResumeDialog {
 
-    private boolean newGame;
+    private final boolean newGame;
 
     ResumeDialog() {
         this.newGame = (JOptionPane.showConfirmDialog(null, Message.RESUME.toString(),

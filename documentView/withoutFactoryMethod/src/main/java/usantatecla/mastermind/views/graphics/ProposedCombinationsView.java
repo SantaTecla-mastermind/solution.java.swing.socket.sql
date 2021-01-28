@@ -2,13 +2,13 @@ package usantatecla.mastermind.views.graphics;
 
 import usantatecla.mastermind.models.Board;
 
-import java.awt.GridBagLayout;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
 @SuppressWarnings("serial")
 class ProposedCombinationsView extends JPanel {
 
-    private Board board;
+    private final Board board;
 
     ProposedCombinationsView(Board game) {
         this.board = game;

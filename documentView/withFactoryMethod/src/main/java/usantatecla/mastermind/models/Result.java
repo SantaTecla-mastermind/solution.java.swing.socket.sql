@@ -5,7 +5,7 @@ import usantatecla.utils.models.ClosedInterval;
 public class Result {
 
     public static final int WIDTH = 4;
-    private static final ClosedInterval LIMITS = new ClosedInterval(0,Result.WIDTH);
+    private static final ClosedInterval LIMITS = new ClosedInterval(0, Result.WIDTH);
     private final int blacks;
     private final int whites;
 
@@ -40,9 +40,7 @@ public class Result {
         Result other = (Result) obj;
         if (this.blacks != other.blacks)
             return false;
-        if (this.whites != other.whites)
-            return false;
-        return true;
+        return this.whites == other.whites;
     }
 
 }

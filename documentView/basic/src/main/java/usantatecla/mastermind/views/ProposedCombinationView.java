@@ -27,6 +27,7 @@ class ProposedCombinationView {
             colorCode.write();
         }
     }
+
     //TODO mover metodo a Color?
     List<ColorCode> getColorCodes(List<Color> colors) {
         List<ColorCode> colorCodes = new ArrayList<>();

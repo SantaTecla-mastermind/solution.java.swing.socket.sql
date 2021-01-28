@@ -53,5 +53,5 @@ class NullCoordinate implements Coordinate {
     public boolean equals(Object obj) {
         return super.equals(obj);
     }
-    
+
 }

@@ -1,19 +1,17 @@
 package usantatecla.mastermind.views.graphics;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
+import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.models.Result;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.views.ErrorView;
-import usantatecla.utils.views.ColorCode;
+
+import javax.swing.*;
 
 @SuppressWarnings("serial")
 class ProposedCombinationView extends JLabel {
 
-    private ProposedCombination proposedCombination;
+    private final ProposedCombination proposedCombination;
 
     private Error error;
 
@@ -26,7 +24,7 @@ class ProposedCombinationView extends JLabel {
         this.setText(initials);
     }
 
-	void read(String characters) {
+    void read(String characters) {
         this.error = Error.NULL;
         if (characters.length() != Result.WIDTH) {
             this.error = Error.WRONG_LENGTH;

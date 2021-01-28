@@ -5,7 +5,7 @@ import usantatecla.mastermind.views.console.ConsoleView;
 
 public class ConsoleMastermind { // TODO Quitar public
 
-    private Board board;
+    private final Board board;
     private final ConsoleView consoleView; // TODO Quitar final
 
     private ConsoleMastermind() {

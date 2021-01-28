@@ -1,14 +1,14 @@
 package usantatecla.mastermind.views.graphics;
 
-import javax.swing.JLabel;
-
 import usantatecla.mastermind.models.Result;
 import usantatecla.mastermind.views.Message;
+
+import javax.swing.*;
 
 @SuppressWarnings("serial")
 class ResultView extends JLabel {
 
-    private Result result;
+    private final Result result;
 
     ResultView(Result result) {
         this.result = result;

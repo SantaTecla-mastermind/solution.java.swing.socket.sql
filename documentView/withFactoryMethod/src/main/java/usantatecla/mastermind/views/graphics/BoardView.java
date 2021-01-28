@@ -1,18 +1,17 @@
 package usantatecla.mastermind.views.graphics;
 
-import java.awt.GridBagLayout;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.views.Message;
+
+import javax.swing.*;
+import java.awt.*;
 
 @SuppressWarnings("serial")
 class BoardView extends JFrame {
 
     private static final String GAME_OVER = "Game Over";
-    private Board board;
+    private final Board board;
     private SecretCombinationView secretCombinationView;
     private ProposedCombinationsView proposedCombinationsView;
     private ProposalCombinationView proposalCombinationView;
@@ -42,7 +41,7 @@ class BoardView extends JFrame {
         ProposedCombination proposedCombination = new ProposedCombination();
         ProposedCombinationView proposedCombinationView = new ProposedCombinationView(proposedCombination);
         do {
-            System.out.println("");
+            System.out.println();
             if (this.proposalCombinationView.getCharacters() != null) {
                 proposedCombinationView.read(this.proposalCombinationView.getCharacters());
                 if (!proposedCombinationView.isOk()) {

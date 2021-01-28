@@ -4,7 +4,7 @@ import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.View;
 import usantatecla.mastermind.views.graphics.GraphicsView;
 
-public class GraphicsMastermind extends Mastermind{
+public class GraphicsMastermind extends Mastermind {
 
     @Override
     protected View createView(Board board) {
