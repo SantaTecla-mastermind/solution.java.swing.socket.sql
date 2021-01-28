@@ -30,11 +30,11 @@ public class SecretCombinationTest {
     }
 
     @Test
-    public void testGivenSecretCombinationAndWinnerProposedCombinationWhenGetResultThenIsWinner() {
+    public void testGivenSecretCombinationAndWinnerProposedCombinationWhenGetResultThenIs4blacksAnd0Whites() {
         when(this.proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(true);
         when(this.proposedCombination.contains(any(ColorCode.class))).thenReturn(true);
         Result result = secretCombination.getResult(this.proposedCombination);
-        assertThat(result.isWinner(), is(true));
+        assertThat(result,is(new Result(4,0)));
     }
 
     @Test
