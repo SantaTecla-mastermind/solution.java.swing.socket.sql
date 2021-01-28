@@ -4,6 +4,7 @@ import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.Message;
 import usantatecla.mastermind.views.WithBoardView;
 
+// TODO clase y métodos package private
 public class PlayView extends WithBoardView {
 
     public PlayView(Board board) {

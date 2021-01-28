@@ -5,7 +5,6 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import usantatecla.mastermind.models.Result;
 import usantatecla.mastermind.views.Message;
 
 @SuppressWarnings("serial")

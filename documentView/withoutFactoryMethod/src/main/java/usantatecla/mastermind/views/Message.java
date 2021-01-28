@@ -18,7 +18,7 @@ public enum Message {
         this.message = message;
     }
 
-    void write() {
+    void write() { // TODO Solo se usa en un test
         Console.getInstance().write(this.message);
     }
 

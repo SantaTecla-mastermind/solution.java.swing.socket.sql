@@ -10,7 +10,7 @@ import usantatecla.utils.views.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProposedCombinationView {
+public class ProposedCombinationView { // TODO package private
 
     ProposedCombination read() {
         Error error;

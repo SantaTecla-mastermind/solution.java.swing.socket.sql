@@ -3,10 +3,10 @@ package usantatecla.mastermind;
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.console.ConsoleView;
 
-public class ConsoleMastermind {
+public class ConsoleMastermind { // TODO Quitar public
 
     private Board board;
-    private final ConsoleView consoleView;
+    private final ConsoleView consoleView; // TODO Quitar final
 
     private ConsoleMastermind() {
         this.board = new Board();
@@ -20,4 +20,5 @@ public class ConsoleMastermind {
     public static void main(String[] args) {
         new ConsoleMastermind().play();
     }
+
 }

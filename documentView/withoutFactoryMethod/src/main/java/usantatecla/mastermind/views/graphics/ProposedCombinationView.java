@@ -8,7 +8,6 @@ import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.views.ErrorView;
-import usantatecla.utils.views.ColorCode;
 
 @SuppressWarnings("serial")
 class ProposedCombinationView extends JLabel {
