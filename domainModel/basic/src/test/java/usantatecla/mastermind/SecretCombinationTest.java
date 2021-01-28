@@ -34,7 +34,7 @@ public class SecretCombinationTest {
         when(this.proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(true);
         when(this.proposedCombination.contains(any(ColorCode.class))).thenReturn(true);
         Result result = secretCombination.getResult(this.proposedCombination);
-        assertThat(result.isWinner(),is(true));
+        assertThat(result.isWinner(), is(true));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class SecretCombinationTest {
         when(this.proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(false);
         when(this.proposedCombination.contains(any(ColorCode.class))).thenReturn(false);
         Result result = secretCombination.getResult(this.proposedCombination);
-        assertThat(result ,is(new Result(0,0)));
+        assertThat(result, is(new Result(0, 0)));
     }
 
     @Test
@@ -50,11 +50,11 @@ public class SecretCombinationTest {
         when(this.proposedCombination.contains(any(ColorCode.class), anyInt())).thenReturn(true, true, false);
         when(this.proposedCombination.contains(any(ColorCode.class))).thenReturn(true);
         Result result = secretCombination.getResult(this.proposedCombination);
-        assertThat(result ,is(new Result(2,2)));
+        assertThat(result, is(new Result(2, 2)));
     }
 
     @Test
-    public void testGivenSecretCombinationWhenWritelnThenPrint(){
+    public void testGivenSecretCombinationWhenWritelnThenPrint() {
         Console console = mock(Console.class);
         try (MockedStatic<Console> staticConsole = mockStatic(Console.class)) {
             staticConsole.when(Console::getInstance).thenReturn(console);

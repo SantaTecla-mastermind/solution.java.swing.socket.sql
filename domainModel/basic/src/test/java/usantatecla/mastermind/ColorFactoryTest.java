@@ -35,7 +35,7 @@ public class ColorFactoryTest {
     }
 
     @Test
-    public void testGivenColorFactoryWhenGetColorCodesWithSomeWrongCharactersThenReturnOnlyMatchingColors(){
+    public void testGivenColorFactoryWhenGetColorCodesWithSomeWrongCharactersThenReturnOnlyMatchingColors() {
         List<ColorCode> colorCodes = Arrays.asList(
                 ColorCode.GREEN,
                 ColorCode.BLUE,

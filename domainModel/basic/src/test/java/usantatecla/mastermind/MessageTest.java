@@ -18,12 +18,7 @@ public class MessageTest {
     private Console console;
 
     @Test
-    public void testGivenNewMessageWhenToString() {
-        assertThat(Message.RESUME.toString(), is("Do you want to continue"));
-    }
-
-    @Test
-    public void testGivenNewMessageWhenWriteThenWriteMessage(){
+    public void testGivenNewMessageWhenWriteThenWriteMessage() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             Message.PROPOSED_COMBINATION.write();
@@ -31,9 +26,8 @@ public class MessageTest {
         }
     }
 
-
     @Test
-    public void testGivenNewMessageWhenWritelnWithoutParamsThenWriteMessage(){
+    public void testGivenNewMessageWhenWritelnWithoutParamsThenWriteMessage() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             Message.PROPOSED_COMBINATION.writeln();
@@ -42,7 +36,7 @@ public class MessageTest {
     }
 
     @Test
-    public void testGivenNewMessageWhenWritelnWithAttemptsThenWriteAttemptsMessage(){
+    public void testGivenNewMessageWhenWritelnWithAttemptsThenWriteAttemptsMessage() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             int attempts = 5;
             console.when(Console::getInstance).thenReturn(this.console);
@@ -52,13 +46,18 @@ public class MessageTest {
     }
 
     @Test
-    public void testGivenNewMessageWhenWritelnWithBlacksAndWhitesThenWriteResultMessage(){
+    public void testGivenNewMessageWhenWritelnWithBlacksAndWhitesThenWriteResultMessage() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             int blacks = 2;
             int whites = 2;
             console.when(Console::getInstance).thenReturn(this.console);
-            Message.RESULT.writeln(blacks,whites);
+            Message.RESULT.writeln(blacks, whites);
             verify(this.console, times(1)).writeln(Message.RESULT.toString().replaceFirst("#blacks", "" + blacks).replaceFirst("#whites", "" + whites));
         }
+    }
+
+    @Test
+    public void testGivenNewMessageWhenToString() {
+        assertThat(Message.RESUME.toString(), is("Do you want to continue"));
     }
 }

@@ -57,26 +57,6 @@ public class BoardTest {
     }
 
     @Test
-    public void testGivenBoardWhenIsWinnerThenTrue() {
-        Board board = this.boardBuilder
-                .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
-                .blacks(Result.WIDTH)
-                .whites(0)
-                .build();
-        assertThat(board.isWinner(), is(true));
-    }
-
-    @Test
-    public void testGivenBoardWhenIsWinnerThenFalse() {
-        Board board = this.boardBuilder
-                .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
-                .blacks(Result.WIDTH - 1)
-                .whites(0)
-                .build();
-        assertThat(board.isWinner(), is(false));
-    }
-
-    @Test
     public void testGivenBoardWhenIsFinishedThenTrue() {
         Board board = this.boardBuilder
                 .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
@@ -102,6 +82,26 @@ public class BoardTest {
                 .proposedCombinations(Board.MAX_ATTEMPTS, BoardTest.PROPOSED_COMBINATION)
                 .build();
         assertThat(board.isFinished(), is(true));
+    }
+
+    @Test
+    public void testGivenBoardWhenIsWinnerThenTrue() {
+        Board board = this.boardBuilder
+                .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
+                .blacks(Result.WIDTH)
+                .whites(0)
+                .build();
+        assertThat(board.isWinner(), is(true));
+    }
+
+    @Test
+    public void testGivenBoardWhenIsWinnerThenFalse() {
+        Board board = this.boardBuilder
+                .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
+                .blacks(Result.WIDTH - 1)
+                .whites(0)
+                .build();
+        assertThat(board.isWinner(), is(false));
     }
 
     @Test
