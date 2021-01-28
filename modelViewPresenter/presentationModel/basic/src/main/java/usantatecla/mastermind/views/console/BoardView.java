@@ -20,7 +20,7 @@ public class BoardView {
         Message.ATTEMPTS.writeln(attempts);
         Message.SECRET_COMBINATION.writeln();
         for (int i = 0; i < attempts; i++) {
-            new ProposedCombinationView().write(this.playController.getProposedCombination(i));
+            this.proposedCombinationView.write(this.playController.getProposedCombination(i));
             Message.RESULT.writeln(this.playController.getBlacks(i), this.playController.getWhites(i));
         }
     }

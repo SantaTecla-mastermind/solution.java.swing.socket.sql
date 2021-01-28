@@ -38,13 +38,13 @@ public class Board {
     }
 
     public Result getResult(int position) {
-        assert position < this.attempts && position >= 0;
+        assert position < this.getAttempts() && position >= 0;
 
         return this.results[position];
     }
 
     public ProposedCombination getProposedCombination(int position) {
-        assert position < this.attempts && position >= 0;
+        assert position < this.getAttempts() && position >= 0;
 
         return this.proposedCombinations[position];
     }
