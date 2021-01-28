@@ -25,20 +25,20 @@ public class ErrorViewTest {
     }
 
     @Test
-    public void testGivenCorrectErrorWhenWritelnThenPrint() {
-        try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            console.when(Console::getInstance).thenReturn(this.console);
-            this.errorView.writeln(Error.WRONG_CHARACTERS);
-            verify(this.console).writeln("Wrong colors, they must be: rgybmc");
-        }
-    }
-
-    @Test
     public void testGivenNullErrorWhenWritelnThenConsoleIsNotCalled() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             this.errorView.writeln(Error.NULL);
             verify(this.console, never()).writeln(anyString());
+        }
+    }
+
+    @Test
+    public void testGivenCorrectErrorWhenWritelnThenPrint() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            this.errorView.writeln(Error.WRONG_CHARACTERS);
+            verify(this.console).writeln("Wrong colors, they must be: rgybmc");
         }
     }
 

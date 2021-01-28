@@ -23,10 +23,6 @@ public class Console {
 		return input;
 	}
 
-	public String readString() {
-		return this.readString("");
-	}
-
 	public int readInt(String title) {
 		int input = 0;
 		boolean ok = false;

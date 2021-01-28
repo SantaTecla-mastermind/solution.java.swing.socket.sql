@@ -60,7 +60,7 @@ public class Board {
     public boolean isWinner() {
         return this.results[this.attempts - 1].isWinner();
     }
-
+    //TODO En las otras versiones es privado
     public boolean isLooser() {
         return this.attempts == Board.MAX_ATTEMPTS;
     }
