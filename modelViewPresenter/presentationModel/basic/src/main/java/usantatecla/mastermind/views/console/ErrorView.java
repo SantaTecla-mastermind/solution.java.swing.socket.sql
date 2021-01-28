@@ -15,4 +15,5 @@ class ErrorView extends usantatecla.mastermind.views.ErrorView {
             Console.getInstance().writeln(usantatecla.mastermind.views.ErrorView.MESSAGES[error.ordinal()]);
         }
     }
+    
 }

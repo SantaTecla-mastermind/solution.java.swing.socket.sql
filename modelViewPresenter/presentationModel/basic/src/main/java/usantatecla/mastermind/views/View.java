@@ -28,4 +28,5 @@ public abstract class View {
 	protected abstract void play();
 
 	protected abstract boolean resume();
+	
 }

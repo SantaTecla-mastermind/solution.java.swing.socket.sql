@@ -5,7 +5,7 @@ import usantatecla.mastermind.views.Message;
 
 public class StartView  {
 
-    //TODO Preguntar con el startController a Luis
+    //TODO Preguntar el startController a Luis
     private StartController startController;
     private ProposedCombinationView proposedCombinationView;
     //private BoardView boardView;
