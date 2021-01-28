@@ -31,7 +31,7 @@ public class SecretCombinationTest {
         when(this.proposedCombination.contains(any(Color.class), anyInt())).thenReturn(true);
         when(this.proposedCombination.contains(any(Color.class))).thenReturn(true);
         Result result = secretCombination.getResult(this.proposedCombination);
-        assertThat(result.isWinner(),is(true));
+        assertThat(result.isWinner(), is(true));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class SecretCombinationTest {
         when(this.proposedCombination.contains(any(Color.class), anyInt())).thenReturn(false);
         when(this.proposedCombination.contains(any(Color.class))).thenReturn(false);
         Result result = secretCombination.getResult(this.proposedCombination);
-        assertThat(result ,is(new Result(0,0)));
+        assertThat(result, is(new Result(0, 0)));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class SecretCombinationTest {
         when(this.proposedCombination.contains(any(Color.class), anyInt())).thenReturn(true, true, false);
         when(this.proposedCombination.contains(any(Color.class))).thenReturn(true);
         Result result = secretCombination.getResult(this.proposedCombination);
-        assertThat(result ,is(new Result(2,2)));
+        assertThat(result, is(new Result(2, 2)));
     }
 
 }

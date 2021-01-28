@@ -16,22 +16,22 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class ConcreteCoordinateViewTest {
 
-  @Mock
-  private Console console;
+    @Mock
+    private Console console;
 
-  @Test
-  public void testGivenEmptyCoordinatesWhenReadThenCorrectValues() {
-    try (MockedStatic<Console> console = mockStatic(Console.class)) {
-      console.when(Console::getInstance).thenReturn(this.console);
+    @Test
+    public void testGivenEmptyCoordinatesWhenReadThenCorrectValues() {
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
 
-      final ConcreteCoordinate[] coordinates = {  new ConcreteCoordinate(1, 2), new ConcreteCoordinate(0, 3) };
-      for(int i = 0; i < coordinates.length; i++) {
-        when(this.console.readInt(anyString())).thenReturn(coordinates[i].getRow() + 1, coordinates[i].getColumn() + 1);
-        ConcreteCoordinateView coordinate = new ConcreteCoordinateView();
+            final ConcreteCoordinate[] coordinates = {new ConcreteCoordinate(1, 2), new ConcreteCoordinate(0, 3)};
+            for (int i = 0; i < coordinates.length; i++) {
+                when(this.console.readInt(anyString())).thenReturn(coordinates[i].getRow() + 1, coordinates[i].getColumn() + 1);
+                ConcreteCoordinateView coordinate = new ConcreteCoordinateView();
 
-        assertThat(coordinate.read("TITLE"), is(coordinates[i]));
-      }
+                assertThat(coordinate.read("TITLE"), is(coordinates[i]));
+            }
+        }
     }
-  }
 
 }
