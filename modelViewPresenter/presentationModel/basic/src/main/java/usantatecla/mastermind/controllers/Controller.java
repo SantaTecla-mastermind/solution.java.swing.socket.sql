@@ -1,7 +1,7 @@
 package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.Result;
+import usantatecla.mastermind.models.ProposedCombination;
 
 public abstract class Controller {
 
@@ -11,8 +11,20 @@ public abstract class Controller {
         this.board = board;
     }
 
-    public int getWidth() {
-        return Result.WIDTH;
+    public int getAttempts() {
+        return this.board.getAttempts();
+    }
+
+    public ProposedCombination getProposedCombination(int position) {
+        return this.board.getProposedCombination(position);
+    }
+
+    public int getBlacks(int position) {
+        return this.board.getBlacks(position);
+    }
+
+    public int getWhites(int position) {
+        return this.board.getWhites(position);
     }
 
 }

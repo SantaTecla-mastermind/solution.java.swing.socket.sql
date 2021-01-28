@@ -7,6 +7,8 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.utils.views.Console;
@@ -16,7 +18,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class PlayViewTest {
-/*
+
     @Mock
     private Console console;
 
@@ -24,7 +26,10 @@ public class PlayViewTest {
     private Board board;
 
     @InjectMocks
-    private PlayView playView;
+    private PlayController playController = new PlayController(this.board);
+
+    @InjectMocks
+    private PlayView playView = new PlayView(this.playController);
 
     @Test
     public void testGivenPlayViewWhenInteractThenIsWinner() {
@@ -50,5 +55,5 @@ public class PlayViewTest {
             verify(this.console).writeln("You've lost!!! :-(");
         }
     }
-*/
+
 }
