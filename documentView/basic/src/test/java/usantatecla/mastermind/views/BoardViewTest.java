@@ -77,7 +77,7 @@ public class BoardViewTest {
 
         for (int i = proposedCombinationStartIndex; i < proposedCombinationStartIndex + attempts; i++) {
             String proposedCombination = "";
-            for(int j = proposedCombinationWidth; j > 0; j--) {
+            for (int j = proposedCombinationWidth; j > 0; j--) {
                 proposedCombination += strings.remove(strings.size() - j);
             }
             strings.set(i, proposedCombination + strings.get(i));

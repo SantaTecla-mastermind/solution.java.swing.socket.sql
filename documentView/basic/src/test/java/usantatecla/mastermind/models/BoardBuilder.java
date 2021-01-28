@@ -13,7 +13,7 @@ import static org.mockito.Mockito.spy;
 public class BoardBuilder {
 
     private Board board;
-    private List<String> proposedCombinationsStrings;
+    private final List<String> proposedCombinationsStrings;
     private Integer blacks;
     private Integer whites;
 

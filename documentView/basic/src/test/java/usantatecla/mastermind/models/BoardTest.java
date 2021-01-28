@@ -61,8 +61,8 @@ public class BoardTest {
         Board board = this.boardBuilder
                 .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
                 .build();
-        Assertions.assertThrows(AssertionError.class, () -> board.getWhites(board.getAttempts()));
         Assertions.assertThrows(AssertionError.class, () -> board.getBlacks(board.getAttempts()));
+        Assertions.assertThrows(AssertionError.class, () -> board.getWhites(board.getAttempts()));
         Assertions.assertThrows(AssertionError.class, () -> board.getProposedCombination(board.getAttempts()));
     }
 
@@ -72,26 +72,6 @@ public class BoardTest {
                 .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
                 .build();
         assertThat(board.getAttempts(), is(1));
-    }
-
-    @Test
-    public void testGivenBoardWhenIsWinnerThenTrue() {
-        Board board = this.boardBuilder
-                .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
-                .blacks(Result.WIDTH)
-                .whites(0)
-                .build();
-        assertThat(board.isWinner(), is(true));
-    }
-
-    @Test
-    public void testGivenBoardWhenIsWinnerThenFalse() {
-        Board board = this.boardBuilder
-                .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
-                .blacks(Result.WIDTH - 1)
-                .whites(0)
-                .build();
-        assertThat(board.isWinner(), is(false));
     }
 
     @Test
@@ -112,6 +92,26 @@ public class BoardTest {
                 .whites(0)
                 .build();
         assertThat(board.isFinished(), is(false));
+    }
+
+    @Test
+    public void testGivenBoardWhenIsWinnerThenTrue() {
+        Board board = this.boardBuilder
+                .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
+                .blacks(Result.WIDTH)
+                .whites(0)
+                .build();
+        assertThat(board.isWinner(), is(true));
+    }
+
+    @Test
+    public void testGivenBoardWhenIsWinnerThenFalse() {
+        Board board = this.boardBuilder
+                .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
+                .blacks(Result.WIDTH - 1)
+                .whites(0)
+                .build();
+        assertThat(board.isWinner(), is(false));
     }
 
     @Test

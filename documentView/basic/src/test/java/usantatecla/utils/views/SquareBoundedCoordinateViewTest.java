@@ -54,8 +54,8 @@ public class SquareBoundedCoordinateViewTest {
             when(this.console.readInt(anyString())).thenReturn(this.getDimension());
             SquareBoundedCoordinate coordinate = this.getCoordinateView().read("");
 
-            assertThat(coordinate.getRow(), is(this.getDimension()-1));
-            assertThat(coordinate.getColumn(), is(this.getDimension()-1));
+            assertThat(coordinate.getRow(), is(this.getDimension() - 1));
+            assertThat(coordinate.getColumn(), is(this.getDimension() - 1));
         }
     }
 

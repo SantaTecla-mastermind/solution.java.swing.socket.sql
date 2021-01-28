@@ -78,5 +78,5 @@ public class ColorCodeTest {
             verifyNoInteractions(this.console);
         }
     }
-    
+
 }
