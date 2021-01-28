@@ -3,10 +3,10 @@ package usantatecla.mastermind;
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.graphics.GraphicsView;
 
-public class GraphicsMastermind {
+public class GraphicsMastermind { // TODO Quitar public
 
     private Board board;
-    private final GraphicsView graphicsView;
+    private final GraphicsView graphicsView; // TODO Quitar final
 
     private GraphicsMastermind() {
         this.board = new Board();
@@ -20,4 +20,5 @@ public class GraphicsMastermind {
     public static void main(String[] args) {
         new GraphicsMastermind().play();
     }
+    
 }

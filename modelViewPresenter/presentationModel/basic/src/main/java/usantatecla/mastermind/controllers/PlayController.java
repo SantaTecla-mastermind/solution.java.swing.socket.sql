@@ -13,25 +13,9 @@ public class PlayController extends Controller {
     }
 
     public Error add(List<Color> colors) {
-        Error error = Error.NULL;
-        if (colors.size() != Result.WIDTH) {
-            error = Error.WRONG_LENGTH;
-        } else {
-            for (int i = 0; i < colors.size(); i++) {
-                if (colors.get(i).isNull()) {
-                    error = Error.WRONG_CHARACTERS;
-                } else {
-                    for (int j = i + 1; j < colors.size(); j++) {
-                        if (colors.get(i).equals(colors.get(j))) {
-                            error = Error.DUPLICATED;
-                        }
-                    }
-                }
-            }
-        }
+        ProposedCombination proposedCombination = new ProposedCombination();
+        Error error = proposedCombination.add(colors);
         if (error.isNull()) {
-            ProposedCombination proposedCombination = new ProposedCombination();
-            proposedCombination.getColors().addAll(colors);
             this.board.add(proposedCombination);
         }
         return error;

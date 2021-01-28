@@ -14,7 +14,7 @@ public class Board {
         this.reset();
     }
 
-    public void reset() {
+    public void reset() { // TODO Comprobar que proposedCombinations y results está vacío (tests)
         this.secretCombination = new SecretCombination();
         this.attempts = 0;
     }
@@ -64,4 +64,5 @@ public class Board {
     public boolean isLooser() {
         return this.attempts == Board.MAX_ATTEMPTS;
     }
+
 }

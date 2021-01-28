@@ -5,7 +5,7 @@ import usantatecla.mastermind.views.Message;
 import usantatecla.mastermind.views.WithBoardView;
 import usantatecla.utils.views.YesNoDialog;
 
-public class ResumeView extends WithBoardView {
+public class ResumeView extends WithBoardView { // TODO package private
 
     public ResumeView(Board board) {
         super(board);

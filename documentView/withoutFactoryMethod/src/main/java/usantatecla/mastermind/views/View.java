@@ -20,4 +20,5 @@ public abstract class View extends WithBoardView {
 	protected abstract void play();
 
 	protected abstract boolean resume();
+	
 }
