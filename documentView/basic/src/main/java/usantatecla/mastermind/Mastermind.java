@@ -5,8 +5,8 @@ import usantatecla.mastermind.views.View;
 
 class Mastermind {
 
-    private final Board board;
-    private final View view;
+    private Board board;
+    private View view;
 
     Mastermind() {
         this.board = new Board();

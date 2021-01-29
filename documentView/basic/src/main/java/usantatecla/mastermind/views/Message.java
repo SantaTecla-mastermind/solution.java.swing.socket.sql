@@ -3,6 +3,7 @@ package usantatecla.mastermind.views;
 import usantatecla.utils.views.Console;
 
 enum Message {
+
     TITLE("----- MASTERMIND -----"),
     SECRET_COMBINATION("****"),
     ATTEMPTS("#attempts attempt(s): "),
@@ -16,10 +17,6 @@ enum Message {
 
     Message(String message) {
         this.message = message;
-    }
-
-    void write() {
-        Console.getInstance().write(this.message);
     }
 
     void writeln() {

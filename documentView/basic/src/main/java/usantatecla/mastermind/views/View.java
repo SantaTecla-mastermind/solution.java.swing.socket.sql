@@ -4,9 +4,9 @@ import usantatecla.mastermind.models.Board;
 
 public class View extends WithBoardView {
 
-    private final StartView startView;
-    private final PlayView playView;
-    private final ResumeView resumeView;
+    private StartView startView;
+    private PlayView playView;
+    private ResumeView resumeView;
 
     public View(Board board) {
         super(board);
