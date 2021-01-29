@@ -12,7 +12,7 @@ import static org.mockito.Mockito.*;
 public class BoardBuilder {
 
     private Board board;
-    private final List<String> proposedCombinationsStrings;
+    private List<String> proposedCombinationsStrings;
     private Integer blacks;
     private Integer whites;
 

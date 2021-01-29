@@ -3,6 +3,7 @@ package usantatecla.mastermind;
 import usantatecla.utils.Console;
 
 enum Message {
+    
     ATTEMPTS("#attempts attempt(s): "),
     RESUME("Do you want to continue"),
     RESULT(" --> #blacks blacks and #whites whites"),
