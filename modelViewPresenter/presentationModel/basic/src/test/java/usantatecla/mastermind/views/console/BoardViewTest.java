@@ -4,16 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.models.BoardBuilder;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.utils.views.Console;
 
 import java.util.List;
@@ -28,23 +24,12 @@ public class BoardViewTest {
     @Mock
     private Console console;
 
-    @Mock
-    private ProposedCombinationView proposedCombinationView;
-
-    @Spy
-    private Board board;
-
-    @InjectMocks
-    private PlayController playController;
-
-    @InjectMocks
     private BoardView boardView;
-
     private Conversor conversor;
 
     @BeforeEach
     public void beforeEach() {
-        this.boardView = new BoardView(this.playController, this.proposedCombinationView);
+        this.boardView = new BoardView();
         this.conversor = new Conversor();
     }
 
@@ -52,7 +37,7 @@ public class BoardViewTest {
     public void testGivenBoardViewWhenWriteWithEmptyBoardThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.boardView.write();
+            this.boardView.write(new PlayController(new Board()));
             String[] strings = {
                     "0 attempt(s): ",
                     "****"
@@ -63,18 +48,14 @@ public class BoardViewTest {
         }
     }
 
-    /*@Test
+    @Test
     public void testGivenBoardViewWhenWriteThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.board = new BoardBuilder()
-            .proposedCombinations(3, "rgby")
-            .blacks(2)
-            .whites(2)
-            .build();
-            when(this.playController.getAttempts()).thenReturn(3);
-            //when(this.playController.getProposedCombination(anyInt())).thenReturn(new ProposedCombination());
-            this.boardView.write();
+            this.boardView.write(new PlayController(new BoardBuilder()
+                    .proposedCombinations(3, "rgby")
+                    .blacks(2).whites(2)
+                    .build()));
             String string = this.conversor.arrayToString(new String[]{
                     "3 attempt(s): ",
                     "****",
@@ -88,7 +69,7 @@ public class BoardViewTest {
 
             assertThat(string, is(this.reOrder(argumentCaptor.getAllValues())));
         }
-    }*/
+    }
 
     private String reOrder(List<String> strings) {
         int proposedCombinationStartIndex = 2;
@@ -97,7 +78,7 @@ public class BoardViewTest {
 
         for (int i = proposedCombinationStartIndex; i < proposedCombinationStartIndex + attempts; i++) {
             String proposedCombination = "";
-            for(int j = proposedCombinationWidth; j > 0; j--) {
+            for (int j = proposedCombinationWidth; j > 0; j--) {
                 proposedCombination += strings.remove(strings.size() - j);
             }
             strings.set(i, proposedCombination + strings.get(i));
