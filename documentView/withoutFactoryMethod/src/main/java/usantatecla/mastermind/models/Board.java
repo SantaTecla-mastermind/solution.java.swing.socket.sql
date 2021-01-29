@@ -4,17 +4,17 @@ public class Board {
 
     static final int MAX_ATTEMPTS = 10;
     private SecretCombination secretCombination;
-    private final ProposedCombination[] proposedCombinations;
-    private final Result[] results;
+    private ProposedCombination[] proposedCombinations;
+    private Result[] results;
     private int attempts;
 
     public Board() {
-        this.proposedCombinations = new ProposedCombination[Board.MAX_ATTEMPTS];
-        this.results = new Result[Board.MAX_ATTEMPTS];
         this.reset();
     }
 
-    public void reset() { //TODO Comprobar que proposedCombinations y results está vacío (tests)
+    public void reset() {
+        this.proposedCombinations = new ProposedCombination[Board.MAX_ATTEMPTS];
+        this.results = new Result[Board.MAX_ATTEMPTS];
         this.secretCombination = new SecretCombination();
         this.attempts = 0;
     }
@@ -61,7 +61,7 @@ public class Board {
         return this.results[this.attempts - 1].isWinner();
     }
 
-    public boolean isLooser() {
+    private boolean isLooser() {
         return this.attempts == Board.MAX_ATTEMPTS;
     }
 

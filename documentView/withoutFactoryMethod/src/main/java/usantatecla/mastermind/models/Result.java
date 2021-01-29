@@ -6,8 +6,8 @@ public class Result {
 
     public static final int WIDTH = 4;
     private static final ClosedInterval LIMITS = new ClosedInterval(0, Result.WIDTH);
-    private final int blacks;
-    private final int whites;
+    private int blacks;
+    private int whites;
 
     Result(int blacks, int whites) {
         assert Result.LIMITS.isIncluded(blacks);

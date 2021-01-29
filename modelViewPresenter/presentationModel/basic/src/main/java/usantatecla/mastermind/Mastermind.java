@@ -6,7 +6,7 @@ import usantatecla.mastermind.controllers.StartController;
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.View;
 
-public abstract class Mastermind {
+abstract class Mastermind {
 
 	private final View view;
 	private final Board board;

@@ -18,21 +18,6 @@ public class MessageTest {
     private Console console;
 
     @Test
-    public void testGivenNewMessageWhenToString() {
-        assertThat(Message.RESUME.toString(), is("Do you want to continue"));
-    }
-
-    @Test
-    public void testGivenNewMessageWhenWriteThenWriteMessage() {
-        try (MockedStatic<Console> console = mockStatic(Console.class)) {
-            console.when(Console::getInstance).thenReturn(this.console);
-            Message.PROPOSED_COMBINATION.write();
-            verify(this.console, times(1)).write(Message.PROPOSED_COMBINATION.toString());
-        }
-    }
-
-
-    @Test
     public void testGivenNewMessageWhenWritelnWithoutParamsThenWriteMessage() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
@@ -61,4 +46,10 @@ public class MessageTest {
             verify(this.console, times(1)).writeln(Message.RESULT.toString().replaceFirst("#blacks", "" + blacks).replaceFirst("#whites", "" + whites));
         }
     }
+
+    @Test
+    public void testGivenNewMessageWhenToString() {
+        assertThat(Message.RESUME.toString(), is("Do you want to continue"));
+    }
+
 }

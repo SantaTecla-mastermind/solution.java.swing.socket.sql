@@ -9,12 +9,12 @@ public class Board {
     private int attempts;
 
     public Board() {
-        this.proposedCombinations = new ProposedCombination[Board.MAX_ATTEMPTS];
-        this.results = new Result[Board.MAX_ATTEMPTS];
         this.reset();
     }
 
     public void reset() {
+        this.proposedCombinations = new ProposedCombination[Board.MAX_ATTEMPTS];
+        this.results = new Result[Board.MAX_ATTEMPTS];
         this.secretCombination = new SecretCombination();
         this.attempts = 0;
     }

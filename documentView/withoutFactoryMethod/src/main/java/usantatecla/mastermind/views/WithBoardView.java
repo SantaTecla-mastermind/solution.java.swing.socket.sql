@@ -6,7 +6,7 @@ public abstract class WithBoardView {
 
     protected Board board;
 
-    public WithBoardView(Board board) { // TODO public a protected
+    protected WithBoardView(Board board) {
         this.board = board;
     }
 
