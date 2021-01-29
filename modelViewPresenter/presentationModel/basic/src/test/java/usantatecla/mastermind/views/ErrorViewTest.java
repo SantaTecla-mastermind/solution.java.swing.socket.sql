@@ -1,4 +1,4 @@
-package usantatecla.mastermind.views.console;
+package usantatecla.mastermind.views;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
