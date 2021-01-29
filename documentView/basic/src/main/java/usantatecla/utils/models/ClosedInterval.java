@@ -2,8 +2,8 @@ package usantatecla.utils.models;
 
 public class ClosedInterval {
 
-    private final int min;
-    private final int max;
+    private int min;
+    private int max;
 
     public ClosedInterval(int min, int max) {
         assert min <= max;
