@@ -3,6 +3,7 @@ package usantatecla.mastermind.views.console;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
+import usantatecla.mastermind.views.ErrorView;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.views.ColorCode;
 import usantatecla.utils.views.Console;
@@ -10,7 +11,7 @@ import usantatecla.utils.views.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProposedCombinationView {
+class ProposedCombinationView {
 
     ProposedCombination read() {
         Error error;

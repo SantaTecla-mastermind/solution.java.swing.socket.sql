@@ -4,13 +4,13 @@ import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.Message;
 import usantatecla.mastermind.views.WithBoardView;
 
-public class PlayView extends WithBoardView {
+class PlayView extends WithBoardView {
 
-    public PlayView(Board board) {
+    PlayView(Board board) {
         super(board);
     }
 
-    public void interact() {
+    void interact() {
         do {
             this.board.add(new ProposedCombinationView().read());
             new BoardView().write(this.board);
@@ -21,4 +21,5 @@ public class PlayView extends WithBoardView {
             Message.LOOSER.writeln();
         }
     }
+    
 }

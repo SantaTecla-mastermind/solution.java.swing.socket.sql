@@ -5,13 +5,13 @@ import usantatecla.mastermind.views.Message;
 import usantatecla.mastermind.views.WithBoardView;
 import usantatecla.utils.views.YesNoDialog;
 
-public class ResumeView extends WithBoardView {
+class ResumeView extends WithBoardView {
 
-    public ResumeView(Board board) {
+    ResumeView(Board board) {
         super(board);
     }
 
-    public boolean interact() {
+    boolean interact() {
         YesNoDialog yesNoDialog = new YesNoDialog();
         yesNoDialog.read(Message.RESUME.toString());
         if (yesNoDialog.isAffirmative()) {

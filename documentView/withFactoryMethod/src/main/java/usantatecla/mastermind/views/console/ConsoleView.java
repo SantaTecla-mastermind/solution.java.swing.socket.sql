@@ -5,9 +5,9 @@ import usantatecla.mastermind.views.View;
 
 public class ConsoleView extends View {
 
-    private final StartView startView;
-    private final PlayView playView;
-    private final ResumeView resumeView;
+    private StartView startView;
+    private PlayView playView;
+    private ResumeView resumeView;
 
     public ConsoleView(Board board) {
         super(board);

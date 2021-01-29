@@ -4,7 +4,7 @@ import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.View;
 import usantatecla.mastermind.views.console.ConsoleView;
 
-public class ConsoleMastermind extends Mastermind {
+class ConsoleMastermind extends Mastermind {
 
     @Override
     protected View createView(Board board) {
@@ -14,4 +14,5 @@ public class ConsoleMastermind extends Mastermind {
     public static void main(String[] args) {
         new ConsoleMastermind().play();
     }
+    
 }
