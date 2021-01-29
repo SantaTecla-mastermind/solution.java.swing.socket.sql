@@ -2,14 +2,20 @@ package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
+import usantatecla.utils.views.Console;
 
-public abstract class ErrorView { // TODO abstract innecesario?
+public class ErrorView {
 
     public static final String[] MESSAGES = {
             "Repeated colors",
             "Wrong colors, they must be: " + Color.getAllInitials(),
-            "Wrong proposed combination length"};
+            "Wrong proposed combination length"
+        };
 
-    public abstract void writeln(Error error); // TODO abstract innecesario?
+    public void writeln(Error error) {
+        if (!error.isNull()) {
+            Console.getInstance().writeln(ErrorView.MESSAGES[error.ordinal()]);
+        }
+    }
 
 }

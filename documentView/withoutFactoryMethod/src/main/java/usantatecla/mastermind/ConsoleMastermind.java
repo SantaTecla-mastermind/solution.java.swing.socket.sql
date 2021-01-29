@@ -3,10 +3,10 @@ package usantatecla.mastermind;
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.console.ConsoleView;
 
-public class ConsoleMastermind { // TODO Quitar public
+class ConsoleMastermind {
 
-    private final Board board;
-    private final ConsoleView consoleView; // TODO Quitar final
+    private Board board;
+    private ConsoleView consoleView;
 
     private ConsoleMastermind() {
         this.board = new Board();
