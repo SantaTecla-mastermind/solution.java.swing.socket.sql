@@ -6,13 +6,13 @@ import usantatecla.mastermind.views.View;
 public class ConsoleView extends View {
 
     private StartView startView;
-    private ProposalView proposalView;
+    private PlayView playView;
     private ResumeView resumeView;
 
     public ConsoleView(Logic logic) {
         super(logic);
         this.startView = new StartView(this.logic);
-        this.proposalView = new ProposalView(this.logic);
+        this.playView = new PlayView(this.logic);
         this.resumeView = new ResumeView(this.logic);
     }
 
@@ -22,12 +22,12 @@ public class ConsoleView extends View {
     }
 
     @Override
-    protected boolean propose() {
-        return this.proposalView.interact();
+    protected void play() {
+        this.playView.interact();
     }
 
     @Override
-    protected boolean isNewGame() {
+    protected boolean resume() {
         return this.resumeView.interact();
     }
 

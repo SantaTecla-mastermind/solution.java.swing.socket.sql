@@ -1,59 +1,52 @@
 package usantatecla.mastermind.controllers;
 
-import usantatecla.mastermind.models.Game;
-import usantatecla.mastermind.types.Color;
-import usantatecla.mastermind.types.Error;
-
-import java.util.List;
+import usantatecla.mastermind.models.Board;
+import usantatecla.mastermind.models.ProposedCombination;
 
 public class Logic {
 
-    private Game game;
-    private StartController startController;
-    private ProposalController proposalController;
+    private Board board;
+    private StartController startController; //TODO ?
+    private PlayController playController;
     private ResumeController resumeController;
 
-    public Logic() {
-        this.game = new Game();
-        this.startController = new StartController(this.game);
-        this.proposalController = new ProposalController(this.game);
-        this.resumeController = new ResumeController(this.game);
+    public Logic(Board board) {
+        this.board = board;
+        this.startController = new StartController(this.board);
+        this.playController = new PlayController(this.board);
+        this.resumeController = new ResumeController(this.board);
     }
 
-    public void clearGame() {
-        this.resumeController.clearGame();
+    public void reset() {
+        this.resumeController.reset();
     }
 
-    public Error addProposedCombination(List<Color> colors) {
-        return this.proposalController.addProposedCombination(colors);
+    public void add(ProposedCombination proposedCombination) {
+        this.playController.add(proposedCombination);
     }
 
     public boolean isWinner() {
-        return this.proposalController.isWinner();
+        return this.playController.isWinner();
     }
 
-    public boolean isLooser() {
-        return this.proposalController.isLooser();
+    public boolean isFinished() {
+        return this.playController.isFinished();
     }
 
     public int getAttempts() {
-        return this.proposalController.getAttempts();
+        return this.playController.getAttempts();
     }
 
-    public List<Color> getProposedCombination(int position) {
-        return this.proposalController.getProposedCombination(position);
+    public ProposedCombination getProposedCombination(int position) {
+        return this.playController.getProposedCombination(position);
     }
 
     public int getBlacks(int position) {
-        return this.proposalController.getBlacks(position);
+        return this.playController.getBlacks(position);
     }
 
     public int getWhites(int position) {
-        return this.proposalController.getWhites(position);
-    }
-
-    public int getWidth() {
-        return this.startController.getWidth();
+        return this.playController.getWhites(position);
     }
 
 }

@@ -8,11 +8,11 @@ import usantatecla.mastermind.views.View;
 
 abstract class Mastermind {
 
-	private final View view;
-	private final Board board;
-	private final StartController startController;
-	private final PlayController playController;
-	private final ResumeController resumeController;
+	private View view;
+	private Board board;
+	private StartController startController;
+	private PlayController playController;
+	private ResumeController resumeController;
 
 	protected Mastermind() {
 		this.board = new Board();

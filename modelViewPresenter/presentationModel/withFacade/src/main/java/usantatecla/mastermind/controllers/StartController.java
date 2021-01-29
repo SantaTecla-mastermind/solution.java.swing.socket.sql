@@ -1,11 +1,11 @@
 package usantatecla.mastermind.controllers;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
 
 public class StartController extends Controller {
 
-    public StartController(Game game) {
-        super(game);
+    public StartController(Board board) {
+        super(board);
     }
 
 }

@@ -11,17 +11,15 @@ public class GraphicsView extends View {
 
     @Override
     protected void start() {
-
     }
 
     @Override
-    protected boolean propose() {
-        return false;
+    protected void play() {
     }
 
     @Override
-    protected boolean isNewGame() {
-        return false;
+    protected boolean resume() {
+        return true;
     }
 
 }

@@ -1,15 +1,15 @@
 package usantatecla.mastermind.controllers;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
 
 public class ResumeController extends Controller {
 
-    public ResumeController(Game game) {
-        super(game);
+    public ResumeController(Board board) {
+        super(board);
     }
 
-    public void clearGame() {
-        this.game.reset();
+    public void reset() {
+        this.board.reset();
     }
 
 }

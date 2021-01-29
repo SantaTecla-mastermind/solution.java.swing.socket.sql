@@ -1,18 +1,14 @@
 package usantatecla.mastermind.controllers;
 
-import usantatecla.mastermind.models.Combination;
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.models.Board;
+import usantatecla.mastermind.models.ProposedCombination;
 
 public abstract class Controller {
 
-    protected Game game;
+    protected Board board;
 
-    Controller(Game game) {
-        this.game = game;
-    }
-
-    public int getWidth() {
-        return Combination.getWidth();
+    Controller(Board board) {
+        this.board = board;
     }
 
 }

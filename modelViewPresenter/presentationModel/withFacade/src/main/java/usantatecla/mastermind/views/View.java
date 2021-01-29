@@ -1,29 +1,27 @@
 package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.controllers.Logic;
+import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.mastermind.controllers.ResumeController;
+import usantatecla.mastermind.controllers.StartController;
 
-public abstract class View extends WithLogicView {
+public abstract class View  extends WithLogicView {
 
-    public View(Logic logic) {
-        super(logic);
-    }
+	public View(Logic logic) {
+		super(logic);
+	}
 
-    public void interact() {
-        boolean newGame;
-        do {
-            this.start();
-            boolean finished;
-            do {
-                finished = this.propose();
-            } while (!finished);
-            newGame = this.isNewGame();
-        } while (newGame);
-    }
+	public void interact() {
+		do {
+			this.start();
+			this.play();
+		} while (this.resume());
+	}
 
-    protected abstract void start();
+	protected abstract void start();
 
-    protected abstract boolean propose();
+	protected abstract void play();
 
-    protected abstract boolean isNewGame();
-
+	protected abstract boolean resume();
+	
 }
