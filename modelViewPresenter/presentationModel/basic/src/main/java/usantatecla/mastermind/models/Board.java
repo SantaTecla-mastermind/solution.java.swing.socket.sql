@@ -61,7 +61,7 @@ public class Board {
         return this.results[this.attempts - 1].isWinner();
     }
 
-    public boolean isLooser() {
+    private boolean isLooser() {
         return this.attempts == Board.MAX_ATTEMPTS;
     }
 }

@@ -53,7 +53,7 @@ public class BoardTest {
                 .blacks(2)
                 .whites(2)
                 .build();
-        assertThat(board.getBlacks(0), is(2));
+        assertThat(board.getWhites(0), is(2));
     }
 
     @Test
