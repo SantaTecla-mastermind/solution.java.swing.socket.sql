@@ -8,7 +8,6 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.models.BoardBuilder;
 import usantatecla.utils.views.Console;

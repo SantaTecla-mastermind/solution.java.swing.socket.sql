@@ -1,7 +1,6 @@
 package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.controllers.ResumeController;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.views.YesNoDialog;
 

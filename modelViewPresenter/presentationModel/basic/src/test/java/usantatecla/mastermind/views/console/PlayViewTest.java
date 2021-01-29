@@ -1,5 +1,6 @@
 package usantatecla.mastermind.views.console;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,11 +25,14 @@ public class PlayViewTest {
     @Spy
     private Board board;
 
-    @InjectMocks
-    private PlayController playController = new PlayController(this.board);
+    private PlayController playController;
+    private PlayView playView;
 
-    @InjectMocks
-    private PlayView playView = new PlayView(this.playController);
+    @BeforeEach
+    public void beforeEach() {
+        this.playController = new PlayController(this.board);
+        this.playView = new PlayView(this.playController);
+    }
 
     @Test
     public void testGivenPlayViewWhenInteractThenIsWinner() {

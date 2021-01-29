@@ -1,5 +1,6 @@
 package usantatecla.mastermind.views.console;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,11 +27,14 @@ public class ResumeViewTest {
     @Spy
     private Board board;
 
-    @InjectMocks
-    private ResumeController resumeController = new ResumeController(this.board);
+    private ResumeController resumeController;
+    private ResumeView resumeView;
 
-    @InjectMocks
-    private ResumeView resumeView = new ResumeView(this.resumeController);
+    @BeforeEach
+    public void beforeEach() {
+        this.resumeController = new ResumeController(this.board);
+        this.resumeView = new ResumeView(this.resumeController);
+    }
 
     @Test
     public void testGivenNewGameIsFalseWhenInteractThenIsFalse() {

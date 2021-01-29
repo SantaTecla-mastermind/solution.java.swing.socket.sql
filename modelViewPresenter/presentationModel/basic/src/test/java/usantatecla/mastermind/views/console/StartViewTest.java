@@ -1,5 +1,6 @@
 package usantatecla.mastermind.views.console;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,11 +24,14 @@ public class StartViewTest {
     @Spy
     private Board board;
 
-    @InjectMocks
-    private StartController startController = new StartController(this.board);
+    private StartController startController;
+    private StartView startView;
 
-    @InjectMocks
-    private StartView startView = new StartView(this.startController);
+    @BeforeEach
+    public void beforeEach() {
+        this.startController = new StartController(this.board);
+        this.startView = new StartView(this.startController);
+    }
 
     @Test
     public void testGivenStartViewWhenInteractThenPrint() {
@@ -44,6 +48,5 @@ public class StartViewTest {
             }
         }
     }
-
 
 }
