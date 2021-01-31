@@ -112,7 +112,7 @@ public class ProposedCombinationTest {
             this.proposedCombination.read();
             this.proposedCombination.write();
             for (ColorCode colorCode : ColorFactory.getInstance().getColorCodes(ProposedCombinationTest.INITIALS)) {
-                verify(this.console, times(1)).write(colorCode.get() + colorCode.getInitial() + ColorCode.RESET_COLOR.get());
+                verify(this.console, times(1)).write(colorCode.toString());
             }
         }
     }

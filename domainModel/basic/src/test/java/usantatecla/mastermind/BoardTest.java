@@ -1,9 +1,9 @@
 package usantatecla.mastermind;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -13,6 +13,8 @@ import usantatecla.utils.Console;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
+
+import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 public class BoardTest {
@@ -107,17 +109,56 @@ public class BoardTest {
     @Test
     public void testGivenBoardWhenWriteThenPrint() {
         Board board = this.boardBuilder
-                .proposedCombinations(2, BoardTest.PROPOSED_COMBINATION)
+                .proposedCombinations(3, BoardTest.PROPOSED_COMBINATION)
+                .blacks(2).whites(2)
                 .build();
+        String string = this.arrayToString(new String[]{
+            "3 attempt(s): ",
+            "****",
+            this.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
+            this.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
+            this.toColorCodeString("rgby") + " --> 2 blacks and 2 whites"
+        });
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             board.write();
-            verify(this.console).writeln("2 attempt(s): ");
-            verify(this.console).writeln(Message.SECRET_COMBINATION.toString());
-            for (ColorCode colorCode : ColorFactory.getInstance().getColorCodes(BoardTest.PROPOSED_COMBINATION)) {
-                verify(this.console, times(2)).write(colorCode.get() + colorCode.getInitial() + ColorCode.RESET_COLOR.get());
-            }
+            ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
+            verify(this.console, atLeastOnce()).writeln(argumentCaptor.capture());
+            verify(this.console, atLeastOnce()).write(argumentCaptor.capture());
+            assertThat(string, is(this.reorder(argumentCaptor.getAllValues())));
         }
+    }
+
+    private String arrayToString(Object[] objects) {
+        String string = "";
+        for (Object object : objects) {
+            string += object;
+        }
+        return string;
+    }
+
+    private String toColorCodeString(String initials) {
+        List<ColorCode> colorCodes = ColorFactory.getInstance().getColorCodes(initials);
+        String string = "";
+        for (ColorCode colorCode : colorCodes) {
+            string += colorCode.toString();
+        }
+        return string;
+    }
+
+    private String reorder(List<String> strings) {
+        int proposedCombinationStartIndex = 2;
+        int attempts = 3;
+        int proposedCombinationWidth = 4;
+
+        for (int i = proposedCombinationStartIndex; i < proposedCombinationStartIndex + attempts; i++) {
+            String proposedCombination = "";
+            for (int j = proposedCombinationWidth; j > 0; j--) {
+                proposedCombination += strings.remove(strings.size() - j);
+            }
+            strings.set(i, proposedCombination + strings.get(i));
+        }
+        return this.arrayToString(strings.toArray());
     }
 
 }
