@@ -1,5 +1,9 @@
 package usantatecla.mastermind.models;
 
+import java.util.List;
+
+import usantatecla.mastermind.types.Color;
+
 public class Board {
 
     static final int MAX_ATTEMPTS = 10;
@@ -19,9 +23,9 @@ public class Board {
         this.attempts = 0;
     }
 
-    public void add(ProposedCombination proposedCombination) {
-        this.proposedCombinations[this.attempts] = proposedCombination;
-        this.results[this.attempts] = this.getResult(proposedCombination);
+    public void add(List<Color> colors) {
+        this.proposedCombinations[this.attempts] = new ProposedCombination(colors);
+        this.results[this.attempts] = this.getResult(this.proposedCombinations[this.attempts]);
         this.attempts++;
     }
 
@@ -43,10 +47,10 @@ public class Board {
         return this.results[position];
     }
 
-    public ProposedCombination getProposedCombination(int position) {
+    public List<Color> getProposedCombinationColors(int position) {
         assert position < this.getAttempts() && position >= 0;
 
-        return this.proposedCombinations[position];
+        return this.proposedCombinations[position].getColors();
     }
 
     public int getAttempts() {
