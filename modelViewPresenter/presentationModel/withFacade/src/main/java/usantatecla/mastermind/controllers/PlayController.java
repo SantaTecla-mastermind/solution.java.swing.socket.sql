@@ -21,20 +21,4 @@ public class PlayController extends Controller {
         return this.board.isWinner();
     }
 
-    public int getAttempts() {
-        return this.board.getAttempts();
-    }
-
-    public ProposedCombination getProposedCombination(int position) {
-        return this.board.getProposedCombination(position);
-    }
-
-    public int getBlacks(int position) {
-        return this.board.getBlacks(position);
-    }
-
-    public int getWhites(int position) {
-        return this.board.getWhites(position);
-    }
-
 }

@@ -6,7 +6,7 @@ import usantatecla.mastermind.models.ProposedCombination;
 public class Logic {
 
     private Board board;
-    private StartController startController; //TODO ?
+    private StartController startController;
     private PlayController playController;
     private ResumeController resumeController;
 
@@ -34,19 +34,19 @@ public class Logic {
     }
 
     public int getAttempts() {
-        return this.playController.getAttempts();
+        return this.startController.getAttempts();
     }
 
     public ProposedCombination getProposedCombination(int position) {
-        return this.playController.getProposedCombination(position);
+        return this.startController.getProposedCombination(position);
     }
 
     public int getBlacks(int position) {
-        return this.playController.getBlacks(position);
+        return this.startController.getBlacks(position);
     }
 
     public int getWhites(int position) {
-        return this.playController.getWhites(position);
+        return this.startController.getWhites(position);
     }
 
 }
