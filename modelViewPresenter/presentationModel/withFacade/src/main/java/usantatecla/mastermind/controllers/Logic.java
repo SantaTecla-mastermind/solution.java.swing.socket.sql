@@ -2,6 +2,10 @@ package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.models.ProposedCombination;
+import usantatecla.mastermind.types.Color;
+import usantatecla.mastermind.types.Error;
+
+import java.util.List;
 
 public class Logic {
 
@@ -21,8 +25,12 @@ public class Logic {
         this.resumeController.reset();
     }
 
-    public void add(ProposedCombination proposedCombination) {
-        this.playController.add(proposedCombination);
+    public Error getError(List<Color> colors) {
+        return this.playController.getError(colors);
+    }
+
+    public void add(List<Color> colors) {
+        this.playController.add(colors);
     }
 
     public boolean isWinner() {
@@ -37,8 +45,8 @@ public class Logic {
         return this.startController.getAttempts();
     }
 
-    public ProposedCombination getProposedCombination(int position) {
-        return this.startController.getProposedCombination(position);
+    public List<Color> getProposedCombinationColors(int position) {
+        return this.startController.getProposedCombinationColors(position);
     }
 
     public int getBlacks(int position) {

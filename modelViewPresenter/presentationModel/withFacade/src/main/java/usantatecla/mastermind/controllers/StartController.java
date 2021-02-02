@@ -2,6 +2,9 @@ package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.models.ProposedCombination;
+import usantatecla.mastermind.types.Color;
+
+import java.util.List;
 
 public class StartController extends Controller {
 
@@ -13,8 +16,8 @@ public class StartController extends Controller {
         return this.board.getAttempts();
     }
 
-    public ProposedCombination getProposedCombination(int position) {
-        return this.board.getProposedCombination(position);
+    public List<Color> getProposedCombinationColors(int position) {
+        return this.board.getProposedCombinationColors(position);
     }
 
     public int getBlacks(int position) {
