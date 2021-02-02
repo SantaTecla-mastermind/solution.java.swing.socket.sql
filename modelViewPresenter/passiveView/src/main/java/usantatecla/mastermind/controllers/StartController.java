@@ -1,18 +1,17 @@
 package usantatecla.mastermind.controllers;
 
-import usantatecla.mastermind.models.Session;
-import usantatecla.mastermind.views.StartView;
+import usantatecla.mastermind.models.Board;
+import usantatecla.mastermind.views.console.StartView;
 
 public class StartController extends Controller {
 
-	public StartController(Session session) {
-		super(session);
-	}
+    public StartController(Board board) {
+        super(board);
+    }
 
-	@Override
-	public void control() {
-		this.session.next();
-		new StartView().write(this.getWidth());
-	}
+    public void control(){
+        new StartView().write();
+        this.writeBoard();
+    }
 
 }
