@@ -1,5 +1,7 @@
 package usantatecla.mastermind.views.console;
 
+import usantatecla.mastermind.controllers.Logic;
+import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
@@ -13,19 +15,20 @@ import java.util.List;
 
 public class ProposedCombinationView {
 
-    ProposedCombination read() {
+    List<Color> read(Logic logic) {
         Error error;
-        ProposedCombination proposedCombination = new ProposedCombination();
+        List<Color> colors = new ArrayList<>();
         do {
             String characters = Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase();
-            error = proposedCombination.add(Color.get(characters));
+            colors = Color.get(characters);
+            error = logic.getError(colors);
             new ErrorView().writeln(error);
         } while (!error.isNull());
-        return proposedCombination;
+        return colors;
     }
 
-    void write(ProposedCombination proposedCombination) {
-        for (ColorCode colorCode : this.getColorCodes(proposedCombination.getColors())) {
+    void write(List<Color> colors) {
+        for (ColorCode colorCode : this.getColorCodes(colors)) {
             colorCode.write();
         }
     }

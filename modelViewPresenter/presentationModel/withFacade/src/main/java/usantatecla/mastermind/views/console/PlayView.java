@@ -13,7 +13,7 @@ public class PlayView {
 
     public void interact() {
         do {
-            this.logic.add(new ProposedCombinationView().read());
+            this.logic.add(new ProposedCombinationView().read(this.logic));
             new BoardView().write(this.logic);
         } while (!this.logic.isFinished());
         if(this.logic.isWinner()){

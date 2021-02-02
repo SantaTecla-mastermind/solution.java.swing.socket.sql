@@ -8,11 +8,15 @@ import java.util.List;
 
 public class ProposedCombination extends Combination {
 
+    public ProposedCombination(List<Color> colors) {
+        this.colors = colors;
+    }
+
     public List<Color> getColors() {
         return colors;
     }
 
-    public Error add(List<Color> colors) {
+    public static Error getError(List<Color> colors) {
         List<Color> correctColors = new ArrayList<>();
         if (colors.size() != Result.WIDTH) {
             return Error.WRONG_LENGTH;
@@ -29,7 +33,6 @@ public class ProposedCombination extends Combination {
             }
             correctColors.add(color);
         }
-        this.colors = correctColors;
         return Error.NULL;
     }
 

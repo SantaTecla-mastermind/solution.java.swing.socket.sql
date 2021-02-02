@@ -2,6 +2,10 @@ package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.models.ProposedCombination;
+import usantatecla.mastermind.types.Color;
+import usantatecla.mastermind.types.Error;
+
+import java.util.List;
 
 public class PlayController extends Controller {
 
@@ -9,8 +13,12 @@ public class PlayController extends Controller {
         super(board);
     }
 
-    public void add(ProposedCombination proposedCombination) {
-            this.board.add(proposedCombination);
+    public Error getError(List<Color> colors) {
+        return ProposedCombination.getError(colors);
+    }
+
+    public void add(List<Color> colors) {
+        this.board.add(colors);
     }
 
     public boolean isFinished() {
