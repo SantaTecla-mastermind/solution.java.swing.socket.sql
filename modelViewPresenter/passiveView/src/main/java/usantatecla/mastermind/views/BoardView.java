@@ -1,6 +1,5 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.mastermind.models.Result;
 import usantatecla.mastermind.types.Color;
 
 import java.util.List;

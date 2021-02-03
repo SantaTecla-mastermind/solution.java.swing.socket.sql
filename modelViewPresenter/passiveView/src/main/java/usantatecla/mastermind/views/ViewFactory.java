@@ -1,7 +1,5 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.mastermind.views.console.*;
-
 public abstract class ViewFactory {
 
     public abstract BoardView createBoardView();

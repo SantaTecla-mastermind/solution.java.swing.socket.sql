@@ -1,8 +1,8 @@
 package usantatecla.mastermind.models;
 
-import java.util.List;
-
 import usantatecla.mastermind.types.Color;
+
+import java.util.List;
 
 public class Board {
 
