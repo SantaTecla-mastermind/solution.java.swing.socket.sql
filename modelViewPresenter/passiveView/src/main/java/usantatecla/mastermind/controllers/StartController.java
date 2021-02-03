@@ -11,7 +11,7 @@ public class StartController extends Controller {
     }
 
     public void control(){
-        new StartView().write();
+        this.viewFactory.createStartView().write();
         this.writeBoard();
     }
 

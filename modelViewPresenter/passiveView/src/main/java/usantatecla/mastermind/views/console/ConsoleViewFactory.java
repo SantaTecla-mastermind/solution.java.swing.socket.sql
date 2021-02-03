@@ -20,7 +20,7 @@ public class ConsoleViewFactory extends ViewFactory {
     }
 
     @Override
-    public PlayView createPlayerView() {
+    public PlayView createPlayView() {
         return new PlayView();
     }
 

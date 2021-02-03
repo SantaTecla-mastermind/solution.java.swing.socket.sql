@@ -11,7 +11,7 @@ public class ResumeController extends Controller {
     }
 
     public boolean control(){
-        boolean isResumed = new ResumeView().read();
+        boolean isResumed = this.viewFactory.createResumeView().read();
         if (isResumed) {
             this.board.reset();
         }

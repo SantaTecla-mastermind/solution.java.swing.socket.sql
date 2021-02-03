@@ -20,7 +20,7 @@ public class GraphicsViewFactory extends ViewFactory {
     }
 
     @Override
-    public PlayView createPlayerView() {
+    public PlayView createPlayView() {
         return null;
     }
 

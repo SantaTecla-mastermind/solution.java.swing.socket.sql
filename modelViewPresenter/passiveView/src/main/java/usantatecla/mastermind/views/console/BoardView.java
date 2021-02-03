@@ -11,8 +11,8 @@ public class BoardView extends usantatecla.mastermind.views.BoardView {
         Message.ATTEMPTS.writeln(attempts);
         Message.SECRET_COMBINATION.writeln();
         for (int i = 0; i < attempts; i++) {
-            new ProposedCombinationView().write(this.proposedCombinationColors);
-            Message.RESULT.writeln(this.blacks, this.whites);
+            new ProposedCombinationView().write(this.proposedCombinationColors.get(i));
+            Message.RESULT.writeln(this.blacks.get(i), this.whites.get(i));
         }
     }
 
