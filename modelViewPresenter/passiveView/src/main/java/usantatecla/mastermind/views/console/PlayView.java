@@ -2,7 +2,7 @@ package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.views.Message;
 
-public class PlayView {
+public class PlayView implements usantatecla.mastermind.views.PlayView {
 
     public void writeWinner(){
         Message.WINNER.writeln();
@@ -11,4 +11,5 @@ public class PlayView {
     public void writeLooser(){
         Message.LOOSER.writeln();
     }
+
 }

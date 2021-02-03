@@ -11,11 +11,11 @@ import usantatecla.utils.views.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProposedCombinationView {
+public class ProposedCombinationView implements usantatecla.mastermind.views.ProposedCombinationView {
 
     public List<Color> read() {
         Error error;
-        List<Color> colors = new ArrayList<>();
+        List<Color> colors;
         do {
             String characters = Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase();
             colors = Color.get(characters);
