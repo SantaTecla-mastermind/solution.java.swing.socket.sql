@@ -4,7 +4,6 @@ import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.views.PlayView;
 import usantatecla.mastermind.views.ViewFactory;
-import usantatecla.mastermind.views.console.ProposedCombinationView;
 
 import java.util.List;
 

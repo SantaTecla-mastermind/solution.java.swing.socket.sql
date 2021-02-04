@@ -23,36 +23,27 @@ public class PlayViewTest {
     @Spy
     private Board board;
 
-    private PlayController playController;
     private PlayView playView;
 
     @BeforeEach
     public void beforeEach() {
-        this.playController = new PlayController(this.board);
-        this.playView = new PlayView(this.playController);
+        this.playView = new PlayView();
     }
 
     @Test
-    public void testGivenPlayViewWhenInteractThenIsWinner() {
+    public void testGivenPlayViewWhenWriteWinnerThenIsWinner() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            when(this.console.readString(anyString())).thenReturn("rgby");
-            doReturn(true).when(this.board).isWinner();
-            this.playView.interact();
-            verify(this.board).add(any());
+            this.playView.writeWinner();
             verify(this.console).writeln("You've won!!! ;-)");
         }
     }
 
     @Test
-    public void testGivenPlayViewWhenInteractThenIsLooser() {
+    public void testGivenPlayViewWhenWriteLooserThenIsLooser() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            when(this.console.readString(anyString())).thenReturn("rgby");
-            doReturn(true).when(this.board).isFinished();
-            doReturn(false).when(this.board).isWinner();
-            this.playView.interact();
-            verify(this.board).add(any());
+            this.playView.writeLooser();
             verify(this.console).writeln("You've lost!!! :-(");
         }
     }

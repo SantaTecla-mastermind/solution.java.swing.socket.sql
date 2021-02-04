@@ -5,7 +5,7 @@ import usantatecla.mastermind.views.Message;
 public class StartView implements usantatecla.mastermind.views.StartView {
 
     public void write(){
-        Message.TITLE.writeln();
+        new MessageView().writeln(Message.TITLE);
     }
 
 }

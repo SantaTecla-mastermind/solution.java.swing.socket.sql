@@ -5,11 +5,11 @@ import usantatecla.mastermind.views.Message;
 public class PlayView implements usantatecla.mastermind.views.PlayView {
 
     public void writeWinner(){
-        Message.WINNER.writeln();
+        new MessageView().writeln(Message.WINNER);
     }
 
     public void writeLooser(){
-        Message.LOOSER.writeln();
+        new MessageView().writeln(Message.LOOSER);
     }
 
 }

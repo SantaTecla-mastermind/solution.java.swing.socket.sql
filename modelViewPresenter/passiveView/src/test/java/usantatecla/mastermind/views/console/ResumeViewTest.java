@@ -5,10 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.controllers.ResumeController;
-import usantatecla.mastermind.models.Board;
 import usantatecla.utils.views.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -23,33 +20,28 @@ public class ResumeViewTest {
     @Mock
     private Console console;
 
-    @Spy
-    private Board board;
-
-    private ResumeController resumeController;
     private ResumeView resumeView;
 
     @BeforeEach
     public void beforeEach() {
-        this.resumeController = new ResumeController(this.board);
-        this.resumeView = new ResumeView(this.resumeController);
+        this.resumeView = new ResumeView();
     }
 
     @Test
-    public void testGivenNewGameIsFalseWhenInteractThenIsFalse() {
+    public void testGivenNewGameIsFalseWhenReadThenIsFalse() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(anyString())).thenReturn("n");
-            assertThat(this.resumeView.interact(), is(false));
+            assertThat(this.resumeView.read(), is(false));
         }
     }
 
     @Test
-    public void testGivenNewGameIsTrueWhenInteractThenIsTrue() {
+    public void testGivenNewGameIsTrueWhenReadThenIsTrue() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(anyString())).thenReturn("y");
-            assertThat(this.resumeView.interact(), is(true));
+            assertThat(this.resumeView.read(), is(true));
         }
     }
 

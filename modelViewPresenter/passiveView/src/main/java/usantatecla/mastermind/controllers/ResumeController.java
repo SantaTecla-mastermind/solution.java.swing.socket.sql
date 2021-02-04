@@ -2,7 +2,6 @@ package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.ViewFactory;
-import usantatecla.mastermind.views.console.ResumeView;
 
 public class ResumeController extends Controller {
 

@@ -30,9 +30,9 @@ public class BoardBuilder {
         return this;
     }
 
-    public BoardBuilder proposedCombinations(int times, String proposedCombination) {
+    public BoardBuilder proposedCombinations(int attempts, String proposedCombination) {
         assert Pattern.matches("[" + Color.getAllInitials() + "]{4}", proposedCombination);
-        for (int i = 0; i < times; i++) {
+        for (int i = 0; i < attempts; i++) {
             this.proposedCombinationsStrings.add(proposedCombination);
         }
         return this;

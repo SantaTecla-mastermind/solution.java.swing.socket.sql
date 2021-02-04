@@ -3,7 +3,6 @@ package usantatecla.mastermind.views.console;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
-import usantatecla.mastermind.views.ErrorView;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.views.ColorCode;
 import usantatecla.utils.views.Console;
@@ -31,7 +30,7 @@ public class ProposedCombinationView implements usantatecla.mastermind.views.Pro
         }
     }
 
-    private List<ColorCode> getColorCodes(List<Color> colors) {
+    public List<ColorCode> getColorCodes(List<Color> colors) {
         List<ColorCode> colorCodes = new ArrayList<>();
         for (Color color : colors) {
             for (ColorCode colorCode : ColorCode.values()) {

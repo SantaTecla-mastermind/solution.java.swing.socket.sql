@@ -8,11 +8,11 @@ public class BoardView extends usantatecla.mastermind.views.BoardView {
     public void write(){
         Console.getInstance().writeln();
         int attempts = this.attempts;
-        Message.ATTEMPTS.writeln(attempts);
-        Message.SECRET_COMBINATION.writeln();
+        new MessageView().writeln(Message.ATTEMPTS, attempts);
+        new MessageView().writeln(Message.SECRET_COMBINATION);
         for (int i = 0; i < attempts; i++) {
             new ProposedCombinationView().write(this.proposedCombinationColors.get(i));
-            Message.RESULT.writeln(this.blacks.get(i), this.whites.get(i));
+            new MessageView().writeln(Message.RESULT, this.blacks.get(i), this.whites.get(i));
         }
     }
 

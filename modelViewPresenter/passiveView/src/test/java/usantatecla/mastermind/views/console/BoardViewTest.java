@@ -7,9 +7,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.controllers.PlayController;
-import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.BoardBuilder;
+import usantatecla.mastermind.types.Color;
 import usantatecla.utils.views.Console;
 
 import java.util.List;
@@ -37,7 +35,7 @@ public class BoardViewTest {
     public void testGivenBoardViewWhenWriteWithEmptyBoardThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.boardView.write(new PlayController(new Board()));
+            this.boardView.write();
             String[] strings = {
                     "0 attempt(s): ",
                     "****"
@@ -52,10 +50,10 @@ public class BoardViewTest {
     public void testGivenBoardViewWhenWriteThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.boardView.write(new PlayController(new BoardBuilder()
-                    .proposedCombinations(3, "rgby")
-                    .blacks(2).whites(2)
-                    .build()));
+            int attempts = 3;
+            this.boardView.setAttempts(attempts);
+            this.setBoardView(attempts);
+            this.boardView.write();
             String string = this.conversor.arrayToString(new String[]{
                     "3 attempt(s): ",
                     "****",
@@ -68,6 +66,14 @@ public class BoardViewTest {
             verify(this.console, atLeastOnce()).write(argumentCaptor.capture());
 
             assertThat(string, is(this.reOrder(argumentCaptor.getAllValues())));
+        }
+    }
+
+    private void setBoardView(int attempts) {
+        for (int i = 0; i < attempts; i++) {
+            this.boardView.setProposedCombinationColors(Color.get("rgby"));
+            this.boardView.setBlacks(2);
+            this.boardView.setWhites(2);
         }
     }
 
@@ -85,5 +91,6 @@ public class BoardViewTest {
         }
         return this.conversor.arrayToString(strings.toArray());
     }
+
 
 }

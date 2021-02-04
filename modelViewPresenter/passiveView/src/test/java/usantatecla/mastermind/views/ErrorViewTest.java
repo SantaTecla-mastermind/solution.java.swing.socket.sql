@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.types.Error;
+import usantatecla.mastermind.views.console.ErrorView;
 import usantatecla.utils.views.Console;
 
 import static org.mockito.Mockito.*;
@@ -18,6 +19,7 @@ public class ErrorViewTest {
     private Console console;
 
     private ErrorView errorView;
+
 
     @BeforeEach
     public void beforeEach() {
