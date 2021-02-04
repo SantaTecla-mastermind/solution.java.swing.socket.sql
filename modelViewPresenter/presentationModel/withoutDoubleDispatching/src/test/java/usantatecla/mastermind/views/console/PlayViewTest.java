@@ -3,13 +3,14 @@ package usantatecla.mastermind.views.console;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.controllers.Logic;
+import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.ProposedCombination;
+import usantatecla.mastermind.models.State;
 import usantatecla.utils.views.Console;
 
 import static org.mockito.ArgumentMatchers.anyString;
@@ -18,19 +19,21 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class PlayViewTest {
 
-    /*@Mock
+    @Mock
     private Console console;
 
     @Spy
     private Board board;
 
-    private Logic logic;
+    @InjectMocks
+    private PlayController playController;
+
     private PlayView playView;
 
     @BeforeEach
     public void beforeEach(){
-        this.logic = new Logic(this.board);
-        this.playView = new PlayView(this.logic);
+        this.playController = new PlayController(this.board, new State());
+        this.playView = new PlayView();
     }
 
     @Test
@@ -39,7 +42,7 @@ public class PlayViewTest {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(anyString())).thenReturn("rgby");
             doReturn(true).when(this.board).isWinner();
-            this.playView.interact();
+            this.playView.interact(this.playController);
             verify(this.board).add(any());
             verify(this.console).writeln("You've won!!! ;-)");
         }
@@ -52,10 +55,10 @@ public class PlayViewTest {
             when(this.console.readString(anyString())).thenReturn("rgby");
             doReturn(true).when(this.board).isFinished();
             doReturn(false).when(this.board).isWinner();
-            this.playView.interact();
+            this.playView.interact(this.playController);
             verify(this.board).add(any());
             verify(this.console).writeln("You've lost!!! :-(");
         }
-    }*/
+    }
 
 }

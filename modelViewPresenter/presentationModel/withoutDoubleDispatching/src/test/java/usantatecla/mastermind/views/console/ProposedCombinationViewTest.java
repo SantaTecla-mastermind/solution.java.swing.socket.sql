@@ -7,9 +7,9 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.models.Board;
+import usantatecla.mastermind.models.State;
 import usantatecla.mastermind.types.Color;
 import usantatecla.utils.views.Console;
 
@@ -20,18 +20,18 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class ProposedCombinationViewTest {
 
-    /*private static final String INITIALS = "rgby";
+    private static final String INITIALS = "rgby";
 
     @Mock
     private Console console;
 
-    private Logic logic;
+    private PlayController playController;
     private ProposedCombinationView proposedCombinationView;
     private Conversor conversor;
 
     @BeforeEach
     public void beforeEach() {
-        this.logic = new Logic(new Board());
+        this.playController = new PlayController(new Board(), new State());
         this.proposedCombinationView = new ProposedCombinationView();
         this.conversor = new Conversor();
     }
@@ -41,7 +41,7 @@ public class ProposedCombinationViewTest {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(any())).thenReturn("rg", "rgbyo", ProposedCombinationViewTest.INITIALS);
-            this.proposedCombinationView.read(this.logic);
+            this.proposedCombinationView.read(this.playController);
             verify(this.console, times(2)).writeln("Wrong proposed combination length");
         }
     }
@@ -51,7 +51,7 @@ public class ProposedCombinationViewTest {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(any())).thenReturn("rqcp", "rpfi", "p^l0", ProposedCombinationViewTest.INITIALS);
-            this.proposedCombinationView.read(this.logic);
+            this.proposedCombinationView.read(this.playController);
             verify(this.console, times(3)).writeln("Wrong colors, they must be: rgybmc");
         }
     }
@@ -61,7 +61,7 @@ public class ProposedCombinationViewTest {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(any())).thenReturn("rmmg", "rrrr", "ygyg", ProposedCombinationViewTest.INITIALS);
-            this.proposedCombinationView.read(this.logic);
+            this.proposedCombinationView.read(this.playController);
             verify(this.console, times(3)).writeln("Repeated colors");
         }
     }
@@ -71,7 +71,7 @@ public class ProposedCombinationViewTest {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(any())).thenReturn(ProposedCombinationViewTest.INITIALS);
-            assertThat(this.proposedCombinationView.read(this.logic), is(Color.get(ProposedCombinationViewTest.INITIALS)));
+            assertThat(this.proposedCombinationView.read(this.playController), is(Color.get(ProposedCombinationViewTest.INITIALS)));
         }
     }
 
@@ -80,12 +80,12 @@ public class ProposedCombinationViewTest {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(any())).thenReturn(ProposedCombinationViewTest.INITIALS);
-            this.proposedCombinationView.write(this.proposedCombinationView.read(this.logic));
+            this.proposedCombinationView.write(this.proposedCombinationView.read(this.playController));
             ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
             verify(this.console, times(4)).write(argumentCaptor.capture());
             assertThat(this.conversor.arrayToString(argumentCaptor.getAllValues().toArray()),
                     is(this.conversor.toColorCodeString(ProposedCombinationViewTest.INITIALS)));
         }
 
-    }*/
+    }
 }

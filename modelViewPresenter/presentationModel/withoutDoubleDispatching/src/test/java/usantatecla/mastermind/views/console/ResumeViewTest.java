@@ -3,12 +3,14 @@ package usantatecla.mastermind.views.console;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.controllers.Logic;
+import usantatecla.mastermind.controllers.ResumeController;
 import usantatecla.mastermind.models.Board;
+import usantatecla.mastermind.models.State;
 import usantatecla.utils.views.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -20,19 +22,21 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class ResumeViewTest {
 
-   /* @Mock
+   @Mock
     private Console console;
 
     @Spy
     private Board board;
 
-    private Logic logic;
+    @InjectMocks
+    private ResumeController resumeController;
+
     private ResumeView resumeView;
 
     @BeforeEach
     public void beforeEach(){
-        this.logic = new Logic(this.board);
-        this.resumeView = new ResumeView(this.logic);
+        this.resumeController = new ResumeController(this.board, new State());
+        this.resumeView = new ResumeView();
     }
 
     @Test
@@ -40,7 +44,7 @@ public class ResumeViewTest {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(anyString())).thenReturn("n");
-            assertThat(this.resumeView.interact(), is(false));
+            assertThat(this.resumeView.interact(this.resumeController), is(false));
         }
     }
 
@@ -49,8 +53,8 @@ public class ResumeViewTest {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(anyString())).thenReturn("y");
-            assertThat(this.resumeView.interact(), is(true));
+            assertThat(this.resumeView.interact(this.resumeController), is(true));
         }
-    }*/
+    }
 
 }
