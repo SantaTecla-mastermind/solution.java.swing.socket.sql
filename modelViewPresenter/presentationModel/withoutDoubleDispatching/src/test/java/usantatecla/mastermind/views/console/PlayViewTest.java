@@ -18,7 +18,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class PlayViewTest {
 
-    @Mock
+    /*@Mock
     private Console console;
 
     @Spy
@@ -56,6 +56,6 @@ public class PlayViewTest {
             verify(this.board).add(any());
             verify(this.console).writeln("You've lost!!! :-(");
         }
-    }
+    }*/
 
 }

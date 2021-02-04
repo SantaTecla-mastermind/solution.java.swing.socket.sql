@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class ResumeViewTest {
 
-    @Mock
+   /* @Mock
     private Console console;
 
     @Spy
@@ -51,6 +51,6 @@ public class ResumeViewTest {
             when(this.console.readString(anyString())).thenReturn("y");
             assertThat(this.resumeView.interact(), is(true));
         }
-    }
+    }*/
 
 }

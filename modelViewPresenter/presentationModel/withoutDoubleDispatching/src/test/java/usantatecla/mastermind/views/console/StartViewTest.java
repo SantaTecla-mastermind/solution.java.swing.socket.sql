@@ -17,7 +17,7 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 public class StartViewTest {
 
-    @Mock
+    /* @Mock
     private Console console;
 
     @Spy
@@ -46,7 +46,7 @@ public class StartViewTest {
                 verify(this.console).writeln(string);
             }
         }
-    }
+    }*/
 
 
 }

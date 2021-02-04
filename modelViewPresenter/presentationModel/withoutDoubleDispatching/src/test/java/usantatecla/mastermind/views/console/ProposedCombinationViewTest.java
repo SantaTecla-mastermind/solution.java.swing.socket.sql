@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class ProposedCombinationViewTest {
 
-    private static final String INITIALS = "rgby";
+    /*private static final String INITIALS = "rgby";
 
     @Mock
     private Console console;
@@ -87,5 +87,5 @@ public class ProposedCombinationViewTest {
                     is(this.conversor.toColorCodeString(ProposedCombinationViewTest.INITIALS)));
         }
 
-    }
+    }*/
 }
