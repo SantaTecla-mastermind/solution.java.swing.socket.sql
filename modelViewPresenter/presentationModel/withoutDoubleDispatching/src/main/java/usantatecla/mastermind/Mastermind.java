@@ -1,13 +1,12 @@
 package usantatecla.mastermind;
 
-import usantatecla.mastermind.controllers.Controller;
 import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.views.View;
 
 public abstract class Mastermind {
 
-	private Logic logic;
 	private View view;
+	private Logic logic;
 
 	protected Mastermind() {
 		this.logic = new Logic();
@@ -17,11 +16,7 @@ public abstract class Mastermind {
 	protected abstract View createView();
 
 	protected void play() {
-		Controller controller;
-		do {
-			controller = this.logic.getController();
-			this.view.interact(controller);
-		} while (controller != null);
+		this.view.interact(this.logic);
 	}
 
 }
