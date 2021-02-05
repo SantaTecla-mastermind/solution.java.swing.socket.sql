@@ -1,11 +1,7 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.utils.YesNoDialog;
+public interface ResumeView {
 
-public class ResumeView {
-
-	public Boolean write() {
-		return new YesNoDialog().read(MessageView.RESUME.getMessage());
-	}
+    boolean read();
 
 }

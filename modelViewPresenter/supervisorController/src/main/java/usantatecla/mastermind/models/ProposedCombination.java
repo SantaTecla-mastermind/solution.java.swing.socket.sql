@@ -1,54 +1,49 @@
 package usantatecla.mastermind.models;
 
-import java.util.List;
-
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProposedCombination extends Combination {
 
-	public static Error isValid(List<Color> colors) {
-		if (colors.size() != Combination.getWidth()) {
-			return Error.WRONG_LENGTH;
-		}
-		for (int i = 0; i < colors.size(); i++) {
-			if (colors.get(i) == null) {
-				return Error.WRONG_CHARACTERS;
-			}
-			for (int j = i + 1; j < colors.size(); j++) {
-				if (colors.get(i) == colors.get(j)) {
-					return Error.DUPLICATED;
-				}
-			}
-		}
-		return null;
-	}
+    public ProposedCombination(List<Color> colors) {
+        this.colors = colors;
+    }
 
-	public void set(List<Color> colors) {
-		for (Color color: colors) {
-			this.colors.add(color);			
-		}
-	}
+    public List<Color> getColors() {
+        return colors;
+    }
 
-	boolean contains(Color color, int position) {
-		return this.colors.get(position) == color;
-	}
+    public static Error getError(List<Color> colors) {
+        List<Color> correctColors = new ArrayList<>();
+        if (colors.size() != Result.WIDTH) {
+            return Error.WRONG_LENGTH;
+        }
+        for (int i = 0; i < colors.size(); i++) {
+            Color color = colors.get(i);
+            if (color.isNull()) {
+                return Error.WRONG_CHARACTERS;
+            }
+            for (int j = 0; j < i; j++) {
+                if (correctColors.get(j) == color) {
+                    return Error.DUPLICATED;
+                }
+            }
+            correctColors.add(color);
+        }
+        return Error.NULL;
+    }
 
-	boolean contains(Color color) {
-		for (int i = 0; i < this.colors.size(); i++) {
-			if (this.colors.get(i) == color) {
-				return true;
-			}
-		}
-		return false;
-	}
+    boolean contains(Color color, int position) {
+        assert position < this.colors.size();
 
-	ProposedCombination copy() {
-		ProposedCombination proposedCombination = new ProposedCombination();
-		for (Color color : this.colors) {
-			proposedCombination.colors.add(color);
-		}
-		return proposedCombination;
-	}
+        return this.colors.get(position) == color;
+    }
+
+    boolean contains(Color color) {
+        return this.colors.contains(color);
+    }
 
 }
