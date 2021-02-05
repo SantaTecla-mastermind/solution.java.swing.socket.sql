@@ -23,11 +23,6 @@ public class StartControllerTest extends ControllerTest{
     @Mock
     private StartView startView;
 
-    @Override
-    protected Controller getController(){
-        return new StartController(new BoardBuilder().build(),this.viewFactory);
-    }
-
     @BeforeEach
     public void beforeEach(){
         when(this.viewFactory.createStartView()).thenReturn(this.startView);
