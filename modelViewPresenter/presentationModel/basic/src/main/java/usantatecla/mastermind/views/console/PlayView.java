@@ -17,9 +17,9 @@ public class PlayView {
             new BoardView().write(this.playController);
         } while (!this.playController.isFinished());
         if(this.playController.isWinner()){
-            Message.WINNER.writeln();
+            new MessageView().writeln(Message.WINNER);
         } else {
-            Message.LOOSER.writeln();
+            new MessageView().writeln(Message.LOOSER);
         }
     }
 }

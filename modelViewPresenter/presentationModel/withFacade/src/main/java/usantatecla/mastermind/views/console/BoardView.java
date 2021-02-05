@@ -9,11 +9,11 @@ public class BoardView {
     void write(Logic logic) {
         Console.getInstance().writeln();
         int attempts = logic.getAttempts();
-        Message.ATTEMPTS.writeln(attempts);
-        Message.SECRET_COMBINATION.writeln();
+        new MessageView().writeln(Message.ATTEMPTS, attempts);
+        new MessageView().writeln(Message.SECRET_COMBINATION);
         for (int i = 0; i < attempts; i++) {
             new ProposedCombinationView().write(logic.getProposedCombinationColors(i));
-            Message.RESULT.writeln(logic.getBlacks(i), logic.getWhites(i));
+            new MessageView().writeln(Message.RESULT, logic.getBlacks(i), logic.getWhites(i));
         }
     }
 

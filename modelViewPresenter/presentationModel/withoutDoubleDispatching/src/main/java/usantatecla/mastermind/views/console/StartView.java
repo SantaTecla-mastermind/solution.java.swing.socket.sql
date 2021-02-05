@@ -6,7 +6,7 @@ import usantatecla.mastermind.views.Message;
 class StartView  {
 
     void interact(StartController startController) {
-        Message.TITLE.writeln();
+        new MessageView().writeln(Message.TITLE);
         new BoardView().write(startController);
         startController.nextState();
     }

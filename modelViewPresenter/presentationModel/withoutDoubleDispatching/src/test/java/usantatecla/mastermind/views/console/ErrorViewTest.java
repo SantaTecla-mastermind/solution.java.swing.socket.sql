@@ -1,4 +1,4 @@
-package usantatecla.mastermind.views;
+package usantatecla.mastermind.views.console;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ public class ErrorViewTest {
     @Mock
     private Console console;
 
-    private ErrorView errorView;
+    private usantatecla.mastermind.views.ErrorView errorView;
 
     @BeforeEach
     public void beforeEach() {
