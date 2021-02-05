@@ -16,9 +16,9 @@ class PlayView extends WithBoardView {
             new BoardView().write(this.board);
         } while (!this.board.isFinished());
         if (this.board.isWinner()) {
-            Message.WINNER.writeln();
+            new MessageView().writeln(Message.WINNER);
         } else {
-            Message.LOOSER.writeln();
+            new MessageView().writeln(Message.LOOSER);
         }
     }
     

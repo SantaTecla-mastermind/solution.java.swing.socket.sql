@@ -9,11 +9,11 @@ class BoardView {
     void write(Board board) {
         Console.getInstance().writeln();
         int attempts = board.getAttempts();
-        Message.ATTEMPTS.writeln(attempts);
-        Message.SECRET_COMBINATION.writeln();
+        new MessageView().writeln(Message.ATTEMPTS, attempts);
+        new MessageView().writeln(Message.SECRET_COMBINATION);
         for (int i = 0; i < attempts; i++) {
             new ProposedCombinationView().write(board.getProposedCombination(i));
-            Message.RESULT.writeln(board.getBlacks(i), board.getWhites(i));
+            new MessageView().writeln(Message.RESULT, board.getBlacks(i), board.getWhites(i));
         }
     }
 

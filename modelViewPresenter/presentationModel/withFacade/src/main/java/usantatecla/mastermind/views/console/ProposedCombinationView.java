@@ -1,11 +1,8 @@
 package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.controllers.PlayController;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
-import usantatecla.mastermind.views.ErrorView;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.views.ColorCode;
 import usantatecla.utils.views.Console;

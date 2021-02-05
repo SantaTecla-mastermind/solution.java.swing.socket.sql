@@ -11,9 +11,9 @@ class PlayView {
             new BoardView().write(playController);
         } while (!playController.isFinished());
         if(playController.isWinner()){
-            Message.WINNER.writeln();
+            new MessageView().writeln(Message.WINNER);
         } else {
-            Message.LOOSER.writeln();
+            new MessageView().writeln(Message.LOOSER);
         }
         playController.nextState();
     }

@@ -11,7 +11,7 @@ public class StartView extends WithBoardView {
     }
 
     void interact() {
-        Message.TITLE.writeln();
+        new MessageView().writeln(Message.TITLE);
         new BoardView().write(this.board);
     }
 

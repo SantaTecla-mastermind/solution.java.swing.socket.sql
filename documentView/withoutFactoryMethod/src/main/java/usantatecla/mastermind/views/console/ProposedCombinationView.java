@@ -6,7 +6,6 @@ import usantatecla.mastermind.types.Error;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.views.ColorCode;
 import usantatecla.utils.views.Console;
-import usantatecla.mastermind.views.ErrorView;
 
 import java.util.ArrayList;
 import java.util.List;

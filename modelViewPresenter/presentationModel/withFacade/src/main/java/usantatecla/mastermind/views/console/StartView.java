@@ -12,7 +12,7 @@ public class StartView  {
     }
 
     void interact() {
-        Message.TITLE.writeln();
+        new MessageView().writeln(Message.TITLE);
         new BoardView().write(this.logic);
     }
 
