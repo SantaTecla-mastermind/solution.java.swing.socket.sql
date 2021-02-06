@@ -19,7 +19,6 @@ public class ErrorViewTest {
 
     private ErrorView errorView;
 
-
     @BeforeEach
     public void beforeEach() {
         this.errorView = new ErrorView();

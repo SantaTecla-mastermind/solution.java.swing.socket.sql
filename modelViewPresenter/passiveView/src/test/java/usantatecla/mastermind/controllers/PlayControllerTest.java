@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.models.BoardBuilder;
+import usantatecla.mastermind.types.Error;
 import usantatecla.mastermind.views.ErrorView;
 import usantatecla.mastermind.views.console.PlayView;
 import usantatecla.mastermind.views.console.ProposedCombinationView;
@@ -18,6 +18,8 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class PlayControllerTest extends ControllerTest{
 
+    private static final String INITIALS = "rgby";
+
     @Mock
     private PlayView playView;
 
@@ -27,21 +29,18 @@ public class PlayControllerTest extends ControllerTest{
     @Mock
     private ErrorView errorView;
 
-    private Board board;
-
     @Override
     protected Controller getController(int blacks, int whites, List<String> proposedCombinations) {
-        this.board = new BoardBuilder()
+        return new PlayController(new BoardBuilder()
                 .blacks(blacks).whites(whites)
                 .proposedCombinations(proposedCombinations)
-                .build();
-        return new PlayController(this.board, this.viewFactory);
+                .build(), this.viewFactory);
     }
 
     @Test
     public void testGivenPlayControllerWhenControlThenIsWinner(){
         this.setUpMocks();
-        when(this.proposedCombinationView.read()).thenReturn("rgby");
+        when(this.proposedCombinationView.read()).thenReturn(PlayControllerTest.INITIALS);
         this.controller = this.getController(4, 0, new ArrayList<>());
         ((PlayController) this.controller).control();
         verify(this.playView).writeWinner();
@@ -54,35 +53,44 @@ public class PlayControllerTest extends ControllerTest{
         when(this.viewFactory.createErrorView()).thenReturn(this.errorView);
     }
 
-    // TODO Tests
-
-    /*
-    @Test
-    public void testGivenPlayControllerWhenControlThenIsWinner(){
-        this.board = new BoardBuilder()
-                .proposedCombinations(1,"rgby")
-                .blacks(4)
-                .whites(4)
-                .build();
-        this.controller = new PlayController(this.board, this.viewFactory);
-        ((PlayController) this.controller).control();
-        assertThat(this.board.isWinner(),is(true));
-        assertThat(this.board.isFinished(),is(true));
-        verify(this.playView).writeWinner();
-    }
-
     @Test
     public void testGivenPlayControllerWhenControlThenIsLooser(){
-        this.board = new BoardBuilder()
-                .proposedCombinations(9,"rgby")
-                .blacks(0)
-                .whites(4)
-                .build();
-        this.controller = new PlayController(this.board, this.viewFactory);
+        this.setUpMocks();
+        when(this.proposedCombinationView.read()).thenReturn(PlayControllerTest.INITIALS);
+        List<String> colors = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            colors.add(PlayControllerTest.INITIALS);
+        }
+        this.controller = this.getController(2, 2, colors);
         ((PlayController) this.controller).control();
-        assertThat(this.board.isWinner(),is(false));
-        assertThat(this.board.isFinished(),is(true));
         verify(this.playView).writeLooser();
     }
-    */
+
+    @Test
+    void testGivenPlayControllerControlThenWrongWidthProposedCombination() {
+        this.setUpMocks();
+        when(this.proposedCombinationView.read()).thenReturn("rg", "rgbyo", PlayControllerTest.INITIALS);
+        this.controller = this.getController(4, 0, new ArrayList<>());
+        ((PlayController) this.controller).control();
+        verify(this.errorView, times(2)).writeln(Error.WRONG_LENGTH);
+    }
+
+    @Test
+    void testGivenWrongCharactersProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
+        this.setUpMocks();
+        when(this.proposedCombinationView.read()).thenReturn("rqcp", "rpfi", "p^l0", PlayControllerTest.INITIALS);
+        this.controller = this.getController(4, 0, new ArrayList<>());
+        ((PlayController) this.controller).control();
+        verify(this.errorView, times(3)).writeln(Error.WRONG_CHARACTERS);
+    }
+
+    @Test
+    void testGivenDuplicatedCharacterProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
+        this.setUpMocks();
+        when(this.proposedCombinationView.read()).thenReturn("rmmg", "rrrr", "ygyg", PlayControllerTest.INITIALS);
+        this.controller = this.getController(4, 0, new ArrayList<>());
+        ((PlayController) this.controller).control();
+        verify(this.errorView, times(3)).writeln(Error.DUPLICATED);
+    }
+
 }

@@ -12,7 +12,7 @@ public class MessageTest {
 
     @Test
     public void testGivenNewMessageWhenToStringThenReturn() {
-        assertThat(Message.PROPOSED_COMBINATION.toString(),is("Propose a combination: "));
+        assertThat(Message.PROPOSED_COMBINATION.toString(), is("Propose a combination: "));
     }
 
 }

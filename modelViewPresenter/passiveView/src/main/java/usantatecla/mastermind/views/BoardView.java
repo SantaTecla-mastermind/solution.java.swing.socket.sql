@@ -23,7 +23,6 @@ public abstract class BoardView {
     }
 
     public void setProposedCombinationColors(List<Color> proposedCombinationColors){
-        //assert this.proposedCombinationColors.size() < Result.WIDTH;
         this.proposedCombinationColors.add(proposedCombinationColors);
     }
 

@@ -19,7 +19,6 @@ public class StartViewTest {
 
     private StartView startView;
 
-
     @BeforeEach
     public void beforeEach() {
         this.startView = new StartView();
@@ -30,8 +29,7 @@ public class StartViewTest {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             this.startView.write();
-            String string = "----- MASTERMIND -----";
-            verify(this.console).writeln(string);
+            verify(this.console).writeln("----- MASTERMIND -----");
         }
     }
 }

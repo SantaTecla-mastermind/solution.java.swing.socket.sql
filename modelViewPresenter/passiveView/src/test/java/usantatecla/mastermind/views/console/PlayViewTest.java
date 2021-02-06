@@ -8,7 +8,8 @@ import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.utils.views.Console;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class PlayViewTest {

@@ -20,7 +20,7 @@ public class ProposedCombinationView implements usantatecla.mastermind.views.Pro
         }
     }
 
-    // TODO Revisar si en esta versión esto se queda aquí (acoplamiento en Conversor, test)
+    // TODO Revisar si en esta versión esto se queda aquí (Conversor en test acoplado a este método)
     public List<ColorCode> getColorCodes(List<Color> colors) {
         List<ColorCode> colorCodes = new ArrayList<>();
         for (Color color : colors) {
