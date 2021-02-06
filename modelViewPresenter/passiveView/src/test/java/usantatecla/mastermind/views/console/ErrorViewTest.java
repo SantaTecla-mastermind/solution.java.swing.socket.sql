@@ -1,4 +1,4 @@
-package usantatecla.mastermind.views;
+package usantatecla.mastermind.views.console;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,6 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.types.Error;
-import usantatecla.mastermind.views.console.ErrorView;
 import usantatecla.utils.views.Console;
 
 import static org.mockito.Mockito.*;

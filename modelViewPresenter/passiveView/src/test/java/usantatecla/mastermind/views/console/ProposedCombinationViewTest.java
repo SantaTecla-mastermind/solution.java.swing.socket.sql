@@ -17,9 +17,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 
+// TODO Cambiar y pasar cosas a PlayControllerTest
 @ExtendWith(MockitoExtension.class)
 public class ProposedCombinationViewTest {
-
+    /*
     private static final String INITIALS = "rgby";
 
     @Mock
@@ -85,5 +86,5 @@ public class ProposedCombinationViewTest {
                     is(this.conversor.toColorCodeString(ProposedCombinationViewTest.INITIALS)));
         }
     }
-
+*/
 }

@@ -28,4 +28,10 @@ public class ConsoleViewFactory extends ViewFactory {
     public ResumeView createResumeView() {
         return new ResumeView();
     }
+
+    @Override
+    public ErrorView createErrorView() {
+        return new ErrorView();
+    }
+
 }

@@ -11,6 +11,7 @@ import usantatecla.mastermind.models.BoardBuilder;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.views.StartView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -23,15 +24,39 @@ public class StartControllerTest extends ControllerTest{
     @Mock
     private StartView startView;
 
+    /*
     @BeforeEach
     public void beforeEach(){
+        when(this.viewFactory.createStartView()).thenReturn(this.startView);
+        when(this.viewFactory.createBoardView()).thenReturn(this.boardView);
+
+        this.controller = this.getController(0, 0, new ArrayList<>());
+        ((StartController) this.controller).control();
+        verify(this.startView).write();
+    }*/
+
+    @Override
+    protected Controller getController(int blacks, int whites, List<String> proposedCombinations) {
+        return new StartController(new BoardBuilder()
+                .blacks(blacks).whites(whites)
+                .proposedCombinations(proposedCombinations)
+                .build(), this.viewFactory);
+    }
+
+    @Test
+    public void testGivenStartControllerWhenControlThenWrite(){
         when(this.viewFactory.createStartView()).thenReturn(this.startView);
         when(this.viewFactory.createBoardView()).thenReturn(this.boardView);
         this.controller = new StartController(new Board(), this.viewFactory);
         ((StartController) this.controller).control();
         verify(this.startView).write();
+        verify(this.boardView).setAttempts(0);
+        verify(this.boardView).write();
+        verifyNoMoreInteractions(this.boardView);
     }
 
+    // TODO Revisar tests de debajo
+    /*
     @Test
     public void testGivenStartControllerWhenControlThenCorrectAttempts(){
         ArgumentCaptor<Integer> argumentCaptor = ArgumentCaptor.forClass(Integer.class);
@@ -59,5 +84,6 @@ public class StartControllerTest extends ControllerTest{
         verify(this.boardView, never()).setWhites(argumentCaptor.capture());
         assertThat(argumentCaptor.getAllValues().size(), is(0));
     }
+     */
 
 }

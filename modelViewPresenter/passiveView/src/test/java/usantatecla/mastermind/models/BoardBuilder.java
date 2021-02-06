@@ -30,6 +30,15 @@ public class BoardBuilder {
         return this;
     }
 
+    public BoardBuilder proposedCombinations(List<String> proposedCombinations) {
+        assert proposedCombinations.size() <= 10;
+        for (String proposedCombination : proposedCombinations) {
+            assert Pattern.matches("[" + Color.getAllInitials() + "]{4}", proposedCombination);
+            this.proposedCombinationsStrings.add(proposedCombination);
+        }
+        return this;
+    }
+
     public BoardBuilder proposedCombinations(int attempts, String proposedCombination) {
         assert Pattern.matches("[" + Color.getAllInitials() + "]{4}", proposedCombination);
         for (int i = 0; i < attempts; i++) {

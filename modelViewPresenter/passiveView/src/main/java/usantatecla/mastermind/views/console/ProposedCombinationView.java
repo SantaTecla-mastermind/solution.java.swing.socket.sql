@@ -1,8 +1,6 @@
 package usantatecla.mastermind.views.console;
 
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
-import usantatecla.mastermind.types.Error;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.views.ColorCode;
 import usantatecla.utils.views.Console;
@@ -12,16 +10,8 @@ import java.util.List;
 
 public class ProposedCombinationView implements usantatecla.mastermind.views.ProposedCombinationView {
 
-    public List<Color> read() {
-        Error error;
-        List<Color> colors;
-        do {
-            String characters = Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase();
-            colors = Color.get(characters);
-            error = ProposedCombination.getError(colors);
-            new ErrorView().writeln(error);
-        } while (!error.isNull());
-        return colors;
+    public String read() {
+        return Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase();
     }
 
     public void write(List<Color> colors) {
@@ -30,6 +20,7 @@ public class ProposedCombinationView implements usantatecla.mastermind.views.Pro
         }
     }
 
+    // TODO Revisar si en esta versión esto se queda aquí (acoplamiento en Conversor, test)
     public List<ColorCode> getColorCodes(List<Color> colors) {
         List<ColorCode> colorCodes = new ArrayList<>();
         for (Color color : colors) {

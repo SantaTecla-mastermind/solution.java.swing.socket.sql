@@ -5,13 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.controllers.PlayController;
-import usantatecla.mastermind.models.Board;
 import usantatecla.utils.views.Console;
 
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -19,9 +15,6 @@ public class PlayViewTest {
 
     @Mock
     private Console console;
-
-    @Spy
-    private Board board;
 
     private PlayView playView;
 
