@@ -9,5 +9,5 @@ public abstract class WithBoardView {
     protected WithBoardView(Board board) {
         this.board = board;
     }
-    
+
 }

@@ -8,7 +8,6 @@ import org.mockito.MockedStatic;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.utils.views.Console;
 
 import static org.mockito.ArgumentMatchers.anyString;
@@ -33,7 +32,7 @@ public class PlayViewTest {
             when(this.console.readString(anyString())).thenReturn("rgby");
             doReturn(true).when(this.board).isWinner();
             this.playView.interact();
-            verify(this.board).add(any(ProposedCombination.class));
+            verify(this.board).add(any());
             verify(this.console).writeln("You've won!!! ;-)");
         }
     }
@@ -46,7 +45,7 @@ public class PlayViewTest {
             doReturn(true).when(this.board).isFinished();
             doReturn(false).when(this.board).isWinner();
             this.playView.interact();
-            verify(this.board).add(any(ProposedCombination.class));
+            verify(this.board).add(any());
             verify(this.console).writeln("You've lost!!! :-(");
         }
     }

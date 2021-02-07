@@ -12,7 +12,7 @@ class BoardView {
         new MessageView().writeln(Message.ATTEMPTS, attempts);
         new MessageView().writeln(Message.SECRET_COMBINATION);
         for (int i = 0; i < attempts; i++) {
-            new ProposedCombinationView().write(board.getProposedCombination(i));
+            new ProposedCombinationView().write(board.getProposedCombinationColors(i));
             new MessageView().writeln(Message.RESULT, board.getBlacks(i), board.getWhites(i));
         }
     }

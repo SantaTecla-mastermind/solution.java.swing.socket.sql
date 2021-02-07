@@ -26,29 +26,29 @@ public class ProposedCombinationTest {
 
     @Test
     public void testGivenProposedCombinationWhenGetErrorThenWrongLengthError() {
-        assertThat(ProposedCombination.getError(Color.get("")), is(Error.WRONG_LENGTH));
-        assertThat(ProposedCombination.getError(Color.get("rg")), is(Error.WRONG_LENGTH));
-        assertThat(ProposedCombination.getError(Color.get("rgbcy")), is(Error.WRONG_LENGTH));
-        assertThat(ProposedCombination.getError(Color.get("rgasdvbnxcjkvbiasd24563")), is(Error.WRONG_LENGTH));
+        assertThat(new ProposedCombination(Color.get("")).getError(), is(Error.WRONG_LENGTH));
+        assertThat(new ProposedCombination(Color.get("rg")).getError(), is(Error.WRONG_LENGTH));
+        assertThat(new ProposedCombination(Color.get("rgbcy")).getError(), is(Error.WRONG_LENGTH));
+        assertThat(new ProposedCombination(Color.get("rgasdvbnxcjkvbiasd24563")).getError(), is(Error.WRONG_LENGTH));
     }
 
     @Test
     public void testGivenProposedCombinationWhenGetErrorThenWrongCharactersError() {
-        assertThat(ProposedCombination.getError(Color.get("rg5c")), is(Error.WRONG_CHARACTERS));
-        assertThat(ProposedCombination.getError(Color.get("7362")), is(Error.WRONG_CHARACTERS));
-        assertThat(ProposedCombination.getError(Color.get("ç{}+")), is(Error.WRONG_CHARACTERS));
+        assertThat(new ProposedCombination(Color.get("rg5c")).getError(), is(Error.WRONG_CHARACTERS));
+        assertThat(new ProposedCombination(Color.get("7362")).getError(), is(Error.WRONG_CHARACTERS));
+        assertThat(new ProposedCombination(Color.get("ç{}+")).getError(), is(Error.WRONG_CHARACTERS));
     }
 
     @Test
     public void testGivenProposedCombinationWhenGetErrorThenDuplicatedError() {
-        assertThat(ProposedCombination.getError(Color.get("bgbc")), is(Error.DUPLICATED));
-        assertThat(ProposedCombination.getError(Color.get("bbbb")), is(Error.DUPLICATED));
-        assertThat(ProposedCombination.getError(Color.get("cygc")), is(Error.DUPLICATED));
+        assertThat(new ProposedCombination(Color.get("bgbc")).getError(), is(Error.DUPLICATED));
+        assertThat(new ProposedCombination(Color.get("bbbb")).getError(), is(Error.DUPLICATED));
+        assertThat(new ProposedCombination(Color.get("cygc")).getError(), is(Error.DUPLICATED));
     }
 
     @Test
     public void testGivenProposedCombinationWhenGetErrorThenNullError() {
-        assertThat(ProposedCombination.getError(Color.get("rgby")), is(Error.NULL));
+        assertThat(new ProposedCombination(Color.get("rgby")).getError(), is(Error.NULL));
     }
 
     @Test

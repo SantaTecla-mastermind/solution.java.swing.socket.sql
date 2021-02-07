@@ -10,7 +10,7 @@ class PlayView extends WithBoardView {
 
     void interact() {
         do {
-            this.board.add(new ProposedCombinationView().read());
+            this.board.add(new ProposedCombinationView().read(this.board));
             new BoardView().write(this.board);
         } while (!this.board.isFinished());
         if (this.board.isWinner()) {
