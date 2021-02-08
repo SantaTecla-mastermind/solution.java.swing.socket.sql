@@ -25,7 +25,6 @@ public class PlayController extends Controller {
         }
     }
 
-    // TODO Añadido método privado por métricas ajustadas y legibilidad
     private List<Color> readProposedCombination() {
         Error error;
         List<Color> colors;
