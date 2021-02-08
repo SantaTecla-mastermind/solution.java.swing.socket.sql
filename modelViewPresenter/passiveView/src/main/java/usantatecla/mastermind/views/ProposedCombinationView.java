@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ProposedCombinationView {
 
-    String read();
+    List<Color> read();
     void write(List<Color> colors);
 
 }

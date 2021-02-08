@@ -5,6 +5,7 @@ import usantatecla.utils.views.Console;
 
 public class BoardView extends usantatecla.mastermind.views.BoardView {
 
+    @Override
     public void write(){
         Console.getInstance().writeln();
         new MessageView().writeln(Message.ATTEMPTS, this.attempts);

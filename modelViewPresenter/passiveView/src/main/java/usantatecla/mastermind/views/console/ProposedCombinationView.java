@@ -10,8 +10,8 @@ import java.util.List;
 
 public class ProposedCombinationView implements usantatecla.mastermind.views.ProposedCombinationView {
 
-    public String read() {
-        return Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase();
+    public List<Color> read() {
+        return Color.get(Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase());
     }
 
     public void write(List<Color> colors) {

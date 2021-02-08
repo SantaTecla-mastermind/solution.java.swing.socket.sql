@@ -29,8 +29,7 @@ public class PlayController extends Controller {
         Error error;
         List<Color> colors;
         do {
-            String characters = this.viewFactory.createProposedCombinationView().read();
-            colors = Color.get(characters);
+            colors = this.viewFactory.createProposedCombinationView().read();
             error = this.board.getError(colors);
             this.viewFactory.createErrorView().writeln(error);
         } while (!error.isNull());

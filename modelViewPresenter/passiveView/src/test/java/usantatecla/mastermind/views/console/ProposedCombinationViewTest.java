@@ -36,7 +36,7 @@ public class ProposedCombinationViewTest {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(any())).thenReturn(ProposedCombinationViewTest.INITIALS);
-            assertThat(this.proposedCombinationView.read(), is(ProposedCombinationViewTest.INITIALS));
+            assertThat(this.proposedCombinationView.read(), is(Color.get(ProposedCombinationViewTest.INITIALS)));
         }
     }
 

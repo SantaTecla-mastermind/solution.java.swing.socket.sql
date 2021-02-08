@@ -14,7 +14,7 @@ public abstract class Controller {
         this.viewFactory = viewFactory;
     }
 
-    public void writeBoard(){
+    void writeBoard(){
         BoardView boardView = this.viewFactory.createBoardView();
         int attempts = this.board.getAttempts();
         boardView.setAttempts(attempts);
@@ -25,4 +25,5 @@ public abstract class Controller {
         }
         boardView.write();
     }
+
 }

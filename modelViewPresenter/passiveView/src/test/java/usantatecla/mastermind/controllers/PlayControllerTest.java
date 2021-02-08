@@ -1,22 +1,21 @@
 package usantatecla.mastermind.controllers;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.models.BoardBuilder;
+import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 import usantatecla.mastermind.views.ErrorView;
 import usantatecla.mastermind.views.console.PlayView;
 import usantatecla.mastermind.views.console.ProposedCombinationView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class PlayControllerTest extends ControllerTest{
+public class PlayControllerTest extends ControllerTest {
 
     private static final String INITIALS = "rgby";
 
@@ -28,20 +27,21 @@ public class PlayControllerTest extends ControllerTest{
 
     @Mock
     private ErrorView errorView;
-
-    @Override
-    protected Controller getController(int blacks, int whites, List<String> proposedCombinations) {
-        return new PlayController(new BoardBuilder()
-                .blacks(blacks).whites(whites)
-                .proposedCombinations(proposedCombinations)
-                .build(), this.viewFactory);
+    
+    @BeforeEach
+    public void beforeEach() {
+        this.board = new BoardBuilder()
+                .blacks(2).whites(2)
+                .proposedCombinations(9, PlayControllerTest.INITIALS)
+                .build();
+        this.controller = new PlayController(this.board, this.viewFactory);
     }
 
     @Test
     public void testGivenPlayControllerWhenControlThenIsWinner(){
         this.setUpMocks();
-        when(this.proposedCombinationView.read()).thenReturn(PlayControllerTest.INITIALS);
-        this.controller = this.getController(4, 0, new ArrayList<>());
+        when(this.proposedCombinationView.read()).thenReturn(Color.get(PlayControllerTest.INITIALS));
+        this.controller = this.getWinnerPlayController();
         ((PlayController) this.controller).control();
         verify(this.playView).writeWinner();
     }
@@ -52,16 +52,18 @@ public class PlayControllerTest extends ControllerTest{
         when(this.viewFactory.createProposedCombinationView()).thenReturn(this.proposedCombinationView);
         when(this.viewFactory.createErrorView()).thenReturn(this.errorView);
     }
+    
+    private PlayController getWinnerPlayController() {
+        this.board = new BoardBuilder()
+                .blacks(4).whites(0)
+                .build();
+        return new PlayController(this.board, this.viewFactory);
+    }
 
     @Test
     public void testGivenPlayControllerWhenControlThenIsLooser(){
         this.setUpMocks();
-        when(this.proposedCombinationView.read()).thenReturn(PlayControllerTest.INITIALS);
-        List<String> colors = new ArrayList<>();
-        for (int i = 0; i < 9; i++) {
-            colors.add(PlayControllerTest.INITIALS);
-        }
-        this.controller = this.getController(2, 2, colors);
+        when(this.proposedCombinationView.read()).thenReturn(Color.get(PlayControllerTest.INITIALS));
         ((PlayController) this.controller).control();
         verify(this.playView).writeLooser();
     }
@@ -69,8 +71,9 @@ public class PlayControllerTest extends ControllerTest{
     @Test
     void testGivenPlayControllerControlThenWrongWidthProposedCombination() {
         this.setUpMocks();
-        when(this.proposedCombinationView.read()).thenReturn("rg", "rgbyo", PlayControllerTest.INITIALS);
-        this.controller = this.getController(4, 0, new ArrayList<>());
+        when(this.proposedCombinationView.read()).thenReturn(Color.get("rg"),
+                Color.get("rgbyo"), Color.get(PlayControllerTest.INITIALS));
+        this.controller = this.getWinnerPlayController();
         ((PlayController) this.controller).control();
         verify(this.errorView, times(2)).writeln(Error.WRONG_LENGTH);
     }
@@ -78,8 +81,9 @@ public class PlayControllerTest extends ControllerTest{
     @Test
     void testGivenWrongCharactersProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
         this.setUpMocks();
-        when(this.proposedCombinationView.read()).thenReturn("rqcp", "rpfi", "p^l0", PlayControllerTest.INITIALS);
-        this.controller = this.getController(4, 0, new ArrayList<>());
+        when(this.proposedCombinationView.read()).thenReturn(Color.get("rqcp"),
+                Color.get("rpfi"), Color.get("p^l0"), Color.get(PlayControllerTest.INITIALS));
+        this.controller = this.getWinnerPlayController();
         ((PlayController) this.controller).control();
         verify(this.errorView, times(3)).writeln(Error.WRONG_CHARACTERS);
     }
@@ -87,8 +91,9 @@ public class PlayControllerTest extends ControllerTest{
     @Test
     void testGivenDuplicatedCharacterProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
         this.setUpMocks();
-        when(this.proposedCombinationView.read()).thenReturn("rmmg", "rrrr", "ygyg", PlayControllerTest.INITIALS);
-        this.controller = this.getController(4, 0, new ArrayList<>());
+        when(this.proposedCombinationView.read()).thenReturn(Color.get("rmmg"),
+                Color.get("rrrr"), Color.get("ygyg"), Color.get(PlayControllerTest.INITIALS));
+        this.controller = this.getWinnerPlayController();
         ((PlayController) this.controller).control();
         verify(this.errorView, times(3)).writeln(Error.DUPLICATED);
     }

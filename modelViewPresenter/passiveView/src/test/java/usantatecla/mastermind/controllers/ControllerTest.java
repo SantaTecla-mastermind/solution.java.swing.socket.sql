@@ -4,13 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.types.Color;
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.ViewFactory;
 import usantatecla.mastermind.views.console.BoardView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.mockito.Mockito.*;
 
@@ -25,28 +21,20 @@ public abstract class ControllerTest {
 
     protected Controller controller;
 
+    protected Board board;
+
     @Test
     public void testGivenControllerWhenWriteBoardThenWrite(){
         when(this.viewFactory.createBoardView()).thenReturn(this.boardView);
-        int blacks = 2;
-        int whites = 2;
-        int attempts = 3;
-        List<String> proposedCombinations = new ArrayList<>(Arrays.asList(
-                "rgby",
-                "mcry",
-                "ycmr"
-        ));
-        this.controller = this.getController(blacks, whites, proposedCombinations);
         this.controller.writeBoard();
+        int attempts = this.board.getAttempts();
         verify(this.boardView).setAttempts(attempts);
-        verify(this.boardView, times(attempts)).setBlacks(blacks);
-        verify(this.boardView, times(attempts)).setWhites(whites);
-        for (String proposedCombination : proposedCombinations) {
-            verify(this.boardView).setProposedCombinationColors(Color.get(proposedCombination));
+        if (attempts > 0) {
+            verify(this.boardView, times(attempts)).setProposedCombinationColors(this.board.getProposedCombinationColors(attempts - 1));
+            verify(this.boardView, times(attempts)).setBlacks(this.board.getBlacks(attempts - 1));
+            verify(this.boardView, times(attempts)).setWhites(this.board.getWhites(attempts - 1));
         }
-
+        verify(this.boardView).write();
     }
-
-    protected abstract Controller getController(int blacks, int whites, List<String> proposedCombinations);
 
 }
