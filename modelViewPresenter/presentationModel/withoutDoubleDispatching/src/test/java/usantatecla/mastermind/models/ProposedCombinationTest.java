@@ -1,7 +1,6 @@
 package usantatecla.mastermind.models;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;

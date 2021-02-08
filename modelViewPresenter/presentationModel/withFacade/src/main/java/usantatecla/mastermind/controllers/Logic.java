@@ -1,7 +1,6 @@
 package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 

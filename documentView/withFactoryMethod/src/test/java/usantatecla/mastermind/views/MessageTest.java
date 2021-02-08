@@ -1,7 +1,6 @@
 package usantatecla.mastermind.views;
 
 import org.junit.jupiter.api.Test;
-import usantatecla.mastermind.views.Message;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
