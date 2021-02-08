@@ -2,12 +2,19 @@ package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.ResumeController;
 import usantatecla.mastermind.views.Message;
-import usantatecla.utils.YesNoDialog;
+import usantatecla.utils.views.YesNoDialog;
 
-public class ResumeView {
+class ResumeView {
 
-	public void interact(ResumeController resumeController) {
-		resumeController.resume(new YesNoDialog().read(Message.RESUME.getMessage()));
-	}
-	
+    public boolean interact(ResumeController resumeController) {
+        YesNoDialog yesNoDialog = new YesNoDialog();
+        yesNoDialog.read(Message.RESUME.toString());
+        if (yesNoDialog.isAffirmative()) {
+            resumeController.reset();
+        }else{
+            resumeController.nextState();
+        }
+        return yesNoDialog.isAffirmative();
+    }
+
 }
