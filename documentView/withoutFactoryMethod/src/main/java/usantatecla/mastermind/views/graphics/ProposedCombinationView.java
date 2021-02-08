@@ -1,24 +1,25 @@
 package usantatecla.mastermind.views.graphics;
 
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.models.Result;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 import usantatecla.mastermind.views.ErrorView;
+
+import java.util.List;
 
 import javax.swing.*;
 
 @SuppressWarnings("serial")
 class ProposedCombinationView extends JLabel {
 
-    private final ProposedCombination proposedCombination;
+    private final List<Color> colors;
 
     private Error error;
 
-    ProposedCombinationView(ProposedCombination proposedCombination) {
-        this.proposedCombination = proposedCombination;
+    ProposedCombinationView(List<Color> colors) {
+        this.colors = colors;
         String initials = "";
-        for (Color color : proposedCombination.getColors()) {
+        for (Color color : this.colors) {
             initials += color.getInitial();
         }
         this.setText(initials);
@@ -34,10 +35,10 @@ class ProposedCombinationView extends JLabel {
                 if (color.isNull()) {
                     this.error = Error.WRONG_CHARACTERS;
                 } else {
-                    if (this.proposedCombination.getColors().contains(color)) {
+                    if (this.colors.contains(color)) {
                         this.error = Error.DUPLICATED;
                     } else {
-                        this.proposedCombination.getColors().add(color);
+                        this.colors.add(color);
                     }
                 }
             }
@@ -45,7 +46,7 @@ class ProposedCombinationView extends JLabel {
         if (!this.error.isNull()) {
             JOptionPane.showMessageDialog(null, ErrorView.MESSAGES[this.error.ordinal()], "ERROR",
                     JOptionPane.WARNING_MESSAGE);
-            this.proposedCombination.getColors().clear();
+            this.colors.clear();
         }
     }
 

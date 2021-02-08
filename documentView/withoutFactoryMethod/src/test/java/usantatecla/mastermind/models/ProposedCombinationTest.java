@@ -1,7 +1,6 @@
 package usantatecla.mastermind.models;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
@@ -20,50 +19,42 @@ public class ProposedCombinationTest {
             Color.RED,
             Color.MAGENTA);
 
-    private ProposedCombination proposedCombination;
-
-    @BeforeEach
-    public void beforeEach() {
-        this.proposedCombination = new ProposedCombination();
-    }
-
     @Test
     public void testGivenProposedCombinationWithColorsWhenGetColorsThenReturn() {
-        this.proposedCombination.add(ProposedCombinationTest.COLOR);
-        assertThat(this.proposedCombination.getColors(), is(ProposedCombinationTest.COLOR));
+        assertThat(new ProposedCombination(ProposedCombinationTest.COLOR).getColors(), is(ProposedCombinationTest.COLOR));
     }
 
     @Test
-    public void testGivenProposedCombinationWhenAddThenWrongLengthError() {
-        assertThat(this.proposedCombination.add(Color.get("")), is(Error.WRONG_LENGTH));
-        assertThat(this.proposedCombination.add(Color.get("rg")), is(Error.WRONG_LENGTH));
-        assertThat(this.proposedCombination.add(Color.get("rgbcy")), is(Error.WRONG_LENGTH));
-        assertThat(this.proposedCombination.add(Color.get("rgasdvbnxcjkvbiasd24563")), is(Error.WRONG_LENGTH));
+    public void testGivenProposedCombinationWhenGetErrorThenWrongLengthError() {
+        assertThat(new ProposedCombination(Color.get("")).getError(), is(Error.WRONG_LENGTH));
+        assertThat(new ProposedCombination(Color.get("rg")).getError(), is(Error.WRONG_LENGTH));
+        assertThat(new ProposedCombination(Color.get("rgbcy")).getError(), is(Error.WRONG_LENGTH));
+        assertThat(new ProposedCombination(Color.get("rgasdvbnxcjkvbiasd24563")).getError(), is(Error.WRONG_LENGTH));
     }
 
     @Test
-    public void testGivenProposedCombinationWhenAddThenWrongCharactersError() {
-        assertThat(this.proposedCombination.add(Color.get("rg5c")), is(Error.WRONG_CHARACTERS));
-        assertThat(this.proposedCombination.add(Color.get("7362")), is(Error.WRONG_CHARACTERS));
-        assertThat(this.proposedCombination.add(Color.get("ç{}+")), is(Error.WRONG_CHARACTERS));
+    public void testGivenProposedCombinationWhenGetErrorThenWrongCharactersError() {
+        assertThat(new ProposedCombination(Color.get("rg5c")).getError(), is(Error.WRONG_CHARACTERS));
+        assertThat(new ProposedCombination(Color.get("7362")).getError(), is(Error.WRONG_CHARACTERS));
+        assertThat(new ProposedCombination(Color.get("ç{}+")).getError(), is(Error.WRONG_CHARACTERS));
     }
 
     @Test
-    public void testGivenProposedCombinationWhenAddThenDuplicatedError() {
-        assertThat(this.proposedCombination.add(Color.get("bgbc")), is(Error.DUPLICATED));
-        assertThat(this.proposedCombination.add(Color.get("bbbb")), is(Error.DUPLICATED));
-        assertThat(this.proposedCombination.add(Color.get("cygc")), is(Error.DUPLICATED));
+    public void testGivenProposedCombinationWhenGetErrorThenDuplicatedError() {
+        assertThat(new ProposedCombination(Color.get("bgbc")).getError(), is(Error.DUPLICATED));
+        assertThat(new ProposedCombination(Color.get("bbbb")).getError(), is(Error.DUPLICATED));
+        assertThat(new ProposedCombination(Color.get("cygc")).getError(), is(Error.DUPLICATED));
     }
 
     @Test
-    public void testGivenProposedCombinationWhenAddThenNullError() {
-        assertThat(this.proposedCombination.add(Color.get("rgby")), is(Error.NULL));
+    public void testGivenProposedCombinationWhenGetErrorThenNullError() {
+        assertThat(new ProposedCombination(Color.get("rgby")).getError(), is(Error.NULL));
     }
 
     @Test
     public void testGivenColorsInProposedCombinationWhenColorIsContainedByPositionOutOfSizeThenIsAssert() {
         Assertions.assertThrows(AssertionError.class,
-                () -> this.proposedCombination.contains(ProposedCombinationTest.COLOR.get(0), 10));
+                () -> new ProposedCombination(ProposedCombinationTest.COLOR).contains(ProposedCombinationTest.COLOR.get(0), 10));
     }
 
 }

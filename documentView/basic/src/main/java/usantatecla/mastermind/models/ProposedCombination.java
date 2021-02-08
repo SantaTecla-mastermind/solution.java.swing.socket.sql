@@ -6,19 +6,23 @@ import usantatecla.mastermind.types.Error;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProposedCombination extends Combination {
+class ProposedCombination extends Combination {
 
-    public List<Color> getColors() {
+    ProposedCombination(List<Color> colors) {
+        this.colors = colors;
+    }
+
+    List<Color> getColors() {
         return colors;
     }
 
-    public Error add(List<Color> colors) {
+    Error getError() {
         List<Color> correctColors = new ArrayList<>();
-        if (colors.size() != Result.WIDTH) {
+        if (this.colors.size() != Result.WIDTH) {
             return Error.WRONG_LENGTH;
         }
-        for (int i = 0; i < colors.size(); i++) {
-            Color color = colors.get(i);
+        for (int i = 0; i < this.colors.size(); i++) {
+            Color color = this.colors.get(i);
             if (color.isNull()) {
                 return Error.WRONG_CHARACTERS;
             }
@@ -29,7 +33,6 @@ public class ProposedCombination extends Combination {
             }
             correctColors.add(color);
         }
-        this.colors = correctColors;
         return Error.NULL;
     }
 

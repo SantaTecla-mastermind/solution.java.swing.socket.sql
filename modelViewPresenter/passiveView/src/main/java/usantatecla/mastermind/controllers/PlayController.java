@@ -1,7 +1,6 @@
 package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 import usantatecla.mastermind.views.ViewFactory;
@@ -26,14 +25,13 @@ public class PlayController extends Controller {
         }
     }
 
-    // TODO Añadido método privado por métricas ajustadas y legibilidad
     private List<Color> readProposedCombination() {
         Error error;
         List<Color> colors;
         do {
             String characters = this.viewFactory.createProposedCombinationView().read();
             colors = Color.get(characters);
-            error = ProposedCombination.getError(colors);
+            error = this.board.getError(colors);
             this.viewFactory.createErrorView().writeln(error);
         } while (!error.isNull());
         return colors;

@@ -66,11 +66,11 @@ public class BoardViewTest {
             verify(this.console, atLeastOnce()).writeln(argumentCaptor.capture());
             verify(this.console, atLeastOnce()).write(argumentCaptor.capture());
 
-            assertThat(string, is(this.reOrder(argumentCaptor.getAllValues())));
+            assertThat(string, is(this.reorder(argumentCaptor.getAllValues())));
         }
     }
 
-    private String reOrder(List<String> strings) {
+    private String reorder(List<String> strings) {
         int proposedCombinationStartIndex = 2;
         int attempts = 3;
         int proposedCombinationWidth = 4;

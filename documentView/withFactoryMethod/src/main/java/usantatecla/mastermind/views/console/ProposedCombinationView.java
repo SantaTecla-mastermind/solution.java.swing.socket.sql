@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views.console;
 
-import usantatecla.mastermind.models.ProposedCombination;
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 import usantatecla.mastermind.views.Message;
@@ -12,19 +12,20 @@ import java.util.List;
 
 class ProposedCombinationView {
 
-    ProposedCombination read() {
+    List<Color> read(Board board) {
         Error error;
-        ProposedCombination proposedCombination = new ProposedCombination();
+        List<Color> colors = new ArrayList<>();
         do {
             String characters = Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase();
-            error = proposedCombination.add(Color.get(characters));
+            colors = Color.get(characters);
+            error = board.getError(colors);
             new ErrorView().writeln(error);
         } while (!error.isNull());
-        return proposedCombination;
+        return colors;
     }
 
-    void write(ProposedCombination proposedCombination) {
-        for (ColorCode colorCode : this.getColorCodes(proposedCombination.getColors())) {
+    void write(List<Color> colors) {
+        for (ColorCode colorCode : this.getColorCodes(colors)) {
             colorCode.write();
         }
     }

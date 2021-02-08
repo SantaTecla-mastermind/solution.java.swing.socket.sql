@@ -11,12 +11,18 @@ public abstract class View {
 
 	}
 
-	//TODO necesario instance of??
 	public void interact(Logic logic) {
 		do {
-			this.start((StartController) logic.getController());
-			this.play((PlayController) logic.getController());
-		} while (this.resume((ResumeController) logic.getController()));
+			if (logic.getController() instanceof StartController) {
+				this.start((StartController) logic.getController());
+			} else {
+				if (logic.getController() instanceof PlayController) {
+					this.play((PlayController) logic.getController());
+				} else {
+					this.resume((ResumeController) logic.getController());
+				}
+			}
+		} while (logic.getController() != null);
 	}
 
 	protected abstract void start(StartController startController);

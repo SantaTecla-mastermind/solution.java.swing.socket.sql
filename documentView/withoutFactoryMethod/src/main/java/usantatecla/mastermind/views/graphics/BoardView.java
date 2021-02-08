@@ -1,11 +1,13 @@
 package usantatecla.mastermind.views.graphics;
 
 import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.ProposedCombination;
+import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.views.Message;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("serial")
 class BoardView extends JFrame {
@@ -38,8 +40,8 @@ class BoardView extends JFrame {
     }
 
     void play() {
-        ProposedCombination proposedCombination = new ProposedCombination();
-        ProposedCombinationView proposedCombinationView = new ProposedCombinationView(proposedCombination);
+        List<Color> colors = new ArrayList<>();
+        ProposedCombinationView proposedCombinationView = new ProposedCombinationView(colors);
         do {
             System.out.println();
             if (this.proposalCombinationView.getCharacters() != null) {
@@ -49,7 +51,7 @@ class BoardView extends JFrame {
                 }
             }
         } while (this.proposalCombinationView.getCharacters() == null);
-        this.board.add(proposedCombination);
+        this.board.add(colors);
         this.proposalCombinationView.resetCharacters();
         this.proposedCombinationsView.add();
         this.setVisible(true);

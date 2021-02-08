@@ -18,7 +18,7 @@ class ProposedCombinationsView extends JPanel {
     void add() {
         int attempts = this.board.getAttempts();
         this.add(new AttemptsView(attempts), new Constraints(0, attempts, 1, 1));
-        this.add(new ProposedCombinationView(this.board.getProposedCombination(attempts - 1)), new Constraints(1, attempts, 1, 1));
+        this.add(new ProposedCombinationView(this.board.getProposedCombinationColors(attempts - 1)), new Constraints(1, attempts, 1, 1));
         this.add(new ResultView(this.board.getResult(attempts - 1)), new Constraints(2, attempts, 1, 1));
     }
 }

@@ -55,9 +55,7 @@ public class BoardBuilder {
         }
         if (!this.proposedCombinationsStrings.isEmpty()) {
             for (String proposedCombinationsString : this.proposedCombinationsStrings) {
-                ProposedCombination proposedCombination = new ProposedCombination();
-                proposedCombination.add(Color.get(proposedCombinationsString));
-                this.board.add(proposedCombination);
+                this.board.add(Color.get(proposedCombinationsString));
             }
         }
         return this.board;

@@ -1,6 +1,7 @@
 package usantatecla.mastermind.models;
 
 import usantatecla.mastermind.types.Color;
+import usantatecla.mastermind.types.Error;
 
 import java.util.List;
 
@@ -51,6 +52,10 @@ public class Board {
         assert position < this.getAttempts() && position >= 0;
 
         return this.proposedCombinations[position].getColors();
+    }
+
+    public Error getError(List<Color> colors) {
+        return new ProposedCombination(colors).getError();
     }
 
     public int getAttempts() {
