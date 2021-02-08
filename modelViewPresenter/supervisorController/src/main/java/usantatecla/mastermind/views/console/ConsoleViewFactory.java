@@ -17,6 +17,11 @@ public class ConsoleViewFactory extends ViewFactory {
     }
 
     @Override
+    public ProposedCombinationView createProposedCombinationView() {
+        return new ProposedCombinationView();
+    }
+
+    @Override
     public StartView createStartView() {
         return new StartView();
     }

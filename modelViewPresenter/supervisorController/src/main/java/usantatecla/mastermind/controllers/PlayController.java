@@ -19,7 +19,6 @@ public class PlayController extends Controller {
     public void control(){
         PlayView playView = this.viewFactory.createPlayView();
         do {
-            //TODO Problema ya que la ProposedCombinationView tiene que crearse con la proposed combination
             this.add(this.viewFactory.createProposedCombinationView().read());
             this.writeBoard();
         } while (!this.isFinished());
@@ -32,11 +31,6 @@ public class PlayController extends Controller {
 
     private void add(List<Color> colors) {
         this.board.add(colors);
-    }
-
-    //TODO Hacer un metodo read, pero quien se encarga de leer?
-    private ProposedCombination read() {
-        return null;
     }
 
     private boolean isFinished() {

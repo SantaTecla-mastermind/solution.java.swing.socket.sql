@@ -18,7 +18,10 @@ public class ProposedCombinationView implements usantatecla.mastermind.views.Pro
         this.proposedCombination = proposedCombination;
     }
 
-    //TODO A donde movemos el método READ.
+    public ProposedCombinationView(){
+
+    }
+
     public List<Color> read() {
         Error error;
         List<Color> colors;

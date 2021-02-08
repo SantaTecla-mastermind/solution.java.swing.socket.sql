@@ -17,6 +17,11 @@ public class GraphicsViewFactory extends ViewFactory {
     }
 
     @Override
+    public ProposedCombinationView createProposedCombinationView() {
+        return null;
+    }
+
+    @Override
     public StartView createStartView() {
         return null;
     }
