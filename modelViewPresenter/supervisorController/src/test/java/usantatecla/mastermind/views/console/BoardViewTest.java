@@ -7,6 +7,8 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
+import usantatecla.mastermind.models.Board;
+import usantatecla.mastermind.models.BoardBuilder;
 import usantatecla.mastermind.types.Color;
 import usantatecla.utils.views.Console;
 
@@ -27,12 +29,13 @@ public class BoardViewTest {
 
     @BeforeEach
     public void beforeEach() {
-        this.boardView = new BoardView();
         this.conversor = new Conversor();
     }
 
     @Test
     public void testGivenBoardViewWhenWriteWithEmptyBoardThenPrint() {
+        Board board = new BoardBuilder().build();
+        this.boardView = new BoardView(board);
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             this.boardView.write();
@@ -48,6 +51,9 @@ public class BoardViewTest {
 
     @Test
     public void testGivenBoardViewWhenWriteThenPrint() {
+        Board board = new BoardBuilder().proposedCombinations(3,"rgby").build();
+        this.boardView = new BoardView(board);
+
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             int attempts = 3;

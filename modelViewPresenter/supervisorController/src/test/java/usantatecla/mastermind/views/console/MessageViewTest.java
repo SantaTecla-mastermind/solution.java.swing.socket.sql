@@ -9,8 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.views.Console;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)

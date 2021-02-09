@@ -35,4 +35,9 @@ public class GraphicsViewFactory extends ViewFactory {
     public ResumeView createResumeView() {
         return null;
     }
+
+    @Override
+    public ErrorView createErrorView() {
+        return null;
+    }
 }

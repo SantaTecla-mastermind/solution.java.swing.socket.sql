@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.ViewFactory;
 import usantatecla.mastermind.views.console.BoardView;
 
@@ -20,11 +21,20 @@ public abstract class ControllerTest {
 
     protected Controller controller;
 
-    /*@Test
+    protected Board board;
+
+    @Test
     public void testGivenControllerWhenWriteBoardThenWrite(){
-        when(this.viewFactory.createBoardView()).thenReturn(this.boardView);
+        when(this.viewFactory.createBoardView(this.board)).thenReturn(this.boardView);
         this.controller.writeBoard();
+        int attempts = this.board.getAttempts();
+        verify(this.boardView).setAttempts(attempts);
+        if (attempts > 0) {
+            verify(this.boardView, times(attempts)).setProposedCombinationColors(this.board.getProposedCombinationColors(attempts - 1));
+            verify(this.boardView, times(attempts)).setBlacks(this.board.getBlacks(attempts - 1));
+            verify(this.boardView, times(attempts)).setWhites(this.board.getWhites(attempts - 1));
+        }
         verify(this.boardView).write();
-    }*/
+    }
 
 }

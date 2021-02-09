@@ -11,4 +11,5 @@ public abstract class ViewFactory {
     public abstract StartView createStartView();
     public abstract PlayView createPlayView();
     public abstract ResumeView createResumeView();
+    public abstract ErrorView createErrorView();
 }

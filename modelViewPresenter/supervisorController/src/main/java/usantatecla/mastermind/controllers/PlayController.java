@@ -1,12 +1,9 @@
 package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Color;
-import usantatecla.mastermind.views.PlayView;
+import usantatecla.mastermind.types.Error;
 import usantatecla.mastermind.views.ViewFactory;
-import usantatecla.mastermind.views.console.ProposedCombinationView;
-import usantatecla.utils.views.Console;
 
 import java.util.List;
 
@@ -17,28 +14,26 @@ public class PlayController extends Controller {
     }
 
     public void control(){
-        PlayView playView = this.viewFactory.createPlayView();
         do {
-            this.add(this.viewFactory.createProposedCombinationView().read());
+            this.board.add(this.readProposedCombination());
             this.writeBoard();
-        } while (!this.isFinished());
-        if(this.isWinner()){
-            playView.writeWinner();
+        } while (!this.board.isFinished());
+        if (this.board.isWinner()){
+            this.viewFactory.createPlayView().writeWinner();
         } else {
-            playView.writeLooser();
+            this.viewFactory.createPlayView().writeLooser();
         }
     }
 
-    private void add(List<Color> colors) {
-        this.board.add(colors);
-    }
-
-    private boolean isFinished() {
-        return this.board.isFinished();
-    }
-
-    private boolean isWinner() {
-        return this.board.isWinner();
+    private List<Color> readProposedCombination() {
+        Error error;
+        List<Color> colors;
+        do {
+            colors = this.viewFactory.createProposedCombinationView().read();
+            error = this.board.getError(colors);
+            this.viewFactory.createErrorView().writeln(error);
+        } while (!error.isNull());
+        return colors;
     }
 
 }

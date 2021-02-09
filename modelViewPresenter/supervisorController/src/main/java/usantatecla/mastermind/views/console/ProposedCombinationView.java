@@ -23,15 +23,7 @@ public class ProposedCombinationView implements usantatecla.mastermind.views.Pro
     }
 
     public List<Color> read() {
-        Error error;
-        List<Color> colors;
-        do {
-            String characters = Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase();
-            colors = Color.get(characters);
-            error = ProposedCombination.getError(colors);
-            new ErrorView().writeln(error);
-        } while (!error.isNull());
-        return colors;
+        return Color.get(Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase());
     }
 
     public void write() {
@@ -40,7 +32,7 @@ public class ProposedCombinationView implements usantatecla.mastermind.views.Pro
         }
     }
 
-    public List<ColorCode> getColorCodes(List<Color> colors) {
+    List<ColorCode> getColorCodes(List<Color> colors) {
         List<ColorCode> colorCodes = new ArrayList<>();
         for (Color color : colors) {
             for (ColorCode colorCode : ColorCode.values()) {
