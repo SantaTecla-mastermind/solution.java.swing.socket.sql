@@ -3,13 +3,12 @@ package usantatecla.mastermind;
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.controllers.ResumeController;
 import usantatecla.mastermind.controllers.StartController;
-import usantatecla.mastermind.views.View;
 import usantatecla.mastermind.views.console.ConsoleView;
 
-class ConsoleMastermind extends Mastermind{
+class ConsoleMastermind extends Mastermind {
 
     @Override
-    protected View createView(StartController startController, PlayController playController,
+    protected ConsoleView createView(StartController startController, PlayController playController,
                               ResumeController resumeController) {
         return new ConsoleView(startController, playController, resumeController);
     }

@@ -1,15 +1,16 @@
 package usantatecla.mastermind;
 
 import usantatecla.mastermind.controllers.Logic;
+import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.views.View;
 
-public abstract class Mastermind {
+abstract class Mastermind {
 
 	private View view;
 	private Logic logic;
 
 	protected Mastermind() {
-		this.logic = new Logic();
+		this.logic = new Logic(new Board());
 		this.view = this.createView();
 	}
 

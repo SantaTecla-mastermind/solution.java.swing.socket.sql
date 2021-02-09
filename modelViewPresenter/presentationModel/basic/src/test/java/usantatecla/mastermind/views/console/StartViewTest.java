@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.StartController;
 import usantatecla.mastermind.models.Board;
@@ -20,15 +19,12 @@ public class StartViewTest {
     @Mock
     private Console console;
 
-    @Spy
-    private Board board;
-
     private StartController startController;
     private StartView startView;
 
     @BeforeEach
     public void beforeEach() {
-        this.startController = new StartController(this.board);
+        this.startController = new StartController(new Board());
         this.startView = new StartView(this.startController);
     }
 

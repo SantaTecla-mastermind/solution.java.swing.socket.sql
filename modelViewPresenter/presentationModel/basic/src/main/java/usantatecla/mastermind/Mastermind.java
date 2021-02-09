@@ -8,8 +8,8 @@ import usantatecla.mastermind.views.View;
 
 abstract class Mastermind {
 
-	private View view;
 	private Board board;
+	private View view;
 	private StartController startController;
 	private PlayController playController;
 	private ResumeController resumeController;
@@ -19,7 +19,7 @@ abstract class Mastermind {
 		this.startController = new StartController(this.board);
 		this.playController = new PlayController(this.board);
 		this.resumeController = new ResumeController(this.board);
-		this.view = this.createView(startController, playController, resumeController);
+		this.view = this.createView(this.startController, this.playController, this.resumeController);
 	}
 
 	protected abstract View createView(StartController startController, PlayController playController, ResumeController resumeController);

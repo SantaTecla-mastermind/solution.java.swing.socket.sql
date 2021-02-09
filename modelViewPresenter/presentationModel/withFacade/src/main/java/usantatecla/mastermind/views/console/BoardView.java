@@ -4,7 +4,7 @@ import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.views.Console;
 
-public class BoardView {
+class BoardView {
 
     void write(Logic logic) {
         Console.getInstance().writeln();

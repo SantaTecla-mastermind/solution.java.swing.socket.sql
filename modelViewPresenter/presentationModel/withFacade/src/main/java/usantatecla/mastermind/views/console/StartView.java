@@ -2,13 +2,12 @@ package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.views.Message;
+import usantatecla.mastermind.views.WithLogicView;
 
-public class StartView  {
-
-    private Logic logic;
+class StartView extends WithLogicView {
 
     StartView(Logic logic) {
-        this.logic = logic;
+        super(logic);
     }
 
     void interact() {

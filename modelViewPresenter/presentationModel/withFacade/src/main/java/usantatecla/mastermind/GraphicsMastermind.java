@@ -1,13 +1,12 @@
 package usantatecla.mastermind;
 
 import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.views.View;
 import usantatecla.mastermind.views.graphics.GraphicsView;
 
-class GraphicsMastermind extends Mastermind{
+class GraphicsMastermind extends Mastermind {
 
     @Override
-    protected View createView(Logic logic) {
+    protected GraphicsView createView(Logic logic) {
         return new GraphicsView(logic);
     }
 

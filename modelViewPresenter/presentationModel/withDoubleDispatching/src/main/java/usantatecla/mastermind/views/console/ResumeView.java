@@ -6,7 +6,7 @@ import usantatecla.utils.views.YesNoDialog;
 
 class ResumeView {
 
-    public boolean interact(ResumeController resumeController) {
+    boolean interact(ResumeController resumeController) {
         YesNoDialog yesNoDialog = new YesNoDialog();
         yesNoDialog.read(Message.RESUME.toString());
         if (yesNoDialog.isAffirmative()) {

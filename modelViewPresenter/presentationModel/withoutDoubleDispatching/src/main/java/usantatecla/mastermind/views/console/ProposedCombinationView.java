@@ -10,7 +10,7 @@ import usantatecla.utils.views.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProposedCombinationView {
+class ProposedCombinationView {
 
     List<Color> read(PlayController playController) {
         Error error;

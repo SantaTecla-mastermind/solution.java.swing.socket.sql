@@ -3,10 +3,8 @@ package usantatecla.mastermind.views.console;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.ResumeController;
 import usantatecla.mastermind.models.Board;
@@ -25,17 +23,12 @@ public class ResumeViewTest {
    @Mock
     private Console console;
 
-    @Spy
-    private Board board;
-
-    @InjectMocks
     private ResumeController resumeController;
-
     private ResumeView resumeView;
 
     @BeforeEach
     public void beforeEach(){
-        this.resumeController = new ResumeController(this.board, new State());
+        this.resumeController = new ResumeController(new Board(), new State());
         this.resumeView = new ResumeView();
     }
 

@@ -2,16 +2,15 @@ package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.views.Message;
+import usantatecla.mastermind.views.WithLogicView;
 
-public class PlayView {
-
-    private Logic logic;
+class PlayView extends WithLogicView {
 
     PlayView(Logic logic) {
-        this.logic = logic;
+        super(logic);
     }
 
-    public void interact() {
+    void interact() {
         do {
             this.logic.add(new ProposedCombinationView().read(this.logic));
             new BoardView().write(this.logic);
@@ -22,4 +21,5 @@ public class PlayView {
             new MessageView().writeln(Message.LOOSER);
         }
     }
+    
 }

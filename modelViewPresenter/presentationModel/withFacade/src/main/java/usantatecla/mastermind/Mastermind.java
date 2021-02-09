@@ -7,9 +7,11 @@ import usantatecla.mastermind.views.View;
 abstract class Mastermind {
 
 	private View view;
+	private Logic logic;
 
 	protected Mastermind() {
-		this.view = this.createView(new Logic(new Board()));
+		this.logic = new Logic(new Board());
+		this.view = this.createView(this.logic);
 	}
 
 	protected abstract View createView(Logic logic);

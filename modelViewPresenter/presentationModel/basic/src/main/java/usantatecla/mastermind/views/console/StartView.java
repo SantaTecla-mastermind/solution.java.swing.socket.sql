@@ -3,7 +3,7 @@ package usantatecla.mastermind.views.console;
 import usantatecla.mastermind.controllers.StartController;
 import usantatecla.mastermind.views.Message;
 
-public class StartView  {
+class StartView {
 
     private StartController startController;
 

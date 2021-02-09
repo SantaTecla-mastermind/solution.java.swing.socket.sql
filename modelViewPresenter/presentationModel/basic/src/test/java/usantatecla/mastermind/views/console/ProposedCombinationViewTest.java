@@ -37,7 +37,7 @@ public class ProposedCombinationViewTest {
     }
 
     @Test
-    void testGivenWrongWidthProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
+    public void testGivenWrongWidthProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(any())).thenReturn("rg", "rgbyo", ProposedCombinationViewTest.INITIALS);
@@ -47,7 +47,7 @@ public class ProposedCombinationViewTest {
     }
 
     @Test
-    void testGivenWrongCharactersProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
+    public void testGivenWrongCharactersProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(any())).thenReturn("rqcp", "rpfi", "p^l0", ProposedCombinationViewTest.INITIALS);
@@ -57,7 +57,7 @@ public class ProposedCombinationViewTest {
     }
 
     @Test
-    void testGivenDuplicatedCharacterProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
+    public void testGivenDuplicatedCharacterProposedCombinationWhenReadThenCorrectErrorIsCaptured() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(any())).thenReturn("rmmg", "rrrr", "ygyg", ProposedCombinationViewTest.INITIALS);
@@ -67,7 +67,7 @@ public class ProposedCombinationViewTest {
     }
 
     @Test
-    void testGivenProposedCombinationWhenReadThenReturn() {
+    public void testGivenProposedCombinationWhenReadThenReturn() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(any())).thenReturn(ProposedCombinationViewTest.INITIALS);
@@ -76,7 +76,7 @@ public class ProposedCombinationViewTest {
     }
 
     @Test
-    void testGivenProposedCombinationWhenWriteThenPrint() {
+    public void testGivenProposedCombinationWhenWriteThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
             when(this.console.readString(any())).thenReturn(ProposedCombinationViewTest.INITIALS);

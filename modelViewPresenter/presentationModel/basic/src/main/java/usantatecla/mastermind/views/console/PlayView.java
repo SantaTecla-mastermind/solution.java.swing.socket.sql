@@ -3,7 +3,7 @@ package usantatecla.mastermind.views.console;
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.views.Message;
 
-public class PlayView {
+class PlayView {
 
     private PlayController playController;
 
@@ -11,7 +11,7 @@ public class PlayView {
         this.playController = playController;
     }
 
-    public void interact() {
+    void interact() {
         do {
             this.playController.add(new ProposedCombinationView().read(this.playController));
             new BoardView().write(this.playController);
@@ -22,4 +22,5 @@ public class PlayView {
             new MessageView().writeln(Message.LOOSER);
         }
     }
+    
 }

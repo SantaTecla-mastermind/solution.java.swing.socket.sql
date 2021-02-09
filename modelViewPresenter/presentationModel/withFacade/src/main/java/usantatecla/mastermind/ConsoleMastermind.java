@@ -1,13 +1,12 @@
 package usantatecla.mastermind;
 
 import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.views.View;
 import usantatecla.mastermind.views.console.ConsoleView;
 
-class ConsoleMastermind extends Mastermind{
+class ConsoleMastermind extends Mastermind {
 
     @Override
-    protected View createView(Logic logic) {
+    protected ConsoleView createView(Logic logic) {
         return new ConsoleView(logic);
     }
 

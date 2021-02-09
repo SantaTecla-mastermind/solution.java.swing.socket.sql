@@ -3,10 +3,8 @@ package usantatecla.mastermind.views.console;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.StartController;
 import usantatecla.mastermind.models.Board;
@@ -22,17 +20,12 @@ public class StartViewTest {
     @Mock
     private Console console;
 
-    @Spy
-    private Board board;
-
-    @InjectMocks
     private StartController startController;
-
     private StartView startView;
 
     @BeforeEach
     public void beforeEach(){
-        this.startController = new StartController(this.board, new State());
+        this.startController = new StartController(new Board(), new State());
         this.startView = new StartView();
     }
 

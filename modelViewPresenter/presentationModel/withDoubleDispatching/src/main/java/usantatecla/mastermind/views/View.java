@@ -2,7 +2,7 @@ package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.controllers.*;
 
-public abstract class View implements ControllersVisitor{
+public abstract class View implements ControllersVisitor {
 
 	public void interact(Logic logic) {
 		Controller controller;

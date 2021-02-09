@@ -4,7 +4,7 @@ import usantatecla.mastermind.controllers.ResumeController;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.views.YesNoDialog;
 
-public class ResumeView {
+class ResumeView {
 
     private ResumeController resumeController;
 
@@ -12,7 +12,7 @@ public class ResumeView {
         this.resumeController = resumeController;
     }
 
-    public boolean interact() {
+    boolean interact() {
         YesNoDialog yesNoDialog = new YesNoDialog();
         yesNoDialog.read(Message.RESUME.toString());
         if (yesNoDialog.isAffirmative()) {

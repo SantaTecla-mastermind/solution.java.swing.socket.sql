@@ -7,10 +7,6 @@ import usantatecla.mastermind.controllers.StartController;
 
 public abstract class View {
 
-	public View() {
-
-	}
-
 	public void interact(Logic logic) {
 		do {
 			if (logic.getController() instanceof StartController) {

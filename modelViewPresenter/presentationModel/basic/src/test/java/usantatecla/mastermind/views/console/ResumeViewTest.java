@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.ResumeController;
 import usantatecla.mastermind.models.Board;
@@ -23,15 +22,12 @@ public class ResumeViewTest {
     @Mock
     private Console console;
 
-    @Spy
-    private Board board;
-
     private ResumeController resumeController;
     private ResumeView resumeView;
 
     @BeforeEach
     public void beforeEach() {
-        this.resumeController = new ResumeController(this.board);
+        this.resumeController = new ResumeController(new Board());
         this.resumeView = new ResumeView(this.resumeController);
     }
 
