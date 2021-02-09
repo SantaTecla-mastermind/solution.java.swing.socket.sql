@@ -1,7 +1,6 @@
 package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.views.Console;
 

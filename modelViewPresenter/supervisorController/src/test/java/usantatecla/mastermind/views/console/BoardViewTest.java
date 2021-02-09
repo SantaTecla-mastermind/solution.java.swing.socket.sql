@@ -9,7 +9,6 @@ import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.models.Board;
 import usantatecla.mastermind.models.BoardBuilder;
-import usantatecla.mastermind.types.Color;
 import usantatecla.utils.views.Console;
 
 import java.util.List;
@@ -51,14 +50,15 @@ public class BoardViewTest {
 
     @Test
     public void testGivenBoardViewWhenWriteThenPrint() {
-        Board board = new BoardBuilder().proposedCombinations(3,"rgby").build();
+        Board board = new BoardBuilder()
+                .proposedCombinations(3,"rgby")
+                .blacks(2)
+                .whites(2)
+                .build();
         this.boardView = new BoardView(board);
 
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            int attempts = 3;
-            this.boardView.setAttempts(attempts);
-            this.setBoardView(attempts);
             this.boardView.write();
             String string = this.conversor.arrayToString(new String[]{
                     "3 attempt(s): ",
@@ -72,14 +72,6 @@ public class BoardViewTest {
             verify(this.console, atLeastOnce()).write(argumentCaptor.capture());
 
             assertThat(string, is(this.reorder(argumentCaptor.getAllValues())));
-        }
-    }
-
-    private void setBoardView(int attempts) {
-        for (int i = 0; i < attempts; i++) {
-            this.boardView.setProposedCombinationColors(Color.get("rgby"));
-            this.boardView.setBlacks(2);
-            this.boardView.setWhites(2);
         }
     }
 

@@ -33,7 +33,7 @@ public class BoardTest {
         Board board = this.boardBuilder
                 .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
                 .build();
-        assertThat(board.getProposedCombinationColors(0), is(Color.get(BoardTest.PROPOSED_COMBINATION)));
+        assertThat(board.getProposedCombination(0).getColors(), is(Color.get(BoardTest.PROPOSED_COMBINATION)));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class BoardTest {
                 .build();
         Assertions.assertThrows(AssertionError.class, () -> board.getWhites(board.getAttempts()));
         Assertions.assertThrows(AssertionError.class, () -> board.getBlacks(board.getAttempts()));
-        Assertions.assertThrows(AssertionError.class, () -> board.getProposedCombinationColors(board.getAttempts()));
+        Assertions.assertThrows(AssertionError.class, () -> board.getProposedCombination(board.getAttempts()));
     }
 
     @Test

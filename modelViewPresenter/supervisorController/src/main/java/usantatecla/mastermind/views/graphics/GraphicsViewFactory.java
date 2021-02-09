@@ -1,7 +1,6 @@
 package usantatecla.mastermind.views.graphics;
 
 import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.views.*;
 
 public class GraphicsViewFactory extends ViewFactory {

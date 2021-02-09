@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.models.Board;
+import usantatecla.mastermind.views.ViewFactory;
 import usantatecla.mastermind.views.console.ResumeView;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -13,30 +14,33 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class ResumeControllerTest extends ControllerTest {
+public class ResumeControllerTest  {
 
     @Mock
     private ResumeView resumeView;
 
+    @Mock
+    private ViewFactory viewFactory;
+
+    private ResumeController resumeController;
+
     @BeforeEach
     public void beforeEach() {
-        this.board = new Board();
-        this.controller = new ResumeController(this.board, this.viewFactory);
+        this.resumeController = new ResumeController(new Board(), this.viewFactory);
     }
 
     @Test
     public void testGivenResumeControllerWhenControlThenReturnFalse() {
         when(this.viewFactory.createResumeView()).thenReturn(this.resumeView);
         when(this.resumeView.read()).thenReturn(false);
-        assertThat(((ResumeController) this.controller).control(), is(false));
+        assertThat(this.resumeController.control(), is(false));
     }
 
     @Test
     public void testGivenResumeControllerWhenControlThenReturnTrue() {
         when(this.viewFactory.createResumeView()).thenReturn(this.resumeView);
         when(this.resumeView.read()).thenReturn(true);
-        assertThat(((ResumeController) this.controller).control(), is(true));
+        assertThat(this.resumeController.control(), is(true));
     }
-
 
 }

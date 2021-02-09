@@ -1,10 +1,5 @@
 package usantatecla.mastermind.models;
 
-import usantatecla.mastermind.types.Color;
-import usantatecla.mastermind.types.Error;
-
-import java.util.List;
-
 public class Board {
 
     static final int MAX_ATTEMPTS = 10;

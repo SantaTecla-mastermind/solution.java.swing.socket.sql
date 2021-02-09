@@ -1,7 +1,6 @@
 package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.views.BoardView;
 import usantatecla.mastermind.views.ViewFactory;
 
 public abstract class Controller {
