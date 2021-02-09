@@ -25,10 +25,10 @@ abstract class Mastermind {
 	protected abstract ViewFactory createViewFactory();
 
 	protected void play() {
-		do{
+		do {
 			this.startController.control();
 			this.playController.control();
-		} while(this.resumeController.control());
+		} while (this.resumeController.control());
 	}
 
 }

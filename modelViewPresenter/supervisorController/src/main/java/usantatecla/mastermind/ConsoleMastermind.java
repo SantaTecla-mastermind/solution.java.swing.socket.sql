@@ -1,12 +1,11 @@
 package usantatecla.mastermind;
 
-import usantatecla.mastermind.views.ViewFactory;
 import usantatecla.mastermind.views.console.ConsoleViewFactory;
 
 class ConsoleMastermind extends Mastermind{
 
     @Override
-    protected ViewFactory createViewFactory() {
+    protected ConsoleViewFactory createViewFactory() {
         return new ConsoleViewFactory();
     }
 

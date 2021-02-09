@@ -22,8 +22,9 @@ public class ProposedCombinationView implements usantatecla.mastermind.views.Pro
 
     }
 
-    public List<Color> read() {
-        return Color.get(Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase());
+    public ProposedCombination read() {
+        List<Color> colors = Color.get(Console.getInstance().readString(Message.PROPOSED_COMBINATION.toString()).toLowerCase());
+        return new ProposedCombination(colors);
     }
 
     public void write() {

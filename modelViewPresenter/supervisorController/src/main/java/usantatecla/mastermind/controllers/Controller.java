@@ -14,15 +14,4 @@ public abstract class Controller {
         this.viewFactory = viewFactory;
     }
 
-    public void writeBoard(){
-        BoardView boardView = this.viewFactory.createBoardView(this.board);
-        int attempts = this.board.getAttempts();
-        boardView.setAttempts(attempts);
-        for (int i = 0; i < attempts; i++) {
-            boardView.setProposedCombinationColors(this.board.getProposedCombinationColors(i));
-            boardView.setBlacks(this.board.getBlacks(i));
-            boardView.setWhites(this.board.getWhites(i));
-        }
-        boardView.write();
-    }
 }

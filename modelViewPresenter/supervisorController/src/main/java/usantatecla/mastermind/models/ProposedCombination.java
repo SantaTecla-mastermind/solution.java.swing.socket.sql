@@ -16,7 +16,7 @@ public class ProposedCombination extends Combination {
         return colors;
     }
 
-    Error getError() {
+    public Error getError() {
         List<Color> correctColors = new ArrayList<>();
         if (colors.size() != Result.WIDTH) {
             return Error.WRONG_LENGTH;

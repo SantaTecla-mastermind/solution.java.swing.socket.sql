@@ -12,11 +12,6 @@ public class GraphicsViewFactory extends ViewFactory {
     }
 
     @Override
-    public ProposedCombinationView createProposedCombinationView(ProposedCombination proposedCombination) {
-        return null;
-    }
-
-    @Override
     public ProposedCombinationView createProposedCombinationView() {
         return null;
     }

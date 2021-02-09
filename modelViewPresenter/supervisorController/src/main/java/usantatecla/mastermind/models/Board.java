@@ -24,8 +24,8 @@ public class Board {
         this.attempts = 0;
     }
 
-    public void add(List<Color> colors) {
-        this.proposedCombinations[this.attempts] = new ProposedCombination(colors);
+    public void add(ProposedCombination proposedCombination) {
+        this.proposedCombinations[this.attempts] = proposedCombination;
         this.results[this.attempts] = this.getResult(this.proposedCombinations[this.attempts]);
         this.attempts++;
     }
@@ -48,14 +48,10 @@ public class Board {
         return this.results[position];
     }
 
-    public List<Color> getProposedCombinationColors(int position) {
+    public ProposedCombination getProposedCombination(int position) {
         assert position < this.getAttempts() && position >= 0;
 
-        return this.proposedCombinations[position].getColors();
-    }
-
-    public Error getError(List<Color> colors){
-        return new ProposedCombination(colors).getError();
+        return this.proposedCombinations[position];
     }
 
     public int getAttempts() {

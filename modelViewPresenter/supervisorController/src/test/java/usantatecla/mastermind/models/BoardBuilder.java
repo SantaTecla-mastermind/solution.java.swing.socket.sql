@@ -64,7 +64,7 @@ public class BoardBuilder {
         }
         if (!this.proposedCombinationsStrings.isEmpty()) {
             for (String proposedCombinationsString : this.proposedCombinationsStrings) {
-                this.board.add(Color.get(proposedCombinationsString));
+                this.board.add(new ProposedCombination(Color.get(proposedCombinationsString)));
             }
         }
         return this.board;

@@ -10,6 +10,7 @@ import usantatecla.mastermind.views.console.BoardView;
 
 import static org.mockito.Mockito.*;
 
+// TODO Rehacer tests
 @ExtendWith(MockitoExtension.class)
 public abstract class ControllerTest {
 

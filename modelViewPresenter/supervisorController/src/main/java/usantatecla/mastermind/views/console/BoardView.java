@@ -5,7 +5,7 @@ import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.views.Console;
 
-public class BoardView extends usantatecla.mastermind.views.BoardView {
+public class BoardView implements usantatecla.mastermind.views.BoardView {
 
     private Board board;
 
@@ -15,12 +15,11 @@ public class BoardView extends usantatecla.mastermind.views.BoardView {
 
     public void write(){
         Console.getInstance().writeln();
-        int attempts = this.attempts;
-        new MessageView().writeln(Message.ATTEMPTS, attempts);
+        new MessageView().writeln(Message.ATTEMPTS, this.board.getAttempts());
         new MessageView().writeln(Message.SECRET_COMBINATION);
-        for (int i = 0; i < attempts; i++) {
-            new ProposedCombinationView(new ProposedCombination(this.board.getProposedCombinationColors(i))).write();
-            new MessageView().writeln(Message.RESULT, this.blacks.get(i), this.whites.get(i));
+        for (int i = 0; i < this.board.getAttempts(); i++) {
+            new ProposedCombinationView(this.board.getProposedCombination(i)).write();
+            new MessageView().writeln(Message.RESULT, this.board.getBlacks(i), this.board.getWhites(i));
         }
     }
 

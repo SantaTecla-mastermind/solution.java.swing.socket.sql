@@ -1,11 +1,9 @@
 package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.types.Color;
+import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.types.Error;
 import usantatecla.mastermind.views.ViewFactory;
-
-import java.util.List;
 
 public class PlayController extends Controller {
 
@@ -16,7 +14,7 @@ public class PlayController extends Controller {
     public void control(){
         do {
             this.board.add(this.readProposedCombination());
-            this.writeBoard();
+            this.viewFactory.createBoardView(this.board).write();
         } while (!this.board.isFinished());
         if (this.board.isWinner()){
             this.viewFactory.createPlayView().writeWinner();
@@ -25,15 +23,15 @@ public class PlayController extends Controller {
         }
     }
 
-    private List<Color> readProposedCombination() {
+    private ProposedCombination readProposedCombination() {
         Error error;
-        List<Color> colors;
+        ProposedCombination proposedCombination;
         do {
-            colors = this.viewFactory.createProposedCombinationView().read();
-            error = this.board.getError(colors);
+            proposedCombination = this.viewFactory.createProposedCombinationView().read();
+            error = proposedCombination.getError();
             this.viewFactory.createErrorView().writeln(error);
         } while (!error.isNull());
-        return colors;
+        return proposedCombination;
     }
 
 }
