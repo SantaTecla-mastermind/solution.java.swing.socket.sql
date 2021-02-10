@@ -5,8 +5,16 @@ title Secuencia versiones Tictactoe
 state Solucion {
 [*] --> domainModel
 
-state domainModel
+state domainModel{
+[*] --> dm.basic
+    state dm.basic
 note right: Clases del Modelo del Dominio\npero acopladas a tecnologías de\ninterfazahora y todas con la Ley\ndel Cambio Continuo y de granos\ngrueso con el advenimiento\nde nueva funcionalidad.
+note left of dm.basic #15D2F3
+  Básica
+end note
+dm.basic -->[*]
+}
+
 state documentView
 state modelViewPresenter
  note left of modelViewController #15D2F3
@@ -14,9 +22,7 @@ state modelViewPresenter
 end note
 state modelViewController
 note right: Baile de la Triada.
- note left of domainModel #15D2F3
-  Básica
-end note
+
 domainModel --> documentView:Mantenimiento correctivo
 
 state documentView {
