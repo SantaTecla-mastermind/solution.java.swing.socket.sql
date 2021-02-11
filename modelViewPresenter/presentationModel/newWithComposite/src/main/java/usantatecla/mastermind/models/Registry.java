@@ -11,9 +11,7 @@ class Registry {
 	
 	Registry(Board board) {
 		this.board = board;
-		this.mementoList = new ArrayList<>();
-		this.mementoList.add(firstPrevious, this.board.createMemento());
-		this.firstPrevious = 0;
+		this.reset();
 	}
 
 	void register() {
@@ -45,9 +43,9 @@ class Registry {
 	}
 
 	void reset() {
-		this.mementoList = new ArrayList<>();
-		this.mementoList.add(firstPrevious, this.board.createMemento());
 		this.firstPrevious = 0;
+		this.mementoList = new ArrayList<>();
+		this.mementoList.add(this.firstPrevious, this.board.createMemento());
 	}
 
 }

@@ -13,7 +13,7 @@ class ProposeCommand extends Command {
 
 	@Override
 	protected void execute() {
-		this.playController.add(new ProposedCombinationView().read(playController));
+		this.playController.add(new ProposedCombinationView().read(this.playController));
 		new BoardView().write(this.playController);
 	}
 

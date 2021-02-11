@@ -45,4 +45,8 @@ public class Result {
         return true;
     }
 
+    @Override
+    protected Result clone() {
+        return new Result(this.getBlacks(), this.getWhites());
+    }
 }

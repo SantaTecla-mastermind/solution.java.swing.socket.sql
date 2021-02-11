@@ -46,4 +46,9 @@ class ProposedCombination extends Combination {
         return this.colors.contains(color);
     }
 
+    @Override
+    protected ProposedCombination clone() {
+        return new ProposedCombination(new ArrayList<>(this.colors));
+    }
+
 }

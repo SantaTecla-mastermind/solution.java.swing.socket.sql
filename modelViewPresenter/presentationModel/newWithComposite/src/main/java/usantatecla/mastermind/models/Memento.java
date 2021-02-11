@@ -6,22 +6,24 @@ class Memento {
     private ProposedCombination[] proposedCombinations;
     private Result[] results;
 
-    // TODO Revisar Memento. Posible problema con referencias (cambiar al de strings)
     public Memento(ProposedCombination[] proposedCombinations, Result[] results) {
         this.proposedCombinations = new ProposedCombination[Board.MAX_ATTEMPTS];
         this.results = new Result[Board.MAX_ATTEMPTS];
         for (int i = 0; i < Board.MAX_ATTEMPTS; i++) {
-            this.proposedCombinations[i] = proposedCombinations[i];
-            this.results[i] = results[i];
+            if (proposedCombinations[i] != null && results[i] != null) {
+                this.proposedCombinations[i] = proposedCombinations[i].clone();
+                this.results[i] = results[i].clone();
+            }
         }
     }
 
+    // TODO Devolviamos array directamente!! Problemas con referencias. Solucionado con clone
     ProposedCombination[] getProposedCombinations() {
-        return this.proposedCombinations;
+        return this.proposedCombinations.clone();
     }
 
     Result[] getResults() {
-        return this.results;
+        return this.results.clone();
     }
 
     int getAttempts() {
