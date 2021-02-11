@@ -1,11 +1,13 @@
-package usantatecla.utils;
+package usantatecla.utils.models;
+
+import usantatecla.utils.views.Console;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Menu {
 
-	private static final String OPTION = "----- Choose one option -----"; // TODO Vista
+	private static final String OPTION = "----- Choose one option -----";
+
 	private ArrayList<Command> commandList;
 
 	public Menu() {
@@ -13,16 +15,12 @@ public abstract class Menu {
 	}
 
 	public void execute() {
-		List<Command> commands = new ArrayList<Command>();
+		ArrayList<Command> commands = new ArrayList<Command>();
 		for (int i = 0; i < this.commandList.size(); i++) {
 			if (this.commandList.get(i).isActive()) {
 				commands.add(this.commandList.get(i));
 			}
 		}
-		commands.get(this.read(commands)).execute();
-	}
-
-	private int read(List<Command> commands) { // TODO Vista
 		boolean error;
 		int option;
 		do {
@@ -33,14 +31,16 @@ public abstract class Menu {
 				Console.getInstance().writeln((i + 1) + ") " + commands.get(i).getTitle());
 			}
 			option = Console.getInstance().readInt("") - 1;
-			if (!new ClosedInterval(0, commands.size()-1).includes(option)) {
+			if (!new ClosedInterval(0, commands.size()-1).isIncluded(option)) {
 				error = true;
 			}
 		} while (error);
+		commands.get(option).execute();
 	}
 
 	protected void addCommand(Command command) {
 		this.commandList.add(command);
 	}
+
 
 }
