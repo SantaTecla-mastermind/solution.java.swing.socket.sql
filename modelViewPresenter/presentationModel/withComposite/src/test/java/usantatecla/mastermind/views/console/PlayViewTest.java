@@ -63,6 +63,4 @@ public class PlayViewTest {
         }
     }
 
-    // TODO Faltan casos de prueba (Undo, Redo)
-
 }

@@ -5,6 +5,7 @@ import usantatecla.mastermind.views.Message;
 
 class PlayView {
 
+    // TODO ¿Hay que hacer tests de las diferentes opciones que nos da PlayMenu?
     void interact(PlayController playController) {
         do {
             new PlayMenu(playController).execute();

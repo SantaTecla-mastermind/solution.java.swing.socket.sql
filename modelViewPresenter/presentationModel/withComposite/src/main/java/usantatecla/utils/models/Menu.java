@@ -4,6 +4,7 @@ import usantatecla.utils.views.Console;
 
 import java.util.ArrayList;
 
+// TODO ¿Hacer tests?
 public abstract class Menu {
 
 	private static final String OPTION = "----- Choose one option -----";
@@ -41,6 +42,5 @@ public abstract class Menu {
 	protected void addCommand(Command command) {
 		this.commandList.add(command);
 	}
-
 
 }

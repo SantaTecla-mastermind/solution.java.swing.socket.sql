@@ -14,6 +14,12 @@ class Registry {
 		this.reset();
 	}
 
+	void reset() {
+		this.firstPrevious = 0;
+		this.mementoList = new ArrayList<>();
+		this.mementoList.add(this.firstPrevious, this.board.createMemento());
+	}
+
 	void register() {
 		for (int i = 0; i < this.firstPrevious; i++) {
 			this.mementoList.remove(0);
@@ -40,12 +46,6 @@ class Registry {
 
 	boolean redoable() {
 		return this.firstPrevious >= 1;
-	}
-
-	void reset() {
-		this.firstPrevious = 0;
-		this.mementoList = new ArrayList<>();
-		this.mementoList.add(this.firstPrevious, this.board.createMemento());
 	}
 
 }
