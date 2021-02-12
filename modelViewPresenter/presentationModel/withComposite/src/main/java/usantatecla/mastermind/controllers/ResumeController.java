@@ -4,21 +4,16 @@ import usantatecla.mastermind.models.Session;
 
 public class ResumeController extends Controller implements AcceptorController {
 
-	public ResumeController(Session session) {
-		super(session);
-	}
-	
-	public void resume(boolean newGame) {
-		if (newGame) {
-			this.session.clearGame();
-		} else {
-			this.session.next();
-		}
-	}
+    public ResumeController(Session session) {
+        super(session);
+    }
 
-	@Override
-	public void accept(ControllersVisitor controllersVisitor) {
-		controllersVisitor.visit(this);
-	}
+    public void reset() {
+        this.session.reset();
+    }
+
+    public void accept(ControllersVisitor controllersVisitor) {
+        controllersVisitor.visit(this);
+    }
 
 }

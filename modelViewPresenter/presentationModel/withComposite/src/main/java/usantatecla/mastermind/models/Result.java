@@ -1,31 +1,48 @@
 package usantatecla.mastermind.models;
 
-class Result {
+import usantatecla.utils.models.ClosedInterval;
 
-	private int blacks;
-	private int whites;
+public class Result {
 
-	Result(int blacks, int whites) {
-		assert blacks >= 0;
-		assert whites >= 0;
-		this.blacks = blacks;
-		this.whites = whites;
-	}
+    public static final int WIDTH = 4;
+    private static final ClosedInterval LIMITS = new ClosedInterval(0,Result.WIDTH);
+    private int blacks;
+    private int whites;
 
-	boolean isWinner() {
-		return this.blacks == Combination.getWidth();
-	}
+    Result(int blacks, int whites) {
+        assert Result.LIMITS.isIncluded(blacks);
+        assert Result.LIMITS.isIncluded(whites);
 
-	int getBlacks() {
-		return this.blacks;
-	}
+        this.blacks = blacks;
+        this.whites = whites;
+    }
 
-	int getWhites() {
-		return this.whites;
-	}
+    public int getBlacks() {
+        return blacks;
+    }
 
-	Result copy() {
-		return new Result(this.blacks, this.whites);
-	}
+    public int getWhites() {
+        return whites;
+    }
+
+    boolean isWinner() {
+        return this.blacks == Result.WIDTH;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Result other = (Result) obj;
+        if (this.blacks != other.blacks)
+            return false;
+        if (this.whites != other.whites)
+            return false;
+        return true;
+    }
 
 }

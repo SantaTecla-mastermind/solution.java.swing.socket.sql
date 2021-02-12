@@ -37,6 +37,23 @@ public class BoardTest {
     }
 
     @Test
+    public void testGivenBoardWhenSetMementoThenCorrect() {
+        Board board = this.boardBuilder
+                .proposedCombinations(BoardTest.PROPOSED_COMBINATION)
+                .blacks(2)
+                .whites(2)
+                .build();
+        Memento memento = board.createMemento();
+        board.add(Color.get(BoardTest.PROPOSED_COMBINATION));
+        board.setMemento(memento);
+
+        int attempts = 1;
+        assertThat(board.getAttempts(), is(attempts));
+        Assertions.assertThrows(AssertionError.class, () -> board.getProposedCombinationColors(attempts + 1));
+        Assertions.assertThrows(AssertionError.class, () -> board.getBlacks(attempts + 1));
+    }
+
+    @Test
     public void testGivenBoardWhenGetBlacksThenReturn() {
         Board board = this.boardBuilder
                 .proposedCombinations(BoardTest.PROPOSED_COMBINATION)

@@ -7,8 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.StartController;
-import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.State;
+import usantatecla.mastermind.models.Session;
 import usantatecla.utils.views.Console;
 
 import static org.mockito.Mockito.mockStatic;
@@ -25,7 +24,7 @@ public class StartViewTest {
 
     @BeforeEach
     public void beforeEach(){
-        this.startController = new StartController(new Board(), new State());
+        this.startController = new StartController(new Session());
         this.startView = new StartView();
     }
 

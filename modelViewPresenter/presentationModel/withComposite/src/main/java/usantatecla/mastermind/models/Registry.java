@@ -1,18 +1,17 @@
 package usantatecla.mastermind.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class Registry {
 	
-	private ArrayList<Memento> mementoList;
-	private Game game;
+	private List<Memento> mementoList;
+	private Board board;
 	private int firstPrevious;
 	
-	Registry(Game game) {
-		this.game = game;
-		this.mementoList = new ArrayList<>();
-		this.mementoList.add(firstPrevious, this.game.createMemento());
-		this.firstPrevious = 0;
+	Registry(Board board) {
+		this.board = board;
+		this.reset();
 	}
 
 	void register() {
@@ -20,19 +19,19 @@ class Registry {
 			this.mementoList.remove(0);
 		}
 		this.firstPrevious = 0;
-		this.mementoList.add(this.firstPrevious, this.game.createMemento());
+		this.mementoList.add(this.firstPrevious, this.board.createMemento());
 	}
 
 	void undo() {
 		assert this.undoable();
 		this.firstPrevious++;
-		this.game.setMemento(this.mementoList.get(this.firstPrevious));
+		this.board.setMemento(this.mementoList.get(this.firstPrevious));
 	}
 
 	void redo() {
 		assert this.redoable();
 		this.firstPrevious--;
-		this.game.setMemento(this.mementoList.get(this.firstPrevious));
+		this.board.setMemento(this.mementoList.get(this.firstPrevious));
 	}
 
 	boolean undoable() {
@@ -44,9 +43,9 @@ class Registry {
 	}
 
 	void reset() {
-		this.mementoList = new ArrayList<>();
-		this.mementoList.add(firstPrevious, this.game.createMemento());
 		this.firstPrevious = 0;
+		this.mementoList = new ArrayList<>();
+		this.mementoList.add(this.firstPrevious, this.board.createMemento());
 	}
 
 }

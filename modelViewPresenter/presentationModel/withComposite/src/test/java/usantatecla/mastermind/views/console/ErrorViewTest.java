@@ -17,7 +17,7 @@ public class ErrorViewTest {
     @Mock
     private Console console;
 
-    private usantatecla.mastermind.views.ErrorView errorView;
+    private ErrorView errorView;
 
     @BeforeEach
     public void beforeEach() {

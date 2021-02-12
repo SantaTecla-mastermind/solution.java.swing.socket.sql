@@ -7,8 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.ResumeController;
-import usantatecla.mastermind.models.Board;
-import usantatecla.mastermind.models.State;
+import usantatecla.mastermind.models.Session;
 import usantatecla.utils.views.Console;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -28,7 +27,7 @@ public class ResumeViewTest {
 
     @BeforeEach
     public void beforeEach(){
-        this.resumeController = new ResumeController(new Board(), new State());
+        this.resumeController = new ResumeController(new Session());
         this.resumeView = new ResumeView();
     }
 

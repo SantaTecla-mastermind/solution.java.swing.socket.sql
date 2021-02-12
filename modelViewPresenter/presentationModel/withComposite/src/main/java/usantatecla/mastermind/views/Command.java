@@ -2,7 +2,7 @@ package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.controllers.PlayController;
 
-abstract class Command extends usantatecla.utils.Command {
+public abstract class Command extends usantatecla.utils.models.Command {
 
 	protected PlayController playController;
 

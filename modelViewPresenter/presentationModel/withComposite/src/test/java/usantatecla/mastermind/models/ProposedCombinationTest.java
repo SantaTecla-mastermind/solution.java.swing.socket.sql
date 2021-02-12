@@ -1,41 +1,60 @@
 package usantatecla.mastermind.models;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import usantatecla.mastermind.types.Color;
+import usantatecla.mastermind.types.Error;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 public class ProposedCombinationTest {
 
-    private ProposedCombination proposedCombination;
-    private ArrayList<Color> colors;
+    private static final List<Color> COLOR = Arrays.asList(
+            Color.GREEN,
+            Color.CYAN,
+            Color.RED,
+            Color.MAGENTA);
 
-    @BeforeEach
-    void before() {
-        colors = new ArrayList<>(Arrays.asList(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW));
-        this.proposedCombination = new ProposedCombination(this.colors);
+    @Test
+    public void testGivenProposedCombinationWithColorsWhenGetColorsThenReturn() {
+        assertThat(new ProposedCombination(ProposedCombinationTest.COLOR).getColors(), is(ProposedCombinationTest.COLOR));
     }
 
     @Test
-    void testGivenEmptyProposedCombinationWhenGetColorsLengthThenReturns0() {
-        assertThat(this.proposedCombination.colors.size(), is(4));
+    public void testGivenProposedCombinationWhenGetErrorThenWrongLengthError() {
+        assertThat(new ProposedCombination(Color.get("")).getError(), is(Error.WRONG_LENGTH));
+        assertThat(new ProposedCombination(Color.get("rg")).getError(), is(Error.WRONG_LENGTH));
+        assertThat(new ProposedCombination(Color.get("rgbcy")).getError(), is(Error.WRONG_LENGTH));
+        assertThat(new ProposedCombination(Color.get("rgasdvbnxcjkvbiasd24563")).getError(), is(Error.WRONG_LENGTH));
     }
 
     @Test
-    void testGivenColorsInProposedCombinationWhenIsEqualsToOtherColorArrayThenIsTrue() {
-        this.proposedCombination.colors = this.colors;
-        assertThat(this.proposedCombination.colors, is(equalTo(this.colors)));
+    public void testGivenProposedCombinationWhenGetErrorThenWrongCharactersError() {
+        assertThat(new ProposedCombination(Color.get("rg5c")).getError(), is(Error.WRONG_CHARACTERS));
+        assertThat(new ProposedCombination(Color.get("7362")).getError(), is(Error.WRONG_CHARACTERS));
+        assertThat(new ProposedCombination(Color.get("ç{}+")).getError(), is(Error.WRONG_CHARACTERS));
     }
 
     @Test
-    void testGivenColorsInProposedCombinationWhenColorIsNotContainedThenIsFalse() {
-        this.proposedCombination.colors = colors;
-        assertThat(this.proposedCombination.colors.contains(Color.PURPLE), is(false));
+    public void testGivenProposedCombinationWhenGetErrorThenDuplicatedError() {
+        assertThat(new ProposedCombination(Color.get("bgbc")).getError(), is(Error.DUPLICATED));
+        assertThat(new ProposedCombination(Color.get("bbbb")).getError(), is(Error.DUPLICATED));
+        assertThat(new ProposedCombination(Color.get("cygc")).getError(), is(Error.DUPLICATED));
     }
+
+    @Test
+    public void testGivenProposedCombinationWhenGetErrorThenNullError() {
+        assertThat(new ProposedCombination(Color.get("rgby")).getError(), is(Error.NULL));
+    }
+
+    @Test
+    public void testGivenColorsInProposedCombinationWhenColorIsContainedByPositionOutOfSizeThenIsAssert() {
+        Assertions.assertThrows(AssertionError.class,
+                () -> new ProposedCombination(ProposedCombinationTest.COLOR).contains(ProposedCombinationTest.COLOR.get(0), 10));
+    }
+
 }

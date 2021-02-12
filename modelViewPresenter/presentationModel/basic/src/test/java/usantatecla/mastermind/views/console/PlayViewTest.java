@@ -17,6 +17,8 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class PlayViewTest {
 
+    private static String INITIALS = "rgby";
+
     @Mock
     private Console console;
 
@@ -36,10 +38,10 @@ public class PlayViewTest {
     public void testGivenPlayViewWhenInteractThenIsWinner() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            when(this.console.readString(anyString())).thenReturn("rgby");
+            when(this.console.readString(anyString())).thenReturn(PlayViewTest.INITIALS);
             doReturn(true).when(this.board).isWinner();
             this.playView.interact();
-            verify(this.board).add(any());
+            verify(this.board).add(Color.get(PlayViewTest.INITIALS));
             verify(this.console).writeln("You've won!!! ;-)");
         }
     }
@@ -48,11 +50,11 @@ public class PlayViewTest {
     public void testGivenPlayViewWhenInteractThenIsLooser() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            when(this.console.readString(anyString())).thenReturn("rgby");
+            when(this.console.readString(anyString())).thenReturn(PlayViewTest.INITIALS);
             doReturn(true).when(this.board).isFinished();
             doReturn(false).when(this.board).isWinner();
             this.playView.interact();
-            verify(this.board).add(any());
+            verify(this.board).add(Color.get(PlayViewTest.INITIALS));
             verify(this.console).writeln("You've lost!!! :-(");
         }
     }

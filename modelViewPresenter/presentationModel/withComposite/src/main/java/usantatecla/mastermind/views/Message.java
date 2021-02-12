@@ -1,26 +1,28 @@
 package usantatecla.mastermind.views;
 
-enum Message {
-	ATTEMPTS("#attempts attempt(s): "), 
-	SECRET("*"), 
-	RESUME("Do you want to continue"), 
-	RESULT(" --> #blacks blacks and #whites whites"), 
-	PROPOSED_COMBINATION("Propose a combination: "), 
-	TITLE("----- MASTERMIND -----"), 
-	WINNER("You've won!!! ;-)"), 
-	LOOSER("You've lost!!! :-("), 
-	PROPOSE_COMMAND("Propose Combination"), 
-	UNDO_COMMAND("Undo previous Proposal"), 
-	REDO_COMMAND("Redo previous Proposal");
+public enum Message {
 
-	private String message;
+    TITLE("----- MASTERMIND -----"),
+    SECRET_COMBINATION("****"),
+    ATTEMPTS("#attempts attempt(s): "),
+    RESULT(" --> #blacks blacks and #whites whites"),
+    PROPOSED_COMBINATION("Propose a combination: "),
+    PROPOSE_COMMAND("Propose Combination"),
+    UNDO_COMMAND("Undo previous Proposal"),
+    REDO_COMMAND("Redo previous Proposal"),
+    WINNER("You've won!!! ;-)"),
+    LOOSER("You've lost!!! :-("),
+    RESUME("Do you want to continue");
 
-	Message(String message) {
-		this.message = message;
-	}
+    private String message;
 
-	public String getMessage() {
-		return this.message;
-	}
+    Message(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return this.message;
+    }
 
 }

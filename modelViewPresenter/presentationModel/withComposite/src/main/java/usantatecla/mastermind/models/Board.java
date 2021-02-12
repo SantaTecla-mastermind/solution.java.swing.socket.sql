@@ -33,7 +33,7 @@ class Board {
     }
 
     Memento createMemento() {
-        return new Memento(this.proposedCombinations, this.results);
+        return new Memento(this.proposedCombinations.clone(), this.results.clone());
     }
 
     void setMemento(Memento memento) {

@@ -1,43 +1,49 @@
 package usantatecla.mastermind.models;
 
+import usantatecla.mastermind.types.Color;
+import usantatecla.mastermind.types.Error;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import usantatecla.mastermind.types.Color;
+class ProposedCombination extends Combination {
 
-public class ProposedCombination extends Combination {
+    ProposedCombination(List<Color> colors) {
+        this.colors = colors;
+    }
 
-	public ProposedCombination(List<Color> colors) {
-		this.colors = colors;
-	}
+    List<Color> getColors() {
+        return colors;
+    }
 
-	boolean contains(Color color, int position) {
-		return this.colors.get(position) == color;
-	}
+    Error getError() {
+        List<Color> correctColors = new ArrayList<>();
+        if (this.colors.size() != Result.WIDTH) {
+            return Error.WRONG_LENGTH;
+        }
+        for (int i = 0; i < this.colors.size(); i++) {
+            Color color = this.colors.get(i);
+            if (color.isNull()) {
+                return Error.WRONG_CHARACTERS;
+            }
+            for (int j = 0; j < i; j++) {
+                if (correctColors.get(j) == color) {
+                    return Error.DUPLICATED;
+                }
+            }
+            correctColors.add(color);
+        }
+        return Error.NULL;
+    }
 
-	boolean contains(Color color) {
-		for (Color value : this.colors) {
-			if (value == color) {
-				return true;
-			}
-		}
-		return false;
-	}
+    boolean contains(Color color, int position) {
+        assert position < this.colors.size();
 
-	public static ProposedCombination parse(String colorsString) {
-		List<Color> colors = new ArrayList<>();
-		for(Character character : colorsString.toCharArray()) {
-			colors.add(Color.parse(character));
-		}
-		return new ProposedCombination(colors);
-	}
+        return this.colors.get(position) == color;
+    }
 
-	@Override
-	public String toString() {
-		String colorString = "";
-		for (Color color : this.colors) {
-			colorString += color.toString();
-		}
-		return colorString;
-	}
+    boolean contains(Color color) {
+        return this.colors.contains(color);
+    }
+
 }

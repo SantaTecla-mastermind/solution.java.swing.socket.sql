@@ -1,40 +1,29 @@
 package usantatecla.mastermind.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
+// TODO Preguntar si calcular results a partir de SecretCombination y si los ProposedCombination los pasamos como string
 class Memento {
 
-    private SecretCombination secretCombination;
-    private List<String> proposedCombinationsColors;
+    private ProposedCombination[] proposedCombinations;
+    private Result[] results;
 
-    public Memento(Game game) {
-        this.secretCombination = game.getSecretCombination();
-        this.proposedCombinationsColors = new ArrayList<>();
-        for (int i = 0; i < game.getAttempts(); i++) {
-            this.proposedCombinationsColors.add(game.getProposedCombination(i).toString());
-        }
+    Memento(ProposedCombination[] proposedCombinations, Result[] results) {
+        this.proposedCombinations = proposedCombinations;
+        this.results = results;
     }
 
-    List<Result> getResults() {
-        List<Result> results = new ArrayList<>();
-        List<ProposedCombination> proposedCombinations = getProposedCombinations();
-        for (ProposedCombination proposedCombination : proposedCombinations) {
-            results.add(this.secretCombination.getResult(proposedCombination));
-        }
-        return results;
+    ProposedCombination[] getProposedCombinations() {
+        return this.proposedCombinations.clone();
     }
 
-    List<ProposedCombination> getProposedCombinations() {
-        List<ProposedCombination> proposedCombinations = new ArrayList<>();
-        for (String proposedCombinationColor : this.proposedCombinationsColors) {
-            proposedCombinations.add(ProposedCombination.parse(proposedCombinationColor));
-        }
-        return proposedCombinations;
+    Result[] getResults() {
+        return this.results.clone();
     }
 
     int getAttempts() {
-        return this.proposedCombinationsColors.size();
+        for (int i = 0; i < Board.MAX_ATTEMPTS; i++) {
+            if (this.proposedCombinations[i] == null) return i;
+        }
+        return Board.MAX_ATTEMPTS;
     }
 
 }
