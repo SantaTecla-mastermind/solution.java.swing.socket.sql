@@ -38,8 +38,12 @@ public enum Color {
     }
 
     public static String getAllInitials() {
+        return Color.getInitials(Color.getAll());
+    }
+
+    public static String getInitials(List<Color> colors) {
         String result = "";
-        for (Color color : Color.getAll()) {
+        for (Color color : colors) {
             result += color.getInitial();
         }
         return result;

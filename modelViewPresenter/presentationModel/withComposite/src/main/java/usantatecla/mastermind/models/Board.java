@@ -33,13 +33,13 @@ class Board {
     }
 
     Memento createMemento() {
-        return new Memento(this.proposedCombinations.clone(), this.results.clone());
+        return new Memento(this.proposedCombinations);
     }
 
     void setMemento(Memento memento) {
         this.attempts = memento.getAttempts();
         this.proposedCombinations = memento.getProposedCombinations();
-        this.results = memento.getResults();
+        this.results = memento.getResults(this.secretCombination);
     }
 
     Result getResult(ProposedCombination proposedCombination) {

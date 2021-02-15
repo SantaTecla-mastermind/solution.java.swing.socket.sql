@@ -52,6 +52,8 @@ public class BoardBuilder {
         this.board = spy(new Board());
         if (this.blacks != null && this.whites != null) {
             doReturn(new Result(this.blacks, this.whites)).when(this.board).getResult(any());
+            doReturn(this.blacks).when(this.board).getBlacks(any(Integer.class));
+            doReturn(this.whites).when(this.board).getWhites(any(Integer.class));
         }
         if (!this.proposedCombinationsStrings.isEmpty()) {
             for (String proposedCombinationsString : this.proposedCombinationsStrings) {

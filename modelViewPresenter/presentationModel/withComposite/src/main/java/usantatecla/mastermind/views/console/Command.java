@@ -1,4 +1,4 @@
-package usantatecla.mastermind.views;
+package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.PlayController;
 

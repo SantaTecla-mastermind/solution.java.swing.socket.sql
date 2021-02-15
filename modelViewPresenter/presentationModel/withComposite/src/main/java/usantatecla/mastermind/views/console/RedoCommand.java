@@ -1,7 +1,6 @@
 package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.PlayController;
-import usantatecla.mastermind.views.Command;
 import usantatecla.mastermind.views.Message;
 
 class RedoCommand extends Command {

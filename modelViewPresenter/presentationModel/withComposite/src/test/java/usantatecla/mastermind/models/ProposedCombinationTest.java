@@ -57,4 +57,9 @@ public class ProposedCombinationTest {
                 () -> new ProposedCombination(ProposedCombinationTest.COLOR).contains(ProposedCombinationTest.COLOR.get(0), 10));
     }
 
+    @Test
+    public void testGivenProposedCombinationWhenToStringThenReturn() {
+        assertThat(new ProposedCombination(ProposedCombinationTest.COLOR).toString(), is("gcrm"));
+    }
+
 }

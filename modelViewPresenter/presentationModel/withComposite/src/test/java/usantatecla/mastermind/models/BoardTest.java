@@ -50,7 +50,6 @@ public class BoardTest {
         int attempts = 1;
         assertThat(board.getAttempts(), is(attempts));
         Assertions.assertThrows(AssertionError.class, () -> board.getProposedCombinationColors(attempts + 1));
-        Assertions.assertThrows(AssertionError.class, () -> board.getBlacks(attempts + 1));
     }
 
     @Test

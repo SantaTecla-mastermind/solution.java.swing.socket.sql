@@ -13,7 +13,7 @@ class ProposedCombination extends Combination {
     }
 
     List<Color> getColors() {
-        return colors;
+        return this.colors;
     }
 
     Error getError() {
@@ -44,6 +44,25 @@ class ProposedCombination extends Combination {
 
     boolean contains(Color color) {
         return this.colors.contains(color);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        ProposedCombination other = (ProposedCombination) obj;
+        if (!this.colors.equals(other.getColors()))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return Color.getInitials(this.colors);
     }
 
 }
