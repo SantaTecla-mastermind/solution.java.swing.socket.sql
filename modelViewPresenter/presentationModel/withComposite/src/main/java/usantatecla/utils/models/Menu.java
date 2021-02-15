@@ -4,7 +4,7 @@ import usantatecla.utils.views.Console;
 
 import java.util.ArrayList;
 
-// TODO ¿Hacer tests?
+// TODO Test (clases anonimas)
 public abstract class Menu {
 
 	private static final String OPTION = "----- Choose one option -----";

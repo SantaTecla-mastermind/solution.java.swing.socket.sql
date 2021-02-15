@@ -5,17 +5,15 @@ import usantatecla.mastermind.views.Message;
 
 class PlayView {
 
-    // TODO ¿Hay que hacer tests de las diferentes opciones que nos da PlayMenu?
     void interact(PlayController playController) {
         do {
             new PlayMenu(playController).execute();
         } while(!playController.isFinished());
-
+        Message message = Message.LOOSER;
         if (playController.isWinner()){
-            new MessageView().writeln(Message.WINNER);
-        } else {
-            new MessageView().writeln(Message.LOOSER);
+            message = Message.WINNER;
         }
+        new MessageView().writeln(message);
         playController.nextState();
     }
 

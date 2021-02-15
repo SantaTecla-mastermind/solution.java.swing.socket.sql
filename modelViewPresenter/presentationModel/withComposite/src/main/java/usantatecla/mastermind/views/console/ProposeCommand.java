@@ -4,7 +4,6 @@ import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.views.Command;
 import usantatecla.mastermind.views.Message;
 
-// TODO Los command podrían ir en el paquete views. ¿Hacer interfaces de las vistas que usan?
 class ProposeCommand extends Command {
 
 	ProposeCommand(PlayController playController) {

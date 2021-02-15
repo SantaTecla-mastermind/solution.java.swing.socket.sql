@@ -1,6 +1,6 @@
 package usantatecla.mastermind.models;
 
-// TODO Preguntar si calcular results a partir de SecretCombination y si los ProposedCombination los pasamos como string
+// TODO Hacerlo con strings
 class Memento {
 
     private ProposedCombination[] proposedCombinations;
