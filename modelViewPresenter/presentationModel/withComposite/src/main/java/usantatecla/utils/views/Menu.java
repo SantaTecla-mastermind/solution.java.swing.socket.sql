@@ -5,7 +5,6 @@ import usantatecla.utils.models.Command;
 
 import java.util.ArrayList;
 
-// TODO Test (clases anonimas)
 public abstract class Menu {
 
 	private static final String OPTION = "----- Choose one option -----";
@@ -23,6 +22,8 @@ public abstract class Menu {
 				commands.add(this.commandList.get(i));
 			}
 		}
+		assert commands.size() > 0; // TODO ¿Menú sin comandos activos incluido en el dominio?
+
 		boolean error;
 		int option;
 		do {
