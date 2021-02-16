@@ -8,9 +8,9 @@ public abstract class Command {
 		this.title = title;
 	}
 
-	protected abstract void execute();
+	public abstract void execute();
 
-	protected abstract boolean isActive();
+	public abstract boolean isActive();
 
 	public String getTitle() {
 		return this.title;

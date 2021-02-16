@@ -10,13 +10,13 @@ class ProposeCommand extends Command {
 	}
 
 	@Override
-	protected void execute() {
+	public void execute() {
 		this.playController.add(new ProposedCombinationView().read(this.playController));
 		new BoardView().write(this.playController);
 	}
 
 	@Override
-	protected boolean isActive() {
+	public boolean isActive() {
 		return true;
 	}
 

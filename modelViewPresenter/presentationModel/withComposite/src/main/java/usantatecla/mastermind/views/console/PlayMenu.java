@@ -1,7 +1,7 @@
 package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.PlayController;
-import usantatecla.utils.models.Menu;
+import usantatecla.utils.views.Menu;
 
 class PlayMenu extends Menu {
 

@@ -1,6 +1,7 @@
-package usantatecla.utils.models;
+package usantatecla.utils.views;
 
-import usantatecla.utils.views.Console;
+import usantatecla.utils.models.ClosedInterval;
+import usantatecla.utils.models.Command;
 
 import java.util.ArrayList;
 
