@@ -2,9 +2,7 @@ package usantatecla.mastermind.models;
 
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
-import usantatecla.utils.views.Console;
 
-import java.util.Arrays;
 import java.util.List;
 
 class Board {
