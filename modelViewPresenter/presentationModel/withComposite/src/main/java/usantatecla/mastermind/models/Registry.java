@@ -5,7 +5,7 @@ import java.util.List;
 
 class Registry {
 	
-	private List<Memento> mementoList;
+	private List<Memento> mementos;
 	private Board board;
 	private int firstPrevious;
 	
@@ -16,32 +16,34 @@ class Registry {
 
 	void reset() {
 		this.firstPrevious = 0;
-		this.mementoList = new ArrayList<>();
-		this.mementoList.add(this.firstPrevious, this.board.createMemento());
+		this.mementos = new ArrayList<>();
+		this.mementos.add(this.firstPrevious, this.board.createMemento());
 	}
 
 	void register() {
 		for (int i = 0; i < this.firstPrevious; i++) {
-			this.mementoList.remove(0);
+			this.mementos.remove(0);
 		}
 		this.firstPrevious = 0;
-		this.mementoList.add(this.firstPrevious, this.board.createMemento());
+		this.mementos.add(this.firstPrevious, this.board.createMemento());
 	}
 
 	void undo() {
 		assert this.undoable();
+
 		this.firstPrevious++;
-		this.board.setMemento(this.mementoList.get(this.firstPrevious));
+		this.board.setMemento(this.mementos.get(this.firstPrevious));
 	}
 
 	void redo() {
 		assert this.redoable();
+
 		this.firstPrevious--;
-		this.board.setMemento(this.mementoList.get(this.firstPrevious));
+		this.board.setMemento(this.mementos.get(this.firstPrevious));
 	}
 
 	boolean undoable() {
-		return this.firstPrevious < this.mementoList.size() - 1;
+		return this.firstPrevious < this.mementos.size() - 1;
 	}
 
 	boolean redoable() {
