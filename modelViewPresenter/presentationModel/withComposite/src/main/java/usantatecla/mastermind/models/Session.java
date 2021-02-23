@@ -27,6 +27,10 @@ public class Session {
 		this.state.next();		
 	}
 
+	public StateValue getValueState() {
+		return this.state.getValueState();
+	}
+
 	public boolean undoable() {
 		return this.registry.undoable();
 	}
@@ -74,10 +78,6 @@ public class Session {
 
 	public boolean isWinner() {
 		return this.board.isWinner();
-	}
-
-	public StateValue getValueState() {
-		return this.state.getValueState();
 	}
 
 }
