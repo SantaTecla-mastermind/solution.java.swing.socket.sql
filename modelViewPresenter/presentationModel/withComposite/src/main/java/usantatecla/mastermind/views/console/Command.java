@@ -10,5 +10,10 @@ public abstract class Command extends usantatecla.utils.models.Command {
 		super(title);
 		this.playController = playController;
 	}
+
+	@Override
+	public void execute() {
+		new BoardView().write(this.playController);
+	}
 	
 }

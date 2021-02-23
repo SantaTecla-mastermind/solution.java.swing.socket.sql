@@ -12,7 +12,7 @@ class RedoCommand extends Command {
 	@Override
 	public void execute() {
 		this.playController.redo();
-		new BoardView().write(this.playController);
+		super.execute();
 	}
 
 	@Override

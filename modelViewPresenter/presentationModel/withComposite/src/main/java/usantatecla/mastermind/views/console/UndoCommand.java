@@ -12,7 +12,7 @@ class UndoCommand extends Command {
 	@Override
 	public void execute() {
 		this.playController.undo();
-		new BoardView().write(this.playController);
+		super.execute();
 	}
 
 	@Override
