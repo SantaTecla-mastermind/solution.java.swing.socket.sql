@@ -1,41 +1,43 @@
 package usantatecla.mastermind.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import usantatecla.mastermind.types.Color;
 
-public class Memento {
+class Memento {
 
-	private List<ProposedCombination> proposedCombinations;
+    private String[] proposedCombinationsStrings;
 
-	private List<Result> results;
+    Memento(ProposedCombination[] proposedCombinations) {
+        this.proposedCombinationsStrings = new String[proposedCombinations.length];
+        for(int i = 0; i < proposedCombinations.length; i++) {
+            if (proposedCombinations[i] != null)
+                this.proposedCombinationsStrings[i] = proposedCombinations[i].toString();
+        }
+    }
 
-	private int attempts;
+    ProposedCombination[] getProposedCombinations() {
+        ProposedCombination[] proposedCombinations = new ProposedCombination[this.proposedCombinationsStrings.length];
+        for(int i = 0; i < proposedCombinations.length; i++) {
+            if (this.proposedCombinationsStrings[i] != null)
+                proposedCombinations[i] = new ProposedCombination(Color.get(this.proposedCombinationsStrings[i]));
+        }
+        return proposedCombinations;
+    }
 
-	Memento(int attempts) {
-		this.attempts = attempts;
-		this.proposedCombinations = new ArrayList<>();
-		this.results = new ArrayList<>();
-	}
+    Result[] getResults(SecretCombination secretCombination) {
+        Result[] results = new Result[this.proposedCombinationsStrings.length];
+        ProposedCombination[] proposedCombinations = this.getProposedCombinations();
+        for(int i = 0; i < proposedCombinations.length; i++) {
+            if (proposedCombinations[i] != null)
+                results[i] = secretCombination.getResult(proposedCombinations[i]);
+        }
+        return results;
+    }
 
-	void set(ProposedCombination proposedCombination, Result result) {
-		this.proposedCombinations.add(proposedCombination);
-		this.results.add(result);
-	}
-	
-	ProposedCombination getProposedCombination(int position){
-		return this.proposedCombinations.get(position);
-	}
-	
-	Result getResult(int position){
-		return this.results.get(position);
-	}
-	
-	int getSize() {
-		return proposedCombinations.size();
-	}
-	
-	int getAttempts(){
-		return this.attempts;
-	}
+    int getAttempts() {
+        for (int i = 0; i < Board.MAX_ATTEMPTS; i++) {
+            if (this.proposedCombinationsStrings[i] == null) return i;
+        }
+        return Board.MAX_ATTEMPTS;
+    }
 
 }

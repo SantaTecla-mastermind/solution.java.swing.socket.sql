@@ -11,7 +11,7 @@ public class WhitesDispatcher extends Dispatcher {
 	@Override
 	public void dispatch() {
 		int position = this.tcpip.receiveInt();
-		this.tcpip.send(((PlayController)this.acceptorController).getWhites(position));
+		this.tcpip.send(this.acceptorController.getWhites(position));
 	}
 
 }

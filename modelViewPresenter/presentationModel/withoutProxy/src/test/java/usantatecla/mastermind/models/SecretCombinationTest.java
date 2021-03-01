@@ -1,51 +1,53 @@
 package usantatecla.mastermind.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import usantatecla.mastermind.types.Color;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.when;
 
-import org.junit.jupiter.api.Test;
-import usantatecla.mastermind.types.*;
-
+@ExtendWith(MockitoExtension.class)
 public class SecretCombinationTest {
+
     private SecretCombination secretCombination;
+
+    @Mock
     private ProposedCombination proposedCombination;
 
-   public SecretCombinationTest () {
+    @BeforeEach
+    public void beforeEach() {
         this.secretCombination = new SecretCombination();
-        List<Color> colors = new ArrayList<Color>();
-        colors.add(Color.BLUE);
-        colors.add(Color.GREEN);
-        colors.add(Color.ORANGE);
-        colors.add(Color.PURPLE);
-        this.secretCombination.colors = colors;
+    }
 
-}
+    @Test
+    public void testGivenSecretCombinationAndWinnerProposedCombinationWhenGetResultThenIsWinner() {
+        when(this.proposedCombination.contains(any(Color.class), anyInt())).thenReturn(true);
+        when(this.proposedCombination.contains(any(Color.class))).thenReturn(true);
+        Result result = secretCombination.getResult(this.proposedCombination);
+        assertThat(result.isWinner(),is(true));
+    }
 
-@Test
-public void testGetResultObtainBlackAndWhitesThenGet2BlacksAnd2Whites(){
-    List<Color> colors2 = new ArrayList<>();
-        colors2.add(Color.GREEN);
-        colors2.add(Color.BLUE);
-        colors2.add(Color.ORANGE);
-        colors2.add(Color.PURPLE);
-        Result result = this.secretCombination.getResult(new ProposedCombination(colors2));
-        assertThat(result.getBlacks(), is(2));
-        assertThat(result.getWhites(), is(2));
-}
+    @Test
+    public void testGivenSecretCombinationAndProposedCombinationWhenGetResultThen0blacksAnd0Whites() {
+        when(this.proposedCombination.contains(any(Color.class), anyInt())).thenReturn(false);
+        when(this.proposedCombination.contains(any(Color.class))).thenReturn(false);
+        Result result = secretCombination.getResult(this.proposedCombination);
+        assertThat(result ,is(new Result(0,0)));
+    }
 
-@Test
-public void testGetResultObtainBlackAndWhitesThenGet4BlacksAnd0Whites(){
-    List<Color> colors2 = new ArrayList<>();
-        colors2.add(Color.BLUE);
-        colors2.add(Color.GREEN);
-        colors2.add(Color.ORANGE);
-        colors2.add(Color.PURPLE);
-        Result result = this.secretCombination.getResult(new ProposedCombination(colors2));
-        assertThat(result.getBlacks(), is(4));
-        assertThat(result.getWhites(), is(0));
-}
+    @Test
+    public void testGivenSecretCombinationAndProposedCombinationWhenGetResultThen2blacksAnd2Whites() {
+        when(this.proposedCombination.contains(any(Color.class), anyInt())).thenReturn(true, true, false);
+        when(this.proposedCombination.contains(any(Color.class))).thenReturn(true);
+        Result result = secretCombination.getResult(this.proposedCombination);
+        assertThat(result ,is(new Result(2,2)));
+    }
 
 }

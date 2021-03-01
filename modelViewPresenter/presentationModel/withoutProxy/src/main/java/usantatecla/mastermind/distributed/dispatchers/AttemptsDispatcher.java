@@ -10,7 +10,7 @@ public class AttemptsDispatcher extends Dispatcher {
 
 	@Override
 	public void dispatch() {
-		this.tcpip.send(((PlayController)this.acceptorController).getAttempts());
+		this.tcpip.send(this.acceptorController.getAttempts());
 	}
 
 }

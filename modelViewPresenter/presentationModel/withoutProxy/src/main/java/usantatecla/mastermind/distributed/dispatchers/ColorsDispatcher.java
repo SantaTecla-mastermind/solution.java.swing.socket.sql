@@ -14,7 +14,7 @@ public class ColorsDispatcher extends Dispatcher {
 	@Override
 	public void dispatch() {
 		int position = this.tcpip.receiveInt();
-		List<Color> colors = ((PlayController) this.acceptorController).getColors(position);
+		List<Color> colors = this.acceptorController.getProposedCombinationColors(position);
 		this.tcpip.send(colors.size());
 		for (Color color: colors) {
 			this.tcpip.send(color);

@@ -6,8 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
+
 public class SessionBuilder {
+
+    private Session session;
     private List<String> proposedCombinationsStrings;
+    private StateValue stateValue;
+    private Integer blacks;
+    private Integer whites;
 
     public SessionBuilder() {
         this.proposedCombinationsStrings = new ArrayList<>();
@@ -16,57 +25,52 @@ public class SessionBuilder {
     public SessionBuilder proposedCombinations(String... proposedCombinations) {
         assert proposedCombinations.length <= 10;
         for (String proposedCombination : proposedCombinations) {
-            assert Pattern.matches("[rgbyop]{4}", proposedCombination);
+            assert Pattern.matches("[" + Color.getAllInitials() + "]{4}", proposedCombination);
             this.proposedCombinationsStrings.add(proposedCombination);
         }
         return this;
     }
 
     public SessionBuilder proposedCombinations(int times, String proposedCombination) {
-        assert Pattern.matches("[rgbyop]{4}", proposedCombination);
+        assert Pattern.matches("[" + Color.getAllInitials() + "]{4}", proposedCombination);
         for (int i = 0; i < times; i++) {
             this.proposedCombinationsStrings.add(proposedCombination);
         }
         return this;
     }
 
+    public SessionBuilder state(StateValue stateValue) {
+        this.stateValue = stateValue;
+        return this;
+    }
+
+    public SessionBuilder blacks(int blacks) {
+        this.blacks = blacks;
+        return this;
+    }
+
+    public SessionBuilder whites(int whites) {
+        this.whites = whites;
+        return this;
+    }
+
     public Session build() {
-        if (this.proposedCombinationsStrings.isEmpty())
-            return new Session(null);
-
-        Session session = new Session(null);
-        for (String proposedCombinationsString : this.proposedCombinationsStrings) {
-            this.setProposedCombination(session, proposedCombinationsString);
+        this.session = spy(new Session());
+        if(this.stateValue != null) {
+            while (this.stateValue != this.session.getValueState()) {
+                this.session.nextState();
+            }
         }
-        return session;
+        if (this.blacks != null && this.whites != null) {
+            doReturn(this.blacks).when(this.session).getBlacks(any(Integer.class));
+            doReturn(this.whites).when(this.session).getWhites(any(Integer.class));
+        }
+        if (!this.proposedCombinationsStrings.isEmpty()) {
+            for (String proposedCombinationsString : this.proposedCombinationsStrings) {
+                this.session.add(Color.get(proposedCombinationsString));
+            }
+        }
+        return this.session;
     }
 
-    private void setProposedCombination(Session session, String proposedCombinationString) {
-        ProposedCombination proposedCombination = new ProposedCombination(new ArrayList<>());
-        for (int i = 0; i < proposedCombinationString.length(); i++) {
-            Color color = this.getColor(proposedCombinationString.charAt(i));
-            proposedCombination.colors.add(color);
-        }
-
-        session.addProposedCombination(proposedCombination.colors);
-    }
-
-    private Color getColor(char character) {
-        switch (character) {
-            case 'r':
-                return Color.RED;
-            case 'g':
-                return Color.GREEN;
-            case 'b':
-                return Color.BLUE;
-            case 'y':
-                return Color.YELLOW;
-            case 'o':
-                return Color.ORANGE;
-            case 'p':
-                return Color.PURPLE;
-            default:
-                return Color.NULL;
-        }
-    }
 }

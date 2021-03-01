@@ -7,7 +7,7 @@ import java.net.Socket;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 
-public class TCPIP extends usantatecla.utils.TCPIP {
+public class TCPIP extends usantatecla.utils.models.TCPIP {
 
 	public static TCPIP createClientSocket() {
 		try {

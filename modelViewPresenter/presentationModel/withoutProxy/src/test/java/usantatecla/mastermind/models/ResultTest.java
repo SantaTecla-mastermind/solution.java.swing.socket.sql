@@ -1,42 +1,41 @@
 package usantatecla.mastermind.models;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.Matchers.is;
 
 public class ResultTest {
-    private Result result;
 
-    public ResultTest(){
-        this.result = new Result(2, 1);
+    private static final int MIN_VALUE = 0;
+
+    @Test
+    public void testGivenOutOfBoundsParametersWhenConstructThenAssertionError() {
+        Assertions.assertThrows(AssertionError.class, () -> new Result(ResultTest.MIN_VALUE - 1, ResultTest.MIN_VALUE));
+        Assertions.assertThrows(AssertionError.class, () -> new Result(ResultTest.MIN_VALUE, ResultTest.MIN_VALUE - 1));
+        Assertions.assertThrows(AssertionError.class, () -> new Result(Result.WIDTH + 1, ResultTest.MIN_VALUE));
+        Assertions.assertThrows(AssertionError.class, () -> new Result(ResultTest.MIN_VALUE, Result.WIDTH + 1));
     }
 
     @Test
-    public void testGetBlacksThenGet2(){
-        assertThat(this.result.getBlacks(), is(2));
+    public void testGivenResultWhenGetBlacksThenReturn() {
+        assertThat(new Result(Result.WIDTH, ResultTest.MIN_VALUE).getBlacks(), is(Result.WIDTH));
     }
 
     @Test
-    public void testGetWhitesThenGet1(){
-        assertThat(this.result.getWhites(), is(1));
+    public void testGivenResultWhenGetWhitesThenReturn() {
+        assertThat(new Result(Result.WIDTH - 1, ResultTest.MIN_VALUE + 1).getWhites(), is(ResultTest.MIN_VALUE + 1));
     }
 
     @Test
-    public void testCopyResult(){
-        Result resultcopy = this.result.copy();
-        assertThat(resultcopy.getBlacks(), is(this.result.getBlacks()));
-        assertThat(resultcopy.getWhites(), is(this.result.getWhites()));
+    public void testGivenWinnerResultWhenIsWinnerThenTrue() {
+        assertThat(new Result(Result.WIDTH, ResultTest.MIN_VALUE).isWinner(), is(true));
     }
 
     @Test
-    public void testIsWinnerThenReturnFalse(){
-        assertThat(this.result.isWinner(), is(false));
-    }
-
-    @Test
-    public void testIsWinnerThenReturnTrue(){
-        Result result2 = new Result(4,0);
-        assertThat(result2.isWinner(), is(true));
+    public void testGivenNotWinnerResultWhenIsWinnerThenFalse() {
+        assertThat(new Result(Result.WIDTH - 1, ResultTest.MIN_VALUE + 1).isWinner(), is(false));
     }
 
 }

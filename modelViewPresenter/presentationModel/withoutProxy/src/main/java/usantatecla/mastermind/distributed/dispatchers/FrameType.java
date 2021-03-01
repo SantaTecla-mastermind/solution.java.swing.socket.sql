@@ -1,21 +1,21 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
-public enum FrameType { 
-	START, 
-	STATE,
+public enum FrameType {
+
+	NEXT_STATE,
 	UNDO, 
 	REDO, 
 	UNDOABLE, 
-	REDOABLE, 
-	WINNER, 
-	LOOSER, 
+	REDOABLE,
+	ADD_PROPOSED_COMBINATION,
+	ERROR,
+	FINISHED,
+	WINNER,
 	ATTEMPTS, 
-	COLORS, 
-	PROPOSECOMBINATION, 
-	WIDTH,
-	NEW_GAME,
+	COLORS,
 	BLACKS,
 	WHITES,
+	RESET,
 	CLOSE;
 
 	public static FrameType parser(String string) {

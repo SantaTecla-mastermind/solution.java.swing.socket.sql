@@ -11,7 +11,7 @@ public class BlacksDispatcher extends Dispatcher {
 	@Override
 	public void dispatch() {
 		int position = this.tcpip.receiveInt();
-		this.tcpip.send(((PlayController)this.acceptorController).getBlacks(position));
+		this.tcpip.send(this.acceptorController.getBlacks(position));
 	}
 
 }

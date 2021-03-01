@@ -1,35 +1,34 @@
 package usantatecla.mastermind.models;
 
-import java.util.List;
-
-import usantatecla.mastermind.distributed.dispatchers.FrameType;
 import usantatecla.mastermind.types.Color;
-import usantatecla.utils.TCPIP;
+import usantatecla.mastermind.types.Error;
+
+import java.util.List;
 
 public class Session {
 
 	private State state;
-
-	private Game game;
-
+	private Board board;
 	private Registry registry;
-
-	private TCPIP tcpip;
-
-	public Session(TCPIP tcpip) {
+	
+	public Session() {
 		this.state = new State();
-		this.game = new Game();
-		this.registry = new Registry(this.game);
-		this.tcpip = tcpip;
+		this.board = new Board();
+		this.registry = new Registry(this.board);
 	}
 
-	public void next() {
-		this.state.next();
+	public void reset() {
+		this.board.reset();
+		this.state.reset();
+		this.registry.reset();
 	}
 
-	public void addProposedCombination(List<Color> colors) {
-		this.game.addProposedCombination(colors);
-		this.registry.registry();
+	public void nextState() {
+		this.state.next();		
+	}
+
+	public StateValue getValueState() {
+		return this.state.getValueState();
 	}
 
 	public boolean undoable() {
@@ -41,57 +40,44 @@ public class Session {
 	}
 
 	public void undo() {
-		this.registry.undo(this.game);
+		this.registry.undo();
 	}
 
 	public void redo() {
-		this.registry.redo(this.game);
+		this.registry.redo();
 	}
 
-	public void clearGame() {
-		this.game.clear();
-		this.state.reset();
-		this.registry.reset();
-	}
-
-	public boolean isWinner() {
-		return this.game.isWinner();
-	}
-
-	public boolean isLooser() {
-		return this.game.isLooser();
-	}
-
-	public int getWidth() {
-		if (this.tcpip == null) {
-			return this.game.getWidth();
-		}
-		this.tcpip.send(FrameType.WIDTH.name());
-		return this.tcpip.receiveInt();
-	}
-
-	public int getAttempts() {
-		return this.game.getAttempts();
-	}
-
-	public List<Color> getColors(int position) {
-		return this.game.getColors(position);
+	public void add(List<Color> colors) {
+		this.board.add(colors);
+		this.registry.register();
 	}
 
 	public int getBlacks(int position) {
-		return this.game.getBlacks(position);
+		return this.board.getBlacks(position);
 	}
 
 	public int getWhites(int position) {
-		return this.game.getWhites(position);
+		return this.board.getWhites(position);
 	}
 
-	public StateValue getValueState() {
-		if (this.tcpip == null) {
-			return this.state.getValueState();
-		}
-		this.tcpip.send(FrameType.STATE.name());
-		return StateValue.values()[this.tcpip.receiveInt()];
+	public List<Color> getProposedCombinationColors(int position) {
+		return this.board.getProposedCombinationColors(position);
+	}
+
+	public Error getError(List<Color> colors) {
+		return this.board.getError(colors);
+	}
+
+	public int getAttempts() {
+		return this.board.getAttempts();
+	}
+
+	public boolean isFinished() {
+		return this.board.isFinished();
+	}
+
+	public boolean isWinner() {
+		return this.board.isWinner();
 	}
 
 }

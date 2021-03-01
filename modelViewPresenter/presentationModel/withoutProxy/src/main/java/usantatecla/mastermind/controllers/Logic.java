@@ -1,48 +1,44 @@
 package usantatecla.mastermind.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
+import usantatecla.mastermind.distributed.dispatchers.TCPIP;
 import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.models.StateValue;
-import usantatecla.mastermind.distributed.dispatchers.TCPIP;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Logic {
-	
-	protected Session session;
-	
-	protected Map<StateValue, AcceptorController> acceptorControllers;
 
-	protected StartController startController;
+    private Session session;
+    private Map<StateValue, AcceptorController> acceptorControllers;
+    protected StartController startController;
+    protected PlayController playController;
+    protected ResumeController resumeController;
+    private TCPIP tcpip;
 
-	protected PlayController playController;
+    public Logic(Session session, boolean isStandalone) {
+        if (isStandalone) {
+            this.tcpip = null;
+        } else {
+            this.tcpip = TCPIP.createClientSocket();
+        }
+        this.session = session;
+        this.acceptorControllers = new HashMap<>();
+        this.startController = new StartController(this.session, this.tcpip);
+        this.acceptorControllers.put(StateValue.INITIAL, this.startController);
+        this.playController = new PlayController(this.session, this.tcpip);
+        this.acceptorControllers.put(StateValue.IN_GAME, this.playController);
+        this.resumeController = new ResumeController(this.session, this.tcpip);
+        this.acceptorControllers.put(StateValue.RESUME, this.resumeController);
+        this.acceptorControllers.put(StateValue.EXIT, null);
+    }
 
-	protected ResumeController resumeController;
-	
-	private TCPIP tcpip;
-	
-	public Logic (Boolean isStandalone) {
-		if (isStandalone) {
-			this.tcpip = null;
-		} else {
-			this.tcpip = TCPIP.createClientSocket();
-		}
-		this.session = new Session(this.tcpip);
-		this.acceptorControllers = new HashMap<>();
-		this.startController = new StartController(this.session, this.tcpip);
-		this.acceptorControllers.put(StateValue.INITIAL, this.startController);
-		this.playController = new PlayController(this.session, this.tcpip);
-		this.acceptorControllers.put(StateValue.IN_GAME, this.playController);
-		this.resumeController = new ResumeController(this.session, this.tcpip);
-		this.acceptorControllers.put(StateValue.FINAL, this.resumeController);
-		this.acceptorControllers.put(StateValue.EXIT, null);
-	}
-	
-	public AcceptorController getController() {
-		return this.acceptorControllers.get(this.session.getValueState());
-	}
+    public AcceptorController getController() {
+        return this.acceptorControllers.get(this.session.getValueState());
+    }
 
-	public void close() {
-		this.tcpip.close();
-	}
-	
+    public void close() {
+        this.tcpip.close();
+    }
+
 }

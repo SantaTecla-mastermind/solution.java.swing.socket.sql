@@ -504,11 +504,11 @@ class  usantatecla.mastermind.distributed.LogicServer{
 Logic <|-down- usantatecla.mastermind.distributed.LogicServer
 usantatecla.mastermind.distributed.LogicServer .down.> DispatcherPrototype
 
-class  usantatecla.mastermind.distributed.MastermindClient{
+class  usantatecla.mastermind.distributed.ConsoleMastermindClient{
     # isStandalone(): Boolean
     + {static} main(String[])
 }
-Mastermind <|-down- usantatecla.mastermind.distributed.MastermindClient
+Mastermind <|-down- usantatecla.mastermind.distributed.ConsoleMastermindClient
 
 class usantatecla.mastermind.distributed.MastermindServer{
     - MastermindServer()
@@ -594,13 +594,13 @@ class  usantatecla.mastermind.distributed.dispatchers.LooserDispatcher{
 usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.LooserDispatcher
 usantatecla.mastermind.distributed.dispatchers.LooserDispatcher .down.> PlayController
 
-class  usantatecla.mastermind.distributed.dispatchers.ProposeCombinationDispatcher{
+class  usantatecla.mastermind.distributed.dispatchers.AddProposedCombinationDispatcher{
 + ProposeCombinationDispatcher(PlayController)
 + dispatch()
 }
-usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.ProposeCombinationDispatcher
-usantatecla.mastermind.distributed.dispatchers.ProposeCombinationDispatcher .down.> PlayController
-usantatecla.mastermind.distributed.dispatchers.ProposeCombinationDispatcher .down.> Color
+usantatecla.mastermind.distributed.dispatchers.Dispatcher <|-down- usantatecla.mastermind.distributed.dispatchers.AddProposedCombinationDispatcher
+usantatecla.mastermind.distributed.dispatchers.AddProposedCombinationDispatcher .down.> PlayController
+usantatecla.mastermind.distributed.dispatchers.AddProposedCombinationDispatcher .down.> Color
 
 class  usantatecla.mastermind.distributed.dispatchers.RedoableDispatcher{
 + RedoableDispatcher(PlayController)
