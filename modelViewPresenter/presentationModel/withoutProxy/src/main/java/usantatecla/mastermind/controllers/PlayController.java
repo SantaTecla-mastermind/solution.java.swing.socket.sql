@@ -60,6 +60,10 @@ public class PlayController extends AcceptorController {
             return this.proposalController.getError(colors);
         } else {
             this.tcpip.send(FrameType.ERROR.name());
+            this.tcpip.send(colors.size());
+            for (Color color : colors) {
+                this.tcpip.send(color);
+            }
             return this.tcpip.receiveError();
         }
     }

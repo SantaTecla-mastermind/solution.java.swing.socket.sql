@@ -13,6 +13,7 @@ public enum FrameType {
 	WINNER,
 	ATTEMPTS, 
 	COLORS,
+	STATE_VALUE,
 	BLACKS,
 	WHITES,
 	RESET,

@@ -3,6 +3,7 @@ package usantatecla.mastermind.controllers;
 import usantatecla.mastermind.distributed.dispatchers.FrameType;
 import usantatecla.mastermind.distributed.dispatchers.TCPIP;
 import usantatecla.mastermind.models.Session;
+import usantatecla.mastermind.models.StateValue;
 import usantatecla.mastermind.types.Color;
 
 import java.util.ArrayList;
@@ -22,6 +23,15 @@ public abstract class AcceptorController extends Controller {
 			this.session.nextState();
 		} else {
 			this.tcpip.send(FrameType.NEXT_STATE.name());
+		}
+	}
+
+	public StateValue getStateValue() {
+		if (this.tcpip == null) {
+			return this.session.getValueState();
+		} else {
+			this.tcpip.send(FrameType.STATE_VALUE.name());
+			return StateValue.valueOf(this.tcpip.receiveLine());
 		}
 	}
 

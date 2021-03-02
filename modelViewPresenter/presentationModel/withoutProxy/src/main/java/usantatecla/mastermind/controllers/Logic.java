@@ -34,7 +34,7 @@ public class Logic {
     }
 
     public AcceptorController getController() {
-        return this.acceptorControllers.get(this.session.getValueState());
+        return this.acceptorControllers.get(this.playController.getStateValue());
     }
 
     public void close() {

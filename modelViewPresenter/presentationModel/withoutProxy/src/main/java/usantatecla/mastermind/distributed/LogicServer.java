@@ -23,6 +23,7 @@ public class LogicServer extends Logic {
 		dispatcherPrototype.add(FrameType.ERROR, new ErrorDispatcher(this.playController));
 		dispatcherPrototype.add(FrameType.ADD_PROPOSED_COMBINATION,
 				new AddProposedCombinationDispatcher(this.playController));
+		dispatcherPrototype.add(FrameType.STATE_VALUE, new StateValueDispatcher(this.playController));
 		dispatcherPrototype.add(FrameType.BLACKS, new BlacksDispatcher(this.playController));
 		dispatcherPrototype.add(FrameType.WHITES, new WhitesDispatcher(this.playController));
 		dispatcherPrototype.add(FrameType.RESET, new ResetDispatcher(this.resumeController));

@@ -10,6 +10,6 @@ public class FinishedDispatcher extends Dispatcher {
 
     @Override
     public void dispatch() {
-        ((PlayController)this.acceptorController).isFinished();
+        this.tcpip.send(((PlayController)this.acceptorController).isFinished());
     }
 }
