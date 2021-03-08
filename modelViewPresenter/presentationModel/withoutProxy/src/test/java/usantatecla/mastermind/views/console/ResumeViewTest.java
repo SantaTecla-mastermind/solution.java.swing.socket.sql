@@ -27,7 +27,7 @@ public class ResumeViewTest {
 
     @BeforeEach
     public void beforeEach(){
-        this.resumeController = new ResumeController(new Session());
+        this.resumeController = new ResumeController(new Session(), null);
         this.resumeView = new ResumeView();
     }
 

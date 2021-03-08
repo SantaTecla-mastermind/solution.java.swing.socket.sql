@@ -31,7 +31,7 @@ public class PlayViewTest {
 
     @BeforeEach
     public void beforeEach(){
-        this.playController = new PlayController(this.session);
+        this.playController = new PlayController(this.session, null);
         this.playView = new PlayView();
     }
 

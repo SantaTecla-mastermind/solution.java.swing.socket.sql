@@ -24,7 +24,7 @@ public class StartViewTest {
 
     @BeforeEach
     public void beforeEach(){
-        this.startController = new StartController(new Session());
+        this.startController = new StartController(new Session(), null);
         this.startView = new StartView();
     }
 

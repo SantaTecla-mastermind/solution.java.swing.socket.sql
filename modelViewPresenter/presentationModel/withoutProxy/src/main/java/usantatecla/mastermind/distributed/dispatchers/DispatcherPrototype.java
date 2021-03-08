@@ -23,7 +23,7 @@ public class DispatcherPrototype {
 		FrameType frameType;
 		do {
 			String string = this.tcpip.receiveLine();
-			frameType = FrameType.parser(string);
+			frameType = FrameType.valueOf(string);
 			if (frameType != FrameType.CLOSE) {
 				this.dispatch(frameType);
 			}
@@ -32,8 +32,8 @@ public class DispatcherPrototype {
 	}
 
 	private void dispatch(FrameType frameType) {
-		Dispatcher d = this.dispatcherMap.get(frameType);
-		d.dispatch();
+		Dispatcher dispatcher = this.dispatcherMap.get(frameType);
+		dispatcher.dispatch();
 	}
 
 }

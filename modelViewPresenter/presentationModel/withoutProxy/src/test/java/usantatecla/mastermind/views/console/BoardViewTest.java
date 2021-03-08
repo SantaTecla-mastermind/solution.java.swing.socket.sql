@@ -37,7 +37,7 @@ public class BoardViewTest {
     public void testGivenBoardViewWhenWriteWithEmptyBoardThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.boardView.write(new StartController(new Session()));
+            this.boardView.write(new StartController(new Session(), null));
             String[] strings = {
                     "0 attempt(s): ",
                     "****"
@@ -56,7 +56,7 @@ public class BoardViewTest {
                     .proposedCombinations(3, "rgby")
                     .blacks(2).whites(2)
                     .build();
-            StartController startController = new StartController(session);
+            StartController startController = new StartController(session, null);
             this.boardView.write(startController);
             String string = this.conversor.arrayToString(new String[]{
                     "3 attempt(s): ",
