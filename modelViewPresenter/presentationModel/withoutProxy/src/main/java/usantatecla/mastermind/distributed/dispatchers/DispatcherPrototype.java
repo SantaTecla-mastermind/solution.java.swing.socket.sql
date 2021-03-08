@@ -31,7 +31,7 @@ public class DispatcherPrototype {
 		this.tcpip.close();		
 	}
 
-	private void dispatch(FrameType frameType) {
+	void dispatch(FrameType frameType) {
 		Dispatcher dispatcher = this.dispatcherMap.get(frameType);
 		dispatcher.dispatch();
 	}

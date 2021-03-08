@@ -22,7 +22,7 @@ public abstract class Menu {
 				commands.add(this.commandList.get(i));
 			}
 		}
-		assert commands.size() > 0; // TODO ¿Menú sin comandos activos incluido en el dominio?
+		assert commands.size() > 0;
 
 		boolean error;
 		int option;

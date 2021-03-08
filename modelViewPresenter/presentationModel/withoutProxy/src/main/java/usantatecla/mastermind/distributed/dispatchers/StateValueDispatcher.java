@@ -10,7 +10,7 @@ public class StateValueDispatcher extends Dispatcher {
 
     @Override
     public void dispatch() {
-        this.tcpip.send(this.acceptorController.getStateValue().toString());
+        this.tcpip.send(this.acceptorController.getStateValue().name());
     }
 
 }
