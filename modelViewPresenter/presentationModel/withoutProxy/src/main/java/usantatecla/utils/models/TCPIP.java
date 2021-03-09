@@ -32,8 +32,12 @@ public class TCPIP {
 	}
 
 	public void send(String value) {
-		this.out.println(value);
+		this.println(value);
 		this.out.flush();
+	}
+
+	void println(String value) {
+		this.out.println(value);
 	}
 
 	public void send(int value) {
@@ -47,37 +51,30 @@ public class TCPIP {
 	public String receiveLine() {
 		String result = null;
 		try {
-			result = this.in.readLine();
-		} catch (IOException e) {
-			System.out.println("Error en servidor!!! Lectura de string");
-		}
-		return result;
-	}
-
-	public boolean receiveBoolean() {
-		boolean result = false;
-		try {
-			result = Boolean.parseBoolean(this.in.readLine());
+			result = this.readLine();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	String readLine() throws IOException {
+		return this.in.readLine();
 	}
 
 	public int receiveInt() {
-		int result = -1;
-		try {
-			result = Integer.parseInt(this.in.readLine());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return result;
+		String line = this.receiveLine();
+		return line != null ? Integer.getInteger(line) : -1;
+	}
+
+	public boolean receiveBoolean() {
+		String line = this.receiveLine();
+		return line != null ? Boolean.getBoolean(line) : false;
 	}
 
 	public void close() {
 		try {
-			this.in.close();
-			this.out.close();
+			this.closeInAndOut();
 			this.socket.close();
 			if (this.serverSocket != null) {
 				this.serverSocket.close();
@@ -85,6 +82,11 @@ public class TCPIP {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+
+	void closeInAndOut() throws IOException {
+		this.in.close();
+		this.out.close();
 	}
 
 }
