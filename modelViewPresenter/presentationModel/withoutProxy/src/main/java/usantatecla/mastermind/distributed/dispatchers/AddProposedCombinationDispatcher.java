@@ -1,10 +1,10 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.types.Color;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddProposedCombinationDispatcher extends Dispatcher {
 

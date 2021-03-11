@@ -1,11 +1,11 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
+import usantatecla.mastermind.types.Color;
+import usantatecla.mastermind.types.Error;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-import usantatecla.mastermind.types.Color;
-import usantatecla.mastermind.types.Error;
 
 public class TCPIP extends usantatecla.utils.models.TCPIP {
 

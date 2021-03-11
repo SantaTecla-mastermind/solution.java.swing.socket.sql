@@ -1,18 +1,17 @@
 package usantatecla.mastermind.controllers;
 
+import org.junit.jupiter.api.Test;
+import usantatecla.mastermind.distributed.dispatchers.FrameType;
+import usantatecla.mastermind.types.Color;
+import usantatecla.mastermind.types.Error;
+
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
-import java.util.List;
-
-import org.junit.jupiter.api.Test;
-
-import usantatecla.mastermind.distributed.dispatchers.FrameType;
-import usantatecla.mastermind.types.Color;
-import usantatecla.mastermind.types.Error;
 
 public class PlayControllerTest extends AcceptorControllerTest {
 

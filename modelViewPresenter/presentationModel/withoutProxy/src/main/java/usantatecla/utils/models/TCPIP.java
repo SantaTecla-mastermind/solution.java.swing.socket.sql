@@ -36,7 +36,7 @@ public class TCPIP {
 		this.out.flush();
 	}
 
-	void println(String value) {
+	protected void println(String value) {
 		this.out.println(value);
 	}
 
@@ -58,18 +58,18 @@ public class TCPIP {
 		return result;
 	}
 
-	String readLine() throws IOException {
+	protected String readLine() throws IOException {
 		return this.in.readLine();
 	}
 
 	public int receiveInt() {
 		String line = this.receiveLine();
-		return line != null ? Integer.getInteger(line) : -1;
+		return line != null ? Integer.parseInt(line) : -1;
 	}
 
 	public boolean receiveBoolean() {
 		String line = this.receiveLine();
-		return line != null ? Boolean.getBoolean(line) : false;
+		return line != null && Boolean.getBoolean(line);
 	}
 
 	public void close() {
@@ -84,7 +84,7 @@ public class TCPIP {
 		}
 	}
 
-	void closeInAndOut() throws IOException {
+	protected void closeInAndOut() throws IOException {
 		this.in.close();
 		this.out.close();
 	}

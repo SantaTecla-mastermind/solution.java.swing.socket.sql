@@ -1,10 +1,9 @@
 package usantatecla.mastermind.controllers;
 
-import static org.mockito.Mockito.verify;
-
 import org.junit.jupiter.api.Test;
-
 import usantatecla.mastermind.distributed.dispatchers.FrameType;
+
+import static org.mockito.Mockito.verify;
 
 public class ResumeControllerTest extends AcceptorControllerTest {
     

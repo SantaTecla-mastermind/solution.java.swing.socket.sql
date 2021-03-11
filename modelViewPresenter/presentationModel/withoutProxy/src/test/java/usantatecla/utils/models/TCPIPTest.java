@@ -1,12 +1,10 @@
 package usantatecla.utils.models;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,54 +12,57 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class TCPIPTest {
 
     @Mock
-    private ServerSocket serverSocket;
+    protected ServerSocket serverSocket;
 
     @Mock
-    private Socket socket;
+    protected Socket socket;
 
     @Mock
-    private OutputStream outputStream;
+    protected OutputStream outputStream;
 
     @Mock
-    private InputStream inputStream;
+    protected InputStream inputStream;
 
-    private TCPIP tcpip;
+    protected TCPIP tcpip;
+
+    protected TCPIP getTCPIP() {
+        return new TCPIP(this.serverSocket, this.socket);
+    }
 
     @BeforeEach
     public void beforeEach() throws IOException {
         when(this.socket.getOutputStream()).thenReturn(this.outputStream);
         when(this.socket.getInputStream()).thenReturn(this.inputStream);
-        this.tcpip = spy(new TCPIP(this.serverSocket, this.socket));
+        this.tcpip = spy(this.getTCPIP());
     }
 
     @Test
     public void testGivenTCPIPWhenSendStringThenCorrect() {
         String value = "value";
         this.tcpip.send(value);
-        verify(this.tcpip).send(value);
+        verify(this.tcpip).println(value);
     }
 
     @Test
     public void testGivenTCPIPWhenSendNumberThenCorrect() {
         int number = 1;
         this.tcpip.send(number);
-        verify(this.tcpip).send(String.valueOf(number));
+        verify(this.tcpip).println(String.valueOf(number));
     }
 
     @Test
     public void testGivenTCPIPWhenSendBooleanThenCorrect() {
         this.tcpip.send(false);
-        verify(this.tcpip).send(String.valueOf(false));
+        verify(this.tcpip).println(String.valueOf(false));
     }
 
     @Test
@@ -74,7 +75,7 @@ public class TCPIPTest {
     @Test
     public void testGivenTCPIPWhenReceiveLineThenReturnError() throws IOException {
         doThrow(IOException.class).when(this.tcpip).readLine();
-        assertThat(this.tcpip.receiveLine(), is(null));
+        assertNull(this.tcpip.receiveLine());
     }
 
     @Test

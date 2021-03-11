@@ -1,9 +1,9 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
-import java.util.List;
-
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.types.Color;
+
+import java.util.List;
 
 public class ColorsDispatcher extends Dispatcher {
 
