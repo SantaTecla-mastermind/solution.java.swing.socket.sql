@@ -69,7 +69,7 @@ public class TCPIP {
 
 	public boolean receiveBoolean() {
 		String line = this.receiveLine();
-		return line != null && Boolean.getBoolean(line);
+		return Boolean.parseBoolean(line);
 	}
 
 	public void close() {
