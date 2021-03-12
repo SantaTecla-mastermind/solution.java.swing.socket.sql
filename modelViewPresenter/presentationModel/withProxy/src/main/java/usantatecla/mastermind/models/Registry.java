@@ -1,52 +1,53 @@
 package usantatecla.mastermind.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Registry {
+class Registry {
 	
-	private ArrayList<Memento> mementoList;
-	
-	private Game game;
-	
+	private List<Memento> mementos;
+	private Board board;
 	private int firstPrevious;
 	
-	Registry(Game game) {
-		this.game = game;
-		this.mementoList = new ArrayList<Memento>();
-		this.mementoList.add(firstPrevious, this.game.createMemento());
-		this.firstPrevious = 0;
+	Registry(Board board) {
+		this.board = board;
+		this.reset();
 	}
 
-	void registry() {
+	void reset() {
+		this.firstPrevious = 0;
+		this.mementos = new ArrayList<>();
+		this.mementos.add(this.firstPrevious, this.board.createMemento());
+	}
+
+	void register() {
 		for (int i = 0; i < this.firstPrevious; i++) {
-			this.mementoList.remove(0);
+			this.mementos.remove(0);
 		}
 		this.firstPrevious = 0;
-		this.mementoList.add(this.firstPrevious, this.game.createMemento());
+		this.mementos.add(this.firstPrevious, this.board.createMemento());
 	}
 
-	void undo(Game game) {
+	void undo() {
+		assert this.undoable();
+
 		this.firstPrevious++;
-		game.set(this.mementoList.get(this.firstPrevious));
+		this.board.setMemento(this.mementos.get(this.firstPrevious));
 	}
 
-	void redo(Game game) {
+	void redo() {
+		assert this.redoable();
+
 		this.firstPrevious--;
-		game.set(this.mementoList.get(this.firstPrevious));
+		this.board.setMemento(this.mementos.get(this.firstPrevious));
 	}
 
 	boolean undoable() {
-		return this.firstPrevious < this.mementoList.size() - 1;
+		return this.firstPrevious < this.mementos.size() - 1;
 	}
 
 	boolean redoable() {
 		return this.firstPrevious >= 1;
-	}
-
-	public void reset() {
-		this.mementoList = new ArrayList<Memento>();
-		this.mementoList.add(firstPrevious, this.game.createMemento());
-		this.firstPrevious = 0;
 	}
 
 }

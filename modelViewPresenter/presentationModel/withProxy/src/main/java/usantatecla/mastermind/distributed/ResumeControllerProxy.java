@@ -1,23 +1,27 @@
 package usantatecla.mastermind.distributed;
 
-import usantatecla.mastermind.controllers.ResumeController;
+import usantatecla.mastermind.controllers.AcceptorController;
+import usantatecla.mastermind.controllers.ControllersVisitor;
 import usantatecla.mastermind.distributed.dispatchers.FrameType;
+import usantatecla.mastermind.distributed.dispatchers.TCPIP;
 import usantatecla.mastermind.models.Session;
-import usantatecla.utils.TCPIP;
 
-public class ResumeControllerProxy extends ResumeController {
-	
-	private TCPIP tcpip;
+public class ResumeControllerProxy extends AcceptorController {
 
-	public ResumeControllerProxy(Session session, TCPIP tcpip) {
-		super(session);
-		this.tcpip = tcpip;
-	}
+    public ResumeControllerProxy(Session session, TCPIP tcpip) {
+        super(session, tcpip);
+    }
 
-	@Override
-	public void resume(boolean newGame) {
-		this.tcpip.send(FrameType.NEW_GAME.name());
-		this.tcpip.send(newGame);	
-	}
+    public void reset() {
+        if (this.tcpip == null) {
+            this.session.reset();
+        } else {
+            this.tcpip.send(FrameType.RESET.name());
+        }
+    }
+
+    public void accept(ControllersVisitor controllersVisitor) {
+        controllersVisitor.visit(this);
+    }
 
 }

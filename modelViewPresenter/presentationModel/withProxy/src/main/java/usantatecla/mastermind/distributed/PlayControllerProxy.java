@@ -1,99 +1,106 @@
 package usantatecla.mastermind.distributed;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.mastermind.controllers.*;
+import usantatecla.mastermind.distributed.dispatchers.FrameType;
+import usantatecla.mastermind.distributed.dispatchers.TCPIP;
 import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
-import usantatecla.mastermind.distributed.dispatchers.FrameType;
-import usantatecla.mastermind.distributed.dispatchers.TCPIP;
 
-public class PlayControllerProxy extends PlayController {
+import java.util.List;
 
-	private TCPIP tcpip;
+public class PlayControllerProxy extends AcceptorController {
 
-	PlayControllerProxy(Session session, TCPIP tcpip) {
-		super(session);
-		this.tcpip = tcpip;
-	}
+    private ProposalController proposalController;
+    private UndoController undoController;
+    private RedoController redoController;
 
-	@Override
-	public Error addProposedCombination(List<Color> colors) {
-		this.tcpip.send(FrameType.PROPOSECOMBINATION.name());
-		this.tcpip.send(colors.size());
-		for (Color color : colors) {
-			this.tcpip.send(color);
-		}
-		Error error = this.tcpip.receiveError();
-		return error;
-	}
+    public PlayControllerProxy(Session session, TCPIP tcpip) {
+        super(session, tcpip);
+        this.proposalController = new ProposalController(this.session);
+        this.undoController = new UndoController(this.session);
+        this.redoController = new RedoController(this.session);
+    }
 
-	@Override
-	public void undo() {
-		this.tcpip.send(FrameType.UNDO.name());
-	}
+    public boolean undoable() {
+        if (this.tcpip == null) {
+            return this.undoController.undoable();
+        } else {
+            this.tcpip.send(FrameType.UNDOABLE.name());
+            return this.tcpip.receiveBoolean();
+        }
+    }
 
-	@Override
-	public void redo() {
-		this.tcpip.send(FrameType.REDO.name());
-	}
+    public boolean redoable() {
+        if (this.tcpip == null) {
+            return this.redoController.redoable();
+        } else {
+            this.tcpip.send(FrameType.REDOABLE.name());
+            return this.tcpip.receiveBoolean();
+        }
+    }
 
-	@Override
-	public boolean undoable() {
-		this.tcpip.send(FrameType.UNDOABLE.name());
-		return this.tcpip.receiveBoolean();
-	}
+    public void undo() {
+        if (this.tcpip == null) {
+            this.undoController.undo();
+        } else {
+            this.tcpip.send(FrameType.UNDO.name());
+        }
+    }
 
-	@Override
-	public boolean redoable() {
-		this.tcpip.send(FrameType.REDOABLE.name());
-		return this.tcpip.receiveBoolean();
-	}
+    public void redo() {
+        if (this.tcpip == null) {
+            this.redoController.redo();
+        } else {
+            this.tcpip.send(FrameType.REDO.name());
+        }
+    }
 
-	@Override
-	public boolean isWinner() {
-		this.tcpip.send(FrameType.WINNER.name());
-		return this.tcpip.receiveBoolean();
-	}
+    public Error getError(List<Color> colors) {
+        if (this.tcpip == null) {
+            return this.proposalController.getError(colors);
+        } else {
+            this.tcpip.send(FrameType.ERROR.name());
+            this.tcpip.send(colors.size());
+            for (Color color : colors) {
+                this.tcpip.send(color);
+            }
+            return this.tcpip.receiveError();
+        }
+    }
 
-	@Override
-	public boolean isLooser() {
-		this.tcpip.send(FrameType.LOOSER.name());
-		return this.tcpip.receiveBoolean();
-	}
+    public void add(List<Color> colors) {
+        if (this.tcpip == null) {
+            this.proposalController.add(colors);
+        } else {
+            this.tcpip.send(FrameType.ADD_PROPOSED_COMBINATION.name());
+            this.tcpip.send(colors.size());
+            for (Color color : colors) {
+                this.tcpip.send(color);
+            }
+        }
+    }
 
-	@Override
-	public List<Color> getColors(int position) {
-		this.tcpip.send(FrameType.COLORS.name());
-		this.tcpip.send(position);
-		int size = this.tcpip.receiveInt();
-		List<Color> colors = new ArrayList<Color>(); 
-		for (int i = 0; i < size; i++) {
-			colors.add(this.tcpip.receiveColor());
-		}
-		return colors;
-	}
+    public boolean isFinished() {
+        if (this.tcpip == null) {
+            return this.proposalController.isFinished();
+        } else {
+            this.tcpip.send(FrameType.FINISHED.name());
+            return this.tcpip.receiveBoolean();
+        }
+    }
 
-	@Override
-	public int getAttempts() {
-		this.tcpip.send(FrameType.ATTEMPTS.name());
-		return this.tcpip.receiveInt();
-	}
-	
-	@Override
-	public int getBlacks(int position) {
-		this.tcpip.send(FrameType.BLACKS.name());
-		this.tcpip.send(position);
-		return this.tcpip.receiveInt();
-	}
+    public boolean isWinner() {
+        if (this.tcpip == null) {
+            return this.proposalController.isWinner();
+        } else {
+            this.tcpip.send(FrameType.WINNER.name());
+            return this.tcpip.receiveBoolean();
+        }
+    }
 
-	@Override
-	public int getWhites(int position) {
-		this.tcpip.send(FrameType.WHITES.name());
-		this.tcpip.send(position);
-		return this.tcpip.receiveInt();
-	}
+    public void accept(ControllersVisitor controllersVisitor) {
+        controllersVisitor.visit(this);
+    }
 
 }

@@ -3,8 +3,6 @@ package usantatecla.mastermind.distributed.dispatchers;
 import java.util.HashMap;
 import java.util.Map;
 
-import usantatecla.mastermind.distributed.dispatchers.TCPIP;
-
 public class DispatcherPrototype {
 	
 	private TCPIP tcpip;
@@ -13,7 +11,7 @@ public class DispatcherPrototype {
 	
 	public DispatcherPrototype() {
 		this.tcpip = TCPIP.createServerSocket();
-		this.dispatcherMap = new HashMap<FrameType, Dispatcher>();
+		this.dispatcherMap = new HashMap<>();
 	}
 	
 	public void add (FrameType frameType, Dispatcher dispatcher) {
@@ -21,21 +19,21 @@ public class DispatcherPrototype {
 		dispatcher.associate(this.tcpip);
 	}
 
-	public void dispatch(FrameType frameType) {
-		Dispatcher dispatcher = this.dispatcherMap.get(frameType);
-		dispatcher.dispatch();
-	}
-
 	public void serve() {
-		FrameType frameType = null;
+		FrameType frameType;
 		do {
 			String string = this.tcpip.receiveLine();
-			frameType = FrameType.parser(string);
+			frameType = FrameType.valueOf(string);
 			if (frameType != FrameType.CLOSE) {
 				this.dispatch(frameType);
 			}
 		} while (frameType != FrameType.CLOSE);
 		this.tcpip.close();		
+	}
+
+	void dispatch(FrameType frameType) {
+		Dispatcher dispatcher = this.dispatcherMap.get(frameType);
+		dispatcher.dispatch();
 	}
 
 }
