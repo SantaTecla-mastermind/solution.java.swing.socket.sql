@@ -1,6 +1,7 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
 import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
 import usantatecla.mastermind.types.Color;
 
 import java.util.ArrayList;
@@ -8,8 +9,8 @@ import java.util.List;
 
 public class ErrorDispatcher extends Dispatcher {
 
-    public ErrorDispatcher(PlayController playController) {
-        super(playController);
+    public ErrorDispatcher(PlayControllerImplementation playControllerImplementation) {
+        super(playControllerImplementation);
     }
 
     @Override
@@ -19,6 +20,6 @@ public class ErrorDispatcher extends Dispatcher {
         for (int i = 0; i < size; i++) {
             colors.add(this.tcpip.receiveColor());
         }
-        this.tcpip.send(((PlayController) this.acceptorController).getError(colors));
+        this.tcpip.send(((PlayControllerImplementation) this.acceptorControllerImplementation).getError(colors));
     }
 }

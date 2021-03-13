@@ -1,16 +1,16 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
-import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
 
 public class AttemptsDispatcher extends Dispatcher {
 
-	public AttemptsDispatcher(PlayController playController) {
-		super(playController);
+	public AttemptsDispatcher(PlayControllerImplementation playControllerImplementation) {
+		super(playControllerImplementation);
 	}
 
 	@Override
 	public void dispatch() {
-		this.tcpip.send(this.acceptorController.getAttempts());
+		this.tcpip.send(this.acceptorControllerImplementation.getAttempts());
 	}
 
 }

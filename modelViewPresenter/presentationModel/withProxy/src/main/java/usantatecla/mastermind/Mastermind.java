@@ -7,22 +7,19 @@ import usantatecla.mastermind.views.View;
 public abstract class Mastermind {
 
 	private View view;
-	private Logic logic;
+	protected Logic logic;
 
 	protected Mastermind() {
-		this.logic = new Logic(new Session(), this.isStandalone());
+		this.logic = this.createLogic();
 		this.view = this.createView();
 	}
 
 	protected abstract View createView();
 
-	protected abstract Boolean isStandalone();
+	protected abstract Logic createLogic();
 
 	protected void play() {
 		this.view.interact(this.logic);
-		if (!this.isStandalone()) {
-			this.logic.close();
-		}
 	}
 
 }

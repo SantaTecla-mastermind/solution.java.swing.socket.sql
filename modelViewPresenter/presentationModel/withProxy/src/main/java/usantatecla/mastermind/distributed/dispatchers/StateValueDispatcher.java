@@ -1,16 +1,16 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
-import usantatecla.mastermind.controllers.AcceptorController;
+import usantatecla.mastermind.controllers.implementation.AcceptorControllerImplementation;
 
 public class StateValueDispatcher extends Dispatcher {
 
-    public StateValueDispatcher(AcceptorController acceptorController) {
-        super(acceptorController);
+    public StateValueDispatcher(AcceptorControllerImplementation acceptorControllerImplementation) {
+        super(acceptorControllerImplementation);
     }
 
     @Override
     public void dispatch() {
-        this.tcpip.send(this.acceptorController.getStateValue().name());
+        this.tcpip.send(this.acceptorControllerImplementation.getStateValue().name());
     }
 
 }

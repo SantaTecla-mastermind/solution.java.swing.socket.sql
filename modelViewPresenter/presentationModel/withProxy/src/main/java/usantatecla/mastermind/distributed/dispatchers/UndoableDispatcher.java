@@ -1,16 +1,16 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
-import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
 
 public class UndoableDispatcher extends Dispatcher {
 
-	public UndoableDispatcher(PlayController playController) {
-		super(playController);
+	public UndoableDispatcher(PlayControllerImplementation playControllerImplementation) {
+		super(playControllerImplementation);
 	}
 
 	@Override
 	public void dispatch() {
-		this.tcpip.send(((PlayController)this.acceptorController).undoable());
+		this.tcpip.send(((PlayControllerImplementation)this.acceptorControllerImplementation).undoable());
 	}
 
 }

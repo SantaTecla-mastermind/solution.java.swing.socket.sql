@@ -1,6 +1,6 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
-import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
 import usantatecla.mastermind.types.Color;
 
 import java.util.ArrayList;
@@ -8,8 +8,8 @@ import java.util.List;
 
 public class AddProposedCombinationDispatcher extends Dispatcher {
 
-	public AddProposedCombinationDispatcher(PlayController playController) {
-		super(playController);
+	public AddProposedCombinationDispatcher(PlayControllerImplementation playControllerImplementation) {
+		super(playControllerImplementation);
 	}
 
 	@Override
@@ -19,7 +19,7 @@ public class AddProposedCombinationDispatcher extends Dispatcher {
 		for (int i=0; i<size; i++) {
 			colors.add(this.tcpip.receiveColor());
 		}
-		((PlayController) this.acceptorController).add(colors);
+		((PlayControllerImplementation) this.acceptorControllerImplementation).add(colors);
 	}
 
 }

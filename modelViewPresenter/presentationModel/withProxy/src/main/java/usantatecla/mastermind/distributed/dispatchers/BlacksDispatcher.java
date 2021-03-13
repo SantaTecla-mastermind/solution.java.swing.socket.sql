@@ -1,17 +1,17 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
-import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
 
 public class BlacksDispatcher extends Dispatcher {
 
-	public BlacksDispatcher(PlayController playController) {
-		super(playController);
+	public BlacksDispatcher(PlayControllerImplementation playControllerImplementation) {
+		super(playControllerImplementation);
 	}
 
 	@Override
 	public void dispatch() {
 		int position = this.tcpip.receiveInt();
-		this.tcpip.send(this.acceptorController.getBlacks(position));
+		this.tcpip.send(this.acceptorControllerImplementation.getBlacks(position));
 	}
 
 }

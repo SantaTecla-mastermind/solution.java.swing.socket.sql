@@ -1,17 +1,18 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
 import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
 
 public class WhitesDispatcher extends Dispatcher {
 
-	public WhitesDispatcher(PlayController playController) {
-		super(playController);
+	public WhitesDispatcher(PlayControllerImplementation playControllerImplementation) {
+		super(playControllerImplementation);
 	}
 
 	@Override
 	public void dispatch() {
 		int position = this.tcpip.receiveInt();
-		this.tcpip.send(this.acceptorController.getWhites(position));
+		this.tcpip.send(this.acceptorControllerImplementation.getWhites(position));
 	}
 
 }

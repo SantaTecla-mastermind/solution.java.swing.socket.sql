@@ -5,7 +5,7 @@ import usantatecla.mastermind.types.Error;
 
 import java.util.List;
 
-public interface PlayController {
+public interface PlayController extends AcceptorController {
 
     boolean undoable();
     boolean redoable();

@@ -1,5 +1,5 @@
 package usantatecla.mastermind.controllers;
 
 // TODO ??
-public interface StartController {
+public interface StartController extends AcceptorController {
 }

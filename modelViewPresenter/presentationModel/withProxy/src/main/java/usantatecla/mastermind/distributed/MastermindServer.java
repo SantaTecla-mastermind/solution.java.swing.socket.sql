@@ -6,11 +6,11 @@ import usantatecla.mastermind.models.Session;
 public class MastermindServer {
 
 	private DispatcherPrototype dispatcherPrototype;
-	private LogicServer logic;
+	private LogicImplementationServer logic;
 
 	private MastermindServer() {
 		this.dispatcherPrototype = new DispatcherPrototype();
-		this.logic = new LogicServer(new Session(), true);
+		this.logic = new LogicImplementationServer(new Session());
 		this.logic.createDispatchers(this.dispatcherPrototype);
 	}
 

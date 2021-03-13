@@ -1,13 +1,14 @@
 package usantatecla.mastermind.controllers.implementation;
 
 import usantatecla.mastermind.controllers.AcceptorController;
+import usantatecla.mastermind.controllers.Controller;
 import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.models.StateValue;
 import usantatecla.mastermind.types.Color;
 
 import java.util.List;
 
-public abstract class AcceptorControllerImplementation extends AcceptorController {
+public abstract class AcceptorControllerImplementation extends Controller implements AcceptorController {
 
     AcceptorControllerImplementation(Session session) {
         super(session);

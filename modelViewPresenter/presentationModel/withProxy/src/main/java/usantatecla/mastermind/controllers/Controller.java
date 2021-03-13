@@ -6,7 +6,7 @@ public abstract class Controller {
 
     protected Session session;
 
-    Controller(Session session) {
+    protected Controller(Session session) {
         this.session = session;
     }
 

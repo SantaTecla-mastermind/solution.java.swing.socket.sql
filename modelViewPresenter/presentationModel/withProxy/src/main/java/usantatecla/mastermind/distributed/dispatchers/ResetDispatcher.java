@@ -1,15 +1,15 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
-import usantatecla.mastermind.controllers.ResumeController;
+import usantatecla.mastermind.controllers.implementation.ResumeControllerImplementation;
 
 public class ResetDispatcher extends Dispatcher {
 
-    public ResetDispatcher(ResumeController resumeController) {
-        super(resumeController);
+    public ResetDispatcher(ResumeControllerImplementation resumeControllerImplementation) {
+        super(resumeControllerImplementation);
     }
 
     @Override
     public void dispatch() {
-        ((ResumeController) this.acceptorController).reset();
+        ((ResumeControllerImplementation) this.acceptorControllerImplementation).reset();
     }
 }
