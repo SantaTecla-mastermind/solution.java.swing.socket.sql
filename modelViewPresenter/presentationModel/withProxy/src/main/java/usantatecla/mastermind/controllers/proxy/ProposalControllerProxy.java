@@ -9,13 +9,10 @@ import usantatecla.mastermind.types.Error;
 
 import java.util.List;
 
-public class ProposalControllerProxy extends ProposalController {
-
-    private TCPIP tcpip;
+public class ProposalControllerProxy extends ControllerProxy implements ProposalController {
 
     public ProposalControllerProxy(Session session, TCPIP tcpip) {
-        super(session);
-        this.tcpip = tcpip;
+        super(session, tcpip);
     }
 
     public Error getError(List<Color> colors) {

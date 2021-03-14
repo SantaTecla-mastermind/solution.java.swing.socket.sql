@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.ResumeController;
+import usantatecla.mastermind.controllers.implementation.ResumeControllerImplementation;
 import usantatecla.mastermind.models.Session;
 import usantatecla.utils.views.Console;
 
@@ -19,15 +20,15 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class ResumeViewTest {
 
-   @Mock
+    @Mock
     private Console console;
 
     private ResumeController resumeController;
     private ResumeView resumeView;
 
     @BeforeEach
-    public void beforeEach(){
-        this.resumeController = new ResumeController(new Session(), null);
+    public void beforeEach() {
+        this.resumeController = new ResumeControllerImplementation(new Session());
         this.resumeView = new ResumeView();
     }
 

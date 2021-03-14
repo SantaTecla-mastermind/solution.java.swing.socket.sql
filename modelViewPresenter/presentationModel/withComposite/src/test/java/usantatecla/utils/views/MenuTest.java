@@ -11,7 +11,6 @@ import usantatecla.utils.models.Command;
 
 import static org.mockito.Mockito.*;
 
-// TODO Revisar si está todo correcto
 @ExtendWith(MockitoExtension.class)
 public class MenuTest {
 

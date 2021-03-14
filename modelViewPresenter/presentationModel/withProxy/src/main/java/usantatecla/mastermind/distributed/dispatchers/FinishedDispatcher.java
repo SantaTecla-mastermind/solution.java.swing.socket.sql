@@ -1,15 +1,15 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
-import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
+import usantatecla.mastermind.controllers.PlayController;
 
 public class FinishedDispatcher extends Dispatcher {
 
-    public FinishedDispatcher(PlayControllerImplementation playControllerImplementation) {
-        super(playControllerImplementation);
+    public FinishedDispatcher(PlayController playController) {
+        super(playController);
     }
 
     @Override
     public void dispatch() {
-        this.tcpip.send(((PlayControllerImplementation)this.acceptorControllerImplementation).isFinished());
+        this.tcpip.send(((PlayController)this.acceptorController).isFinished());
     }
 }

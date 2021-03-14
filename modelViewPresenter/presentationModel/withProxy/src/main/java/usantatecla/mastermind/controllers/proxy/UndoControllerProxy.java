@@ -5,13 +5,10 @@ import usantatecla.mastermind.distributed.dispatchers.FrameType;
 import usantatecla.mastermind.distributed.dispatchers.TCPIP;
 import usantatecla.mastermind.models.Session;
 
-public class UndoControllerProxy extends UndoController {
-
-    private TCPIP tcpip;
+public class UndoControllerProxy extends ControllerProxy implements UndoController {
 
     public UndoControllerProxy(Session session, TCPIP tcpip) {
-        super(session);
-        this.tcpip = tcpip;
+        super(session, tcpip);
     }
 
     public void undo() {

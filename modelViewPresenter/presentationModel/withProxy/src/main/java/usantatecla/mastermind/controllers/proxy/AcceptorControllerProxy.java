@@ -1,7 +1,6 @@
 package usantatecla.mastermind.controllers.proxy;
 
 import usantatecla.mastermind.controllers.AcceptorController;
-import usantatecla.mastermind.controllers.Controller;
 import usantatecla.mastermind.distributed.dispatchers.FrameType;
 import usantatecla.mastermind.distributed.dispatchers.TCPIP;
 import usantatecla.mastermind.models.Session;
@@ -11,50 +10,47 @@ import usantatecla.mastermind.types.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AcceptorControllerProxy extends Controller implements AcceptorController {
+public abstract class AcceptorControllerProxy extends ControllerProxy implements AcceptorController {
 
-	protected TCPIP tcpip;
+    AcceptorControllerProxy(Session session, TCPIP tcpip) {
+        super(session, tcpip);
+    }
 
-	AcceptorControllerProxy(Session session, TCPIP tcpip) {
-		super(session);
-		this.tcpip = tcpip;
-	}
+    public void nextState() {
+        this.tcpip.send(FrameType.NEXT_STATE.name());
+    }
 
-	public void nextState() {
-		this.tcpip.send(FrameType.NEXT_STATE.name());
-	}
+    public StateValue getStateValue() {
+        this.tcpip.send(FrameType.STATE_VALUE.name());
+        return StateValue.valueOf(this.tcpip.receiveLine());
+    }
 
-	public StateValue getStateValue() {
-		this.tcpip.send(FrameType.STATE_VALUE.name());
-		return StateValue.valueOf(this.tcpip.receiveLine());
-	}
+    public int getAttempts() {
+        this.tcpip.send(FrameType.ATTEMPTS.name());
+        return this.tcpip.receiveInt();
+    }
 
-	public int getAttempts() {
-		this.tcpip.send(FrameType.ATTEMPTS.name());
-		return this.tcpip.receiveInt();
-	}
+    public List<Color> getProposedCombinationColors(int position) {
+        this.tcpip.send(FrameType.COLORS.name());
+        this.tcpip.send(position);
+        int size = this.tcpip.receiveInt();
+        List<Color> colors = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            colors.add(this.tcpip.receiveColor());
+        }
+        return colors;
+    }
 
-	public List<Color> getProposedCombinationColors(int position) {
-		this.tcpip.send(FrameType.COLORS.name());
-		this.tcpip.send(position);
-		int size = this.tcpip.receiveInt();
-		List<Color> colors = new ArrayList<>();
-		for (int i = 0; i < size; i++) {
-			colors.add(this.tcpip.receiveColor());
-		}
-		return colors;
-	}
+    public int getBlacks(int position) {
+        this.tcpip.send(FrameType.BLACKS.name());
+        this.tcpip.send(position);
+        return this.tcpip.receiveInt();
+    }
 
-	public int getBlacks(int position) {
-		this.tcpip.send(FrameType.BLACKS.name());
-		this.tcpip.send(position);
-		return this.tcpip.receiveInt();
-	}
-
-	public int getWhites(int position) {
-		this.tcpip.send(FrameType.WHITES.name());
-		this.tcpip.send(position);
-		return this.tcpip.receiveInt();
-	}
+    public int getWhites(int position) {
+        this.tcpip.send(FrameType.WHITES.name());
+        this.tcpip.send(position);
+        return this.tcpip.receiveInt();
+    }
 
 }

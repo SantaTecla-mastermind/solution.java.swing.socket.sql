@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.StartController;
+import usantatecla.mastermind.controllers.implementation.StartControllerImplementation;
 import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.models.SessionBuilder;
 import usantatecla.utils.views.Console;
@@ -37,7 +38,7 @@ public class BoardViewTest {
     public void testGivenBoardViewWhenWriteWithEmptyBoardThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.boardView.write(new StartController(new Session(), null));
+            this.boardView.write(new StartControllerImplementation(new Session()));
             String[] strings = {
                     "0 attempt(s): ",
                     "****"
@@ -56,7 +57,7 @@ public class BoardViewTest {
                     .proposedCombinations(3, "rgby")
                     .blacks(2).whites(2)
                     .build();
-            StartController startController = new StartController(session, null);
+            StartController startController = new StartControllerImplementation(session);
             this.boardView.write(startController);
             String string = this.conversor.arrayToString(new String[]{
                     "3 attempt(s): ",

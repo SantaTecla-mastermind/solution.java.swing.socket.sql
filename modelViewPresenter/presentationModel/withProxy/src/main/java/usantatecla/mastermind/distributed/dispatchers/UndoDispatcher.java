@@ -1,16 +1,16 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
-import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
+import usantatecla.mastermind.controllers.PlayController;
 
 public class UndoDispatcher extends Dispatcher {
 
-	public UndoDispatcher(PlayControllerImplementation playControllerImplementation) {
-		super(playControllerImplementation);
+	public UndoDispatcher(PlayController playController) {
+		super(playController);
 	}
 
 	@Override
 	public void dispatch() {
-		((PlayControllerImplementation)this.acceptorControllerImplementation).undo();
+		((PlayController)this.acceptorController).undo();
 	}
 
 }

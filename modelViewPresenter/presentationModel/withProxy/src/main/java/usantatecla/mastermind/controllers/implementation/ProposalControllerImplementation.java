@@ -1,5 +1,6 @@
 package usantatecla.mastermind.controllers.implementation;
 
+import usantatecla.mastermind.controllers.Controller;
 import usantatecla.mastermind.controllers.ProposalController;
 import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.types.Color;
@@ -7,7 +8,7 @@ import usantatecla.mastermind.types.Error;
 
 import java.util.List;
 
-public class ProposalControllerImplementation extends ProposalController {
+public class ProposalControllerImplementation extends Controller implements ProposalController {
 
     public ProposalControllerImplementation(Session session) {
         super(session);

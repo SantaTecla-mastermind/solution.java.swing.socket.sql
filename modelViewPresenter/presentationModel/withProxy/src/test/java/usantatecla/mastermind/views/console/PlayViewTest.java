@@ -8,6 +8,7 @@ import org.mockito.MockedStatic;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
 import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.types.Color;
 import usantatecla.utils.views.Console;
@@ -31,7 +32,7 @@ public class PlayViewTest {
 
     @BeforeEach
     public void beforeEach(){
-        this.playController = new PlayController(this.session, null);
+        this.playController = new PlayControllerImplementation(this.session);
         this.playView = new PlayView();
     }
 

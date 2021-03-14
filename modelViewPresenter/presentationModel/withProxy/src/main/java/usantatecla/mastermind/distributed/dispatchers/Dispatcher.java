@@ -1,15 +1,15 @@
 package usantatecla.mastermind.distributed.dispatchers;
 
-import usantatecla.mastermind.controllers.implementation.AcceptorControllerImplementation;
+import usantatecla.mastermind.controllers.AcceptorController;
 
 public abstract class Dispatcher {
 	
-	protected AcceptorControllerImplementation acceptorControllerImplementation;
+	protected AcceptorController acceptorController;
 	
 	protected TCPIP tcpip;
 	
-	public Dispatcher (AcceptorControllerImplementation acceptorControllerImplementation) {
-		this.acceptorControllerImplementation = acceptorControllerImplementation;
+	public Dispatcher (AcceptorController acceptorController) {
+		this.acceptorController = acceptorController;
 	}
 
 	public abstract void dispatch();

@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
 import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.types.Color;
 import usantatecla.utils.views.Console;
@@ -30,7 +31,7 @@ public class ProposedCombinationViewTest {
 
     @BeforeEach
     public void beforeEach() {
-        this.playController = new PlayController(new Session(), null);
+        this.playController = new PlayControllerImplementation(new Session());
         this.proposedCombinationView = new ProposedCombinationView();
         this.conversor = new Conversor();
     }

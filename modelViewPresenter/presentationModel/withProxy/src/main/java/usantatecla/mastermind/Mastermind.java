@@ -1,7 +1,6 @@
 package usantatecla.mastermind;
 
 import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.views.View;
 
 public abstract class Mastermind {

@@ -5,13 +5,10 @@ import usantatecla.mastermind.distributed.dispatchers.FrameType;
 import usantatecla.mastermind.distributed.dispatchers.TCPIP;
 import usantatecla.mastermind.models.Session;
 
-public class RedoControllerProxy extends RedoController {
-
-    private TCPIP tcpip;
+public class RedoControllerProxy extends ControllerProxy implements RedoController {
 
     public RedoControllerProxy(Session session, TCPIP tcpip) {
-        super(session);
-        this.tcpip = tcpip;
+        super(session, tcpip);
     }
 
     public void redo() {

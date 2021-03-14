@@ -1,6 +1,7 @@
 package usantatecla.mastermind.controllers.proxy;
 
-import usantatecla.mastermind.controllers.*;
+import usantatecla.mastermind.controllers.ControllersVisitor;
+import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.distributed.dispatchers.TCPIP;
 import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.types.Color;
