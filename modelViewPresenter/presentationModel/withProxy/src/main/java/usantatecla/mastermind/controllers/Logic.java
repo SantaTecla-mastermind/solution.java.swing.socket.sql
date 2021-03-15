@@ -16,7 +16,7 @@ public class Logic {
         this.acceptorControllers = new HashMap<>();
     }
 
-    // TODO ??
+    // TODO SessionProxy
     public AcceptorController getController() {
         return this.acceptorControllers.get(this.acceptorControllers.get(StateValue.IN_GAME).getStateValue());
     }

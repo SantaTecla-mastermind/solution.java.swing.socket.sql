@@ -11,6 +11,7 @@ import java.util.List;
 
 public class PlayControllerProxy extends AcceptorControllerProxy implements PlayController {
 
+    // TODO Proposal, Undo y Redo se traen directamente aquí
     private ProposalControllerProxy proposalControllerProxy;
     private UndoControllerProxy undoControllerProxy;
     private RedoControllerProxy redoControllerProxy;
