@@ -10,7 +10,7 @@ public class MastermindServer {
 
 	private MastermindServer() {
 		this.dispatcherPrototype = new DispatcherPrototype();
-		this.logic = new LogicImplementationServer(new Session());
+		this.logic = new LogicImplementationServer();
 		this.logic.createDispatchers(this.dispatcherPrototype);
 	}
 

@@ -8,13 +8,6 @@ public abstract class View extends WithBoardView {
         super(board);
     }
 
-    public void interact() {
-        do {
-            this.start();
-            this.play();
-        } while (this.resume());
-    }
-
     protected abstract void start();
 
     protected abstract void play();

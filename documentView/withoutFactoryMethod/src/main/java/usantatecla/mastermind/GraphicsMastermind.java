@@ -14,7 +14,10 @@ class GraphicsMastermind {
     }
 
     private void play() {
-        this.graphicsView.interact();
+        do {
+            this.graphicsView.start();
+            this.graphicsView.play();
+        } while (this.graphicsView.resume());
     }
 
     public static void main(String[] args) {

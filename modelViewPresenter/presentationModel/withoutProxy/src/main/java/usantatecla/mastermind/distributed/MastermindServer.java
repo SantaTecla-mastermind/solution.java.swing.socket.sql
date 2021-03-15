@@ -1,7 +1,6 @@
 package usantatecla.mastermind.distributed;
 
 import usantatecla.mastermind.distributed.dispatchers.DispatcherPrototype;
-import usantatecla.mastermind.models.Session;
 
 public class MastermindServer {
 
@@ -10,7 +9,7 @@ public class MastermindServer {
 
 	private MastermindServer() {
 		this.dispatcherPrototype = new DispatcherPrototype();
-		this.logic = new LogicServer(new Session(), true);
+		this.logic = new LogicServer(true);
 		this.logic.createDispatchers(this.dispatcherPrototype);
 	}
 

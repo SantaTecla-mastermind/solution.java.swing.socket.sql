@@ -9,6 +9,7 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.models.Board;
+import usantatecla.mastermind.types.Color;
 import usantatecla.utils.views.Console;
 
 import static org.mockito.ArgumentMatchers.anyString;

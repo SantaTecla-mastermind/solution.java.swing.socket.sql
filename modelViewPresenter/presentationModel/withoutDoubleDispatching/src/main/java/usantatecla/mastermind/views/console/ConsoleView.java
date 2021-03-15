@@ -5,7 +5,7 @@ import usantatecla.mastermind.controllers.ResumeController;
 import usantatecla.mastermind.controllers.StartController;
 import usantatecla.mastermind.views.View;
 
-public class ConsoleView extends View {
+public class ConsoleView implements View {
 
     private StartView startView;
     private PlayView playView;
@@ -17,18 +17,15 @@ public class ConsoleView extends View {
         this.resumeView = new ResumeView();
     }
 
-    @Override
-    protected void start(StartController startController) {
+    public void start(StartController startController) {
         this.startView.interact(startController);
     }
 
-    @Override
-    protected void play(PlayController playController) {
+    public void play(PlayController playController) {
         this.playView.interact(playController);
     }
 
-    @Override
-    protected boolean resume(ResumeController resumeController) {
+    public boolean resume(ResumeController resumeController) {
         return this.resumeView.interact(resumeController);
     }
 

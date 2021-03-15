@@ -14,7 +14,7 @@ class GraphicsMastermind extends Mastermind {
 
     @Override
     protected Logic createLogic() {
-        return new LogicImplementation(new Session());
+        return new LogicImplementation();
     }
 
     public static void main(String[] args) {

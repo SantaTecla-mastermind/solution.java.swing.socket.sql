@@ -10,11 +10,11 @@ class PlayView {
             playController.add(new ProposedCombinationView().read(playController));
             new BoardView().write(playController);
         } while (!playController.isFinished());
-        if(playController.isWinner()){
-            new MessageView().writeln(Message.WINNER);
-        } else {
-            new MessageView().writeln(Message.LOOSER);
+        Message message = Message.LOOSER;
+        if (playController.isWinner()){
+            message = Message.WINNER;
         }
+        new MessageView().writeln(message);
         playController.nextState();
     }
 

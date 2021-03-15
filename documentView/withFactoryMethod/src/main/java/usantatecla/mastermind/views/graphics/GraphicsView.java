@@ -13,12 +13,12 @@ public class GraphicsView extends View {
     }
 
     @Override
-    protected void start() {
+    public void start() {
         this.boardView.start();
     }
 
     @Override
-    protected void play() {
+    public void play() {
         do {
             this.boardView.play();
         } while (!this.board.isFinished());
@@ -26,7 +26,7 @@ public class GraphicsView extends View {
     }
 
     @Override
-    protected boolean resume() {
+    public boolean resume() {
         ResumeDialog resumeDialog = new ResumeDialog();
         boolean newGame = resumeDialog.isNewGame();
         if (newGame) {

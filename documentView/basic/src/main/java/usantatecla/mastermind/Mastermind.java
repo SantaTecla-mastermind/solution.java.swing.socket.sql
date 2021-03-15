@@ -14,7 +14,10 @@ class Mastermind {
     }
 
     private void play() {
-        this.view.interact();
+        do {
+            this.view.start();
+            this.view.play();
+        } while (this.view.resume());
     }
 
     public static void main(String[] args) {

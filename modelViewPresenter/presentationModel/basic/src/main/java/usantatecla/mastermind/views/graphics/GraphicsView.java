@@ -13,15 +13,15 @@ public class GraphicsView extends View {
     }
 
     @Override
-    protected void start() {
+    public void start() {
     }
 
     @Override
-    protected void play() {
+    public void play() {
     }
 
     @Override
-    protected boolean resume() {
+    public boolean resume() {
         return true;
     }
 

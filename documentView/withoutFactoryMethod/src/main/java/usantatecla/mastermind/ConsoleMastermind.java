@@ -14,7 +14,10 @@ class ConsoleMastermind {
     }
 
     private void play() {
-        this.consoleView.interact();
+        do {
+            this.consoleView.start();
+            this.consoleView.play();
+        } while (this.consoleView.resume());
     }
 
     public static void main(String[] args) {

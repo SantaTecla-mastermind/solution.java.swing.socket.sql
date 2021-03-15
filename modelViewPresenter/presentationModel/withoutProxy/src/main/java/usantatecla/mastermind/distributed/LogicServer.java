@@ -2,12 +2,11 @@ package usantatecla.mastermind.distributed;
 
 import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.distributed.dispatchers.*;
-import usantatecla.mastermind.models.Session;
 
 public class LogicServer extends Logic {
 
-	public LogicServer(Session session, Boolean isStandalone) {
-		super(session, isStandalone);
+	public LogicServer(Boolean isStandalone) {
+		super(isStandalone);
 	}
 
 	public void createDispatchers(DispatcherPrototype dispatcherPrototype) {

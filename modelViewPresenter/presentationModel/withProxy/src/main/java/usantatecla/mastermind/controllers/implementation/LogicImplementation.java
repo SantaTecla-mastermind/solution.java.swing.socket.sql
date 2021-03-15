@@ -10,8 +10,7 @@ public class LogicImplementation extends Logic {
     protected PlayControllerImplementation playControllerImplementation;
     protected ResumeControllerImplementation resumeControllerImplementation;
 
-    public LogicImplementation(Session session) {
-        super(session);
+    public LogicImplementation() {
         this.startControllerImplementation = new StartControllerImplementation(this.session);
         this.playControllerImplementation = new PlayControllerImplementation(this.session);
         this.resumeControllerImplementation = new ResumeControllerImplementation(this.session);

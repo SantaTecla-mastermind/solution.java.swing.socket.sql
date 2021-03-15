@@ -11,8 +11,8 @@ public class Logic {
     protected Session session;
     protected Map<StateValue, AcceptorController> acceptorControllers;
 
-    protected Logic(Session session) {
-        this.session = session;
+    protected Logic() {
+        this.session = new Session();
         this.acceptorControllers = new HashMap<>();
     }
 

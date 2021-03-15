@@ -16,7 +16,10 @@ abstract class Mastermind {
     protected abstract View createView(Board board);
 
     protected void play() {
-        this.view.interact();
+        do {
+            this.view.start();
+            this.view.play();
+        } while (this.view.resume());
     }
 
 }

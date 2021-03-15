@@ -15,7 +15,7 @@ public class ConsoleMastermindClient extends Mastermind {
 
 	@Override
 	protected Logic createLogic() {
-		return new LogicProxy(new Session());
+		return new LogicProxy();
 	}
 
 	@Override

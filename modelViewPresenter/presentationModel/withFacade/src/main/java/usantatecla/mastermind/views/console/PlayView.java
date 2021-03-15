@@ -15,11 +15,11 @@ class PlayView extends WithLogicView {
             this.logic.add(new ProposedCombinationView().read(this.logic));
             new BoardView().write(this.logic);
         } while (!this.logic.isFinished());
-        if(this.logic.isWinner()){
-            new MessageView().writeln(Message.WINNER);
-        } else {
-            new MessageView().writeln(Message.LOOSER);
+        Message message = Message.LOOSER;
+        if (this.logic.isWinner()){
+            message = Message.WINNER;
         }
+        new MessageView().writeln(message);
     }
     
 }

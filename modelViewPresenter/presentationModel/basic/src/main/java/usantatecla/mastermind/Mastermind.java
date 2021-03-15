@@ -10,22 +10,25 @@ abstract class Mastermind {
 
 	private Board board;
 	private View view;
-	private StartController startController;
-	private PlayController playController;
-	private ResumeController resumeController;
+	protected StartController startController;
+	protected PlayController playController;
+	protected ResumeController resumeController;
 
 	protected Mastermind() {
 		this.board = new Board();
 		this.startController = new StartController(this.board);
 		this.playController = new PlayController(this.board);
 		this.resumeController = new ResumeController(this.board);
-		this.view = this.createView(this.startController, this.playController, this.resumeController);
+		this.view = this.createView();
 	}
 
-	protected abstract View createView(StartController startController, PlayController playController, ResumeController resumeController);
+	protected abstract View createView();
 
 	protected void play() {
-		this.view.interact();
+		do {
+			this.view.start();
+			this.view.play();
+		} while (this.view.resume());
 	}
 
 }

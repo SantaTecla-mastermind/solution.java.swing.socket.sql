@@ -16,13 +16,13 @@ public class Logic {
     protected ResumeController resumeController;
     private TCPIP tcpip;
 
-    public Logic(Session session, boolean isStandalone) {
+    public Logic(boolean isStandalone) {
         if (isStandalone) {
             this.tcpip = null;
         } else {
             this.tcpip = TCPIP.createClientSocket();
         }
-        this.session = session;
+        this.session = new Session();
         this.acceptorControllers = new HashMap<>();
         this.startController = new StartController(this.session, this.tcpip);
         this.acceptorControllers.put(StateValue.INITIAL, this.startController);

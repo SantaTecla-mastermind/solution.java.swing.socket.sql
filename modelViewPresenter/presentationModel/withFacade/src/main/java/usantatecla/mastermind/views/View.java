@@ -8,17 +8,10 @@ public abstract class View  extends WithLogicView {
 		super(logic);
 	}
 
-	public void interact() {
-		do {
-			this.start();
-			this.play();
-		} while (this.resume());
-	}
+	public abstract void start();
 
-	protected abstract void start();
+	public abstract void play();
 
-	protected abstract void play();
-
-	protected abstract boolean resume();
+	public abstract boolean resume();
 	
 }

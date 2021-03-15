@@ -19,17 +19,17 @@ public class ConsoleView extends View {
     }
 
     @Override
-    protected void start() {
+    public void start() {
         this.startView.interact();
     }
 
     @Override
-    protected void play() {
+    public void play() {
         this.playView.interact();
     }
 
     @Override
-    protected boolean resume() {
+    public boolean resume() {
         return this.resumeView.interact();
     }
 

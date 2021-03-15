@@ -11,8 +11,8 @@ public class Logic {
     private Session session;
     private Map<StateValue, AcceptorController> acceptorControllers;
 
-    public Logic(Session session) {
-        this.session = session;
+    public Logic() {
+        this.session = new Session();
         this.acceptorControllers = new HashMap<>();
         this.acceptorControllers.put(StateValue.INITIAL, new StartController(this.session));
         this.acceptorControllers.put(StateValue.IN_GAME, new PlayController(this.session));

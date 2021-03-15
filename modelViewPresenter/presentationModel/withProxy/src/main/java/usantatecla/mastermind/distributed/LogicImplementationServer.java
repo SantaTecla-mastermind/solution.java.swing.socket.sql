@@ -6,10 +6,6 @@ import usantatecla.mastermind.models.Session;
 
 public class LogicImplementationServer extends LogicImplementation {
 
-	public LogicImplementationServer(Session session) {
-		super(session);
-	}
-
 	public void createDispatchers(DispatcherPrototype dispatcherPrototype) {
 		dispatcherPrototype.add(FrameType.STATE_VALUE, new StateValueDispatcher(this.playControllerImplementation));
 		dispatcherPrototype.add(FrameType.NEXT_STATE, new NextStateDispatcher(this.playControllerImplementation));

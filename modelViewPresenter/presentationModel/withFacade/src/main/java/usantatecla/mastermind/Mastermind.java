@@ -17,7 +17,10 @@ abstract class Mastermind {
 	protected abstract View createView(Logic logic);
 
 	protected void play() {
-		this.view.interact();
+		do {
+			this.view.start();
+			this.view.play();
+		} while (this.view.resume());
 	}
 
 }

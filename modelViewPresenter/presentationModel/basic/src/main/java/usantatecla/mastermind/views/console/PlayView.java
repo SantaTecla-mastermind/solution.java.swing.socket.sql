@@ -16,11 +16,11 @@ class PlayView {
             this.playController.add(new ProposedCombinationView().read(this.playController));
             new BoardView().write(this.playController);
         } while (!this.playController.isFinished());
-        if(this.playController.isWinner()){
-            new MessageView().writeln(Message.WINNER);
-        } else {
-            new MessageView().writeln(Message.LOOSER);
+        Message message = Message.LOOSER;
+        if (this.playController.isWinner()){
+            message = Message.WINNER;
         }
+        new MessageView().writeln(message);
     }
     
 }

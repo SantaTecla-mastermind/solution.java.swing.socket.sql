@@ -13,10 +13,10 @@ class PlayView extends WithBoardView {
             this.board.add(new ProposedCombinationView().read(this.board));
             new BoardView().write(this.board);
         } while (!this.board.isFinished());
-        if (this.board.isWinner()) {
-            Message.WINNER.writeln();
-        } else {
-            Message.LOOSER.writeln();
+        Message message = Message.LOOSER;
+        if (this.board.isWinner()){
+            message = Message.WINNER;
         }
+        message.writeln();
     }
 }

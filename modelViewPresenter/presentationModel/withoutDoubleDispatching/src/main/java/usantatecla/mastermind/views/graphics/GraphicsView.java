@@ -5,18 +5,15 @@ import usantatecla.mastermind.controllers.ResumeController;
 import usantatecla.mastermind.controllers.StartController;
 import usantatecla.mastermind.views.View;
 
-public class GraphicsView extends View {
+public class GraphicsView implements View {
 
-    @Override
-    protected void start(StartController startController) {
+    public void start(StartController startController) {
     }
 
-    @Override
-    protected void play(PlayController playController) {
+    public void play(PlayController playController) {
     }
 
-    @Override
-    protected boolean resume(ResumeController resumeController) {
+    public boolean resume(ResumeController resumeController) {
         return true;
     }
 
