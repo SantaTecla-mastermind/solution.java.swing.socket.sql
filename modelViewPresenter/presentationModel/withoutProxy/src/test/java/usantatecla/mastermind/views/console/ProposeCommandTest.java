@@ -27,7 +27,7 @@ public class ProposeCommandTest extends CommandTest {
 
     @BeforeEach
     public void beforeEach() {
-        this.playController = spy(new PlayController(new Session(), null));
+        this.playController = spy(new PlayController(new Session(null), null));
     }
 
     @Override

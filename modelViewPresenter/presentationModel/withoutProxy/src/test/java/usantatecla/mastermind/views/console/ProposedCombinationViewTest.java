@@ -30,7 +30,7 @@ public class ProposedCombinationViewTest {
 
     @BeforeEach
     public void beforeEach() {
-        this.playController = new PlayController(new Session(), null);
+        this.playController = new PlayController(new Session(null), null);
         this.proposedCombinationView = new ProposedCombinationView();
         this.conversor = new Conversor();
     }

@@ -22,7 +22,7 @@ public class Logic {
         } else {
             this.tcpip = TCPIP.createClientSocket();
         }
-        this.session = new Session();
+        this.session = new Session(this.tcpip);
         this.acceptorControllers = new HashMap<>();
         this.startController = new StartController(this.session, this.tcpip);
         this.acceptorControllers.put(StateValue.INITIAL, this.startController);
@@ -34,7 +34,7 @@ public class Logic {
     }
 
     public AcceptorController getController() {
-        return this.acceptorControllers.get(this.playController.getStateValue());
+        return this.acceptorControllers.get(this.session.getValueState());
     }
 
     public void close() {

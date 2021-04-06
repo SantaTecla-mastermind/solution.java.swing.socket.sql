@@ -55,8 +55,8 @@ public class SessionBuilder {
     }
 
     public Session build() {
-        this.session = spy(new Session());
-        if(this.stateValue != null) {
+        this.session = spy(new Session(null));
+        if (this.stateValue != null) {
             while (this.stateValue != this.session.getValueState()) {
                 this.session.nextState();
             }

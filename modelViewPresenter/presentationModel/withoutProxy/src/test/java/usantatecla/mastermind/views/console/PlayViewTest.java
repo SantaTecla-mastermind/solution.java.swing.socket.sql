@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.models.Session;
@@ -23,14 +22,13 @@ public class PlayViewTest {
     @Mock
     private Console console;
 
-    @Spy
     private Session session;
-
     private PlayController playController;
     private PlayView playView;
 
     @BeforeEach
-    public void beforeEach(){
+    public void beforeEach() {
+        this.session = spy(new Session(null));
         this.playController = new PlayController(this.session, null);
         this.playView = new PlayView();
     }

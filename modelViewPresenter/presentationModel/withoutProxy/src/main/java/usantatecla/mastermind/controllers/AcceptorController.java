@@ -27,12 +27,7 @@ public abstract class AcceptorController extends Controller {
 	}
 
 	public StateValue getStateValue() {
-		if (this.tcpip == null) {
-			return this.session.getValueState();
-		} else {
-			this.tcpip.send(FrameType.STATE_VALUE.name());
-			return StateValue.valueOf(this.tcpip.receiveLine());
-		}
+		return this.session.getValueState();
 	}
 
 	public int getAttempts() {

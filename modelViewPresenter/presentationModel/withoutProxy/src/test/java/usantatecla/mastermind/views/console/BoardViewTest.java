@@ -37,7 +37,7 @@ public class BoardViewTest {
     public void testGivenBoardViewWhenWriteWithEmptyBoardThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.boardView.write(new StartController(new Session(), null));
+            this.boardView.write(new StartController(new Session(null), null));
             String[] strings = {
                     "0 attempt(s): ",
                     "****"

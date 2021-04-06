@@ -1,5 +1,7 @@
 package usantatecla.mastermind.models;
 
+import usantatecla.mastermind.distributed.dispatchers.FrameType;
+import usantatecla.mastermind.distributed.dispatchers.TCPIP;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 
@@ -10,11 +12,13 @@ public class Session {
 	private State state;
 	private Board board;
 	private Registry registry;
+	private TCPIP tcpip;
 	
-	public Session() {
+	public Session(TCPIP tcpip) {
 		this.state = new State();
 		this.board = new Board();
 		this.registry = new Registry(this.board);
+		this.tcpip = tcpip;
 	}
 
 	public void reset() {
@@ -28,7 +32,12 @@ public class Session {
 	}
 
 	public StateValue getValueState() {
-		return this.state.getValueState();
+		if (this.tcpip == null) {
+			return this.state.getValueState();
+		} else {
+			this.tcpip.send(FrameType.STATE_VALUE.name());
+			return StateValue.valueOf(this.tcpip.receiveLine());
+		}
 	}
 
 	public boolean undoable() {

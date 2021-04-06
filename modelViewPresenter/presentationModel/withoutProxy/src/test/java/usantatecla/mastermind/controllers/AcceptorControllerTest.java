@@ -52,13 +52,6 @@ public abstract class AcceptorControllerTest {
 	}
 
     @Test
-	public void testGivenClientAcceptorControllerWhenGetStateValueThenReturn() {
-		StateValue stateValue = StateValue.INITIAL;
-		when(this.tcpip.receiveLine()).thenReturn(stateValue.name());
-        assertThat(this.getClientAcceptorController().getStateValue(), is(stateValue));
-	}
-
-    @Test
 	public void testGivenServerAcceptorControllerWhenGetAttemptsThenReturn() {
 		int attempts = 1;
         when(this.session.getAttempts()).thenReturn(attempts);
