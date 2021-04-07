@@ -1,15 +1,12 @@
 package usantatecla.mastermind.controllers.proxy;
 
-import usantatecla.mastermind.controllers.Controller;
 import usantatecla.mastermind.distributed.dispatchers.TCPIP;
-import usantatecla.mastermind.models.Session;
 
-public abstract class ControllerProxy extends Controller {
+abstract class ControllerProxy {
 
     protected TCPIP tcpip;
 
-    protected ControllerProxy(Session session, TCPIP tcpip) {
-        super(session);
+    protected ControllerProxy(TCPIP tcpip) {
         this.tcpip = tcpip;
     }
 

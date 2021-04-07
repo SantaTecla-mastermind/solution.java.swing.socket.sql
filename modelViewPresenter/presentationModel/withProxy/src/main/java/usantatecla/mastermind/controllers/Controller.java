@@ -1,13 +1,13 @@
 package usantatecla.mastermind.controllers;
 
-import usantatecla.mastermind.models.Session;
+import usantatecla.mastermind.models.SessionImplementation;
 
 public abstract class Controller {
 
-    protected Session session;
+    protected SessionImplementation sessionImplementation;
 
-    protected Controller(Session session) {
-        this.session = session;
+    protected Controller(SessionImplementation sessionImplementation) {
+        this.sessionImplementation = sessionImplementation;
     }
 
 }

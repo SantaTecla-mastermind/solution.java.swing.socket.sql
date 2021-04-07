@@ -12,13 +12,11 @@ public class Logic {
     protected Map<StateValue, AcceptorController> acceptorControllers;
 
     protected Logic() {
-        this.session = new Session();
         this.acceptorControllers = new HashMap<>();
     }
 
-    // TODO SessionProxy
     public AcceptorController getController() {
-        return this.acceptorControllers.get(this.acceptorControllers.get(StateValue.IN_GAME).getStateValue());
+        return this.acceptorControllers.get(this.session.getValueState());
     }
 
 }

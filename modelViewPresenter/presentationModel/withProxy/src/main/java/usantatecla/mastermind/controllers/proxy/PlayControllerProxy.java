@@ -2,6 +2,7 @@ package usantatecla.mastermind.controllers.proxy;
 
 import usantatecla.mastermind.controllers.ControllersVisitor;
 import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.mastermind.distributed.dispatchers.FrameType;
 import usantatecla.mastermind.distributed.dispatchers.TCPIP;
 import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.types.Color;
@@ -11,48 +12,53 @@ import java.util.List;
 
 public class PlayControllerProxy extends AcceptorControllerProxy implements PlayController {
 
-    // TODO Proposal, Undo y Redo se traen directamente aquí
-    private ProposalControllerProxy proposalControllerProxy;
-    private UndoControllerProxy undoControllerProxy;
-    private RedoControllerProxy redoControllerProxy;
-
-    public PlayControllerProxy(Session session, TCPIP tcpip) {
-        super(session, tcpip);
-        this.proposalControllerProxy = new ProposalControllerProxy(this.session, this.tcpip);
-        this.undoControllerProxy = new UndoControllerProxy(this.session, this.tcpip);
-        this.redoControllerProxy = new RedoControllerProxy(this.session, this.tcpip);
+    public PlayControllerProxy(TCPIP tcpip) {
+        super(tcpip);
     }
 
     public boolean undoable() {
-        return this.undoControllerProxy.undoable();
+        this.tcpip.send(FrameType.UNDOABLE.name());
+        return this.tcpip.receiveBoolean();
     }
 
     public boolean redoable() {
-        return this.redoControllerProxy.redoable();
+        this.tcpip.send(FrameType.REDOABLE.name());
+        return this.tcpip.receiveBoolean();
     }
 
     public void undo() {
-        this.undoControllerProxy.undo();
+        this.tcpip.send(FrameType.UNDO.name());
     }
 
     public void redo() {
-        this.redoControllerProxy.redo();
+        this.tcpip.send(FrameType.REDO.name());
     }
 
     public Error getError(List<Color> colors) {
-        return this.proposalControllerProxy.getError(colors);
+        this.tcpip.send(FrameType.ERROR.name());
+        this.tcpip.send(colors.size());
+        for (Color color : colors) {
+            this.tcpip.send(color);
+        }
+        return this.tcpip.receiveError();
     }
 
     public void add(List<Color> colors) {
-        this.proposalControllerProxy.add(colors);
+        this.tcpip.send(FrameType.ADD_PROPOSED_COMBINATION.name());
+        this.tcpip.send(colors.size());
+        for (Color color : colors) {
+            this.tcpip.send(color);
+        }
     }
 
     public boolean isFinished() {
-        return this.proposalControllerProxy.isFinished();
+        this.tcpip.send(FrameType.FINISHED.name());
+        return this.tcpip.receiveBoolean();
     }
 
     public boolean isWinner() {
-        return this.proposalControllerProxy.isWinner();
+        this.tcpip.send(FrameType.WINNER.name());
+        return this.tcpip.receiveBoolean();
     }
 
     public void accept(ControllersVisitor controllersVisitor) {

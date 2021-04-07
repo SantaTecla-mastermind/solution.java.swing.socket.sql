@@ -1,8 +1,19 @@
 package usantatecla.mastermind.controllers;
 
-public interface RedoController {
+import usantatecla.mastermind.models.SessionImplementation;
 
-    void redo();
-    boolean redoable();
+public class RedoController extends Controller {
+
+    public RedoController(SessionImplementation sessionImplementation) {
+        super(sessionImplementation);
+    }
+
+    public void redo() {
+        this.sessionImplementation.redo();
+    }
+
+    public boolean redoable() {
+        return this.sessionImplementation.redoable();
+    }
 
 }

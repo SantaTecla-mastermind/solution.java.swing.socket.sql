@@ -1,8 +1,7 @@
 package usantatecla.mastermind.controllers.implementation;
 
-import usantatecla.mastermind.controllers.ControllersVisitor;
-import usantatecla.mastermind.controllers.PlayController;
-import usantatecla.mastermind.models.Session;
+import usantatecla.mastermind.controllers.*;
+import usantatecla.mastermind.models.SessionImplementation;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 
@@ -10,47 +9,47 @@ import java.util.List;
 
 public class PlayControllerImplementation extends AcceptorControllerImplementation implements PlayController {
 
-    private ProposalControllerImplementation proposalControllerImplementation;
-    private UndoControllerImplementation undoControllerImplementation;
-    private RedoControllerImplementation redoControllerImplementation;
+    private ProposalController proposalController;
+    private UndoController undoController;
+    private RedoController redoController;
 
-    public PlayControllerImplementation(Session session) {
-        super(session);
-        this.proposalControllerImplementation = new ProposalControllerImplementation(this.session);
-        this.undoControllerImplementation = new UndoControllerImplementation(this.session);
-        this.redoControllerImplementation = new RedoControllerImplementation(this.session);
+    public PlayControllerImplementation(SessionImplementation sessionImplementation) {
+        super(sessionImplementation);
+        this.proposalController = new ProposalController(this.sessionImplementation);
+        this.undoController = new UndoController(this.sessionImplementation);
+        this.redoController = new RedoController(this.sessionImplementation);
     }
 
     public boolean undoable() {
-        return this.undoControllerImplementation.undoable();
+        return this.undoController.undoable();
     }
 
     public boolean redoable() {
-        return this.redoControllerImplementation.redoable();
+        return this.redoController.redoable();
     }
 
     public void undo() {
-        this.undoControllerImplementation.undo();
+        this.undoController.undo();
     }
 
     public void redo() {
-        this.redoControllerImplementation.redo();
+        this.redoController.redo();
     }
 
     public Error getError(List<Color> colors) {
-        return this.proposalControllerImplementation.getError(colors);
+        return this.proposalController.getError(colors);
     }
 
     public void add(List<Color> colors) {
-        this.proposalControllerImplementation.add(colors);
+        this.proposalController.add(colors);
     }
 
     public boolean isFinished() {
-        return this.proposalControllerImplementation.isFinished();
+        return this.proposalController.isFinished();
     }
 
     public boolean isWinner() {
-        return this.proposalControllerImplementation.isWinner();
+        return this.proposalController.isWinner();
     }
 
     public void accept(ControllersVisitor controllersVisitor) {

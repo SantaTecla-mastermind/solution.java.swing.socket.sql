@@ -12,8 +12,8 @@ import java.util.List;
 
 public abstract class AcceptorControllerProxy extends ControllerProxy implements AcceptorController {
 
-    AcceptorControllerProxy(Session session, TCPIP tcpip) {
-        super(session, tcpip);
+    AcceptorControllerProxy(TCPIP tcpip) {
+        super(tcpip);
     }
 
     public void nextState() {

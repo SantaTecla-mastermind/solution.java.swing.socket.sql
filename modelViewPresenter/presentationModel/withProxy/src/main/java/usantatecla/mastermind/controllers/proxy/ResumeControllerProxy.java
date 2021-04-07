@@ -8,8 +8,8 @@ import usantatecla.mastermind.models.Session;
 
 public class ResumeControllerProxy extends AcceptorControllerProxy implements ResumeController {
 
-    public ResumeControllerProxy(Session session, TCPIP tcpip) {
-        super(session, tcpip);
+    public ResumeControllerProxy(TCPIP tcpip) {
+        super(tcpip);
     }
 
     public void reset() {

@@ -1,8 +1,19 @@
 package usantatecla.mastermind.controllers;
 
-public interface UndoController {
+import usantatecla.mastermind.models.SessionImplementation;
 
-    void undo();
-    boolean undoable();
+public class UndoController extends Controller {
+
+    public UndoController(SessionImplementation sessionImplementation) {
+        super(sessionImplementation);
+    }
+
+    public void undo() {
+        this.sessionImplementation.undo();
+    }
+
+    public boolean undoable() {
+        return this.sessionImplementation.undoable();
+    }
 
 }
