@@ -9,8 +9,8 @@ import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.mastermind.controllers.StartController;
 import usantatecla.mastermind.controllers.implementation.StartControllerImplementation;
-import usantatecla.mastermind.models.Session;
-import usantatecla.mastermind.models.SessionBuilder;
+import usantatecla.mastermind.models.SessionImplementationBuilder;
+import usantatecla.mastermind.models.SessionImplementation;
 import usantatecla.utils.views.Console;
 
 import java.util.List;
@@ -38,11 +38,8 @@ public class BoardViewTest {
     public void testGivenBoardViewWhenWriteWithEmptyBoardThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            this.boardView.write(new StartControllerImplementation(new Session()));
-            String[] strings = {
-                    "0 attempt(s): ",
-                    "****"
-            };
+            this.boardView.write(new StartControllerImplementation(new SessionImplementation()));
+            String[] strings = { "0 attempt(s): ", "****" };
             for (String string : strings) {
                 verify(this.console).writeln(string);
             }
@@ -53,19 +50,14 @@ public class BoardViewTest {
     public void testGivenBoardViewWhenWriteThenPrint() {
         try (MockedStatic<Console> console = mockStatic(Console.class)) {
             console.when(Console::getInstance).thenReturn(this.console);
-            Session session = new SessionBuilder()
-                    .proposedCombinations(3, "rgby")
-                    .blacks(2).whites(2)
+            SessionImplementation session = new SessionImplementationBuilder().proposedCombinations(3, "rgby").blacks(2).whites(2)
                     .build();
             StartController startController = new StartControllerImplementation(session);
             this.boardView.write(startController);
-            String string = this.conversor.arrayToString(new String[]{
-                    "3 attempt(s): ",
-                    "****",
+            String string = this.conversor.arrayToString(new String[] { "3 attempt(s): ", "****",
                     this.conversor.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
                     this.conversor.toColorCodeString("rgby") + " --> 2 blacks and 2 whites",
-                    this.conversor.toColorCodeString("rgby") + " --> 2 blacks and 2 whites"
-            });
+                    this.conversor.toColorCodeString("rgby") + " --> 2 blacks and 2 whites" });
             ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
             verify(this.console, atLeastOnce()).writeln(argumentCaptor.capture());
             verify(this.console, atLeastOnce()).write(argumentCaptor.capture());

@@ -2,7 +2,6 @@ package usantatecla.mastermind.controllers.proxy;
 
 import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.distributed.dispatchers.TCPIP;
-import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.models.SessionProxy;
 import usantatecla.mastermind.models.StateValue;
 

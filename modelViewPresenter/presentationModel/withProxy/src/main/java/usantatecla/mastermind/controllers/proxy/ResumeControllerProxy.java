@@ -4,7 +4,6 @@ import usantatecla.mastermind.controllers.ControllersVisitor;
 import usantatecla.mastermind.controllers.ResumeController;
 import usantatecla.mastermind.distributed.dispatchers.FrameType;
 import usantatecla.mastermind.distributed.dispatchers.TCPIP;
-import usantatecla.mastermind.models.Session;
 
 public class ResumeControllerProxy extends AcceptorControllerProxy implements ResumeController {
 

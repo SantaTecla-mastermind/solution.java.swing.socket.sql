@@ -2,7 +2,6 @@ package usantatecla.mastermind;
 
 import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.controllers.implementation.LogicImplementation;
-import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.views.graphics.GraphicsView;
 
 class GraphicsMastermind extends Mastermind {

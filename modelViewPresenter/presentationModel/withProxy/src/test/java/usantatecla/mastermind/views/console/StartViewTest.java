@@ -1,18 +1,19 @@
 package usantatecla.mastermind.views.console;
 
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.verify;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import usantatecla.mastermind.controllers.StartController;
 import usantatecla.mastermind.controllers.implementation.StartControllerImplementation;
-import usantatecla.mastermind.models.Session;
+import usantatecla.mastermind.models.SessionImplementation;
 import usantatecla.utils.views.Console;
-
-import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class StartViewTest {
@@ -25,7 +26,7 @@ public class StartViewTest {
 
     @BeforeEach
     public void beforeEach() {
-        this.startController = new StartControllerImplementation(new Session());
+        this.startController = new StartControllerImplementation(new SessionImplementation());
         this.startView = new StartView();
     }
 

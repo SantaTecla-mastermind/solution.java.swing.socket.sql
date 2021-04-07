@@ -19,7 +19,6 @@ public abstract class AcceptorControllerImplementation extends Controller implem
         this.sessionImplementation.nextState();
     }
 
-    @Override
     public StateValue getStateValue() {
         return this.sessionImplementation.getValueState();
     }

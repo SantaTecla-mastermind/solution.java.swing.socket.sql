@@ -1,7 +1,6 @@
 package usantatecla.mastermind.distributed;
 
 import usantatecla.mastermind.distributed.dispatchers.DispatcherPrototype;
-import usantatecla.mastermind.models.Session;
 
 public class MastermindServer {
 

@@ -10,19 +10,19 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 
-public class SessionBuilder {
+public class SessionImplementationBuilder {
 
-    private Session session;
+    private SessionImplementation session;
     private List<String> proposedCombinationsStrings;
     private StateValue stateValue;
     private Integer blacks;
     private Integer whites;
 
-    public SessionBuilder() {
+    public SessionImplementationBuilder() {
         this.proposedCombinationsStrings = new ArrayList<>();
     }
 
-    public SessionBuilder proposedCombinations(String... proposedCombinations) {
+    public SessionImplementationBuilder proposedCombinations(String... proposedCombinations) {
         assert proposedCombinations.length <= 10;
         for (String proposedCombination : proposedCombinations) {
             assert Pattern.matches("[" + Color.getAllInitials() + "]{4}", proposedCombination);
@@ -31,7 +31,7 @@ public class SessionBuilder {
         return this;
     }
 
-    public SessionBuilder proposedCombinations(int times, String proposedCombination) {
+    public SessionImplementationBuilder proposedCombinations(int times, String proposedCombination) {
         assert Pattern.matches("[" + Color.getAllInitials() + "]{4}", proposedCombination);
         for (int i = 0; i < times; i++) {
             this.proposedCombinationsStrings.add(proposedCombination);
@@ -39,23 +39,23 @@ public class SessionBuilder {
         return this;
     }
 
-    public SessionBuilder state(StateValue stateValue) {
+    public SessionImplementationBuilder state(StateValue stateValue) {
         this.stateValue = stateValue;
         return this;
     }
 
-    public SessionBuilder blacks(int blacks) {
+    public SessionImplementationBuilder blacks(int blacks) {
         this.blacks = blacks;
         return this;
     }
 
-    public SessionBuilder whites(int whites) {
+    public SessionImplementationBuilder whites(int whites) {
         this.whites = whites;
         return this;
     }
 
-    public Session build() {
-        this.session = spy(new Session());
+    public SessionImplementation build() {
+        this.session = spy(new SessionImplementation());
         if(this.stateValue != null) {
             while (this.stateValue != this.session.getValueState()) {
                 this.session.nextState();

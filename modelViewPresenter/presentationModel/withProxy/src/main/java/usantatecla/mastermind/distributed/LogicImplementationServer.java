@@ -2,8 +2,6 @@ package usantatecla.mastermind.distributed;
 
 import usantatecla.mastermind.controllers.implementation.LogicImplementation;
 import usantatecla.mastermind.distributed.dispatchers.*;
-import usantatecla.mastermind.models.Session;
-
 public class LogicImplementationServer extends LogicImplementation {
 
 	public void createDispatchers(DispatcherPrototype dispatcherPrototype) {

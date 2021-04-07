@@ -1,22 +1,26 @@
 package usantatecla.mastermind.views.console;
 
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
-import usantatecla.mastermind.models.Session;
+import usantatecla.mastermind.models.SessionImplementation;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.views.Message;
 import usantatecla.utils.models.Command;
 import usantatecla.utils.models.CommandTest;
 import usantatecla.utils.views.Console;
-
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ProposeCommandTest extends CommandTest {
@@ -28,7 +32,7 @@ public class ProposeCommandTest extends CommandTest {
 
     @BeforeEach
     public void beforeEach() {
-        this.playController = spy(new PlayControllerImplementation(new Session()));
+        this.playController = spy(new PlayControllerImplementation(new SessionImplementation()));
     }
 
     @Override

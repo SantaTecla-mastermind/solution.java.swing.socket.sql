@@ -1,38 +1,32 @@
 package usantatecla.mastermind.controllers.proxy;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.mastermind.controllers.AcceptorControllerTest;
-import usantatecla.mastermind.distributed.dispatchers.FrameType;
-import usantatecla.mastermind.distributed.dispatchers.TCPIP;
-import usantatecla.mastermind.models.Result;
-import usantatecla.mastermind.models.StateValue;
-import usantatecla.mastermind.types.Color;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import usantatecla.mastermind.distributed.dispatchers.FrameType;
+import usantatecla.mastermind.distributed.dispatchers.TCPIP;
+import usantatecla.mastermind.models.Result;
+import usantatecla.mastermind.types.Color;
+
 @ExtendWith(MockitoExtension.class)
-public abstract class AcceptorControllerProxyTest extends AcceptorControllerTest {
+public abstract class AcceptorControllerProxyTest {
     
     @Mock
     protected TCPIP tcpip;
+
+    protected AcceptorControllerProxy acceptorController;
 
     @Test
     public void testGivenAcceptorControllerProxyWhenNextStateThenCorrect() {
         this.acceptorController.nextState();
         verify(this.tcpip).send(FrameType.NEXT_STATE.name());
-    }
-
-    @Test
-    public void testGivenAcceptorControllerProxyWhenGetStateValueThenReturn() {
-        StateValue stateValue = StateValue.INITIAL;
-        when(this.tcpip.receiveLine()).thenReturn(stateValue.name());
-        assertThat(this.acceptorController.getStateValue(), is(stateValue));
     }
 
     @Test

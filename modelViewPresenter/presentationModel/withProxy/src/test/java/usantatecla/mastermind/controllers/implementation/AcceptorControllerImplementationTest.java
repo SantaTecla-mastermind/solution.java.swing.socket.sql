@@ -1,19 +1,29 @@
 package usantatecla.mastermind.controllers.implementation;
 
-import org.junit.jupiter.api.Test;
-import usantatecla.mastermind.controllers.AcceptorControllerTest;
-import usantatecla.mastermind.models.StateValue;
-import usantatecla.mastermind.types.Color;
-
-import java.util.List;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public abstract class AcceptorControllerImplementationTest extends AcceptorControllerTest {
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import usantatecla.mastermind.models.SessionImplementation;
+import usantatecla.mastermind.models.StateValue;
+import usantatecla.mastermind.types.Color;
+
+@ExtendWith(MockitoExtension.class)
+public abstract class AcceptorControllerImplementationTest {
+
+    protected AcceptorControllerImplementation acceptorController;
+
+    @Mock
+    protected SessionImplementation session;
 
     @Test
     public void testGivenAcceptorControllerWhenNextStateThenCorrect() {

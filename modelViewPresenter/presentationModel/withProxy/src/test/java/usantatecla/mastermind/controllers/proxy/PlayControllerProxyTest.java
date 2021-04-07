@@ -17,7 +17,7 @@ public class PlayControllerProxyTest extends AcceptorControllerProxyTest {
 
     @BeforeEach
     public void beforeEach() {
-        this.acceptorController = new PlayControllerProxy(this.session, this.tcpip);
+        this.acceptorController = new PlayControllerProxy(this.tcpip);
     }
 
     @Test

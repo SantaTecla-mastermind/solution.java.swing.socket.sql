@@ -1,5 +1,13 @@
 package usantatecla.mastermind.views.console;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -7,15 +15,12 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
-import usantatecla.mastermind.models.Session;
+import usantatecla.mastermind.models.SessionImplementation;
 import usantatecla.mastermind.types.Color;
 import usantatecla.utils.views.Console;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ProposedCombinationViewTest {
@@ -31,7 +36,7 @@ public class ProposedCombinationViewTest {
 
     @BeforeEach
     public void beforeEach() {
-        this.playController = new PlayControllerImplementation(new Session());
+        this.playController = new PlayControllerImplementation(new SessionImplementation());
         this.proposedCombinationView = new ProposedCombinationView();
         this.conversor = new Conversor();
     }

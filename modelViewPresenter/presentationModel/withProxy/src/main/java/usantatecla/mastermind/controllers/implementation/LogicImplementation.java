@@ -1,9 +1,7 @@
 package usantatecla.mastermind.controllers.implementation;
 
 import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.models.SessionImplementation;
-import usantatecla.mastermind.models.SessionProxy;
 import usantatecla.mastermind.models.StateValue;
 
 public class LogicImplementation extends Logic {

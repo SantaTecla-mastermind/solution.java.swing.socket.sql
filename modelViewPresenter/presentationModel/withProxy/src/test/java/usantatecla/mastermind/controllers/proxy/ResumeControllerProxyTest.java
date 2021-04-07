@@ -10,7 +10,7 @@ public class ResumeControllerProxyTest extends AcceptorControllerProxyTest {
 
     @BeforeEach
     public void beforeEach() {
-        this.acceptorController = new ResumeControllerProxy(this.session, this.tcpip);
+        this.acceptorController = new ResumeControllerProxy(this.tcpip);
     }
 
     @Test

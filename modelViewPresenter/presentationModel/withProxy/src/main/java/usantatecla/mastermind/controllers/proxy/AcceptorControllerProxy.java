@@ -3,8 +3,6 @@ package usantatecla.mastermind.controllers.proxy;
 import usantatecla.mastermind.controllers.AcceptorController;
 import usantatecla.mastermind.distributed.dispatchers.FrameType;
 import usantatecla.mastermind.distributed.dispatchers.TCPIP;
-import usantatecla.mastermind.models.Session;
-import usantatecla.mastermind.models.StateValue;
 import usantatecla.mastermind.types.Color;
 
 import java.util.ArrayList;
@@ -18,11 +16,6 @@ public abstract class AcceptorControllerProxy extends ControllerProxy implements
 
     public void nextState() {
         this.tcpip.send(FrameType.NEXT_STATE.name());
-    }
-
-    public StateValue getStateValue() {
-        this.tcpip.send(FrameType.STATE_VALUE.name());
-        return StateValue.valueOf(this.tcpip.receiveLine());
     }
 
     public int getAttempts() {

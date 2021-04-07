@@ -2,7 +2,7 @@ package usantatecla.mastermind.distributed.dispatchers;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import usantatecla.mastermind.controllers.PlayController;
+import usantatecla.mastermind.controllers.implementation.PlayControllerImplementation;
 import usantatecla.mastermind.models.StateValue;
 
 import static org.mockito.Mockito.verify;
@@ -11,7 +11,7 @@ import static org.mockito.Mockito.when;
 public class StateValueDispatcherTest extends DispatcherTest {
 
     @Mock
-    private PlayController playController;
+    private PlayControllerImplementation playController;
 
     @Override
     protected Dispatcher getDispatcher() {

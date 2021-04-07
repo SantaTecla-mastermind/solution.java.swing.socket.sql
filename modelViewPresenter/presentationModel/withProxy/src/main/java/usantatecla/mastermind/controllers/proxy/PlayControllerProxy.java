@@ -4,7 +4,6 @@ import usantatecla.mastermind.controllers.ControllersVisitor;
 import usantatecla.mastermind.controllers.PlayController;
 import usantatecla.mastermind.distributed.dispatchers.FrameType;
 import usantatecla.mastermind.distributed.dispatchers.TCPIP;
-import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.types.Color;
 import usantatecla.mastermind.types.Error;
 

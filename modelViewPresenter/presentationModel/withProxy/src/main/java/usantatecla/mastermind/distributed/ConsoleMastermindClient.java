@@ -3,7 +3,6 @@ package usantatecla.mastermind.distributed;
 import usantatecla.mastermind.Mastermind;
 import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.controllers.proxy.LogicProxy;
-import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.views.console.ConsoleView;
 
 public class ConsoleMastermindClient extends Mastermind {
