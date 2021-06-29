@@ -22,10 +22,14 @@ public class BoardTest {
     @Test
     public void testGivenBoardWithSomeProposedCombinationWhenResetThenGetAttemptsIs0() {
         Board board = this.boardBuilder
-                .proposedCombinations(3, BoardTest.PROPOSED_COMBINATION)
+                .proposedCombinations(times(3), BoardTest.PROPOSED_COMBINATION)
                 .build();
         board.reset();
         assertThat(board.getAttempts(), is(0));
+    }
+
+    private static int times(int amount){
+        return amount;
     }
 
     @Test
